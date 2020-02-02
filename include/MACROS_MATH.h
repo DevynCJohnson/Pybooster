@@ -4345,10 +4345,10 @@ LIB_FUNC MATH_FUNC long double __ieee754_expl(const long double num) {
 		x -= __expl_table[T_EXPL_ARG2 + (tval2 + tval2)];
 		xl -= __expl_table[T_EXPL_ARG2 + (tval2 + tval2) + 1];
 		x = x + xl;
-		union ieee854_long_double ex2_u = { .ld = __expl_table[T_EXPL_RES1 + tval1] * __expl_table[T_EXPL_RES2 + tval2] };
+		long_double_shape_t ex2_u = { .value = __expl_table[T_EXPL_RES1 + tval1] * __expl_table[T_EXPL_RES2 + tval2] };
 		const int n_i = (int)n;
 		const int unsafe = (abs(n_i) >= 15000);
-		union ieee854_long_double scale_u = { .ld = 1.0L };
+		long_double_shape_t scale_u = { .value = 1.0L };
 #   if (LDBL_EXP_BITS == 11)
 		uint11_t tmpval = { .val16 = (unsigned short)(ex2_u.ieee.exponent + (unsigned short)(n_i >> unsafe)) };
 		ex2_u.ieee.exponent = tmpval.val11.uval11;
@@ -4364,13 +4364,11 @@ LIB_FUNC MATH_FUNC long double __ieee754_expl(const long double num) {
 #   endif
 		const long double x22 = x + x * x * (0.5L + x * (1.66666666666666666666666666666666683E-1L + x * (4.16666666666666666666654902320001674E-2L + x * (8.33333333333333333333314659767198461E-3L + x * (1.38888888889899438565058018857254025E-3L + x * 1.98412698413981650382436541785404286E-4L)))));
 		fesetenv(&oldenv);
-		long double result = x22 * ex2_u.ld + ex2_u.ld;
-		if (!unsafe) { return result; }
-		else {
-			result *= scale_u.ld;
-			math_check_force_underflow_nonneg(result);
-			return result;
-		}
+		if (!unsafe) { return x22 * ex2_u.value + ex2_u.value; }
+		long double result = x22 * ex2_u.value + ex2_u.value;
+		result *= scale_u.value;
+		math_check_force_underflow_nonneg(result);
+		return result;
 	} else if (__isinfl(x)) {
 		return 0;
 	} else if (__islessl(x, 11356.523406294143949491931077970765L)) {

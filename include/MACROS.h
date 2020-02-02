@@ -13169,7 +13169,7 @@ static const UNUSED ieee754_remainder_double _NZERO = {{ 0, (int)0x80000000 }}; 
 #endif
 
 
-/** A union that permits conversions between a float and various datatypes */
+/** A union that provides an IEEE-754 single-precision format and permits conversions between a float and various datatypes */
 typedef union float_shape {
 	float value;
 	uint8_t bytes[4];
@@ -13186,12 +13186,6 @@ typedef union float_shape {
 #   if SUPPORTS_DECIMAL32
 	decimal32 decword;
 #   endif
-} float_shape_t;
-
-
-/** IEEE 754 single-precision format; This is used to access various parts of a float */
-typedef union ieee754_float {
-	float f;
 	struct s754f_bits {
 #   if IS_BIG_ENDIAN
 		unsigned int sign:1;
@@ -13240,7 +13234,7 @@ typedef union ieee754_float {
 		unsigned int negative:1;
 #   endif
 	} ieee_nan;
-} Float;
+} float_shape_t;
 
 
 /** A union that permits conversions between a double and various datatypes as well as access various parts of a double */
@@ -13346,7 +13340,12 @@ typedef struct Float96 {
 #if SUPPORTS_LONG_DOUBLE
 
 
-/** A union that permits conversions between a long double and various datatypes */
+/** IEEE-854 quad-precision format union permiting conversions between a long double and various datatypes
+
+On a PowerPC, a long double is implemented either as two doubles (with -mlong-double-128, the default) or as a single double (with -mlong-double-64, for Unix 2003 compliance). In a long double NaN, the value of the second double (if present) is ignored; Only the significand of the first double is used.
+
+On IA-32, a long double has a different format, with an explicit integer bit in the significand.
+*/
 typedef union long_double_shape {
 	long double value;
 	uint8_t bytes[16];
@@ -13370,21 +13369,11 @@ typedef union long_double_shape {
 #   else
 #      error   "Unsupported system endian (long_double_shape_t)!"
 #   endif
+	float f[4];
+	double d[2];
 #   if SUPPORTS_DECIMAL128
 	decimal128 dec128word;
 #   endif
-} long_double_shape_t;
-
-
-/** IEEE 854 quad-precision format
-
-On a PowerPC, a long double is implemented either as two doubles (with -mlong-double-128, the default) or as a single double (with -mlong-double-64, for Unix 2003 compliance). In a long double NaN, the value of the second double (if present) is ignored; Only the significand of the first double is used.
-
-On IA-32, a long double has a different format, with an explicit integer bit in the significand.
-*/
-typedef union ieee854_long_double {
-	double d;
-	long double ld;
 #   ifdef ARCHPOWERPC
 	struct attr_packed s854_bits {  // 128-bit float
 #      if IS_BIG_ENDIAN
@@ -13471,7 +13460,7 @@ typedef union ieee854_long_double {
 		unsigned int negative:1;
 #      endif
 	} ieee_nan;
-} LongDouble;
+} long_double_shape_t;
 
 
 #endif
@@ -13878,15 +13867,15 @@ typedef union complex_long_double_shape {
 
 // 32-bit float
 /** Return `1` if the float is signed (otherwise, `0`) */
-#define SIGNF(fp)   __extension__ ({ const union ieee754_float __union_float = { .f = (float)fp }; __union_float.ieee.negative; })
+#define SIGNF(fp)   __extension__ ({ const float_shape_t __union_float = { .value = (float)fp }; __union_float.ieee.negative; })
 /** Return the exponent of a float */
-#define EXPF(fp)   __extension__ ({ const union ieee754_float __union_float = { .f = (float)fp }; __union_float.ieee.exponent; })
+#define EXPF(fp)   __extension__ ({ const float_shape_t __union_float = { .value = (float)fp }; __union_float.ieee.exponent; })
 /** Return the mantissa of a float */
-#define MANTF(fp)   __extension__ ({ const union ieee754_float __union_float = { .f = (float)fp }; __union_float.ieee.mantissa; })
+#define MANTF(fp)   __extension__ ({ const float_shape_t __union_float = { .value = (float)fp }; __union_float.ieee.mantissa; })
 /** Create a float-point value manually using unsigned integers */
-#define PACKF(s, e, m)   __extension__ ({ const union ieee754_float __union_float = { .ieee.negative = (unsigned int)s, .ieee.exponent = (unsigned int)e, .ieee.mantissa = (unsigned int)m }; __union_float.f; })
+#define PACKF(s, e, m)   __extension__ ({ const float_shape_t __union_float = { .ieee.negative = (unsigned int)s, .ieee.exponent = (unsigned int)e, .ieee.mantissa = (unsigned int)m }; __union_float.value; })
 /** Set the mantissa of a float to `mant` */
-#define SET_MANTISSA_FLOAT(flt, mant)   do { union ieee754_float u = { .f = (float)(flt) }; u.ieee.mantissa = (((mant & 0x7fffff) == 0) ? 0x400000 : ((mant) & 0x7fffff)); (flt) = u.f; } while (0x0)
+#define SET_MANTISSA_FLOAT(flt, mant)   do { float_shape_t u = { .value = (float)(flt) }; u.ieee.mantissa = (((mant & 0x7fffff) == 0) ? 0x400000 : ((mant) & 0x7fffff)); (flt) = u.value; } while (0x0)
 #ifdef ARCHX86
 /** Direct movement of float into integer register */
 #   define GET_FLOAT_WORD(i, d)   do { int i_; asm (MOVD " %1, %0" : "=rm"(i_) : "x"((float)(d))); i = i_; } while (0x0)
@@ -13970,15 +13959,15 @@ typedef union complex_long_double_shape {
 // 128-bit float
 #define LDBL_ADJ   (LDBL_MAX_EXP - 2 + ((LDBL_MANT_DIG - 1) % 4))
 /** Return `1` if the long double is signed (otherwise, `0`) */
-#define SIGNL(fp)   __extension__ ({ const union ieee854_long_double __union_long_double = { .ld = (long double)fp }; __union_long_double.ieee.negative; })
+#define SIGNL(fp)   __extension__ ({ const long_double_shape_t __union_long_double = { .value = (long double)fp }; __union_long_double.ieee.negative; })
 /** Return the exponent of a long double */
-#define EXPL(fp)   __extension__ ({ const union ieee854_long_double __union_long_double = { .ld = (long double)fp }; __union_long_double.ieee.exponent; })
+#define EXPL(fp)   __extension__ ({ const long_double_shape_t __union_long_double = { .value = (long double)fp }; __union_long_double.ieee.exponent; })
 /** Return the mantissa of a long double */
 #define MANTL(fp)   ((fp & (HIDDEND_LL - 1)) | HIDDEND_LL)
 /** Return the mantissa of a long double */
 #define MANTD_LL(fp)   MANTL(fp)
 /** Create a long double manually using unsigned integers */
-#define PACKD_LL(s, e, m0, m1, m2, m3)   __extension__ ({ const union ieee854_long_double __union_long_double = { .ieee.negative = (unsigned int)s, .ieee.exponent = (unsigned int)e, .ieee.mantissa0 = (unsigned int)m0, .ieee.mantissa1 = (unsigned int)m1, .ieee.mantissa2 = (unsigned int)m2, .ieee.mantissa3 = (unsigned int)m3 }; __union_long_double.f; })
+#define PACKD_LL(s, e, m0, m1, m2, m3)   __extension__ ({ const long_double_shape_t __union_long_double = { .ieee.negative = (unsigned int)s, .ieee.exponent = (unsigned int)e, .ieee.mantissa0 = (unsigned int)m0, .ieee.mantissa1 = (unsigned int)m1, .ieee.mantissa2 = (unsigned int)m2, .ieee.mantissa3 = (unsigned int)m3 }; __union_long_double.value; })
 /** Get two 64 bit ints from a long double */
 #define GET_LDOUBLE_WORDS64(ix0, ix1, d)   do { const long_double_shape_t qw_gu = { .value = (long double)(d) }; (ix0) = qw_gu.uparts64.msw; (ix1) = qw_gu.uparts64.lsw; } while (0x0)
 /** Get two signed 64 bit ints from a long double */
