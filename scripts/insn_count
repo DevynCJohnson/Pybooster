@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Disassemble compiled code and count the number of each assembly instruction
 #' @file insn_count
-#' @version 2019.11.03
+#' @version 2020.02.02
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -112,9 +112,9 @@ while true; do
 done
 
 
-if [ "$filename" == '' ]; then
+if [ "$filename" = '' ]; then
     filename="${1:-}"
-    if [ "$filename" == '' ]; then
+    if [ "$filename" = '' ]; then
         printf 'ERROR: A filename is required as a parameter!\n' >&2
         exit 1
     elif [ ! -r "$filename" ]; then
@@ -127,25 +127,31 @@ fi
 # MAIN PROCESSING
 
 
-disassembled_code="$(objdump --disassemble --disassembler-options=att --no-show-raw-insn "${filename}" | cut -f 2 | sed -E 's|lock ([A-Za-z0-9]+) .+|lock\1|; s|rep ([A-Za-z0-9]+) .+|rep\1|; s|bnd jmpq (.+)|bnd jmpq|; s|notrack jmpq (.+)|notrack jmpq|; s|([A-Za-z0-9]+)  .+|\1|; s| [%0-9\(\)\$\-].*||; s|.*:||; s|.*file format.*||;' | awk NF | sort | uniq -c | sort -n)"
+disassemble_cmd='objdump --disassemble --disassembler-options=att --no-show-raw-insn'
+if [ -x "$(command -v file)" ]; then
+    file "${filename}" | cut -d ' ' -f 2- | grep -F -q 'NE ' && disassemble_cmd='semblance --compilable --disassemble --disassembler-options=att'
+fi
+_disassembly="$(${disassemble_cmd} "${filename}" 2>&1)"
+disassembled_code="$(printf '%s' "${_disassembly}" | cut -f 2 | sed -E 's|Segment.+:||g; s|Module .*: .+||g; s|Note: .+||g; s|Warning: .+||g; s|File: .+||g; s|[ ]*To create a specfile.+||g; s|.*file format.*||g;' | sed -E 's|lock ([A-Za-z0-9]+) .+|lock\1|g; s|rep ([A-Za-z0-9]+) .+|rep\1|g; s|bnd jmpq (.+)|bnd jmpq|g; s|notrack jmpq (.+)|notrack jmpq|g; s|([A-Za-z0-9]+)  .+|\1|g; s| [%0-9\(\)\$\-].*||g; s|[ ]*[0-9]+:[0-9a-f]+:||g; s|.*:||g; s|[ ]*\.\.\.||g;' | awk NF | sort | uniq -c | sort -n)"
+unset _disassembly
 
-basic_format="$(echo "${disassembled_code}" | sed 's|| |g;' | awk '{ $1=$1; };1')"
+basic_format="$(printf '%s' "${disassembled_code}" | sed 's|| |g;' | awk '{ $1=$1; };1')"
 
 total_insns=''
 
 
 if [ "$use_mach" -ne 1 ] || [ "$save_chart" -ne 1 ]; then
-    equation="$(echo "${basic_format}" | awk '{ print $1; };' | paste -sd+)"
+    equation="$(printf '%s' "${basic_format}" | awk '{ print $1; };' | paste -sd+)"
     if [ -x "$(command -v wcalc)" ]; then
-        total_insns="$(echo "${equation}" | wcalc | sed 's|[ \t]*~=[ \t]*||; s|[ \t]*=[ \t]*||')"
+        total_insns="$(printf '%s' "${equation}" | wcalc | sed 's|[ \t]*~=[ \t]*||; s|[ \t]*=[ \t]*||')"
     elif [ -x "$(command -v calc)" ]; then
         total_insns="$(calc -d -- "${equation}" | awk '{ print $2; };')"
     elif [ -x "$(command -v qalc)" ]; then
-        total_insns="$(echo "${equation}" | qalc | grep -o -E '=[ \t]*(.+)' | sed -e 's|[ \t]*=[ \t]*||')"
+        total_insns="$(printf '%s' "${equation}" | qalc | grep -o -E '=[ \t]*(.+)' | sed -e 's|[ \t]*=[ \t]*||')"
     elif [ -x "$(command -v concalc)" ]; then
-        total_insns="$(echo "${equation}" | concalc)"
+        total_insns="$(printf '%s' "${equation}" | concalc)"
     elif [ -x "$(command -v bc)" ]; then
-        total_insns="$(echo "${equation}" | bc -l)"
+        total_insns="$(printf '%s' "${equation}" | bc -l)"
     elif [ -x "$(command -v python3)" ]; then
         total_insns="$(python3 -c "print(${equation})")"
     else
@@ -155,8 +161,8 @@ fi
 
 
 if [ "$use_mach" -eq 1 ] || [ "$save_chart" -eq 1 ]; then
-    num_array="$(echo "${disassembled_code}" | awk '{ print $1; };' | tr '\n' ' ' | sed 's| |,|g; s|^|[|; s|,$|]|;')"
-    insn_array="$(echo "${disassembled_code}" | awk '{ print $2; };' | tr '\n' ' ' | sed 's| |","|g; s|^|"|; s|,"$||; s|| |g;')"
+    num_array="$(printf '%s' "${disassembled_code}" | awk '{ print $1; };' | tr '\n' ' ' | sed 's| |,|g; s|^|[|; s|,$|]|;')"
+    insn_array="$(printf '%s' "${disassembled_code}" | awk '{ print $2; };' | tr '\n' ' ' | sed 's| |","|g; s|^|"|; s|,"$||; s|| |g;')"
 fi
 
 
@@ -172,7 +178,7 @@ if [ "$save_chart" -eq 1 ]; then  # Save chart
         octave --no-gui --no-history --norc --silent --eval "num_array = ${num_array}; insn_array = {${insn_array}}; insnlim = 1; if (${total_insns} < 300) insnlim = 1; elseif (${total_insns} < 500) insnlim = 2; elseif (${total_insns} < 1000) insnlim = 10; elseif (${total_insns} < 2000) insnlim = 20; elseif (${total_insns} < 5000) insnlim = 30; elseif (${total_insns} < 10000) insnlim = 50; elseif (${total_insns} < 100000) insnlim = 100; else insnlim = 1000; endif; other = 0; cnt = 1; for i = 1:length(num_array) if (num_array(1:1, i) < insnlim) other += num_array(1:1, i); cnt += 1; else break; endif; endfor; cnt -= 1; if (cnt > 0) num_array(1:1, cnt) = other; insn_array(cnt) = 'Other'; else cnt = 1; endif; set(0, 'defaultaxesfontsize', 6); set(0, 'defaulttextfontsize', 6); output = pie(shift(num_array(1:1, cnt:end), 1), shift(insn_array(cnt:end), 1)); title('Assembly Instructions in \"${exefile}\"', 'fontsize', 12); print('insns_pie_${exefile}.${saveas}', '-d${saveas}', '-r600');" &
     fi
 elif [ "$use_col" -eq 1 ]; then  # Columnar format
-    echo "${disassembled_code}" | sed 's|| |g;' | column
+    printf '%s' "${disassembled_code}" | sed 's|| |g;' | column
     printf '\nTotal Instructions: %s\n' "${total_insns}"
 elif [ "$use_mach" -eq 1 ]; then  # Default machine-friendly format
     printf '%s, [%s]' "${num_array}" "${insn_array}"
