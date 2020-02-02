@@ -1,6 +1,7 @@
 2020-02-01  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* cleansystem:  Fixed some minor bugs
+	* MACROS3.h:  Optimized various functions
 
 2020-01-31  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 

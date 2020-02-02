@@ -4,7 +4,7 @@
 /**
 @brief Standard Macros Header with AT&T-style Assembly
 @file MACROS3.h
-@version 2020.01.31
+@version 2020.02.01
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -13607,7 +13607,7 @@ LIB_FUNC void _OSWriteInt64(volatile void* base, const uintptr_t byteOffset, con
 
 
 /** Given an unsigned 64-bit argument `x`, return the value corresponding to rotating the bits `n` steps to the left; `n` must be between 1 and 63 inclusive */
-LIB_FUNC ATTR_CF uint64_t rotl64(const uint64_t x, const uint8_t n) {
+LIB_FUNC MATH_FUNC uint64_t rotl64(const uint64_t x, const uint8_t n) {
 #   if (defined(ARCHX86) && CPU_AVX512F)
 	register uint64_t res = 0;
 	asm ("prolq %1, %2, %0;" : "=r"(res) : "cJ"(n), "g"(x));
@@ -13623,7 +13623,7 @@ LIB_FUNC ATTR_CF uint64_t rotl64(const uint64_t x, const uint8_t n) {
 
 
 /** Given an unsigned 64-bit argument `x`, return the value corresponding to rotating the bits `n` steps to the right; `n` must be between 1 to 63 inclusive */
-LIB_FUNC ATTR_CF uint64_t rotr64(const uint64_t x, const uint8_t n) {
+LIB_FUNC MATH_FUNC uint64_t rotr64(const uint64_t x, const uint8_t n) {
 #   if (defined(ARCHX86) && CPU_BMI2)
 	register uint64_t res = 0;
 	asm ("rorx %1, %2, %0;" : "=r"(res) : "cJ"(n), "g"(x));
@@ -13643,7 +13643,7 @@ LIB_FUNC ATTR_CF uint64_t rotr64(const uint64_t x, const uint8_t n) {
 
 
 /** Given an unsigned 32-bit argument `x`, return the value corresponding to rotating the bits `n` steps to the left; `n` must be between 1 and 31 inclusive */
-LIB_FUNC ATTR_CF uint32_t rotl32(const uint32_t x, const uint8_t n) {
+LIB_FUNC MATH_FUNC uint32_t rotl32(const uint32_t x, const uint8_t n) {
 #   if (defined(ARCHX86) && CPU_AVX512F)
 	register res = 0;
 	asm ("prold %1, %2, %0;" : "=r"(res) : "cI"(n), "g"(x));
@@ -13659,7 +13659,7 @@ LIB_FUNC ATTR_CF uint32_t rotl32(const uint32_t x, const uint8_t n) {
 
 
 /** Given an unsigned 32-bit argument `x`, return the value corresponding to rotating the bits `n` steps to the right; `n` must be between 1 to 31 inclusive */
-LIB_FUNC ATTR_CF uint32_t rotr32(const uint32_t x, const uint8_t n) {
+LIB_FUNC MATH_FUNC uint32_t rotr32(const uint32_t x, const uint8_t n) {
 #   if (defined(ARCHX86) && CPU_AVX512F)
 	register uint32_t res = 0;
 	asm ("prorl %1, %2, %0;" : "=r"(res) : "cI"(n), "g"(x));
@@ -13675,7 +13675,7 @@ LIB_FUNC ATTR_CF uint32_t rotr32(const uint32_t x, const uint8_t n) {
 
 
 /** Given an unsigned 16-bit argument `x`, return the value corresponding to rotating the bits `n` steps to the left; `n` must be between 1 to 15 inclusive, but on most relevant targets `n` can also be 0 and 16 because 'int' is at least 32 bits and the arguments must widen before shifting */
-LIB_FUNC ATTR_CF uint16_t rotl16(const uint16_t x, const uint8_t n) {
+LIB_FUNC MATH_FUNC uint16_t rotl16(const uint16_t x, const uint8_t n) {
 #if defined(ARCHX86)
 	register uint16_t res = x;
 	asm ("rol %1, %0;" : "+g"(res) : "cI"(n));
@@ -13687,7 +13687,7 @@ LIB_FUNC ATTR_CF uint16_t rotl16(const uint16_t x, const uint8_t n) {
 
 
 /** Given an unsigned 16-bit argument `x`, return the value corresponding to rotating the bits `n` steps to the right; `n` must be in 1 to 15 inclusive, but on most relevant targets `n` can also be 0 and 16 because 'int' is at least 32 bits and the arguments must widen before shifting */
-LIB_FUNC ATTR_CF uint16_t rotr16(const uint16_t x, const uint8_t n) {
+LIB_FUNC MATH_FUNC uint16_t rotr16(const uint16_t x, const uint8_t n) {
 #if defined(ARCHX86)
 	register uint16_t res = x;
 	asm ("ror %1, %0;" : "+g"(res) : "cI"(n));
@@ -13699,7 +13699,7 @@ LIB_FUNC ATTR_CF uint16_t rotr16(const uint16_t x, const uint8_t n) {
 
 
 /** Given an unsigned 8-bit argument `x`, return the value corresponding to rotating the bits `n` steps to the left; `n` must be between 1 to 7 inclusive, but on most relevant targets `n` can also be 0 and 8 because 'int' is at least 32 bits and the arguments must widen before shifting */
-LIB_FUNC ATTR_CF uint8_t rotl8(const uint8_t x, const uint8_t n) {
+LIB_FUNC MATH_FUNC uint8_t rotl8(const uint8_t x, const uint8_t n) {
 #if defined(ARCHX86)
 	register uint8_t res = x;
 	asm ("rolb %1, %0;" : "+g"(res) : "cI"(n));
@@ -13711,7 +13711,7 @@ LIB_FUNC ATTR_CF uint8_t rotl8(const uint8_t x, const uint8_t n) {
 
 
 /** Given an unsigned 8-bit argument `x`, return the value corresponding to rotating the bits `n` steps to the right; `n` must be in 1 to 7 inclusive, but on most relevant targets `n` can also be 0 and 8 because 'int' is at least 32 bits and the arguments must widen before shifting */
-LIB_FUNC ATTR_CF uint8_t rotr8(const uint8_t x, const uint8_t n) {
+LIB_FUNC MATH_FUNC uint8_t rotr8(const uint8_t x, const uint8_t n) {
 #if defined(ARCHX86)
 	register uint8_t res = x;
 	asm ("rorb %1, %0;" : "+g"(res) : "cI"(n));
@@ -13723,7 +13723,7 @@ LIB_FUNC ATTR_CF uint8_t rotr8(const uint8_t x, const uint8_t n) {
 
 
 /** Given a size_t argument `x`, return the value corresponding to rotating the bits `n` steps to the left; `n` must be between 1 and `(CHAR_BIT * sizeof(size_t) - 1)` inclusive */
-LIB_FUNC ATTR_CF size_t rotl_sz(const size_t x, const uint8_t n) {
+LIB_FUNC MATH_FUNC size_t rotl_sz(const size_t x, const uint8_t n) {
 #   if ((SIZEOF_SIZE_T == 8) && defined(ARCHX86) && CPU_AVX512F)
 	register size_t res = 0;
 	asm ("prolq %1, %2, %0;" : "=r"(res) : "cJ"(n), "g"(x));
@@ -13747,7 +13747,7 @@ LIB_FUNC ATTR_CF size_t rotl_sz(const size_t x, const uint8_t n) {
 
 
 /** Given a size_t argument `x`, return the value corresponding to rotating the bits `n` steps to the right; `n` must be between 1 to `(CHAR_BIT * sizeof(size_t) - 1)` inclusive */
-LIB_FUNC ATTR_CF size_t rotr_sz(const size_t x, const uint8_t n) {
+LIB_FUNC MATH_FUNC size_t rotr_sz(const size_t x, const uint8_t n) {
 #   if ((SIZEOF_SIZE_T == 8) && defined(ARCHX86) && CPU_AVX512F)
 	register size_t res = 0;
 	asm ("prorq %1, %2, %0;" : "=r"(res) : "cJ"(n), "g"(x));
@@ -13789,7 +13789,7 @@ fls(1)  # Output: 1
 fls(0x80000000)  # Output: 32
 @endcode
 */
-LIB_FUNC ATTR_CF unsigned long fls(const unsigned long word) {
+LIB_FUNC MATH_FUNC unsigned long fls(const unsigned long word) {
 	if (word == 0) { return 0; }
 	register int num = (BITS_PER_LONG - 1);
 	register unsigned long _word = word;
@@ -13807,7 +13807,7 @@ LIB_FUNC ATTR_CF unsigned long fls(const unsigned long word) {
 
 
 /** Find Last (most-significant) Bit Set */
-LIB_FUNC ATTR_CF int fls32(const uint32_t xint) {
+LIB_FUNC MATH_FUNC int fls32(const uint32_t xint) {
 	if (!xint) { return 0; }
 	register int _v = 32;
 	register uint32_t x = xint;
@@ -13836,7 +13836,7 @@ LIB_FUNC ATTR_CF int fls32(const uint32_t xint) {
 
 
 /** Find Last (most-significant) Bit Set */
-LIB_FUNC ATTR_CF int fls64(const uint64_t xint) {
+LIB_FUNC MATH_FUNC int fls64(const uint64_t xint) {
 	if (!xint) { return 0; }
 	register int _v = 64;
 	register uint64_t x = xint;
@@ -13869,7 +13869,7 @@ LIB_FUNC ATTR_CF int fls64(const uint64_t xint) {
 
 
 /** Find Last (most-significant) Bit Set */
-LIB_FUNC ATTR_CF unsigned int fls_long(const unsigned long word) {
+LIB_FUNC MATH_FUNC unsigned int fls_long(const unsigned long word) {
 #   if LONG_EQ_32BITS
 	return (unsigned int)fls(word);
 #   else
@@ -13879,7 +13879,7 @@ LIB_FUNC ATTR_CF unsigned int fls_long(const unsigned long word) {
 
 
 /** Find last (most-significant) set bit in a long word; Undefined if no set bit exists, so code should check against 0 first */
-LIB_FUNC ATTR_CF unsigned long flsl(const unsigned long word) {
+LIB_FUNC MATH_FUNC unsigned long flsl(const unsigned long word) {
 #   if LONG_EQ_32BITS
 	return (unsigned long)fls(word);
 #   else
@@ -13890,7 +13890,7 @@ LIB_FUNC ATTR_CF unsigned long flsl(const unsigned long word) {
 
 
 /** Find first bit set; Returns one plus the index of the least significant 1-bit of x, or if x is zero, returns zero */
-LIB_FUNC ATTR_CF int ffs(const int mask) {
+LIB_FUNC MATH_FUNC int ffs(const int mask) {
 	register unsigned int r = (unsigned int)mask;
 	register int bit = 0;
 	if (!(r & UINT16_MAX)) { bit += 16; r >>= 16; }
@@ -13904,7 +13904,7 @@ LIB_FUNC ATTR_CF int ffs(const int mask) {
 
 // TODO: Add code for non-x86 targets and add code for tzcnt/lzcnt
 /** Returns one plus the index of the least significant 1-bit of x, or if x is zero, returns zero */
-LIB_FUNC ATTR_CF unsigned long ffs_long(const unsigned long word) {
+LIB_FUNC MATH_FUNC unsigned long ffs_long(const unsigned long word) {
 	if (word == 0) { return 0; }
 	register unsigned long res = 0;
 	asm ("rep;" "bsf %1, %0;" : "=g"(res) : "g"(word));
@@ -13913,14 +13913,14 @@ LIB_FUNC ATTR_CF unsigned long ffs_long(const unsigned long word) {
 
 
 /** Returns one plus the index of the least significant 1-bit of x, or if x is zero, returns zero */
-LIB_FUNC ATTR_CF int ffsl(const long word) {
+LIB_FUNC MATH_FUNC int ffsl(const long word) {
 	return (int)ffs_long((unsigned long)word);
 }
 #define __ffsl(x)   ffsl((x))
 
 
 /** Returns one plus the index of the least significant 1-bit of x, or if x is zero, returns zero */
-LIB_FUNC ATTR_CF int ffsll(const long long i) {
+LIB_FUNC MATH_FUNC int ffsll(const long long i) {
 #   if LLONG_EQ_32BITS
 	return (int)ffs_long((unsigned long)i);
 #   else
@@ -13936,7 +13936,7 @@ LIB_FUNC ATTR_CF int ffsll(const long long i) {
 
 
 /** Find First Set */
-LIB_FUNC ATTR_CF int ffs32(const uint32_t xint) {
+LIB_FUNC MATH_FUNC int ffs32(const uint32_t xint) {
 	if (!xint) { return 0; }
 	register int _v = 1;
 	register uint32_t x = xint;
@@ -13965,7 +13965,7 @@ LIB_FUNC ATTR_CF int ffs32(const uint32_t xint) {
 
 
 /** Find First Set */
-LIB_FUNC ATTR_CF int ffs64(const uint64_t xint) {
+LIB_FUNC MATH_FUNC int ffs64(const uint64_t xint) {
 	if (!xint) { return 0; }
 	register int _v = 1;
 	register uint64_t x = xint;
@@ -13998,7 +13998,7 @@ LIB_FUNC ATTR_CF int ffs64(const uint64_t xint) {
 
 
 /** Find first zero in word; Undefined if no zero exists, so code should check against ~0 first */
-LIB_FUNC ATTR_CF int ffz(const int word) {
+LIB_FUNC MATH_FUNC int ffz(const int word) {
 	if (word == 0) { return -1; }
 	return ffs(~word);
 }
@@ -14008,7 +14008,7 @@ LIB_FUNC ATTR_CF int ffz(const int word) {
 
 // TODO: Add code for non-x86 targets and add code for tzcnt/lzcnt
 /** Find first zero in word; Undefined if no zero exists, so code should check against ~0UL first */
-LIB_FUNC ATTR_CF int ffzl(const unsigned long word) {
+LIB_FUNC MATH_FUNC int ffzl(const unsigned long word) {
 	if (word == 0) { return -1; }
 	register unsigned long _word = (unsigned long)(~word);
 	asm ("rep;" "bsf %1, %0;" : "=g"(_word) : "cI"(_word));
@@ -14019,7 +14019,7 @@ LIB_FUNC ATTR_CF int ffzl(const unsigned long word) {
 
 
 /** Find first zero in word; Undefined if no zero exists, so code should check against ~0ULL first */
-LIB_FUNC ATTR_CF int ffzll(const unsigned long long i) {
+LIB_FUNC MATH_FUNC int ffzll(const unsigned long long i) {
 	if (i == 0) { return -1; }
 	return ffsll((long long)(~i));
 }
@@ -14227,8 +14227,8 @@ static const UNUSED int8_t countLeadingZerosHigh[256] = {
 
 
 /** Return the number of bits used to represent the given number */
-LIB_FUNC ATTR_CF unsigned long long bit_length(const unsigned long long num) {
-	register unsigned long long len = 0, x = num;
+LIB_FUNC MATH_FUNC uint64_t bit_length(const uint64_t num) {
+	register uint64_t len = 0, x = num;
 	while (x != 0) {
 		++len;
 		x >>= 1;
@@ -14239,7 +14239,7 @@ LIB_FUNC ATTR_CF unsigned long long bit_length(const unsigned long long num) {
 
 #if SUPPORTS_UTITYPE
 /** Return the number of bits used to represent the given number */
-LIB_FUNC ATTR_CF UTItype bit128_length(const UTItype num) {
+LIB_FUNC MATH_FUNC UTItype bit128_length(const UTItype num) {
 	register uint128_t len = 0, x = num;
 	while (x != 0) {
 		++len;
@@ -14251,7 +14251,7 @@ LIB_FUNC ATTR_CF UTItype bit128_length(const UTItype num) {
 
 
 /** Counts the number of `1` bits (32-bit) */
-LIB_FUNC ATTR_CF uint32_t popcount32(const uint32_t x) {
+LIB_FUNC MATH_FUNC uint32_t popcount32(const uint32_t x) {
 	register uint32_t y = (uint32_t)(x - ((x >> 1) & 0x55555555U));
 	y = (y & 0x33333333U) + ((y >> 2) & 0x33333333U);
 	y = (y + (y >> 4)) & 0x0f0f0f0fU;
@@ -14264,13 +14264,13 @@ LIB_FUNC ATTR_CF uint32_t popcount32(const uint32_t x) {
 
 
 /** Counts the number of `1` bits (64-bit) */
-LIB_FUNC ATTR_CF uint32_t popcount64(const uint64_t x) {
+LIB_FUNC MATH_FUNC uint32_t popcount64(const uint64_t x) {
 #   if (SIZE_MAX < UINT64_MAX)
 	return popcount32((uint32_t)(x >> 32)) + popcount32((uint32_t)(x & UINT32_MAX));
 #   else
 	register uint64_t y = (uint32_t)(x - ((x >> 1) & (uint64_t)NUM_5ULL));
 	y = (uint64_t)((y & (uint64_t)NUM_3ULL) + ((y >> 2) & (uint64_t)NUM_3ULL));
-	y = (uint64_t)(((y + (y >> 4)) & (uint64_t)NUM_0fULL) * (uint64_t)0x0101010101010101ULL);
+	y = (uint64_t)(((y + (y >> 4)) & (uint64_t)NUM_0fULL) * (uint64_t)NUM_01ULL);
 	return (uint32_t)(y >> 56);
 #   endif
 }
@@ -14299,7 +14299,7 @@ Counts the number of `1` bits (long long) */
 
 
 /** Returns the number of leading 0 bits before the most-significant 1 bit of `a`; If `a` is zero, 32 is returned */
-LIB_FUNC ATTR_CF int8_t countLeadingZeros32(const uint32_t a) {
+LIB_FUNC MATH_FUNC int8_t countLeadingZeros32(const uint32_t a) {
 	register int8_t shiftCount = 0;
 	register uint32_t x = a;
 	if (x < 0x10000) {
@@ -14321,7 +14321,7 @@ LIB_FUNC ATTR_CF int8_t countLeadingZeros32(const uint32_t a) {
 @retval 0 BITS_PER_INT
 @retval 1 BITS_PER_INT - 1
 */
-LIB_FUNC ATTR_CF int clz(const unsigned int x) {
+LIB_FUNC MATH_FUNC int clz(const unsigned int x) {
 	return (int)(BITS_PER_INT - (int)fls32((uint32_t)x));
 }
 #define __clz(x)   clz((x))
@@ -14335,7 +14335,7 @@ LIB_FUNC ATTR_CF int clz(const unsigned int x) {
 @retval 0 BITS_PER_LONG
 @retval 1 BITS_PER_LONG - 1
 */
-LIB_FUNC ATTR_CF int count_leading_zeros(const unsigned long x) {
+LIB_FUNC MATH_FUNC int count_leading_zeros(const unsigned long x) {
 #   if LONG_EQ_32BITS
 	return (int)(BITS_PER_LONG - (int)fls(x));
 #   else
@@ -14352,14 +14352,14 @@ LIB_FUNC ATTR_CF int count_leading_zeros(const unsigned long x) {
 
 
 /** Count the number of zeros from the MSB back; Like `__builtin_clzll()` */
-LIB_FUNC ATTR_CF int clzll(const unsigned long long x) {
+LIB_FUNC MATH_FUNC int clzll(const unsigned long long x) {
 	return (int)(BITS_PER_LONG_LONG - (int)fls64((uint64_t)x));
 }
 #define __clzll(x)   clzll((x))
 
 
 /** Count the number of zeros from the LSB forwards */
-LIB_FUNC ATTR_CF int ctz(const unsigned int x) {
+LIB_FUNC MATH_FUNC int ctz(const unsigned int x) {
 	return (int)(ffs((int)x) - 1);
 }
 #define __ctz(x)   ctz((x))
@@ -14368,12 +14368,12 @@ LIB_FUNC ATTR_CF int ctz(const unsigned int x) {
 
 
 /**
-@brief Count the number of zeros from the LSB towrds the MSB
+@brief Count the number of zeros from the LSB towards the MSB
 @param[in] x The value to test
 @retval 1 0
 @retval 0 COUNT_TRAILING_ZEROS_0
 */
-LIB_FUNC ATTR_CF int count_trailing_zeros(const unsigned long x) {
+LIB_FUNC MATH_FUNC int count_trailing_zeros(const unsigned long x) {
 #   if LONG_EQ_32BITS
 	return (int)(ffs((int)x) - 1);
 #   else
@@ -14388,7 +14388,7 @@ LIB_FUNC ATTR_CF int count_trailing_zeros(const unsigned long x) {
 
 
 /** Count the number of zeros from the LSB forwards */
-LIB_FUNC ATTR_CF int ctzll(const unsigned long long x) {
+LIB_FUNC MATH_FUNC int ctzll(const unsigned long long x) {
 	if (x == 1) { return 0; }
 	else if (x == 0) { return COUNT_TRAILING_ZEROS_0; }
 	return (int)(ffs64((uint64_t)x) - 1);
@@ -14399,7 +14399,7 @@ LIB_FUNC ATTR_CF int ctzll(const unsigned long long x) {
 
 
 /** Count leading redundant sign bits */
-LIB_FUNC ATTR_CF int count_leading_sign_bits(const int x) {
+LIB_FUNC MATH_FUNC int count_leading_sign_bits(const int x) {
 	if (x == 0 || x == -1) { return 31; }
 	else if (x < 0) { return ((int)(BITS_PER_INT - (int)fls32((uint32_t)~x))) - 1; }
 	return ((int)(BITS_PER_INT - (int)fls32((uint32_t)x))) - 1;
@@ -14411,7 +14411,7 @@ LIB_FUNC ATTR_CF int count_leading_sign_bits(const int x) {
 
 
 /** Count leading redundant sign bits */
-LIB_FUNC ATTR_CF int clrsbl(const long x) {
+LIB_FUNC MATH_FUNC int clrsbl(const long x) {
 	if (x == 0L || x == -1L) { return (int)(BITS_PER_LONG - 1); }
 	else if (x < 0L) { return ((int)(BITS_PER_LONG - (int)flsl((unsigned long)~x))) - 1; }
 	return ((int)(BITS_PER_LONG - (int)flsl((unsigned long)x))) - 1;
@@ -14420,7 +14420,7 @@ LIB_FUNC ATTR_CF int clrsbl(const long x) {
 
 
 /** Count leading redundant sign bits */
-LIB_FUNC ATTR_CF int clrsbdi2(const long long x) {
+LIB_FUNC MATH_FUNC int clrsbdi2(const long long x) {
 	if (x == 0LL || x == -1LL) { return (int)(BITS_PER_LONG_LONG - 1); }
 	else if (x < 0LL) { return ((int)(BITS_PER_LONG_LONG - (int)fls64((uint64_t)~x))) - 1; }
 	return ((int)(BITS_PER_LONG_LONG - (int)fls64((uint64_t)x))) - 1;
