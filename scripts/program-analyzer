@@ -5,7 +5,7 @@
 """@brief View various information about a library or executable.
 
 @file program-analyzer
-@version 2020.01.05
+@version 2020.02.02
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -87,8 +87,6 @@ Author: Devyn Collier Johnson
   <!-- interface-authors Devyn Collier Johnson -->
   <object class="GtkTextBuffer" id="buf_const"/>
   <object class="GtkTextBuffer" id="buf_dis"/>
-  <object class="GtkTextBuffer" id="buf_dis_att"/>
-  <object class="GtkTextBuffer" id="buf_dis_intel"/>
   <object class="GtkTextBuffer" id="buf_dyn_reloc"/>
   <object class="GtkTextBuffer" id="buf_dyn_sym"/>
   <object class="GtkTextBuffer" id="buf_func"/>
@@ -592,109 +590,13 @@ ldd --unused --verbose</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="tooltip_text">Display the disassembled code
-ndisasm</property>
+objdump --disassemble --no-show-raw-insn --source</property>
                 <property name="label">Disassembly</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
                 <property name="menu_label">Disassembly</property>
                 <property name="position">6</property>
-                <property name="tab_fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkScrolledWindow" id="scrwin_dis_intel">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">1400</property>
-                <property name="min_content_height">800</property>
-                <child>
-                  <object class="GtkTextView" id="textview_dis_intel">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="buffer">buf_dis_intel</property>
-                    <property name="accepts_tab">False</property>
-                    <property name="monospace">True</property>
-                    <child internal-child="accessible">
-                      <object class="AtkObject" id="textview_dis_intel-atkobject">
-                        <property name="AtkObject::accessible-role" translatable="yes">text</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-                <child internal-child="accessible">
-                  <object class="AtkObject" id="scrwin_dis_intel-atkobject">
-                    <property name="AtkObject::accessible-role" translatable="yes">scroll-pane</property>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="menu_label">Disassembly (Intel)</property>
-                <property name="position">7</property>
-                <property name="reorderable">True</property>
-              </packing>
-            </child>
-            <child type="tab">
-              <object class="GtkLabel" id="tab_dis_intel">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="tooltip_text">Display the disassembled code using Intel syntax
-objdump --disassemble --no-show-raw-insn --disassembler-options=intel --source</property>
-                <property name="label">Disassembly (Intel)</property>
-                <property name="track_visited_links">False</property>
-              </object>
-              <packing>
-                <property name="menu_label">Disassembly (Intel)</property>
-                <property name="position">7</property>
-                <property name="tab_fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkScrolledWindow" id="scrwin_dis_att">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">1400</property>
-                <property name="min_content_height">800</property>
-                <child>
-                  <object class="GtkTextView" id="textview_dis_att">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="buffer">buf_dis_att</property>
-                    <property name="accepts_tab">False</property>
-                    <property name="monospace">True</property>
-                    <child internal-child="accessible">
-                      <object class="AtkObject" id="textview_dis_att-atkobject">
-                        <property name="AtkObject::accessible-role" translatable="yes">text</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-                <child internal-child="accessible">
-                  <object class="AtkObject" id="scrwin_dis_att-atkobject">
-                    <property name="AtkObject::accessible-role" translatable="yes">scroll-pane</property>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="menu_label">Disassembly (AT&amp;T)</property>
-                <property name="position">8</property>
-                <property name="reorderable">True</property>
-              </packing>
-            </child>
-            <child type="tab">
-              <object class="GtkLabel" id="tab_dis_att">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="tooltip_text">Display the disassembled code using AT&amp;T syntax
-objdump --disassemble --no-show-raw-insn --disassembler-options=att --source</property>
-                <property name="label">Disassembly (AT&amp;T)</property>
-                <property name="track_visited_links">False</property>
-              </object>
-              <packing>
-                <property name="menu_label">Disassembly (AT&amp;T)</property>
-                <property name="position">8</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -728,7 +630,7 @@ objdump --disassemble --no-show-raw-insn --disassembler-options=att --source</pr
               </object>
               <packing>
                 <property name="menu_label">Readelf</property>
-                <property name="position">9</property>
+                <property name="position">7</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -743,7 +645,7 @@ readelf --arch-specific --debug-dump --decompress --file-header --histogram --no
               </object>
               <packing>
                 <property name="menu_label">Readelf</property>
-                <property name="position">9</property>
+                <property name="position">7</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -777,7 +679,7 @@ readelf --arch-specific --debug-dump --decompress --file-header --histogram --no
               </object>
               <packing>
                 <property name="menu_label">File Headers</property>
-                <property name="position">10</property>
+                <property name="position">8</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -792,7 +694,7 @@ objdump --all-headers --archive-header --dwarf-check --file-offsets --full-conte
               </object>
               <packing>
                 <property name="menu_label">File Headers</property>
-                <property name="position">10</property>
+                <property name="position">8</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -826,7 +728,7 @@ objdump --all-headers --archive-header --dwarf-check --file-offsets --full-conte
               </object>
               <packing>
                 <property name="menu_label">Size</property>
-                <property name="position">11</property>
+                <property name="position">9</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -842,7 +744,7 @@ size --format=SysV</property>
               </object>
               <packing>
                 <property name="menu_label">Size</property>
-                <property name="position">11</property>
+                <property name="position">9</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -876,7 +778,7 @@ size --format=SysV</property>
               </object>
               <packing>
                 <property name="menu_label">Strings</property>
-                <property name="position">12</property>
+                <property name="position">10</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -891,7 +793,7 @@ strings --all</property>
               </object>
               <packing>
                 <property name="menu_label">Strings</property>
-                <property name="position">12</property>
+                <property name="position">10</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -925,7 +827,7 @@ strings --all</property>
               </object>
               <packing>
                 <property name="menu_label">Functions</property>
-                <property name="position">13</property>
+                <property name="position">11</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -939,7 +841,7 @@ strings --all</property>
               </object>
               <packing>
                 <property name="menu_label">Functions</property>
-                <property name="position">13</property>
+                <property name="position">11</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -973,7 +875,7 @@ strings --all</property>
               </object>
               <packing>
                 <property name="menu_label">Constants</property>
-                <property name="position">14</property>
+                <property name="position">12</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -987,7 +889,7 @@ strings --all</property>
               </object>
               <packing>
                 <property name="menu_label">Constants</property>
-                <property name="position">14</property>
+                <property name="position">12</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -1021,7 +923,7 @@ strings --all</property>
               </object>
               <packing>
                 <property name="menu_label">Libraries</property>
-                <property name="position">15</property>
+                <property name="position">13</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -1035,7 +937,7 @@ strings --all</property>
               </object>
               <packing>
                 <property name="menu_label">Libraries</property>
-                <property name="position">15</property>
+                <property name="position">13</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -1061,7 +963,7 @@ strings --all</property>
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
                         <property name="label">Program-Analyzer
-Version: 2020.01.05
+Version: 2020.02.02
 Author: Devyn Collier Johnson
 &amp;lt;&lt;a href="mailto:DevynCJohnson@Gmail.com"&gt;DevynCJohnson@Gmail.com&lt;/a&gt;&amp;gt;</property>
                         <property name="use_markup">True</property>
@@ -1135,7 +1037,7 @@ Author: Devyn Collier Johnson
               </object>
               <packing>
                 <property name="menu_label">About</property>
-                <property name="position">16</property>
+                <property name="position">14</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -1149,9 +1051,21 @@ Author: Devyn Collier Johnson
               </object>
               <packing>
                 <property name="menu_label">About</property>
-                <property name="position">16</property>
+                <property name="position">14</property>
                 <property name="tab_fill">False</property>
               </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child type="tab">
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child type="tab">
+              <placeholder/>
             </child>
             <child internal-child="accessible">
               <object class="AtkObject" id="tabs-atkobject">
@@ -1504,21 +1418,27 @@ class DataTable:  # pylint: disable=R0903
     """Global table for all threads to get and set data concerning the available tools."""
 
     # Available Tools
+    is_dumpne_available: bool = is_program_aval(r'dumpne')
     is_insn_count_available: bool = is_program_aval(r'insn_count')
-    is_ndisasm_available: bool = is_program_aval(r'ndisasm')
     is_linux_alpha_available: bool = is_program_aval(r'alpha-linux-gnu-objdump')
     is_linux_arm_available: bool = is_program_aval(r'arm-linux-gnueabi-objdump')
-    is_linux_hppa_available: bool = is_program_aval(r'hppa-linux-gnu-objdump')
     is_linux_hppa64_available: bool = is_program_aval(r'hppa64-linux-gnu-objdump')
+    is_linux_hppa_available: bool = is_program_aval(r'hppa-linux-gnu-objdump')
+    is_linux_powerpc32_available: bool = is_program_aval(r'powerpc-linux-gnu-objdump')
+    is_linux_powerpc64_available: bool = is_program_aval(r'powerpc64-linux-gnu-objdump')
     is_linux_s390x_available: bool = is_program_aval(r's390x-linux-gnu-objdump')
     is_linux_sparc64_available: bool = is_program_aval(r'sparc64-linux-gnu-objdump')
-    is_linux_x86_available: bool = is_program_aval(r'i686-linux-gnu-objdump')
     is_linux_x86_64_available: bool = is_program_aval(r'x86_64-linux-gnu-objdump')
-    is_win_x86_available: bool = is_program_aval(r'i686-w64-mingw32-objdump')
+    is_linux_x86_available: bool = is_program_aval(r'i686-linux-gnu-objdump')
+    is_ndisasm_available: bool = is_program_aval(r'ndisasm')
+    is_objdump_available: bool = is_program_aval(r'objdump')
+    is_semblance_available: bool = is_program_aval(r'semblance')
     is_win_x86_64_available: bool = is_program_aval(r'x86_64-w64-mingw32-objdump')
+    is_win_x86_available: bool = is_program_aval(r'i686-w64-mingw32-objdump')
     is_sha256sum_available: bool = is_program_aval(r'sha256sum')
     is_sha512sum_available: bool = is_program_aval(r'sha512sum')
     # Commands
+    disassemble_cmd: str = r''
     ldconfig_cmd: str = r'ldconfig -p'
     ldd_cmd: str = r'ldd --verbose '
     ldd_unused_cmd: str = r'ldd --unused '
@@ -1529,7 +1449,6 @@ class DataTable:  # pylint: disable=R0903
     strings_cmd: str = r''
     sha256sum_cmd: str = r'sha256sum --tag '
     sha512sum_cmd: str = r'sha512sum --tag '
-    use_ndisasm: Union[bool, int] = False
     # Gathered Data
     bin_file: str = r''
     binsize: str = r''
@@ -1540,9 +1459,8 @@ class DataTable:  # pylint: disable=R0903
     ldconfig_libraries: str = r''
     nm_defined: str = r''
     nm_symbols: str = r''
+    disassemble_type: str = r''
     objdump_disassemble: str = r''
-    objdump_disassemble_att: str = r''
-    objdump_disassemble_intel: str = r''
     objdump_dynamic_relocation: str = r''
     objdump_dynamic_symbols: str = r''
     objdump_headers: str = r''
@@ -1578,8 +1496,6 @@ class MainWindow:  # pylint: disable=R0902
         self.l_file = self.ui_get_object(name=r'l_file')
         self.scrwin_const = self.ui_get_object(name=r'scrwin_const')
         self.scrwin_dis = self.ui_get_object(name=r'scrwin_dis')
-        self.scrwin_dis_att = self.ui_get_object(name=r'scrwin_dis_att')
-        self.scrwin_dis_intel = self.ui_get_object(name=r'scrwin_dis_intel')
         self.scrwin_dyn_reloc = self.ui_get_object(name=r'scrwin_dyn_reloc')
         self.scrwin_dyn_sym = self.ui_get_object(name=r'scrwin_dyn_sym')
         self.scrwin_func = self.ui_get_object(name=r'scrwin_func')
@@ -1594,8 +1510,6 @@ class MainWindow:  # pylint: disable=R0902
         self.scrwin_sym_tbl = self.ui_get_object(name=r'scrwin_sym_tbl')
         self.textview_const = self.ui_get_object(name=r'textview_const')
         self.textview_dis = self.ui_get_object(name=r'textview_dis')
-        self.textview_dis_att = self.ui_get_object(name=r'textview_dis_att')
-        self.textview_dis_intel = self.ui_get_object(name=r'textview_dis_intel')
         self.textview_dyn_reloc = self.ui_get_object(name=r'textview_dyn_reloc')
         self.textview_dyn_sym = self.ui_get_object(name=r'textview_dyn_sym')
         self.textview_func = self.ui_get_object(name=r'textview_func')
@@ -1659,10 +1573,6 @@ class MainWindow:  # pylint: disable=R0902
             return self.textview_dyn_reloc.get_buffer()
         if active_tab == tabs_page_num(self.scrwin_dis):  # tab_dis
             return self.textview_dis.get_buffer()
-        if active_tab == tabs_page_num(self.scrwin_dis_intel):  # tab_dis_intel
-            return self.textview_dis_intel.get_buffer()
-        if active_tab == tabs_page_num(self.scrwin_dis_att):  # tab_dis_att
-            return self.textview_dis_att.get_buffer()
         if active_tab == tabs_page_num(self.scrwin_readelf):  # tab_readelf
             return self.textview_readelf.get_buffer()
         if active_tab == tabs_page_num(self.scrwin_headers):  # tab_headers
@@ -1765,12 +1675,14 @@ class MainWindow:  # pylint: disable=R0902
         self.status(self.context_id, STATUS_ANALYZING[1])
         # Gather filetype information
         _charset = MIME_ENCODING.file(_file)
-        _magic = NONE_MAGIC.file(_file).lower()
+        _magic = NONE_MAGIC.file(_file).casefold()
         # Is 32 or 64 bits?
         if any(_pattern in _magic for _pattern in {r'32-bit', r'80386', r'i686', r'pe32 ', r'x86-32'}):
             _bits = r'32'
         elif any(_pattern in _magic for _pattern in {r'64-bit', r'pe32+', r'x86-64'}):
             _bits = r'64'
+        elif any(_pattern in _magic for _pattern in {r'16-bit', r'16bit', r'windows 3.x'}):
+            _bits = r'16'
         else:
             _bits = r'NA'
         # Setup tools
@@ -1780,8 +1692,6 @@ class MainWindow:  # pylint: disable=R0902
         # Make the scrollable boxes within each tab visible
         self.scrwin_const.set_visible(True)
         self.scrwin_dis.set_visible(True)
-        self.scrwin_dis_att.set_visible(True)
-        self.scrwin_dis_intel.set_visible(True)
         self.scrwin_dyn_reloc.set_visible(True)
         self.scrwin_dyn_sym.set_visible(True)
         self.scrwin_func.set_visible(True)
@@ -1811,12 +1721,6 @@ class MainWindow:  # pylint: disable=R0902
         if self.scrwin_dis.is_visible:
             self.textview_dis.get_buffer().set_text(DataTable.objdump_disassemble, len(DataTable.objdump_disassemble))
         DataTable.objdump_disassemble = r''
-        if self.scrwin_dis_intel.is_visible:
-            self.textview_dis_intel.get_buffer().set_text(DataTable.objdump_disassemble_intel, len(DataTable.objdump_disassemble_intel))
-        DataTable.objdump_disassemble_intel = r''
-        if self.scrwin_dis_att.is_visible:
-            self.textview_dis_att.get_buffer().set_text(DataTable.objdump_disassemble_att, len(DataTable.objdump_disassemble_att))
-        DataTable.objdump_disassemble_att = r''
         if self.scrwin_sym_tbl.is_visible:
             self.textview_sym_tbl.get_buffer().set_text(DataTable.objdump_symbols, len(DataTable.objdump_symbols))
         DataTable.objdump_symbols = r''
@@ -2007,20 +1911,27 @@ class FileChooserWin:  # pylint: disable=E1101,R0902,R0903,W0201
 
 def analyze_binary(cmd: str, _var: str, _flag: bool = True) -> Union[str, Tuple[str, str], Tuple[str, str, str]]:  # noqa: C901,R701  # pylint: disable=R0911
     """Thread helper for `run_threaded_analysis()`."""
+    cmd = cmd.strip()
+    if cmd.startswith(r'-'):
+        return r''
+    if _var == r'OBJDUMP_DISASSEMBLE' and r'semblance' in cmd:
+        cmd = cmd.replace(r'--show-raw-insn', r'').replace(r'--source', r'')
+        if not DataTable.is_semblance_available and DataTable.is_dumpne_available:
+            cmd = cmd.replace(r'semblance', r'dumpne')
     if _var.startswith(r'OBJDUMP_'):
-        if _var == r'OBJDUMP_DISASSEMBLE':
-            return getoutput(cmd) if DataTable.is_ndisasm_available and _flag else r'ndisasm is unavailable'
+        if not DataTable.disassemble_type:
+            cmd = cmd.replace(r'--disassembler-options=', r'')
         return getoutput(cmd)
     if _var == r'NM_DEFINED':
         _nm_defined = getoutput(cmd)
         try:
-            _functions: str = getoutput(r'echo "' + _nm_defined + '" | grep " R " | awk \'{ for (i = 3; i <= NF; ++i) { print $i; } }\' | grep -v -E -e "^_"')
-            _constants: str = getoutput(r'echo "' + _nm_defined + '" | grep " T " | awk \'{ for (i = 3; i <= NF; ++i) { print $i; } }\' | grep -v -E -e "^_"')
+            _functions: str = getoutput(f'echo "{_nm_defined}" | grep " R " | awk \'{{ for (i = 3; i <= NF; ++i) {{ print $i; }} }}\' | grep -v -E -e "^_"')
+            _constants: str = getoutput(f'echo "{_nm_defined}" | grep " T " | awk \'{{ for (i = 3; i <= NF; ++i) {{ print $i; }} }}\' | grep -v -E -e "^_"')
+            if not _constants:
+                _constants = r'No global constants found!'
         except OSError:
             _functions = _nm_defined
             _constants = r'See function list'
-        if not _constants:
-            _constants = r'No global constants found!'
         if not _functions:
             _functions = r'No global functions found!'
         return (_nm_defined, _constants, _functions)
@@ -2044,66 +1955,64 @@ def analyze_binary(cmd: str, _var: str, _flag: bool = True) -> Union[str, Tuple[
     return getoutput(cmd)
 
 
-def set_architecture_type(file_magic: str, _bits: str) -> Tuple[int, str]:  # noqa: C901,R701
+def set_architecture_type(file_magic: str, _bits: str) -> Union[str, Tuple[int, str]]:  # noqa: C901,R701
     """Return variables indicating the architecture to use and the dissembler."""
-    filemagic: str = file_magic
-    if r'elf' not in filemagic:
+    if _bits == r'16':
+        DataTable.disassemble_type = r'i8086'
+        DataTable.disassemble_cmd = fr'objdump -b binary --disassembler-options=i8086,att,addr16,data16 --architecture=i386'
+        DataTable.objdump_cmd = fr'objdump -b binary --disassembler-options=i8086,att,addr16,data16 --architecture=i386'
+        DataTable.nm_cmd = r'nm --target=binary'
+        DataTable.readelf_cmd = r''
+        DataTable.size_cmd = r'size --target=binary'
+        DataTable.strings_cmd = r'strings'
+        if r'ms-dos' in file_magic and (r'ne ' in file_magic or r'mz ' in file_magic):
+            if DataTable.is_semblance_available:
+                DataTable.disassemble_cmd = r'semblance --compilable --disassemble --disassembler-options=att'
+            return r'i8086' if DataTable.is_objdump_available else STATUS_UNSUPPORTED_FILETYPE
+        DataTable.disassemble_cmd = r'ndisasm -b 16'
+        return r'i8086' if DataTable.is_ndisasm_available else STATUS_UNSUPPORTED_FILETYPE
+    if r'elf' not in file_magic:
         return STATUS_UNSUPPORTED_FILETYPE
-    if r'arm' in filemagic and _bits == r'32':
-        if DataTable.is_linux_arm_available is False:
-            return STATUS_UNSUPPORTED_FILETYPE
-        _use_ndisasm = 0
-        _prefix = r'arm'
-    elif r'alpha' in filemagic:
-        if DataTable.is_linux_alpha_available is False:
-            return STATUS_UNSUPPORTED_FILETYPE
-        _use_ndisasm = 0
-        _prefix = r'alpha'
-    elif r'pa-risc' in filemagic and _bits == r'32':
-        if DataTable.is_linux_hppa_available is False:
-            return STATUS_UNSUPPORTED_FILETYPE
-        _use_ndisasm = 0
-        _prefix = r'hppa'
-    elif r'pa-risc' in filemagic and _bits == r'64':
-        if DataTable.is_linux_hppa64_available is False:
-            return STATUS_UNSUPPORTED_FILETYPE
-        _use_ndisasm = 0
-        _prefix = r'hppa64'
-    elif r's390x' in filemagic:
-        if DataTable.is_linux_s390x_available is False:
-            return STATUS_UNSUPPORTED_FILETYPE
-        _use_ndisasm = 0
-        _prefix = r's390x'
-    elif r'sparc' in filemagic:
-        if DataTable.is_linux_sparc64_available is False:
-            return STATUS_UNSUPPORTED_FILETYPE
-        _use_ndisasm = 0
-        _prefix = r'sparc64'
-    elif r'x86-64' in filemagic:
-        if DataTable.is_linux_x86_64_available is False:
-            return STATUS_UNSUPPORTED_FILETYPE
-        _use_ndisasm = 1
-        _prefix = r'x86_64'
-    elif r'x86-32' in filemagic or r'i686' in filemagic:
-        if DataTable.is_linux_x86_available is False:
-            return STATUS_UNSUPPORTED_FILETYPE
-        _use_ndisasm = 1
-        _prefix = r'i686'
-    else:
-        return STATUS_UNSUPPORTED_FILETYPE
-    return (_use_ndisasm, _prefix)
+    if r'arm' in file_magic and _bits == r'32':
+        return r'arm' if DataTable.is_linux_arm_available else STATUS_UNSUPPORTED_FILETYPE
+    if r'alpha' in file_magic:
+        return r'alpha' if DataTable.is_linux_alpha_available else STATUS_UNSUPPORTED_FILETYPE
+    if r'pa-risc' in file_magic and _bits == r'32':
+        return r'hppa' if DataTable.is_linux_hppa_available else STATUS_UNSUPPORTED_FILETYPE
+    if r'pa-risc' in file_magic and _bits == r'64':
+        return r'hppa64' if DataTable.is_linux_hppa64_available else STATUS_UNSUPPORTED_FILETYPE
+    if r'powerpc' in file_magic and _bits == r'64':
+        DataTable.disassemble_type = r'ppc64'
+        return r'powerpc64' if DataTable.is_linux_powerpc64_available else STATUS_UNSUPPORTED_FILETYPE
+    if r'powerpc' in file_magic and _bits == r'32':
+        DataTable.disassemble_type = r'ppc32'
+        return r'powerpc' if DataTable.is_linux_powerpc32_available else STATUS_UNSUPPORTED_FILETYPE
+    if r's390x' in file_magic or r's/390' in file_magic:
+        DataTable.disassemble_type = r'elf64-s390' if _bits == r'64' else r'elf32-s390'
+        return r's390x' if DataTable.is_linux_s390x_available else STATUS_UNSUPPORTED_FILETYPE
+    if r'sparc' in file_magic:
+        DataTable.disassemble_type = r'elf64-sparc' if _bits == r'64' else r'elf32-sparc'
+        return r'sparc64' if DataTable.is_linux_sparc64_available else STATUS_UNSUPPORTED_FILETYPE
+    if r'x86-64' in file_magic:
+        DataTable.disassemble_type = r'att'
+        return r'x86_64' if DataTable.is_linux_x86_64_available else STATUS_UNSUPPORTED_FILETYPE
+    if r'x86-32' in file_magic or r'i686' in file_magic:
+        DataTable.disassemble_type = r'att'
+        return r'i686' if DataTable.is_linux_x86_available else STATUS_UNSUPPORTED_FILETYPE
+    return STATUS_UNSUPPORTED_FILETYPE
 
 
 def setup_tools(_bits: str, _charset: str, _magic: str) -> Tuple[int, str]:  # noqa: C901,R701
     """Set the appropriate tools to use for the given data."""
     if _charset != r'binary':
         return STATUS_UNSUPPORTED_FILETYPE
-    DataTable.use_ndisasm, _prefix = set_architecture_type(_magic, _bits)
-    if DataTable.use_ndisasm == -1:
+    _prefix = set_architecture_type(_magic, _bits)
+    if _prefix == STATUS_UNSUPPORTED_FILETYPE:
         return STATUS_UNSUPPORTED_FILETYPE
     if _prefix == r'arm':
         DataTable.nm_cmd = fr'{_prefix}-linux-gnueabi-nm'
-        DataTable.objdump_cmd = fr'{_prefix}-linux-gnueabi-objdump'
+        DataTable.disassemble_cmd = fr'{_prefix}-linux-gnueabi-objdump --disassembler-options={DataTable.disassemble_type}'
+        DataTable.objdump_cmd = fr'{_prefix}-linux-gnueabi-objdump --disassembler-options={DataTable.disassemble_type}'
         DataTable.readelf_cmd = fr'{_prefix}-linux-gnueabi-readelf'
         DataTable.size_cmd = fr'{_prefix}-linux-gnueabi-size'
         DataTable.strings_cmd = fr'{_prefix}-linux-gnueabi-strings'
@@ -2112,9 +2021,9 @@ def setup_tools(_bits: str, _charset: str, _magic: str) -> Tuple[int, str]:  # n
         if _bits == r'64':
             if DataTable.is_win_x86_64_available is False:
                 return STATUS_UNSUPPORTED_FILETYPE
-            DataTable.use_ndisasm = True
             DataTable.nm_cmd = r'x86_64-w64-mingw32-nm'
-            DataTable.objdump_cmd = r'x86_64-w64-mingw32-objdump'
+            DataTable.disassemble_cmd = fr'x86_64-w64-mingw32-objdump --disassembler-options={DataTable.disassemble_type}'
+            DataTable.objdump_cmd = fr'x86_64-w64-mingw32-objdump --disassembler-options={DataTable.disassemble_type}'
             DataTable.readelf_cmd = r'x86_64-w64-mingw32-readelf'
             DataTable.size_cmd = r'x86_64-w64-mingw32-size'
             DataTable.strings_cmd = r'x86_64-w64-mingw32-strings'
@@ -2122,16 +2031,19 @@ def setup_tools(_bits: str, _charset: str, _magic: str) -> Tuple[int, str]:  # n
         if _bits == r'32':
             if DataTable.is_win_x86_available is False:
                 return STATUS_UNSUPPORTED_FILETYPE
-            DataTable.use_ndisasm = True
             DataTable.nm_cmd = r'i686-w64-mingw32-nm'
-            DataTable.objdump_cmd = r'i686-w64-mingw32-objdump'
+            DataTable.disassemble_cmd = fr'i686-w64-mingw32-objdump --disassembler-options={DataTable.disassemble_type}'
+            DataTable.objdump_cmd = fr'i686-w64-mingw32-objdump --disassembler-options={DataTable.disassemble_type}'
             DataTable.readelf_cmd = r'i686-w64-mingw32-readelf'
             DataTable.size_cmd = r'i686-w64-mingw32-size'
             DataTable.strings_cmd = r'i686-w64-mingw32-strings'
             return (37, r'')
+        if _bits == r'16':
+            return (37, r'')
         return STATUS_UNSUPPORTED_FILETYPE
     DataTable.nm_cmd = fr'{_prefix}-linux-gnu-nm'
-    DataTable.objdump_cmd = fr'{_prefix}-linux-gnu-objdump'
+    DataTable.disassemble_cmd = fr'{_prefix}-linux-gnu-objdump --disassembler-options={DataTable.disassemble_type}'
+    DataTable.objdump_cmd = fr'{_prefix}-linux-gnu-objdump --disassembler-options={DataTable.disassemble_type}'
     DataTable.readelf_cmd = fr'{_prefix}-linux-gnu-readelf'
     DataTable.size_cmd = fr'{_prefix}-linux-gnu-size'
     DataTable.strings_cmd = fr'{_prefix}-linux-gnu-strings'
@@ -2140,20 +2052,16 @@ def setup_tools(_bits: str, _charset: str, _magic: str) -> Tuple[int, str]:  # n
 
 def run_threaded_analysis(_file: str, _bits: str) -> None:
     """Run the different tools on the executable/binary."""
-    _filecmd: str = r'file'
     poolsize: int = cpu_count()
-    poolsize = 16 if poolsize > 16 else poolsize
     outbuf: List[Any] = [(r'', r'')]
-    with Pool(poolsize) as threadpool:
+    with Pool(16 if poolsize > 16 else poolsize) as threadpool:
         try:
             outbuf = threadpool.starmap(analyze_binary, [
                 (fr'{DataTable.objdump_cmd} --line-numbers --special-syms --syms {_file}', r'OBJDUMP_SYMBOLS'),
                 (fr'{DataTable.objdump_cmd} --line-numbers --dynamic-syms --special-syms {_file}', r'OBJDUMP_DYNAMIC_SYMBOLS'),
                 (fr'{DataTable.nm_cmd} --debug-syms --dynamic --line-numbers --numeric-sort --print-armap --print-size --special-syms --synthetic {_file}', r'NM_SYMBOLS'),
                 (fr'{DataTable.objdump_cmd} --dynamic-reloc --line-numbers {_file}', r'OBJDUMP_DYNAMIC_RELOCATION'),
-                (fr'ndisasm -b {_bits} {_file}', r'OBJDUMP_DISASSEMBLE', DataTable.use_ndisasm),
-                (fr'{DataTable.objdump_cmd} --disassemble --disassembler-options=intel --show-raw-insn --source {_file}', r'OBJDUMP_DISASSEMBLE_INTEL'),
-                (fr'{DataTable.objdump_cmd} --disassemble --disassembler-options=att --show-raw-insn --source {_file}', r'OBJDUMP_DISASSEMBLE_ATT'),
+                (fr'{DataTable.disassemble_cmd} --disassemble --show-raw-insn --source {_file}', r'OBJDUMP_DISASSEMBLE'),
                 (fr'{DataTable.readelf_cmd} --arch-specific --debug-dump --decompress --file-header --histogram --notes --segments --unwind --version-info --wide {_file}', r'READELF'),
                 (fr'{DataTable.objdump_cmd} --all-headers --archive-header --dwarf-check --file-offsets --full-contents --reloc --stabs --wide {_file}', r'OBJDUMP_HEADERS'),
                 (DataTable.ldd_cmd + _file, r'OBJECT_DEPENDENCIES'),
@@ -2162,8 +2070,8 @@ def run_threaded_analysis(_file: str, _bits: str) -> None:
                 (fr'{DataTable.nm_cmd} --debug-syms --defined-only --dynamic --special-syms "{_file}"', r'NM_DEFINED', DataTable),
                 (fr'{DataTable.size_cmd} --format=Berkeley {_file}', r'BINSIZE1'),
                 (fr'{DataTable.size_cmd} --format=SysV {_file}', r'BINSIZE2'),
-                (fr'{_filecmd} --preserve-date {_file}', r'FILE_DATA1'),
-                (fr'{_filecmd} --mime --preserve-date {_file}', r'FILE_DATA2'),
+                (fr'file --preserve-date {_file}', r'FILE_DATA1'),
+                (fr'file --mime --preserve-date {_file}', r'FILE_DATA2'),
                 (DataTable.ldconfig_cmd, r'LDCONFIG')
             ])
             DataTable.objdump_symbols = outbuf[0]
@@ -2171,33 +2079,31 @@ def run_threaded_analysis(_file: str, _bits: str) -> None:
             DataTable.nm_symbols = outbuf[2] + '\n'
             DataTable.objdump_dynamic_relocation = outbuf[3]
             DataTable.objdump_disassemble = outbuf[4] + '\n'
-            DataTable.objdump_disassemble_intel = outbuf[5] + '\n'
-            DataTable.objdump_disassemble_att = outbuf[6] + '\n'
-            DataTable.readelf_all = outbuf[7] + '\n'
-            DataTable.objdump_headers = outbuf[8]
-            DataTable.object_dependencies = f'{outbuf[9]}\n\n** Unused Dependencies **\n{outbuf[10]}'
-            if outbuf[11]:
-                _tmp: list = outbuf[11].split('\n')
+            DataTable.readelf_all = outbuf[5] + '\n'
+            DataTable.objdump_headers = outbuf[6]
+            DataTable.object_dependencies = f'{outbuf[7]}\n\n** Unused Dependencies **\n{outbuf[8]}'
+            if outbuf[9]:
+                _tmp: list = outbuf[9].split('\n')
                 _tmp.sort()
                 DataTable.strings = '\n'.join(_tmp) + '\n'
             else:
                 DataTable.strings = r''
-            DataTable.nm_defined = outbuf[12][0] + '\n'
-            if outbuf[12][1]:
-                _tmp = outbuf[12][1].split('\n')
+            DataTable.nm_defined = outbuf[10][0] + '\n' if outbuf[10] else r''
+            if outbuf[10] and outbuf[10][1]:
+                _tmp = outbuf[10][1].split('\n')
                 _tmp.sort()
                 DataTable.constants = '\n'.join(_tmp) + '\n'
             else:
                 DataTable.constants = r''
-            if outbuf[12][2]:
-                _tmp = outbuf[12][2].split('\n')
+            if outbuf[10] and outbuf[10][2]:
+                _tmp = outbuf[10][2].split('\n')
                 _tmp.sort()
                 DataTable.functions = '\n'.join(_tmp) + '\n'
             else:
                 DataTable.functions = r''
-            DataTable.binsize = outbuf[13] + '\n\n' + outbuf[14]
-            DataTable.file_info = outbuf[15] + '\n\n' + outbuf[16] + '\n\n'
-            DataTable.ldconfig_libraries = outbuf[17]
+            DataTable.binsize = outbuf[11] + '\n\n' + outbuf[12]
+            DataTable.file_info = outbuf[13] + '\n\n' + outbuf[14] + '\n\n'
+            DataTable.ldconfig_libraries = outbuf[15]
         except (KeyboardInterrupt, MemoryError):
             threadpool.close()
             threadpool.terminate()
@@ -2243,11 +2149,14 @@ if __name__ == '__main__':
     elif len(argv) == 2:
         DataTable.bin_file = argv[1]
         if DataTable.bin_file == r'' or DataTable.bin_file is None:
-            raise Exception(r'NULL PATHNAME GIVEN!')
+            stderr.write('Null pathname given!\n')
+            raise SystemExit(1)
         if not (pathexists(DataTable.bin_file) and isfile(DataTable.bin_file)):
-            raise FileNotFoundError
+            stderr.write('No file found\n')
+            raise SystemExit(1)
         if isdir(DataTable.bin_file):
-            raise IsADirectoryError
+            stderr.write('This is a directory, not a file\n')
+            raise SystemExit(1)
         if not fileaccess(DataTable.bin_file, R_OK):
             raise PermissionError
         GETFILEDATA = True

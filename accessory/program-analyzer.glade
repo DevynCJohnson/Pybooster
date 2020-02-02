@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1
+<!-- Generated with glade 3.22.1 
 
 Copyright (C) LGPLv3
 
@@ -30,8 +30,6 @@ Author: Devyn Collier Johnson
   <!-- interface-authors Devyn Collier Johnson -->
   <object class="GtkTextBuffer" id="buf_const"/>
   <object class="GtkTextBuffer" id="buf_dis"/>
-  <object class="GtkTextBuffer" id="buf_dis_att"/>
-  <object class="GtkTextBuffer" id="buf_dis_intel"/>
   <object class="GtkTextBuffer" id="buf_dyn_reloc"/>
   <object class="GtkTextBuffer" id="buf_dyn_sym"/>
   <object class="GtkTextBuffer" id="buf_func"/>
@@ -535,109 +533,13 @@ ldd --unused --verbose</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="tooltip_text">Display the disassembled code
-ndisasm</property>
+objdump --disassemble --no-show-raw-insn --source</property>
                 <property name="label">Disassembly</property>
                 <property name="track_visited_links">False</property>
               </object>
               <packing>
                 <property name="menu_label">Disassembly</property>
                 <property name="position">6</property>
-                <property name="tab_fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkScrolledWindow" id="scrwin_dis_intel">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">1400</property>
-                <property name="min_content_height">800</property>
-                <child>
-                  <object class="GtkTextView" id="textview_dis_intel">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="buffer">buf_dis_intel</property>
-                    <property name="accepts_tab">False</property>
-                    <property name="monospace">True</property>
-                    <child internal-child="accessible">
-                      <object class="AtkObject" id="textview_dis_intel-atkobject">
-                        <property name="AtkObject::accessible-role" translatable="yes">text</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-                <child internal-child="accessible">
-                  <object class="AtkObject" id="scrwin_dis_intel-atkobject">
-                    <property name="AtkObject::accessible-role" translatable="yes">scroll-pane</property>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="menu_label">Disassembly (Intel)</property>
-                <property name="position">7</property>
-                <property name="reorderable">True</property>
-              </packing>
-            </child>
-            <child type="tab">
-              <object class="GtkLabel" id="tab_dis_intel">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="tooltip_text">Display the disassembled code using Intel syntax
-objdump --disassemble --no-show-raw-insn --disassembler-options=intel --source</property>
-                <property name="label">Disassembly (Intel)</property>
-                <property name="track_visited_links">False</property>
-              </object>
-              <packing>
-                <property name="menu_label">Disassembly (Intel)</property>
-                <property name="position">7</property>
-                <property name="tab_fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkScrolledWindow" id="scrwin_dis_att">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="shadow_type">etched-in</property>
-                <property name="min_content_width">1400</property>
-                <property name="min_content_height">800</property>
-                <child>
-                  <object class="GtkTextView" id="textview_dis_att">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="buffer">buf_dis_att</property>
-                    <property name="accepts_tab">False</property>
-                    <property name="monospace">True</property>
-                    <child internal-child="accessible">
-                      <object class="AtkObject" id="textview_dis_att-atkobject">
-                        <property name="AtkObject::accessible-role" translatable="yes">text</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-                <child internal-child="accessible">
-                  <object class="AtkObject" id="scrwin_dis_att-atkobject">
-                    <property name="AtkObject::accessible-role" translatable="yes">scroll-pane</property>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="menu_label">Disassembly (AT&amp;T)</property>
-                <property name="position">8</property>
-                <property name="reorderable">True</property>
-              </packing>
-            </child>
-            <child type="tab">
-              <object class="GtkLabel" id="tab_dis_att">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="tooltip_text">Display the disassembled code using AT&amp;T syntax
-objdump --disassemble --no-show-raw-insn --disassembler-options=att --source</property>
-                <property name="label">Disassembly (AT&amp;T)</property>
-                <property name="track_visited_links">False</property>
-              </object>
-              <packing>
-                <property name="menu_label">Disassembly (AT&amp;T)</property>
-                <property name="position">8</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -671,7 +573,7 @@ objdump --disassemble --no-show-raw-insn --disassembler-options=att --source</pr
               </object>
               <packing>
                 <property name="menu_label">Readelf</property>
-                <property name="position">9</property>
+                <property name="position">7</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -686,7 +588,7 @@ readelf --arch-specific --debug-dump --decompress --file-header --histogram --no
               </object>
               <packing>
                 <property name="menu_label">Readelf</property>
-                <property name="position">9</property>
+                <property name="position">7</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -720,7 +622,7 @@ readelf --arch-specific --debug-dump --decompress --file-header --histogram --no
               </object>
               <packing>
                 <property name="menu_label">File Headers</property>
-                <property name="position">10</property>
+                <property name="position">8</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -735,7 +637,7 @@ objdump --all-headers --archive-header --dwarf-check --file-offsets --full-conte
               </object>
               <packing>
                 <property name="menu_label">File Headers</property>
-                <property name="position">10</property>
+                <property name="position">8</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -769,7 +671,7 @@ objdump --all-headers --archive-header --dwarf-check --file-offsets --full-conte
               </object>
               <packing>
                 <property name="menu_label">Size</property>
-                <property name="position">11</property>
+                <property name="position">9</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -785,7 +687,7 @@ size --format=SysV</property>
               </object>
               <packing>
                 <property name="menu_label">Size</property>
-                <property name="position">11</property>
+                <property name="position">9</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -819,7 +721,7 @@ size --format=SysV</property>
               </object>
               <packing>
                 <property name="menu_label">Strings</property>
-                <property name="position">12</property>
+                <property name="position">10</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -834,7 +736,7 @@ strings --all</property>
               </object>
               <packing>
                 <property name="menu_label">Strings</property>
-                <property name="position">12</property>
+                <property name="position">10</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -868,7 +770,7 @@ strings --all</property>
               </object>
               <packing>
                 <property name="menu_label">Functions</property>
-                <property name="position">13</property>
+                <property name="position">11</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -882,7 +784,7 @@ strings --all</property>
               </object>
               <packing>
                 <property name="menu_label">Functions</property>
-                <property name="position">13</property>
+                <property name="position">11</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -916,7 +818,7 @@ strings --all</property>
               </object>
               <packing>
                 <property name="menu_label">Constants</property>
-                <property name="position">14</property>
+                <property name="position">12</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -930,7 +832,7 @@ strings --all</property>
               </object>
               <packing>
                 <property name="menu_label">Constants</property>
-                <property name="position">14</property>
+                <property name="position">12</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -964,7 +866,7 @@ strings --all</property>
               </object>
               <packing>
                 <property name="menu_label">Libraries</property>
-                <property name="position">15</property>
+                <property name="position">13</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -978,7 +880,7 @@ strings --all</property>
               </object>
               <packing>
                 <property name="menu_label">Libraries</property>
-                <property name="position">15</property>
+                <property name="position">13</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>
@@ -1004,7 +906,7 @@ strings --all</property>
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
                         <property name="label">Program-Analyzer
-Version: 2019.10.27
+Version: 2020.02.02
 Author: Devyn Collier Johnson
 &amp;lt;&lt;a href="mailto:DevynCJohnson@Gmail.com"&gt;DevynCJohnson@Gmail.com&lt;/a&gt;&amp;gt;</property>
                         <property name="use_markup">True</property>
@@ -1078,7 +980,7 @@ Author: Devyn Collier Johnson
               </object>
               <packing>
                 <property name="menu_label">About</property>
-                <property name="position">16</property>
+                <property name="position">14</property>
                 <property name="reorderable">True</property>
               </packing>
             </child>
@@ -1092,9 +994,21 @@ Author: Devyn Collier Johnson
               </object>
               <packing>
                 <property name="menu_label">About</property>
-                <property name="position">16</property>
+                <property name="position">14</property>
                 <property name="tab_fill">False</property>
               </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child type="tab">
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child type="tab">
+              <placeholder/>
             </child>
             <child internal-child="accessible">
               <object class="AtkObject" id="tabs-atkobject">
