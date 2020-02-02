@@ -4,7 +4,7 @@
 /**
 @brief Standard Macros Header Providing Additional Simple Code
 @file MACROS.h
-@version 2020.01.31
+@version 2020.02.01
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -13357,6 +13357,7 @@ typedef union long_double_shape {
 	long double value;
 	uint8_t bytes[16];
 	uint16_t octets[8];
+	uint32_t words[4];
 	struct ld_half i2;
 #   if SUPPORTS_INT128
 	int128_t sqword;

@@ -1,7 +1,7 @@
 2020-02-01  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* cleansystem:  Fixed some minor bugs
-	* MACROS*.h:  Improved various datatype definitions
+	* MACROS*.h:  Improved various datatype definitions & applied optimizations
 	* MACROS3.h:  Optimized various functions
 	* typesize.c:  Added more datatypes
 

@@ -4,7 +4,7 @@
 /**
 @brief Standard Macros Header with AT&T-style Assembly
 @file MACROS2.h
-@version 2020.01.31
+@version 2020.02.01
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -6156,6 +6156,7 @@ DECL_FUNC long long wcstoll(wchar_t* restrict s, const wchar_t** restrict p, con
 DECL_FUNC unsigned long long wcstoull(wchar_t* restrict s, const wchar_t** restrict p, const int base);
 DECL_FUNC unsigned long long wcstox(wchar_t* s, const wchar_t** p, const int base, const unsigned long long lim);
 DECL_FUNC int wctomb(char* restrict s, const wchar_t wchar);
+DECL_FUNC NONNULL ATTR_PF int xatoi(const char* restrict s);
 DECL_FUNC NONNULL ATTR_PF long xatol(const char* restrict s);
 DECL_FUNC NONNULL ATTR_PF unsigned long xatoul(const char* restrict s);
 DECL_FUNC uint32_t zi_read32(const unsigned char* z);

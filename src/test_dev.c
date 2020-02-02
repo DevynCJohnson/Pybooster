@@ -91,10 +91,10 @@ static void test_code(const long long input_num) {
 	(void)dtostr(3.14159, num_buf, 0, 5, 0);
 	puts_no_output(num_buf);
 	putsnl();
-	// Test dtostr(3.1415926535897932384626433832795028841971693993751058209749445923)
-	puts_no_output("* Test dtostr(); Expect - `3.1415926535897932384626433832795028841971693993751058209749445923` *");
+	// Test dtostr(3.141592653589793)
+	puts_no_output("* Test dtostr(); Expect - `3.141592653589793` *");
 	bzero(num_buf, SIZEOF_TEST_NUM_BUF);
-	(void)dtostr(3.1415926535897932384626433832795028841971693993751058209749445923, num_buf, 0, 64, 0);
+	(void)dtostr(3.1415926535897932384626433832795028841971693993751058209749445923, num_buf, 0, 16, 0);
 	puts_no_output(num_buf);
 	putsnl();
 	// Test dtostr(0.0)

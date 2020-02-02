@@ -25660,7 +25660,7 @@ LIB_FUNC ATTR_PF ssize_t skip_to(const char* restrict format) {
 
 
 /** Write the __v_printf() buffer */
-#define __v_printf_write_buf()   do { if (((tmpi = fn->puts((const void*)buf, (size_t)((PRINTF_BUF_SIZE - 1) - buf_space_left), fn->data)) == -1) || ((buf_space_left + (ssize_t)tmpi) != (PRINTF_BUF_SIZE - 1))) { return -1; } bufptr = buf; buf_space_left = PRINTF_BUF_SIZE - 1; bzero(buf, PRINTF_BUF_SIZE); } while (0x0)
+#define __v_printf_write_buf()   do { if (((internalvals.tmpi = fn->puts((const void*)buf, (size_t)((PRINTF_BUF_SIZE - 1) - buf_space_left), fn->data)) == -1) || ((buf_space_left + (ssize_t)internalvals.tmpi) != (PRINTF_BUF_SIZE - 1))) { return -1; } bufptr = buf; buf_space_left = PRINTF_BUF_SIZE - 1; bzero(buf, PRINTF_BUF_SIZE); } while (0x0)
 
 
 /** Write the __v_printf() buffer if full */
@@ -25669,6 +25669,59 @@ LIB_FUNC ATTR_PF ssize_t skip_to(const char* restrict format) {
 
 /** Tasks performed after writing the __v_printf() buffer */
 #define __v_printf_write_epilogue(length)   do { len += (ssize_t)(length); bufptr += (size_t)(length); buf_space_left -= (ssize_t)(length); } while (0x0)
+
+
+struct __v_printf_internals {
+	union printf_number {
+		long_double_shape_t lfloat;
+		double_shape_t dfloat;
+		unsigned long long ullnumber;
+		long long llnumber;
+		const unsigned long long* llcptr;
+		unsigned long long* llptr;
+		const unsigned long* lcptr;
+		unsigned long* lptr;
+		const unsigned int* icptr;
+		unsigned int* iptr;
+		const unsigned short* scptr;
+		unsigned short* sptr;
+		const unsigned char* ccptr;
+		unsigned char* cptr;
+		uintptr_t uptr;
+		unsigned long ulnumber;
+		long lnumber;
+		float_shape_t sfloat;  // flag_long == 0
+		unsigned int unumber;
+		int inumber;
+		unsigned short usnumber;
+		short snumber;
+		unsigned char ucnumber;
+		char cnumber;
+	} pfmtnum;
+	char* restrict prefix_ptr;
+	char* restrict suffix_ptr;
+	union _printf_buf { char* str; const char* cstr; ucs4_t* ucstr; const ucs4_t* cucstr; } u_str;
+	size_t preci;
+	size_t outstrlen;
+	size_t width;
+	int32_t flag_preci;
+	int32_t tmpi;
+	unsigned int base;
+	union _prefix_buf { char _buf[4]; uint32_t _prefix; } prefix_buf;
+	union _suffix_buf { char _buf[4]; uint32_t _suffix; } suffix_buf;
+	signed char flag_long;
+	signed char flag_ex_sign;
+	unsigned char flag_base;
+	unsigned char flag_dot;
+	unsigned char flag_hash;
+	unsigned char flag_justify;
+	unsigned char flag_mantissa;
+	unsigned char flag_sign;
+	unsigned char flag_space;
+	unsigned char flag_upcase;
+	unsigned char ch;
+	unsigned char padwith;
+};
 
 
 /**
@@ -25698,8 +25751,59 @@ LIB_FUNC NOLIBCALL ATTR_PRINTF(2, 0) int __v_printf(const struct arg_printf* res
 	align_ptr ssize_t buf_space_left = PRINTF_BUF_SIZE - 1;
 	char xbuf[PRINTF_BUF_SIZE] = { 0 };  // Extra buffer
 	UNUSED align_ptr char* restrict xptr = xbuf;
-	align_ptr int tmpi = 0;
+	struct __v_printf_internals internalvals = {
+		.pfmtnum.lfloat.words = { 0 },
+		.prefix_ptr = NULL,
+		.suffix_ptr = NULL,
+		.u_str.str = NULL,
+		.preci = 0,
+		.outstrlen = 0,
+		.width = 0,
+		.flag_preci = 0,
+		.tmpi = 0,
+		.base = 10,
+		.prefix_buf._prefix = 0,
+		.suffix_buf._suffix = 0,
+		.flag_long = 0,
+		.flag_ex_sign = 0,
+		.flag_base = 0,
+		.flag_dot = 0,
+		.flag_hash = 0,
+		.flag_justify = 0,
+		.flag_mantissa = 0,
+		.flag_sign = 0,
+		.flag_space = 0,
+		.flag_upcase = 0,
+		.ch = 0,
+		.padwith = ' '
+	};
 	while (*format) {
+		internalvals = (struct __v_printf_internals){
+			.pfmtnum.lfloat.words = { 0 },
+			.prefix_ptr = NULL,
+			.suffix_ptr = NULL,
+			.u_str.str = NULL,
+			.preci = 0,
+			.outstrlen = 0,
+			.width = 0,
+			.flag_preci = 0,
+			.tmpi = internalvals.tmpi,
+			.base = 10,
+			.prefix_buf._prefix = 0,
+			.suffix_buf._suffix = 0,
+			.flag_long = 0,
+			.flag_ex_sign = 0,
+			.flag_base = 0,
+			.flag_dot = 0,
+			.flag_hash = 0,
+			.flag_justify = 0,
+			.flag_mantissa = 0,
+			.flag_sign = 0,
+			.flag_space = 0,
+			.flag_upcase = 0,
+			.ch = 0,
+			.padwith = ' '
+		};
 		const ssize_t fmt_flag_pos = skip_to(format);  // Location of "%" in string
 		// Test if "%" is in the format string
 		if (fmt_flag_pos) {
@@ -25711,27 +25815,9 @@ LIB_FUNC NOLIBCALL ATTR_PRINTF(2, 0) int __v_printf(const struct arg_printf* res
 		}
 		// Create new string based on the format string (using "%")
 		if (*format == '%') {
-			unsigned char _ch = 0;
-#   if (!(defined(NO_PRINT_FLOATS) && defined(NO_PRINT_INTS)))
-			signed char flag_ex_sign = 0;
-			unsigned char flag_base = 0, flag_hash = 0, flag_space = 0, flag_upcase = 0;
-			unsigned int base = 10;
-#   endif
-#   ifndef NO_PRINT_WIDTH_PREC
-			unsigned char padwith = ' ', flag_dot = 0, flag_justify = 0;
-			long tmpl = 0;
-#   endif
-#   if (!(defined(NO_PRINT_FLOATS) && defined(NO_PRINT_WIDTH_PREC)))
-		size_t preci = 0, width = 0;
-#   endif
-#   ifndef NO_PRINT_FLOATS
-			unsigned char flag_mantissa = 0;
-#   endif
-			unsigned char flag_sign = 0;
-			signed char flag_long = 0;
 			++format;
 goto_parse_printf:  // Parse printf "%" syntax
-			switch (_ch = (unsigned char)(*format++)) {  // Get character after "%"
+			switch (internalvals.ch = (unsigned char)(*format++)) {  // Get character after "%"
 				case 0:
 #   ifdef WANT_NULL_PRINTF
 					if (fn->puts((const void*)"(NULL)", 6, fn->data) == -1) { return -1; }
@@ -25753,35 +25839,35 @@ goto_parse_printf:  // Parse printf "%" syntax
 #   endif
 #   if (!(defined(NO_PRINT_FLOATS) && defined(NO_PRINT_INTS)))
 				case 'B':  // Change the output of the flag to the literal binary representation (e.g. `%Bf`)
-					flag_base = 2;
+					internalvals.flag_base = 2;
 					goto goto_parse_printf;
 				case 'H':  // Change the output of the flag to the literal hex representation (e.g. `%Hf`)
-					if (flag_base == 16) { flag_upcase = 1; }  // %HHf uses uppercase hex
-					flag_base = 16;
+					if (internalvals.flag_base == 16) { internalvals.flag_upcase = 1; }  // %HHf uses uppercase hex
+					internalvals.flag_base = 16;
 					goto goto_parse_printf;
 #   endif
 				// Flags & Width Specifiers
 #   if (!(defined(NO_PRINT_FLOATS) && defined(NO_PRINT_INTS)))
 				case '#':  // Prefix binary, hex, and octal integers or use explicit decimal point
-					flag_hash = 1;
+					internalvals.flag_hash = 1;
 					goto goto_parse_printf;
 				case ' ':  // If no sign, then a blank space is inserted before the value
-					flag_space = 1;
+					internalvals.flag_space = 1;
 					goto goto_parse_printf;
 				case '+':  // Preceed the result with a plus or minus sign explicitly
-					flag_ex_sign = 1;
+					internalvals.flag_ex_sign = 1;
 					goto goto_parse_printf;
 #   endif
 #   ifndef NO_PRINT_WIDTH_PREC
 				case '-':  // Left-justify (right-justify is the default)
-					flag_justify = 1;
+					internalvals.flag_justify = 1;
 					goto goto_parse_printf;
 				case '*':  // Width is specified as a preceding integer value
-					if ((tmpi = (int)va_arg(arg_ptr, int)) < 0) {
-						flag_justify = 1;
-						tmpi *= -1;
+					if ((internalvals.tmpi = (int)va_arg(arg_ptr, int)) < 0) {
+						internalvals.flag_justify = 1;
+						internalvals.tmpi *= -1;
 					}
-					if ((width = (size_t)((tmpi <= 0) ? 0 : tmpi)) > (PRINTF_BUF_SIZE - 1)) { return -1; }
+					if ((internalvals.width = (size_t)((internalvals.tmpi <= 0) ? 0 : internalvals.tmpi)) > (PRINTF_BUF_SIZE - 1)) { return -1; }
 					goto goto_parse_printf;
 				case '0':  // Minimum number of characters to write; May be padded
 				case '1':
@@ -25793,148 +25879,148 @@ goto_parse_printf:  // Parse printf "%" syntax
 				case '7':
 				case '8':
 				case '9':
-					width = xatoul((format - 1));
+					internalvals.width = xatoul((format - 1));
 					for (; isdigit(*format); ++format);
-					if (width > (PRINTF_BUF_SIZE - 1)) { return -1; }
-					else if (_ch == '0' && (!flag_justify)) { padwith = '0'; }
+					if (internalvals.width > (PRINTF_BUF_SIZE - 1)) { return -1; }
+					else if (internalvals.ch == '0' && (!internalvals.flag_justify)) { internalvals.padwith = '0'; }
 					goto goto_parse_printf;
 #   endif
 				// Precision Specifiers
 #   ifndef NO_PRINT_WIDTH_PREC
 				case '.':  // Minimum number of characters; Never truncated, but may be padded
-					flag_dot = 1;
+					internalvals.flag_dot = 1;
 					if (*format == '*') {  // Precision is specified as a preceding integer value
-						tmpi = (int)va_arg(arg_ptr, int);
-						preci = (size_t)((tmpi <= 0) ? 0 : tmpi);
+						internalvals.tmpi = (int)va_arg(arg_ptr, int);
+						internalvals.preci = (size_t)((internalvals.tmpi <= 0) ? 0 : internalvals.tmpi);
 						++format;
 					} else if (!isdigit(*format)) {
-						preci = 0;
+						internalvals.preci = 0;
 					} else {
-						tmpl = xatol(format);
-						preci = (size_t)((tmpl <= 0) ? 0 : tmpl);
+						internalvals.tmpi = xatoi(format);
+						internalvals.preci = (size_t)((internalvals.tmpi <= 0) ? 0 : internalvals.tmpi);
 						for (; isdigit(*format); ++format);
 					}
-					if (preci > (PRINTF_BUF_SIZE - 1)) { return -1; }
+					if (internalvals.preci > (PRINTF_BUF_SIZE - 1)) { return -1; }
 					goto goto_parse_printf;
 #   endif
 				// Length Specifiers
 				case 'h':  // short integer
-					--flag_long;
-					if (flag_long < -2) { return -1; }  // No more than two "h" flags
+					--internalvals.flag_long;
+					if (internalvals.flag_long < -2) { return -1; }  // No more than two "h" flags
 					goto goto_parse_printf;
 				case 'l':  // long integer
-					++flag_long;
-					if (flag_long > 2) { return -1; }  // No more than two "l" flags
+					++internalvals.flag_long;
+					if (internalvals.flag_long > 2) { return -1; }  // No more than two "l" flags
 					goto goto_parse_printf;
 				case 'I':  // 64-bit integer
 					if ((*format == '3') && (*(format + 1) == '2')) {  // I32
-						flag_long = 0;
+						internalvals.flag_long = 0;
 						format += 2;
 					} else if (((*format == '6') && (*(format + 1) == '4')) || (*format == 'I')) {  // I64 & II
-						flag_long = PRINTF_LONG_FLAG;
+						internalvals.flag_long = PRINTF_LONG_FLAG;
 						format += 2;
-					} else { flag_long = PRINTF_LONG_FLAG; }
+					} else { internalvals.flag_long = PRINTF_LONG_FLAG; }
 					goto goto_parse_printf;
 				case 'j':  // intmax_t & uintmax_t
 				case 't':  // ptrdiff_t
 				case 'z':  // size_t & ssize_t
-					flag_long = PRINTF_LONG_FLAG;
+					internalvals.flag_long = PRINTF_LONG_FLAG;
 					goto goto_parse_printf;
 				case 'q':  // BSD extension for 64-bit integer
-					flag_long = 2;
+					internalvals.flag_long = 2;
 					goto goto_parse_printf;
 				case 'L':  // long double
-					++flag_long;
-					if (flag_long > 2) { return -1; }  // No more than two "l" flags
+					++internalvals.flag_long;
+					if (internalvals.flag_long > 2) { return -1; }  // No more than two "l" flags
 					goto goto_parse_printf;
 				// Type Specifiers
 #   ifndef NO_PRINT_CHARS
 				case 'c':  // Write a char
 					goto goto_char_printf;
 				case 'w':  // Write a wide-character
-					flag_long = 1;
+					internalvals.flag_long = 1;
 					if (*format == 'c') { ++format; }
 					goto goto_char_printf;
 				case 'U':  // Write a Unicode, UCS-4, or UTF-32 character
-					flag_long = 2;
+					internalvals.flag_long = 2;
 					if (*format == 'c') { ++format; }
 					goto goto_char_printf;
 #   endif
 #   ifndef NO_PRINT_STRINGS
 #      ifndef NO_PRINT_M  // Write an error message string
 				case 'm':
-					flag_long = 0;
-					flag_sign = 'm';
+					internalvals.flag_long = 0;
+					internalvals.flag_sign = 'm';
 					goto goto_string_printf;
 #      endif
 				case 'S':  // Write a unicode/UCS-4 string
-					flag_long = 2;  attr_fallthrough
+					internalvals.flag_long = 2;  attr_fallthrough
 				case 's':  // Write a string
-					flag_sign = 's';
+					internalvals.flag_sign = 's';
 					goto goto_string_printf;
 #   endif
 #   ifndef NO_PRINT_INTS  // Write an integer value
 				case 'p':  // Pointer address
-					base = 16;  // TODO: %pI4 prints an IPV4 address in dotted-decimal form
-					flag_hash = 2;
-					flag_long = PRINTF_LONG_FLAG;
-					flag_sign = 0;
-					flag_upcase = 0;
+					internalvals.base = 16;  // TODO: %pI4 prints an IPV4 address in dotted-decimal form
+					internalvals.flag_hash = 2;
+					internalvals.flag_long = PRINTF_LONG_FLAG;
+					internalvals.flag_sign = 0;
+					internalvals.flag_upcase = 0;
 					goto goto_inum_printf;
 				case 'P':  // Pointer address (uppercase hexadecimal)
-					base = 16;
-					flag_hash = 2;
-					flag_long = PRINTF_LONG_FLAG;
-					flag_sign = 0;
-					flag_upcase = 1;
+					internalvals.base = 16;
+					internalvals.flag_hash = 2;
+					internalvals.flag_long = PRINTF_LONG_FLAG;
+					internalvals.flag_sign = 0;
+					internalvals.flag_upcase = 1;
 					goto goto_inum_printf;
 				case 'b':  // Integer in binary format
-					base = 2;
-					flag_sign = 0;
-					flag_ex_sign = 0;
+					internalvals.base = 2;
+					internalvals.flag_sign = 0;
+					internalvals.flag_ex_sign = 0;
 					goto goto_inum_printf;
 				case 'X':  // Unsigned hexadecimal integer (uppercase)
-					flag_upcase = 1;  attr_fallthrough
+					internalvals.flag_upcase = 1;  attr_fallthrough
 				case 'x':  // Unsigned hexadecimal integer (lowercase)
-					base = 16;
+					internalvals.base = 16;
 					goto goto_inum_printf;
 				case 'O':  // Signed octal integer
-					flag_sign = 1;  attr_fallthrough
+					internalvals.flag_sign = 1;  attr_fallthrough
 				case 'o':  // Unsigned octal integer
-					base = 8;
+					internalvals.base = 8;
 					goto goto_inum_printf;
 				case 'D':  // Signed decimal integer (Apple extension)
 				case 'd':  // Signed decimal integer
 				case 'i':  // Signed decimal integer
-					base = 10;
-					flag_sign = 1;
+					internalvals.base = 10;
+					internalvals.flag_sign = 1;
 					goto goto_inum_printf;
 				case 'u':  // Unsigned decimal integer
-					base = 10;
-					flag_sign = 0;
+					internalvals.base = 10;
+					internalvals.flag_sign = 0;
 					goto goto_inum_printf;
 #   endif
 #   ifndef NO_PRINT_FLOATS  // Write a floating-point
 				case 'A':  // Uppercase hexadecimal floating-point
-					flag_upcase = 1;  attr_fallthrough
+					internalvals.flag_upcase = 1;  attr_fallthrough
 				case 'a':  // Lowercase hexadecimal floating-point
-					base = 16;
+					internalvals.base = 16;
 					goto goto_float_printf;
 				case 'E':  // Uppercase scientific notation (mantissa/exponent)
-					flag_upcase = 1;  attr_fallthrough
+					internalvals.flag_upcase = 1;  attr_fallthrough
 				case 'e':  // Lowercase scientific notation (mantissa/exponent)
-					flag_mantissa = 1;
+					internalvals.flag_mantissa = 1;
 					goto goto_float_printf;
 				case 'F':  // Uppercase decimal floating-point
-					flag_upcase = 1;  attr_fallthrough
+					internalvals.flag_upcase = 1;  attr_fallthrough
 				case 'f':  // Lowercase decimal floating-point
-					base = 10;
-					flag_mantissa = 0;
+					internalvals.base = 10;
+					internalvals.flag_mantissa = 0;
 					goto goto_float_printf;
 				case 'G':  // Use the shortest representation: %E or %F
-					flag_upcase = 1;  attr_fallthrough
+					internalvals.flag_upcase = 1;  attr_fallthrough
 				case 'g':  // Use the shortest representation: %e or %f
-					flag_mantissa = 2;
+					internalvals.flag_mantissa = 2;
 					goto goto_float_printf;
 #   endif
 #   ifndef NO_PRINT_CHARS  // Prepare char output
@@ -25942,15 +26028,15 @@ goto_char_printf:
 				{
 					// Character width padding
 #      ifndef NO_PRINT_WIDTH_PREC
-					if (PREDICT_UNLIKELY((width > 0) && !flag_justify)) {
-						__v_printf_write_if_full(width);
-						memset_no_output(bufptr, padwith, width);
-						__v_printf_write_epilogue(width);
+					if (PREDICT_UNLIKELY((internalvals.width > 0) && !internalvals.flag_justify)) {
+						__v_printf_write_if_full(internalvals.width);
+						memset_no_output(bufptr, internalvals.padwith, internalvals.width);
+						__v_printf_write_epilogue(internalvals.width);
 					}
 					if (buf_space_left < 4) { __v_printf_write_buf(); }
 #      endif
 					// Character type
-					if (flag_long == 1 || flag_long == 2) {  // Wide/UCS-4/UTF-32/Unicode character
+					if (internalvals.flag_long == 1 || internalvals.flag_long == 2) {  // Wide/UCS-4/UTF-32/Unicode character
 						const utf8_t utfchar = { .whole = (ucs4_t)utf32c2utf8c((ucs4_t)va_arg(arg_ptr, ucs4_t)) };
 						if (PREDICT_UNLIKELY(utfchar.bytes.byte4 != 0)) {  // Four-byte UTF-8 symbol
 							*bufptr++ = utfchar.chars.byte1;
@@ -25982,10 +26068,10 @@ goto_char_printf:
 					}
 					// Character width padding & left-justify
 #      ifndef NO_PRINT_WIDTH_PREC
-					if (PREDICT_UNLIKELY((width > 0) && flag_justify)) {
-						__v_printf_write_if_full(width);
-						memset_no_output(bufptr, padwith, width);
-						__v_printf_write_epilogue(width);
+					if (PREDICT_UNLIKELY((internalvals.width > 0) && internalvals.flag_justify)) {
+						__v_printf_write_if_full(internalvals.width);
+						memset_no_output(bufptr, internalvals.padwith, internalvals.width);
+						__v_printf_write_epilogue(internalvals.width);
 					}
 #      endif
 					break;
@@ -25994,80 +26080,78 @@ goto_char_printf:
 #   ifndef NO_PRINT_STRINGS  // Prepare string output
 goto_string_printf:
 				{
-					align_ptr union __union_v_printf_buf { char* str; const char* cstr; } u_str = { NULL };
-					switch (flag_sign) {
+					internalvals.u_str.str = NULL;
+					switch (internalvals.flag_sign) {
 #      ifndef NO_PRINT_M
 						case 'm':  // Write an error message
-							u_str.str = strerror(get_errno());
+							internalvals.u_str.str = strerror(get_errno());
 							break;
 #      endif
 						case 's':  // Write a string
-							u_str.str = va_arg(arg_ptr, char*);
+							internalvals.u_str.str = va_arg(arg_ptr, char*);
 #      ifdef WANT_NULL_PRINTF
-							if (!u_str.cstr) { u_str.cstr = *null_indicator; }
+							if (!internalvals.u_str.cstr) { internalvals.u_str.cstr = *null_indicator; }
 #      endif
 							break;
 						default: return -1;
 					}
 					// Prepare string width & precision padding
+					internalvals.flag_preci = 0;
+					internalvals.outstrlen = 0;
+					if (PREDICT_UNLIKELY(internalvals.flag_long == 2)) {
+						internalvals.outstrlen = utf32len((const ucs4_t*)internalvals.u_str.cstr);
+					} else { internalvals.outstrlen = utf8len(internalvals.u_str.cstr); }
 #      ifndef NO_PRINT_WIDTH_PREC
-					register int flag_preci = 0;
-#      endif
-					register size_t outstrlen = 0;
-					if (PREDICT_UNLIKELY(flag_long == 2)) {
-						outstrlen = utf32len((const ucs4_t*)u_str.cstr);
-					} else { outstrlen = utf8len(u_str.cstr); }
-#      ifndef NO_PRINT_WIDTH_PREC
-					if (PREDICT_UNLIKELY(flag_dot && (preci == 0))) {
-						*u_str.str = '\0';
-						outstrlen = 0;
-						flag_preci = 1;
-					} else if (preci >= outstrlen) { preci = 0; }
-					else if ((preci != 0) && (preci < outstrlen)) {
-						flag_preci = 2;
-						outstrlen = preci;
-						memcpy_no_output(&xbuf, u_str.cstr, outstrlen);
-						xptr += outstrlen;
+					if (PREDICT_UNLIKELY(internalvals.flag_dot && (internalvals.preci == 0))) {
+						*internalvals.u_str.str = '\0';
+						internalvals.outstrlen = 0;
+						internalvals.flag_preci = 1;
+					} else if (internalvals.preci >= internalvals.outstrlen) { internalvals.preci = 0; }
+					else if ((internalvals.preci != 0) && (internalvals.preci < internalvals.outstrlen)) {
+						internalvals.flag_preci = 2;
+						internalvals.outstrlen = internalvals.preci;
+						memcpy_no_output(&xbuf, internalvals.u_str.cstr, internalvals.outstrlen);
+						xptr += internalvals.outstrlen;
 						*++xptr = '\0';
-						u_str.str = xbuf;
+						internalvals.u_str.str = xbuf;
 					}
-					if (PREDICT_UNLIKELY(width >= outstrlen)) { width -= outstrlen; }
-					else { width = 0; }
-					if ((preci > (PRINTF_BUF_SIZE - 1)) || (width > (PRINTF_BUF_SIZE - 1))) { return -1; }
+					if (PREDICT_UNLIKELY(internalvals.width >= internalvals.outstrlen)) { internalvals.width -= internalvals.outstrlen; }
+					else { internalvals.width = 0; }
+					if ((internalvals.preci > (PRINTF_BUF_SIZE - 1)) || (internalvals.width > (PRINTF_BUF_SIZE - 1))) { return -1; }
 					// String width padding
-					if (PREDICT_UNLIKELY((width > 0) && !flag_justify)) {
-						__v_printf_write_if_full(width);
-						memset_no_output(bufptr, padwith, width);
-						__v_printf_write_epilogue(width);
+					if (PREDICT_UNLIKELY((internalvals.width != 0) && !internalvals.flag_justify)) {
+						__v_printf_write_if_full(internalvals.width);
+						memset_no_output(bufptr, internalvals.padwith, internalvals.width);
+						__v_printf_write_epilogue(internalvals.width);
 					}
 					// String precision padding
-					if (PREDICT_UNLIKELY(flag_dot && (preci > 0) && (flag_preci == 0))) {
-						__v_printf_write_if_full(preci);
-						memset_no_output(bufptr, ' ', preci);
-						__v_printf_write_epilogue(preci);
+					if (PREDICT_UNLIKELY(internalvals.flag_dot && (internalvals.preci != 0) && (internalvals.flag_preci == 0))) {
+						__v_printf_write_if_full(internalvals.preci);
+						memset_no_output(bufptr, ' ', internalvals.preci);
+						__v_printf_write_epilogue(internalvals.preci);
 					}
 #      endif
 					// Write string
-					if (PREDICT_UNLIKELY((flag_long == 1) && (outstrlen != 0))) {
-						__v_printf_write_if_full(outstrlen);
-						memcpy_no_output(bufptr, u_str.cstr, outstrlen);
-						__v_printf_write_epilogue(outstrlen);
-					} else if ((flag_long == 2) && (outstrlen != 0)) {  // UTF32
-						register const size_t utflen = utf32toutf8((const ucs4_t*)u_str.cstr, (unsigned char*)xbuf);
+					if (PREDICT_UNLIKELY((internalvals.flag_long == 1) && (internalvals.outstrlen != 0))) {
+						__v_printf_write_if_full(internalvals.outstrlen);
+						memcpy_no_output(bufptr, internalvals.u_str.cstr, internalvals.outstrlen);
+						__v_printf_write_epilogue(internalvals.outstrlen);
+					} else if ((internalvals.flag_long == 2) && (internalvals.outstrlen != 0)) {  // UTF32
+						register const size_t utflen = utf32toutf8(internalvals.u_str.cucstr, (unsigned char*)xbuf);
 						__v_printf_write_if_full(utflen);
 						memcpy_no_output(bufptr, &xbuf, utflen);
 						__v_printf_write_epilogue(utflen);
-					} else if (PREDICT_LIKELY(outstrlen != 0)) {  // ASCII/UTF8
-						__v_printf_write_if_full(outstrlen);
-						memcpy_no_output(bufptr, u_str.cstr, outstrlen);
-						__v_printf_write_epilogue(outstrlen);
+					} else if (PREDICT_LIKELY(internalvals.outstrlen != 0)) {  // ASCII/UTF8
+						__v_printf_write_if_full(internalvals.outstrlen);
+						memcpy_no_output(bufptr, internalvals.u_str.cstr, internalvals.outstrlen);
+						__v_printf_write_epilogue(internalvals.outstrlen);
 					}
 					// String width padding & left-justify
 #      ifndef NO_PRINT_WIDTH_PREC
-					if (PREDICT_UNLIKELY((width > 0) && flag_justify)) {
-						__v_printf_write_if_full(width);
-						memset_no_output(bufptr, padwith, width);
-						__v_printf_write_epilogue(width);
+					if (PREDICT_UNLIKELY((internalvals.width != 0) && internalvals.flag_justify)) {
+						__v_printf_write_if_full(internalvals.width);
+						memset_no_output(bufptr, internalvals.padwith, internalvals.width);
+						__v_printf_write_epilogue(internalvals.width);
 					}
 #      endif
 					break;
@@ -26076,77 +26160,66 @@ goto_string_printf:
 #   ifndef NO_PRINT_INTS  // Prepare integer output
 goto_inum_printf:
 				{
-					union printf_number {
-						char cnumber;
-						short snumber;
-						int inumber;
-						long lnumber;
-						long long llnumber;
-						unsigned char ucnumber;
-						unsigned short usnumber;
-						unsigned int unumber;
-						unsigned long ulnumber;
-						unsigned long long ullnumber;
-					} pfmtnum = { .ullnumber = 0 };
-					align_ptr char prefix_buf[4] = { 0 };
-					char* restrict prefix_ptr = prefix_buf;
-					align_ptr char suffix_buf[4] = { 0 };
-					char* restrict suffix_ptr = suffix_buf;
+					internalvals.pfmtnum.ullnumber = 0;
+					internalvals.prefix_buf._prefix = 0;
+					internalvals.prefix_ptr = (char*)&internalvals.prefix_buf;
+					internalvals.suffix_buf._suffix = 0;
+					internalvals.suffix_ptr = (char*)&internalvals.suffix_buf;
 					// Integer length & sign
-					switch (flag_long) {
+					switch (internalvals.flag_long) {
 						case 2:
-							if (flag_sign) {
-								pfmtnum.llnumber = (long long)va_arg(arg_ptr, long long);
-								if (pfmtnum.llnumber < 0) {
-									pfmtnum.ullnumber = (unsigned long long)-pfmtnum.llnumber;
-									flag_ex_sign = '-';
-								} else { pfmtnum.ullnumber = (unsigned long long)pfmtnum.llnumber; }
+							if (internalvals.flag_sign) {
+								internalvals.pfmtnum.llnumber = (long long)va_arg(arg_ptr, long long);
+								if (internalvals.pfmtnum.llnumber < 0) {
+									internalvals.pfmtnum.ullnumber = (unsigned long long)-internalvals.pfmtnum.llnumber;
+									internalvals.flag_ex_sign = '-';
+								} else { internalvals.pfmtnum.ullnumber = (unsigned long long)internalvals.pfmtnum.llnumber; }
 							} else {
-								pfmtnum.ullnumber = (unsigned long long)va_arg(arg_ptr, unsigned long long);
+								internalvals.pfmtnum.ullnumber = (unsigned long long)va_arg(arg_ptr, unsigned long long);
 							}
 							break;
 						case 1:
-							if (flag_sign) {
-								pfmtnum.lnumber = (long)va_arg(arg_ptr, long);
-								if (pfmtnum.lnumber < 0) {
-									pfmtnum.ulnumber = (unsigned long)-pfmtnum.lnumber;
-									flag_ex_sign = '-';
-								} else { pfmtnum.ulnumber = (unsigned long)pfmtnum.lnumber; }
+							if (internalvals.flag_sign) {
+								internalvals.pfmtnum.lnumber = (long)va_arg(arg_ptr, long);
+								if (internalvals.pfmtnum.lnumber < 0) {
+									internalvals.pfmtnum.ulnumber = (unsigned long)-internalvals.pfmtnum.lnumber;
+									internalvals.flag_ex_sign = '-';
+								} else { internalvals.pfmtnum.ulnumber = (unsigned long)internalvals.pfmtnum.lnumber; }
 							} else {
-								pfmtnum.ulnumber = (unsigned long)va_arg(arg_ptr, unsigned long);
+								internalvals.pfmtnum.ulnumber = (unsigned long)va_arg(arg_ptr, unsigned long);
 							}
 							break;
 						case 0:
-							if (flag_sign) {
-								pfmtnum.inumber = (int)va_arg(arg_ptr, int);
-								if (pfmtnum.inumber < 0) {
-									pfmtnum.unumber = (unsigned int)-pfmtnum.inumber;
-									flag_ex_sign = '-';
-								} else { pfmtnum.unumber = (unsigned int)pfmtnum.inumber; }
+							if (internalvals.flag_sign) {
+								internalvals.pfmtnum.inumber = (int)va_arg(arg_ptr, int);
+								if (internalvals.pfmtnum.inumber < 0) {
+									internalvals.pfmtnum.unumber = (unsigned int)-internalvals.pfmtnum.inumber;
+									internalvals.flag_ex_sign = '-';
+								} else { internalvals.pfmtnum.unumber = (unsigned int)internalvals.pfmtnum.inumber; }
 							} else {
-								pfmtnum.unumber = (unsigned int)va_arg(arg_ptr, unsigned int);
+								internalvals.pfmtnum.unumber = (unsigned int)va_arg(arg_ptr, unsigned int);
 							}
 							break;
 						case -1:
-							if (flag_sign) {
-								pfmtnum.snumber = (short)va_arg(arg_ptr, int);
-								if (pfmtnum.snumber < 0) {
-									pfmtnum.usnumber = (unsigned short)-pfmtnum.snumber;
-									flag_ex_sign = '-';
-								} else { pfmtnum.usnumber = (unsigned short)pfmtnum.snumber; }
+							if (internalvals.flag_sign) {
+								internalvals.pfmtnum.snumber = (short)va_arg(arg_ptr, int);
+								if (internalvals.pfmtnum.snumber < 0) {
+									internalvals.pfmtnum.usnumber = (unsigned short)-internalvals.pfmtnum.snumber;
+									internalvals.flag_ex_sign = '-';
+								} else { internalvals.pfmtnum.usnumber = (unsigned short)internalvals.pfmtnum.snumber; }
 							} else {
-								pfmtnum.usnumber = (unsigned short)va_arg(arg_ptr, unsigned int);
+								internalvals.pfmtnum.usnumber = (unsigned short)va_arg(arg_ptr, unsigned int);
 							}
 							break;
 						case -2:
-							if (flag_sign) {
-								pfmtnum.cnumber = (char)va_arg(arg_ptr, int);
-								if (pfmtnum.cnumber < 0) {
-									pfmtnum.ucnumber = (unsigned char)-pfmtnum.cnumber;
-									flag_ex_sign = '-';
-								} else { pfmtnum.ucnumber = (unsigned char)pfmtnum.cnumber; }
+							if (internalvals.flag_sign) {
+								internalvals.pfmtnum.cnumber = (char)va_arg(arg_ptr, int);
+								if (internalvals.pfmtnum.cnumber < 0) {
+									internalvals.pfmtnum.ucnumber = (unsigned char)-internalvals.pfmtnum.cnumber;
+									internalvals.flag_ex_sign = '-';
+								} else { internalvals.pfmtnum.ucnumber = (unsigned char)internalvals.pfmtnum.cnumber; }
 							} else {
-								pfmtnum.ucnumber = (unsigned char)va_arg(arg_ptr, unsigned int);
+								internalvals.pfmtnum.ucnumber = (unsigned char)va_arg(arg_ptr, unsigned int);
 							}
 							break;
 						default: return -1;
@@ -26154,84 +26227,84 @@ goto_inum_printf:
 					// Set sign character in buffer
 					bzero(xbuf, PRINTF_BUF_SIZE);
 					xptr = xbuf;
-					if (flag_sign && flag_ex_sign == '-') {
-						*prefix_ptr++ = '-';
-					} else if (PREDICT_UNLIKELY(flag_ex_sign == 1 || flag_space)) {
-						*prefix_ptr++ = ((flag_ex_sign == 1) ? '+' : ' ');
+					if (internalvals.flag_sign && internalvals.flag_ex_sign == '-') {
+						*internalvals.prefix_ptr++ = '-';
+					} else if (PREDICT_UNLIKELY(internalvals.flag_ex_sign == 1 || internalvals.flag_space)) {
+						*internalvals.prefix_ptr++ = ((internalvals.flag_ex_sign == 1) ? '+' : ' ');
 					} else {
-						flag_sign = 0;
-						flag_ex_sign = 0;
+						internalvals.flag_sign = 0;
+						internalvals.flag_ex_sign = 0;
 					}
 					// Integer base
-					if (flag_base != 0) { base = flag_base; }
-					switch (base) {
+					if (internalvals.flag_base != 0) { internalvals.base = internalvals.flag_base; }
+					switch (internalvals.base) {
 						case 2:  // Binary
-							if (PREDICT_LIKELY(flag_hash)) {  // Append integer prefix
-								*prefix_ptr++ = '0';
-								*prefix_ptr++ = 'b';
+							if (PREDICT_LIKELY(internalvals.flag_hash)) {  // Append integer prefix
+								*internalvals.prefix_ptr++ = '0';
+								*internalvals.prefix_ptr++ = 'b';
 							}
-							if (flag_long == 2) {
-								bit64tostr((uint64_t)pfmtnum.ullnumber, xptr);
-							} else if (flag_long == 1) {
-								bitlongtostr((unsigned long)pfmtnum.ulnumber, xptr);
-							} else if (flag_long == 0) {
-								bit32tostr((uint32_t)pfmtnum.unumber, xptr);
-							} else if (flag_long == -1) {
-								bit16tostr((uint16_t)pfmtnum.usnumber, xptr);
-							} else if (flag_long == -2) {
-								bit8tostr((uint8_t)pfmtnum.ucnumber, xptr);
+							if (internalvals.flag_long == 2) {
+								bit64tostr((uint64_t)internalvals.pfmtnum.ullnumber, xptr);
+							} else if (internalvals.flag_long == 1) {
+								bitlongtostr((unsigned long)internalvals.pfmtnum.ulnumber, xptr);
+							} else if (internalvals.flag_long == 0) {
+								bit32tostr((uint32_t)internalvals.pfmtnum.unumber, xptr);
+							} else if (internalvals.flag_long == -1) {
+								bit16tostr((uint16_t)internalvals.pfmtnum.usnumber, xptr);
+							} else if (internalvals.flag_long == -2) {
+								bit8tostr((uint8_t)internalvals.pfmtnum.ucnumber, xptr);
 							} else { return -1; }
-							flag_ex_sign = 0;
-							flag_sign = 0;
+							internalvals.flag_ex_sign = 0;
+							internalvals.flag_sign = 0;
 							break;
 						case 8:  // Octal
-							if (PREDICT_LIKELY(flag_hash)) {  // Append integer prefix
-								*prefix_ptr++ = '0';
+							if (PREDICT_LIKELY(internalvals.flag_hash)) {  // Append integer prefix
+								*internalvals.prefix_ptr++ = '0';
 							}
-							if (flag_long == 2) {
-								ulltooct((unsigned long long)pfmtnum.ullnumber, xptr);
-							} else if (flag_long == 1) {
-								ultooct((unsigned long)pfmtnum.ulnumber, xptr);
-							} else if (flag_long == 0) {
-								utooct((unsigned int)pfmtnum.unumber, xptr);
-							} else if (flag_long == -1) {
-								uhtooct((unsigned short)pfmtnum.usnumber, xptr);
-							} else if (flag_long == -2) {
-								u8tooct((uint8_t)pfmtnum.ucnumber, xptr);
+							if (internalvals.flag_long == 2) {
+								ulltooct((unsigned long long)internalvals.pfmtnum.ullnumber, xptr);
+							} else if (internalvals.flag_long == 1) {
+								ultooct((unsigned long)internalvals.pfmtnum.ulnumber, xptr);
+							} else if (internalvals.flag_long == 0) {
+								utooct((unsigned int)internalvals.pfmtnum.unumber, xptr);
+							} else if (internalvals.flag_long == -1) {
+								uhtooct((unsigned short)internalvals.pfmtnum.usnumber, xptr);
+							} else if (internalvals.flag_long == -2) {
+								u8tooct((uint8_t)internalvals.pfmtnum.ucnumber, xptr);
 							} else { return -1; }
 							break;
 						case 10:  // Decimal
-							if (PREDICT_UNLIKELY(flag_hash)) {  // Append decimal-point
-								*suffix_ptr++ = '.';
-								*suffix_ptr++ = '0';
+							if (PREDICT_UNLIKELY(internalvals.flag_hash)) {  // Append decimal-point
+								*internalvals.suffix_ptr++ = '.';
+								*internalvals.suffix_ptr++ = '0';
 							}
-							if (flag_long == 2) {
-								ulltodec((unsigned long long)pfmtnum.ullnumber, xptr);
-							} else if (flag_long == 1) {
-								ultodec((unsigned long)pfmtnum.ulnumber, xptr);
-							} else if (flag_long == 0) {
-								utodec((unsigned int)pfmtnum.unumber, xptr);
-							} else if (flag_long == -1) {
-								uhtodec((unsigned short)pfmtnum.usnumber, xptr);
-							} else if (flag_long == -2) {
-								u8todec((uint8_t)pfmtnum.ucnumber, xptr);
+							if (internalvals.flag_long == 2) {
+								ulltodec((unsigned long long)internalvals.pfmtnum.ullnumber, xptr);
+							} else if (internalvals.flag_long == 1) {
+								ultodec((unsigned long)internalvals.pfmtnum.ulnumber, xptr);
+							} else if (internalvals.flag_long == 0) {
+								utodec((unsigned int)internalvals.pfmtnum.unumber, xptr);
+							} else if (internalvals.flag_long == -1) {
+								uhtodec((unsigned short)internalvals.pfmtnum.usnumber, xptr);
+							} else if (internalvals.flag_long == -2) {
+								u8todec((uint8_t)internalvals.pfmtnum.ucnumber, xptr);
 							} else { return -1; }
 							break;
 						case 16:  // Hexadecimal
-							if (PREDICT_LIKELY(flag_hash)) {  // Append integer prefix
-								*prefix_ptr++ = '0';
-								*prefix_ptr++ = (char)(flag_upcase ? 'X' : 'x');
+							if (PREDICT_LIKELY(internalvals.flag_hash)) {  // Append integer prefix
+								*internalvals.prefix_ptr++ = '0';
+								*internalvals.prefix_ptr++ = (char)(internalvals.flag_upcase ? 'X' : 'x');
 							}
-							if (flag_long == 2) {
-								ulltohex((unsigned long long)pfmtnum.ullnumber, (int)flag_upcase, xptr);
-							} else if (flag_long == 1) {
-								ultohex((unsigned long)pfmtnum.ulnumber, (int)flag_upcase, xptr);
-							} else if (flag_long == 0) {
-								utohex((unsigned int)pfmtnum.unumber, (int)flag_upcase, xptr);
-							} else if (flag_long == -1) {
-								uhtohex((unsigned short)pfmtnum.usnumber, (int)flag_upcase, xptr);
-							} else if (flag_long == -2) {
-								u8tohex((uint8_t)pfmtnum.ucnumber, (int)flag_upcase, xptr);
+							if (internalvals.flag_long == 2) {
+								ulltohex((unsigned long long)internalvals.pfmtnum.ullnumber, (int)internalvals.flag_upcase, xptr);
+							} else if (internalvals.flag_long == 1) {
+								ultohex((unsigned long)internalvals.pfmtnum.ulnumber, (int)internalvals.flag_upcase, xptr);
+							} else if (internalvals.flag_long == 0) {
+								utohex((unsigned int)internalvals.pfmtnum.unumber, (int)internalvals.flag_upcase, xptr);
+							} else if (internalvals.flag_long == -1) {
+								uhtohex((unsigned short)internalvals.pfmtnum.usnumber, (int)internalvals.flag_upcase, xptr);
+							} else if (internalvals.flag_long == -2) {
+								u8tohex((uint8_t)internalvals.pfmtnum.ucnumber, (int)internalvals.flag_upcase, xptr);
 							} else { return -1; }
 							break;
 						default: return -1;
@@ -26239,40 +26312,40 @@ goto_inum_printf:
 					// Setup integer precision & width padding
 					xptr = xbuf;
 #      ifndef NO_PRINT_WIDTH_PREC
-					register int flag_preci = 0;
+					internalvals.flag_preci = 0;
 #      endif
-					register const size_t prefixlen = strlen(prefix_buf);
-					register const size_t suffixlen = strlen(suffix_buf);
-					register const size_t numstrlen = strlen(xptr);
+					register const size_t prefixlen = strnlen(internalvals.prefix_buf._buf, 4);
+					register const size_t suffixlen = strnlen(internalvals.suffix_buf._buf, 4);
+					register const size_t numstrlen = strnlen(xptr, PRINTF_BUF_SIZE);
 					if (PREDICT_UNLIKELY((numstrlen == 0 || prefixlen > 3 || suffixlen > 2))) { return -1; }
 #      ifndef NO_PRINT_WIDTH_PREC
-					else if (PREDICT_UNLIKELY(flag_dot && (preci == 0))) { flag_preci = 1; }
-					else if (preci >= numstrlen) { preci -= numstrlen; }
-					if (width >= (prefixlen + preci + numstrlen + suffixlen)) {
-						width -= (prefixlen + preci + numstrlen + suffixlen);
-					} else { width = 0; }
-					if ((preci > (PRINTF_BUF_SIZE - 1)) || (width > (PRINTF_BUF_SIZE - 1))) { return -1; }
+					else if (PREDICT_UNLIKELY(internalvals.flag_dot && (internalvals.preci == 0))) { internalvals.flag_preci = 1; }
+					else if (internalvals.preci >= numstrlen) { internalvals.preci -= numstrlen; }
+					if (internalvals.width >= (prefixlen + internalvals.preci + numstrlen + suffixlen)) {
+						internalvals.width -= (prefixlen + internalvals.preci + numstrlen + suffixlen);
+					} else { internalvals.width = 0; }
+					if ((internalvals.preci > (PRINTF_BUF_SIZE - 1)) || (internalvals.width > (PRINTF_BUF_SIZE - 1))) { return -1; }
 					// Integer width padding
-					if (PREDICT_UNLIKELY((width > 0) && !flag_justify)) {
-						__v_printf_write_if_full(width);
-						memset_no_output(bufptr, padwith, width);
-						__v_printf_write_epilogue(width);
+					if (PREDICT_UNLIKELY((internalvals.width > 0) && !internalvals.flag_justify)) {
+						__v_printf_write_if_full(internalvals.width);
+						memset_no_output(bufptr, internalvals.padwith, internalvals.width);
+						__v_printf_write_epilogue(internalvals.width);
 					}
 #      endif
 					// Integer prefix string
 					if (prefixlen > 0) {
 						__v_printf_write_if_full(prefixlen);
-						memcpy_no_output(bufptr, &prefix_buf, prefixlen);
+						memcpy_no_output(bufptr, &internalvals.prefix_buf._buf, prefixlen);
 						__v_printf_write_epilogue(prefixlen);
 					}
 					// Integer precision padding
 #      ifndef NO_PRINT_WIDTH_PREC
-					if (PREDICT_UNLIKELY(flag_preci)) {  // If `preci` is 0, then do not write number
+					if (PREDICT_UNLIKELY(internalvals.flag_preci)) {  // If `preci` is 0, then do not write number
 						*xptr = '\0';
-					} else if (flag_dot && (preci > 0)) {  // Write precision padding
-						__v_printf_write_if_full(preci);
-						memset_no_output(bufptr, '0', preci);
-						__v_printf_write_epilogue(preci);
+					} else if (internalvals.flag_dot && (internalvals.preci > 0)) {  // Write precision padding
+						__v_printf_write_if_full(internalvals.preci);
+						memset_no_output(bufptr, '0', internalvals.preci);
+						__v_printf_write_epilogue(internalvals.preci);
 					}
 #      endif
 					// Write integer string
@@ -26283,16 +26356,16 @@ goto_inum_printf:
 						memcpy_no_output(bufptr, &xbuf, numstrlen);
 						__v_printf_write_epilogue(numstrlen);
 						if (PREDICT_UNLIKELY(suffixlen > 0)) {  // Write suffix string
-							memcpy_no_output(bufptr, &suffix_buf, suffixlen);
+							memcpy_no_output(bufptr, &internalvals.suffix_buf._buf, suffixlen);
 							__v_printf_write_epilogue(suffixlen);
 						}
 					}
 					// Integer width padding & left-justify
 #      ifndef NO_PRINT_WIDTH_PREC
-					if (PREDICT_UNLIKELY((width > 0) && flag_justify)) {
-						__v_printf_write_if_full(width);
-						memset_no_output(bufptr, padwith, width);
-						__v_printf_write_epilogue(width);
+					if (PREDICT_UNLIKELY((internalvals.width != 0) && internalvals.flag_justify)) {
+						__v_printf_write_if_full(internalvals.width);
+						memset_no_output(bufptr, internalvals.padwith, internalvals.width);
+						__v_printf_write_epilogue(internalvals.width);
 					}
 #      endif
 					break;
@@ -26301,23 +26374,19 @@ goto_inum_printf:
 #   ifndef NO_PRINT_FLOATS  // Prepare float output
 goto_float_printf:
 				{
-					if (flag_long > 1 || flag_long < 0) { return -1; }
-					flag_sign = 1;
-					union printf_float {
-						float sfloat;  // flag_long == 0
-						double dfloat;
-						long double lfloat;
-					} pffloat = { .dfloat = 0.0 };
+					if (internalvals.flag_long > 1 || internalvals.flag_long < 0) { return -1; }
+					internalvals.flag_sign = 1;
+					internalvals.pfmtnum.dfloat.value = 0.0 ;
 					// Float length & sign
-					switch (flag_long) {  // FIXME: Add support for long double
+					switch (internalvals.flag_long) {  // FIXME: Add support for long double
 						// case 1:
-						// 	pffloat.lfloat = (long double)va_arg(arg_ptr, long double);
-						// 	if (pffloat.lfloat > 0.0L) { flag_sign = 0; }
+						// 	internalvals.pfmtnum.lfloat.value = (long double)va_arg(arg_ptr, long double);
+						// 	if (internalvals.pfmtnum.lfloat.value > 0.0L) { flag_sign = 0; }
 						// 	break;
 						case 0:
 						case 1:
-							pffloat.dfloat = (double)va_arg(arg_ptr, double);
-							if (pffloat.dfloat > 0.0) { flag_sign = 0; }
+							internalvals.pfmtnum.dfloat.value = (double)va_arg(arg_ptr, double);
+							if (internalvals.pfmtnum.dfloat.value > 0.0) { internalvals.flag_sign = 0; }
 							break;
 						default: return -1;
 					}
@@ -26325,52 +26394,52 @@ goto_float_printf:
 					bzero(xbuf, PRINTF_BUF_SIZE);
 					xptr = xbuf;
 					// Float format
-					if (PREDICT_UNLIKELY(flag_base > 1 && base == 2)) {  // Binary representation
-						if (flag_sign) { *xptr++ = '-'; }
-						else if (PREDICT_UNLIKELY((flag_ex_sign == 1) || flag_space)) {
-							*xptr++ = ((flag_ex_sign == 1) ? '+' : ' ');
+					if (PREDICT_UNLIKELY(internalvals.flag_base > 1 && internalvals.base == 2)) {  // Binary representation
+						if (internalvals.flag_sign) { *xptr++ = '-'; }
+						else if (PREDICT_UNLIKELY((internalvals.flag_ex_sign == 1) || internalvals.flag_space)) {
+							*xptr++ = ((internalvals.flag_ex_sign == 1) ? '+' : ' ');
 						} else {
-							flag_sign = 0;
-							flag_ex_sign = 0;
+							internalvals.flag_sign = 0;
+							internalvals.flag_ex_sign = 0;
 						}
-						if (PREDICT_LIKELY(flag_hash)) {  // Append integer prefix
+						if (PREDICT_LIKELY(internalvals.flag_hash)) {  // Append integer prefix
 							*xptr++ = '0';
 							*xptr++ = 'b';
 						}
-						if (flag_long == 0) {
-							floatbittostr(pffloat.sfloat, xptr);
+						if (internalvals.flag_long == 0) {
+							floatbittostr(internalvals.pfmtnum.sfloat.value, xptr);
 							xptr += BITS_PER_FLOAT;
-						} else if (flag_long == 1) {
-							doublebittostr(pffloat.dfloat, xptr);
+						} else if (internalvals.flag_long == 1) {
+							doublebittostr(internalvals.pfmtnum.dfloat.value, xptr);
 							xptr += BITS_PER_DOUBLE;
 						} else { return -1; }
-						flag_sign = 0;
-						flag_base = 0;
-					} else if (PREDICT_UNLIKELY(flag_base > 1)) { return -1; }
-					else if (PREDICT_LIKELY(flag_mantissa == 0 && base == 10)) {  // %f & %F
-						if ((tmpi = dtostr(pffloat.dfloat, xptr, width, preci, (flag_upcase > 0 ? 'F' : 'f'))) < 1) { return -1; }
-						xptr += tmpi;
-					} else if (PREDICT_UNLIKELY(base == 16)) {  // %a & %A
-						if ((tmpi = dtostr(pffloat.dfloat, xptr, width, preci, (flag_upcase > 0 ? 'A' : 'a'))) < 1) { return -1; }
-						xptr += tmpi;
-					} else if (PREDICT_UNLIKELY(flag_mantissa == 1 && base == 10)) {  // %e & %E
-						if ((tmpi = dtostr(pffloat.dfloat, xptr, width, preci, (flag_upcase > 0 ? 'E' : 'e'))) < 1) { return -1; }
-						xptr += tmpi;
-					} else if (PREDICT_UNLIKELY(flag_mantissa == 2 && base == 10)) {  // %g & %G
-						if ((tmpi = dtostr(pffloat.dfloat, xptr, width, preci, (flag_upcase > 0 ? 'G' : 'g'))) < 1) { return -1; }
-						xptr += tmpi;
+						internalvals.flag_sign = 0;
+						internalvals.flag_base = 0;
+					} else if (PREDICT_UNLIKELY(internalvals.flag_base > 1)) { return -1; }
+					else if (PREDICT_LIKELY(internalvals.flag_mantissa == 0 && internalvals.base == 10)) {  // %f & %F
+						if ((internalvals.tmpi = dtostr(internalvals.pfmtnum.dfloat.value, xptr, internalvals.width, internalvals.preci, (internalvals.flag_upcase > 0 ? 'F' : 'f'))) < 1) { return -1; }
+						xptr += internalvals.tmpi;
+					} else if (PREDICT_UNLIKELY(internalvals.base == 16)) {  // %a & %A
+						if ((internalvals.tmpi = dtostr(internalvals.pfmtnum.dfloat.value, xptr, internalvals.width, internalvals.preci, (internalvals.flag_upcase > 0 ? 'A' : 'a'))) < 1) { return -1; }
+						xptr += internalvals.tmpi;
+					} else if (PREDICT_UNLIKELY(internalvals.flag_mantissa == 1 && internalvals.base == 10)) {  // %e & %E
+						if ((internalvals.tmpi = dtostr(internalvals.pfmtnum.dfloat.value, xptr, internalvals.width, internalvals.preci, (internalvals.flag_upcase > 0 ? 'E' : 'e'))) < 1) { return -1; }
+						xptr += internalvals.tmpi;
+					} else if (PREDICT_UNLIKELY(internalvals.flag_mantissa == 2 && internalvals.base == 10)) {  // %g & %G
+						if ((internalvals.tmpi = dtostr(internalvals.pfmtnum.dfloat.value, xptr, internalvals.width, internalvals.preci, (internalvals.flag_upcase > 0 ? 'G' : 'g'))) < 1) { return -1; }
+						xptr += internalvals.tmpi;
 					} else { return -1; }
 					// Write float-point
-					const size_t outstrlen = strlen(xbuf);
-					__v_printf_write_if_full(outstrlen);
-					memcpy_no_output(bufptr, &xbuf, outstrlen);
-					__v_printf_write_epilogue(outstrlen);
+					internalvals.outstrlen = strnlen(xbuf, PRINTF_BUF_SIZE);
+					__v_printf_write_if_full(internalvals.outstrlen);
+					memcpy_no_output(bufptr, &xbuf, internalvals.outstrlen);
+					__v_printf_write_epilogue(internalvals.outstrlen);
 					// Float-point width padding & left-justify
 #      ifndef NO_PRINT_WIDTH_PREC
-					if (PREDICT_UNLIKELY((width > 0) && flag_justify)) {
-						__v_printf_write_if_full(width);
-						memset_no_output(bufptr, padwith, width);
-						__v_printf_write_epilogue(width);
+					if (PREDICT_UNLIKELY((internalvals.width > 0) && internalvals.flag_justify)) {
+						__v_printf_write_if_full(internalvals.width);
+						memset_no_output(bufptr, internalvals.padwith, internalvals.width);
+						__v_printf_write_epilogue(internalvals.width);
 					}
 #      endif
 					break;
@@ -26379,34 +26448,27 @@ goto_float_printf:
 #   ifndef NO_PRINT_ACTION  // Flags that trigger an action
 goto_action_printf:
 				{
-					union printf_pointer {
-						unsigned char* cptr;
-						unsigned short* sptr;
-						unsigned int* iptr;
-						unsigned long* lptr;
-						unsigned long long* llptr;
-						uintptr_t uptr;
-					} pfptr = { .iptr = NULL };
-					switch (flag_long) {
+					internalvals.pfmtnum.iptr = NULL;
+					switch (internalvals.flag_long) {
 						case 2:
-							pfptr.uptr = va_arg(arg_ptr, uintptr_t);
-							*pfptr.llptr = (unsigned long long)len;
+							internalvals.pfmtnum.uptr = va_arg(arg_ptr, uintptr_t);
+							*internalvals.pfmtnum.llptr = (unsigned long long)len;
 							break;
 						case 1:
-							pfptr.uptr = va_arg(arg_ptr, uintptr_t);
-							*pfptr.lptr = (unsigned long)len;
+							internalvals.pfmtnum.uptr = va_arg(arg_ptr, uintptr_t);
+							*internalvals.pfmtnum.lptr = (unsigned long)len;
 							break;
 						case 0:
-							pfptr.uptr = va_arg(arg_ptr, uintptr_t);
-							*pfptr.iptr = (unsigned int)len;
+							internalvals.pfmtnum.uptr = va_arg(arg_ptr, uintptr_t);
+							*internalvals.pfmtnum.iptr = (unsigned int)len;
 							break;
 						case -1:
-							pfptr.uptr = va_arg(arg_ptr, uintptr_t);
-							*pfptr.sptr = (unsigned short)len;
+							internalvals.pfmtnum.uptr = va_arg(arg_ptr, uintptr_t);
+							*internalvals.pfmtnum.sptr = (unsigned short)len;
 							break;
 						case -2:
-							pfptr.uptr = va_arg(arg_ptr, uintptr_t);
-							*pfptr.cptr = (unsigned char)len;
+							internalvals.pfmtnum.uptr = va_arg(arg_ptr, uintptr_t);
+							*internalvals.pfmtnum.cptr = (unsigned char)len;
 							break;
 						default: return -1;
 					}
@@ -26420,7 +26482,7 @@ goto_action_printf:
 	// Ensure that the buffer has been written before ending function
 	register const size_t tmpsz = strlen(buf);
 	if (tmpsz > 0) {
-		if (((tmpi = fn->puts((const void*)buf, tmpsz, fn->data)) == -1) || ((buf_space_left + (ssize_t)tmpi) != (PRINTF_BUF_SIZE - 1))) { return -1; }
+		if (((internalvals.tmpi = fn->puts((const void*)buf, tmpsz, fn->data)) == -1) || ((buf_space_left + (ssize_t)internalvals.tmpi) != (PRINTF_BUF_SIZE - 1))) { return -1; }
 		bzero(buf, PRINTF_BUF_SIZE);
 	}
 	return (int)len;
@@ -30923,8 +30985,7 @@ const UNUSED attr_hidden char __libc_ptyname2[64] = PTYNAME2;
 
 /** Convert a literal byte to a string */
 LIB_FUNC NONNULL void bit8tostr(const uint8_t bits, char* restrict outstr) {
-	register uint8_t i, k;
-	for (i = 8, k = 0; ((i != 0) && k != 9); i--, k++) {
+	for (register uint8_t i = 8, k = 0; ((i != 0) && k != 9); i--, k++) {
 		if (test_bit8(bits, (uint8_t)i, (uint8_t)1U)) { outstr[k] = '1'; }
 		else { outstr[k] = '0'; }
 	}
@@ -30934,8 +30995,7 @@ LIB_FUNC NONNULL void bit8tostr(const uint8_t bits, char* restrict outstr) {
 
 /** Convert two literal bytes (uint16_t) to a string */
 LIB_FUNC NONNULL void bit16tostr(const uint16_t bits, char* restrict outstr) {
-	register uint8_t i, k;
-	for (i = 16, k = 0; ((i != 0) && k != 17); i--, k++) {
+	for (register uint8_t i = 16, k = 0; ((i != 0) && k != 17); i--, k++) {
 		if (test_bit16(bits, i, (uint8_t)1U)) { outstr[k] = '1'; }
 		else { outstr[k] = '0'; }
 	}
@@ -30945,8 +31005,7 @@ LIB_FUNC NONNULL void bit16tostr(const uint16_t bits, char* restrict outstr) {
 
 /** Convert four literal bytes (uint32_t) to a string */
 LIB_FUNC NONNULL void bit32tostr(const uint32_t bits, char* restrict outstr) {
-	register uint8_t i, k;
-	for (i = 32, k = 0; ((i != 0) && k != 33); i--, k++) {
+	for (register uint8_t i = 32, k = 0; ((i != 0) && k != 33); i--, k++) {
 		if (test_bit32(bits, (uint8_t)i, (uint8_t)1U)) { outstr[k] = '1'; }
 		else { outstr[k] = '0'; }
 	}
@@ -30956,8 +31015,7 @@ LIB_FUNC NONNULL void bit32tostr(const uint32_t bits, char* restrict outstr) {
 
 /** Convert eight literal bytes (64-bit value) to a string */
 LIB_FUNC NONNULL void bit64tostr(const uint64_t bits, char* restrict outstr) {
-	register uint8_t i, k;
-	for (i = 64, k = 0; ((i != 0) && k != 65); i--, k++) {
+	for (register uint8_t i = 64, k = 0; ((i != 0) && k != 65); i--, k++) {
 		if (test_bit64(bits, (uint8_t)i, (uint8_t)1U)) { outstr[k] = '1'; }
 		else { outstr[k] = '0'; }
 	}
@@ -30977,9 +31035,8 @@ LIB_FUNC NONNULL void bitlongtostr(const unsigned long bits, char* restrict outs
 
 /** Convert a 32-bit float as literal bits to a string */
 LIB_FUNC NONNULL void floatbittostr(const float fbits, char* restrict outstr) {
-	register uint8_t i, k;
 	register const uint32_t bits = FLT_TO_U32(fbits);
-	for (i = 32, k = 0; ((i != 0) && k != 33); i--, k++) {
+	for (register uint8_t i = 32, k = 0; ((i != 0) && k != 33); i--, k++) {
 		if (test_bit32(bits, (uint8_t)i, (uint8_t)1U)) { outstr[k] = '1'; }
 		else { outstr[k] = '0'; }
 	}
@@ -30989,9 +31046,8 @@ LIB_FUNC NONNULL void floatbittostr(const float fbits, char* restrict outstr) {
 
 /** Convert a double (64-bit float-point) as literal bits to a string */
 LIB_FUNC NONNULL void doublebittostr(const double dbits, char* restrict outstr) {
-	register uint8_t i, k;
 	register const uint64_t bits = DBL_TO_U64(dbits);
-	for (i = 64, k = 0; ((i != 0) && k != 65); i--, k++) {
+	for (register uint8_t i = 64, k = 0; ((i != 0) && k != 65); i--, k++) {
 		if (test_bit64(bits, (uint8_t)i, (uint8_t)1U)) { outstr[k] = '1'; }
 		else { outstr[k] = '0'; }
 	}
@@ -31002,9 +31058,8 @@ LIB_FUNC NONNULL void doublebittostr(const double dbits, char* restrict outstr) 
 #if SUPPORTS_COMPLEX
 /** Convert a complex float (64-bit value) as literal bits to a string */
 LIB_FUNC NONNULL void cfloatbittostr(const complex_float cbits, char* restrict outstr) {
-	register uint8_t i, k;
 	register const uint64_t bits = (uint64_t)CFLT_TO_U64(cbits);
-	for (i = 64, k = 0; ((i != 0) && k != 65); i--, k++) {
+	for (register uint8_t i = 64, k = 0; ((i != 0) && k != 65); i--, k++) {
 		if (test_bit64(bits, (uint8_t)i, (uint8_t)1U)) { outstr[k] = '1'; }
 		else { outstr[k] = '0'; }
 	}
@@ -31016,9 +31071,8 @@ LIB_FUNC NONNULL void cfloatbittostr(const complex_float cbits, char* restrict o
 #if SUPPORTS_DECIMAL32
 /** Convert a decimal32 as literal bits to a string */
 LIB_FUNC NONNULL void decimal32bittostr(const decimal32 dbits, char* restrict outstr) {
-	register uint8_t i, k;
 	register const uint32_t bits = (uint32_t)DEC32_TO_U32(dbits);
-	for (i = 32, k = 0; ((i != 0) && k != 33); i--, k++) {
+	for (register uint8_t i = 32, k = 0; ((i != 0) && k != 33); i--, k++) {
 		if (test_bit32(bits, (uint8_t)i, (uint8_t)1U)) { outstr[k] = '1'; }
 		else { outstr[k] = '0'; }
 	}
@@ -31030,9 +31084,8 @@ LIB_FUNC NONNULL void decimal32bittostr(const decimal32 dbits, char* restrict ou
 #if SUPPORTS_DECIMAL64
 /** Convert a decimal64 as literal bits to a string */
 LIB_FUNC NONNULL void decimal64bittostr(const decimal64 dbits, char* restrict outstr) {
-	register uint8_t i, k;
 	register const uint64_t bits = (uint64_t)DEC64_TO_U64(dbits);
-	for (i = 64, k = 0; ((i != 0) && k != 65); i--, k++) {
+	for (register uint8_t i = 64, k = 0; ((i != 0) && k != 65); i--, k++) {
 		if (test_bit64(bits, (uint8_t)i, (uint8_t)1U)) { outstr[k] = '1'; }
 		else { outstr[k] = '0'; }
 	}
@@ -31045,74 +31098,54 @@ LIB_FUNC NONNULL void decimal64bittostr(const decimal64 dbits, char* restrict ou
 
 /** Convert a literal byte to a string and print the value */
 LIB_FUNC void printbit8(const uint8_t bits) {
-	register uint8_t k = 0;
 	align16 char outstr[9] = { 0 };
-	for (register uint8_t i = 8; ((i != 0) && k != 9); i--, k++) {
-		if (test_bit8(bits, (uint8_t)i, (uint8_t)1U)) { outstr[k] = '1'; }
-		else { outstr[k] = '0'; }
-	}
+	char* restrict ptr = (char*)&outstr;
+	bit8tostr(bits, ptr);
 	puts_no_output(outstr);
 }
 
 
 /** Convert two literal bytes (16-bit value) to a string and print the value */
 LIB_FUNC void printbit16(const uint16_t bits) {
-	register uint8_t k = 0;
 	align32 char outstr[17] = { 0 };
-	for (register uint8_t i = 16; ((i != 0) && k != 17); i--, k++) {
-		if (test_bit16(bits, (uint8_t)i, (uint8_t)1U)) { outstr[k] = '1'; }
-		else { outstr[k] = '0'; }
-	}
+	char* restrict ptr = (char*)&outstr;
+	bit16tostr(bits, ptr);
 	puts_no_output(outstr);
 }
 
 
 /** Convert four literal bytes (32-bit value) to a string and print the value */
 LIB_FUNC void printbit32(const uint32_t bits) {
-	register uint8_t k = 0;
 	align64 char outstr[33] = { 0 };
-	for (register uint8_t i = 32; ((i != 0) && k != 33); i--, k++) {
-		if (test_bit32(bits, (uint8_t)i, (uint8_t)1U)) { outstr[k] = '1'; }
-		else { outstr[k] = '0'; }
-	}
+	char* restrict ptr = (char*)&outstr;
+	bit32tostr(bits, ptr);
 	puts_no_output(outstr);
 }
 
 
 /** Convert eight literal bytes (64-bit value) to a string and print the value */
 LIB_FUNC void printbit64(const uint64_t bits) {
-	register uint8_t k = 0;
 	align128 char outstr[65] = { 0 };
-	for (register uint8_t i = 64; ((i != 0) && k != 65); i--, k++) {
-		if (test_bit64(bits, (uint8_t)i, (uint8_t)1U)) { outstr[k] = '1'; }
-		else { outstr[k] = '0'; }
-	}
+	char* restrict ptr = (char*)&outstr;
+	bit64tostr(bits, ptr);
 	puts_no_output(outstr);
 }
 
 
 /** Convert a float-point (32-bit value) into a literal binary string and print the string */
 LIB_FUNC void printfloatbit(const float fbits) {
-	register uint8_t k = 0;
-	register const uint32_t bits = FLT_TO_U32(fbits);
 	align64 char outstr[33] = { 0 };
-	for (register uint8_t i = 32; ((i != 0) && k != 33); i--, k++) {
-		if (test_bit32(bits, (uint8_t)i, (uint8_t)1U)) { outstr[k] = '1'; }
-		else { outstr[k] = '0'; }
-	}
+	char* restrict ptr = (char*)&outstr;
+	floatbittostr(fbits, ptr);
 	puts_no_output(outstr);
 }
 
 
 /** Convert a double (64-bit float-point value) into a literal binary string and print the string */
 LIB_FUNC void printdoublebit(const double dbits) {
-	register uint8_t k = 0;
-	register const uint64_t bits = DBL_TO_U64(dbits);
 	align128 char outstr[65] = { 0 };
-	for (register uint8_t i = 64; ((i != 0) && k != 65); i--, k++) {
-		if (test_bit64(bits, (uint8_t)i, (uint8_t)1U)) { outstr[k] = '1'; }
-		else { outstr[k] = '0'; }
-	}
+	char* restrict ptr = (char*)&outstr;
+	doublebittostr(dbits, ptr);
 	puts_no_output(outstr);
 }
 
@@ -31120,13 +31153,9 @@ LIB_FUNC void printdoublebit(const double dbits) {
 #if SUPPORTS_COMPLEX
 /** Convert a complex float (64-bit value) into a literal binary string and print the string */
 LIB_FUNC void printcfloatbit(const complex_float cbits) {
-	register uint8_t k = 0;
-	register const uint64_t bits = CFLT_TO_U64(cbits);
 	align128 char outstr[65] = { 0 };
-	for (register uint8_t i = 64; ((i != 0) && k != 65); i--, k++) {
-		if (test_bit64(bits, (uint8_t)i, (uint8_t)1U)) { outstr[k] = '1'; }
-		else { outstr[k] = '0'; }
-	}
+	char* restrict ptr = outstr;
+	cfloatbittostr(cbits, ptr);
 	puts_no_output(outstr);
 }
 #endif
@@ -31135,13 +31164,9 @@ LIB_FUNC void printcfloatbit(const complex_float cbits) {
 #if SUPPORTS_DECIMAL32
 /** Convert a decimal32 into a literal bit string and print the string */
 LIB_FUNC void printdecimal32bit(const decimal32 dbits) {
-	register uint8_t k = 0;
-	register const uint32_t bits = (uint32_t)DEC32_TO_U32(dbits);
 	align64 char outstr[33] = { 0 };
-	for (register uint8_t i = 32; ((i != 0) && k != 33); i--, k++) {
-		if (test_bit32(bits, (uint8_t)i, (uint8_t)1U)) { outstr[k] = '1'; }
-		else { outstr[k] = '0'; }
-	}
+	char* restrict ptr = outstr;
+	decimal32bittostr(dbits, ptr);
 	puts_no_output(outstr);
 }
 #endif
@@ -31150,13 +31175,9 @@ LIB_FUNC void printdecimal32bit(const decimal32 dbits) {
 #if SUPPORTS_DECIMAL64
 /** Convert a decimal64 into a literal bit string and print the string */
 LIB_FUNC void printdecimal64bit(const decimal64 dbits) {
-	register uint8_t k = 0;
-	register const uint64_t bits = (uint64_t)DEC64_TO_U64(dbits);
 	align128 char outstr[65] = { 0 };
-	for (register uint8_t i = 64; ((i != 0) && k != 65); i--, k++) {
-		if (test_bit64(bits, (uint8_t)i, (uint8_t)1U)) { outstr[k] = '1'; }
-		else { outstr[k] = '0'; }
-	}
+	char* restrict ptr = outstr;
+	decimal64bittostr(dbits, ptr);
 	puts_no_output(outstr);
 }
 #endif
@@ -32712,57 +32733,55 @@ LIB_FUNC NONNULL int dtoe(const double n, char* restrict res, const int32_t prec
 
 /** Convert double to string; return the number of characters written to `buf`; if an error occurred, return -1 */
 LIB_FUNC NOLIBCALL int dtostr(const double num, char* restrict buf, const size_t width, const size_t prec, const char format) {
-	register double d = num;
-	double_shape_t num_shape = { .value = d };
+	double_shape_t num_shape = { .value = num };
 	// INF & NAN
 	if (format == 'E' || format == 'F' || format == 'G') {  // Uppercase
-		if (__isinf(d) == 1) { return copystring(buf, 3, "INF"); }
-		else if (__isinf(d) == -1) { return copystring(buf, 4, "-INF"); }
-		else if (__isnan(d) && (num_shape.uword & 1) == 1) { return copystring(buf, 4, "-NAN"); }
-		else if (__isnan(d)) { return copystring(buf, 3, "NAN"); }
+		if (__isinf(num_shape.value) == 1) { return copystring(buf, 3, "INF"); }
+		else if (__isinf(num_shape.value) == -1) { return copystring(buf, 4, "-INF"); }
+		else if (__isnan(num_shape.value) && (num_shape.uword & 1) == 1) { return copystring(buf, 4, "-NAN"); }
+		else if (__isnan(num_shape.value)) { return copystring(buf, 3, "NAN"); }
 	} else {  // Lowercase
-		if (__isinf(d) == 1) { return copystring(buf, 4, "inf"); }
-		else if (__isinf(d) == -1) { return copystring(buf, 5, "-inf"); }
-		else if (__isnan(d) && (num_shape.uword & 1) == 1) { return copystring(buf, 5, "-nan"); }
-		else if (__isnan(d)) { return copystring(buf, 4, "nan"); }
+		if (__isinf(num_shape.value) == 1) { return copystring(buf, 4, "inf"); }
+		else if (__isinf(num_shape.value) == -1) { return copystring(buf, 5, "-inf"); }
+		else if (__isnan(num_shape.value) && (num_shape.uword & 1) == 1) { return copystring(buf, 5, "-nan"); }
+		else if (__isnan(num_shape.value)) { return copystring(buf, 4, "nan"); }
 	}
 	// Values equal to or less than 0.0
 	const size_t buf_start = (size_t)buf;
-	size_t _prec = prec;
-	if ((d == 0.0) || (d == -0.0)) {  // 0.0
+	uint32_t _prec = (uint32_t)prec;
+	if ((num_shape.value == 0.0) || (num_shape.value == -0.0)) {  // 0.0
 		if (PREDICT_UNLIKELY(num_shape.sword < 0)) { _prec = ((_prec == 0) ? 2 : _prec + 3); }
 		else { _prec = ((_prec == 0) ? 1 : _prec + 2); }
-		unsigned int j = 0;
-		if (num_shape.sword < 0) { buf[0] = '-'; ++j; }
+		uint32_t j = 0;
+		if (num_shape.ieee.negative) { buf[0] = '-'; ++j; }
 		for (; j < _prec; ++j) { buf[j] = '0'; }
 		buf[((buf[0] == '0') ? 1 : 2)] = '.';
 		buf[j] = 0;
 		return (int)j;
-	} else if (d < 0.0) { d = -d; *buf = '-'; ++buf; }  // Add negative sign
+	}
+	if (num_shape.ieee.negative) { num_shape.ieee.negative = 0; *buf = '-'; ++buf; }  // Add negative sign
 	// Add digits before decimal-point
-	if (d >= 1.0) {
-		const uint64_t value = (uint64_t)d;
+	if (num_shape.value >= 1.0) {
+		const uint64_t value = (uint64_t)num_shape.value;
 		ulltodec(value, buf);
 		buf += strlen(buf);
-		d -= (double)value;
-		num_shape.value = d;
-	} else if (d < 1.0) { *buf = '0'; ++buf; }
+		num_shape.value -= (double)value;
+	} else if (num_shape.value < 1.0) { *buf = '0'; ++buf; }
 	// Extract sign, mantissa, & exponent
-	register const signed long e = (signed long)(((num_shape.uword >> 52) & 0x7ff) - 1023);
-	signed long e10 = 1 + (signed long)(e * (signed long)LOG2_DIV_LOG10);  // log(2)
+	register const int32_t e = (int32_t)(((num_shape.uword >> 52) & 0x7ff) - 1023);
+	const int32_t e10 = 1 + (int32_t)(e * (int32_t)LOG2_DIV_LOG10);  // log(2)
 	// Perform rounding
-	double tmp = 0.5;
-	unsigned int j = 0;
-	if (_prec > 0) { for (; j < _prec; j++) { tmp *= 0.1; } }
-	d += tmp;
+	register double tmp = 0.5;
+	if (_prec > 0) { for (register uint32_t j = 0; j < _prec; j++) { tmp *= 0.1; } }
+	num_shape.value += tmp;
 	if (e10 > 0) {
 		tmp = 10.0;
-		j = (unsigned int)e10;
+		uint32_t j = (uint32_t)e10;
 		while (j > 10) { tmp *= 10000000000.0; j -= 10; }
 		while (j > 1) { tmp *= 10; --j; }
-		while (tmp > 0.9) {
-			register char _digit = (char)(d / tmp);
-			d -= (_digit * tmp);
+		while (tmp > 0.9000000) {
+			register char _digit = (char)(num_shape.value / tmp);
+			num_shape.value -= (_digit * tmp);
 			tmp /= 10.0;
 		}
 	} else { tmp = 0.1; }
@@ -32771,14 +32790,14 @@ LIB_FUNC NOLIBCALL int dtostr(const double num, char* restrict buf, const size_t
 	if (_prec) {
 		*buf = '.';
 		++buf;
-		const size_t cur_len = (size_t)(buf - buf_start - _prec);
+		const size_t cur_len = (size_t)(buf - buf_start - (size_t)_prec);
 		_width = (cur_len > _width ? 0 : (_width - cur_len));
 		// Add digits and (if needed) trailing zeros
 		while (_prec > 0) {
-			register char _digit = (char)(d / tmp);
+			register char _digit = (char)(num_shape.value / tmp);
 			*buf = (char)(_digit + '0');
 			++buf;
-			d -= _digit * tmp;
+			num_shape.value -= _digit * tmp;
 			tmp /= 10.0;
 			--_prec;
 		}
