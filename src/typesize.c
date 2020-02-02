@@ -4,7 +4,7 @@
 /**
 @brief Print the size and alignment of each datatype
 @file typesize.c
-@version 2020.01.27
+@version 2020.02.01
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -56,6 +56,10 @@ noreturn int main(void) {
 #   endif
 	(void)fprintf(stdout, "Double:\t\t\t\t%lu\t%lu\n", (ulint)sizeof(double), (ulint)alignof(double));
 	(void)fprintf(stdout, "Long Double:\t\t\t%lu\t%lu\n", (ulint)sizeof(long double), (ulint)alignof(long double));
+	(void)fprintf(stdout, "uintptr_t:\t\t\t%lu\t%lu\n", (ulint)sizeof(uintptr_t), (ulint)alignof(uintptr_t));
+	const ulint ptrsize = (ulint)sizeof(char*);
+	(void)fprintf(stdout, "Char*:\t\t\t\t%lu\t%lu\n", (ulint)alignof(char*), ptrsize);
+	(void)fprintf(stdout, "&Address:\t\t\t%lu\t%lu\n", (ulint)sizeof(&ptrsize), (ulint)alignof(&ptrsize));
 	// Decimal-Float Datatypes
 	(void)puts(DIVIDER);
 #   if SUPPORTS_DECIMAL_FLOATS
@@ -77,9 +81,21 @@ noreturn int main(void) {
 #   endif
 	// Miscellaneous Datatypes
 	(void)puts(DIVIDER);
+	(void)fprintf(stdout, "int_least8_t:\t\t\t%lu\t%lu\n", (ulint)sizeof(int_least8_t), (ulint)alignof(int_least8_t));
+	(void)fprintf(stdout, "int_least16_t:\t\t\t%lu\t%lu\n", (ulint)sizeof(int_least16_t), (ulint)alignof(int_least16_t));
+	(void)fprintf(stdout, "int_least32_t:\t\t\t%lu\t%lu\n", (ulint)sizeof(int_least32_t), (ulint)alignof(int_least32_t));
+	(void)fprintf(stdout, "int_least64_t:\t\t\t%lu\t%lu\n", (ulint)sizeof(int_least64_t), (ulint)alignof(int_least64_t));
+	(void)fprintf(stdout, "int_fast16_t:\t\t\t%lu\t%lu\n", (ulint)sizeof(int_fast16_t), (ulint)alignof(int_fast16_t));
+	(void)fprintf(stdout, "int_fast32_t:\t\t\t%lu\t%lu\n", (ulint)sizeof(int_fast32_t), (ulint)alignof(int_fast32_t));
+	(void)fprintf(stdout, "int_fast64_t:\t\t\t%lu\t%lu\n", (ulint)sizeof(int_fast64_t), (ulint)alignof(int_fast64_t));
+	(void)fprintf(stdout, "fpmax_t:\t\t\t%lu\t%lu\n", (ulint)sizeof(fpmax_t), (ulint)alignof(fpmax_t));
+	(void)fprintf(stdout, "fpu_control_t:\t\t\t%lu\t%lu\n", (ulint)sizeof(fpu_control_t), (ulint)alignof(fpu_control_t));
 	(void)fprintf(stdout, "_Bool:\t\t\t\t%lu\t%lu\n", (ulint)sizeof(_Bool), (ulint)alignof(_Bool));
 	(void)fprintf(stdout, "va_list:\t\t\t%lu\t%lu\n", (ulint)sizeof(va_list), (ulint)alignof(va_list));
 	(void)fprintf(stdout, "size_t:\t\t\t\t%lu\t%lu\n", (ulint)sizeof(size_t), (ulint)alignof(size_t));
+	(void)fprintf(stdout, "WORD:\t\t\t\t%lu\t%lu\n", (ulint)sizeof(WORD), (ulint)alignof(WORD));
+	(void)fprintf(stdout, "DWORD:\t\t\t\t%lu\t%lu\n", (ulint)sizeof(DWORD), (ulint)alignof(DWORD));
+	(void)fprintf(stdout, "RuneType:\t\t\t%lu\t%lu\n", (ulint)sizeof(RuneType), (ulint)alignof(RuneType));
 	(void)fprintf(stdout, "wchar_t:\t\t\t%lu\t%lu\n", (ulint)sizeof(wchar_t), (ulint)alignof(wchar_t));
 	(void)fprintf(stdout, "wint_t:\t\t\t\t%lu\t%lu\n", (ulint)sizeof(wint_t), (ulint)alignof(wint_t));
 	(void)fprintf(stdout, "wcinfo_t:\t\t\t%lu\t%lu\n", (ulint)sizeof(wcinfo_t), (ulint)alignof(wcinfo_t));
@@ -120,12 +136,6 @@ noreturn int main(void) {
 	(void)fprintf(stdout, "sigval_t:\t\t\t%lu\t%lu\n", (ulint)sizeof(sigval_t), (ulint)alignof(sigval_t));
 	(void)fprintf(stdout, "struct sigaction:\t\t%lu\t%lu\n", (ulint)sizeof(struct sigaction), (ulint)alignof(struct sigaction));
 	(void)fprintf(stdout, "struct sigcontext:\t\t%lu\t%lu\n", (ulint)sizeof(struct sigcontext), (ulint)alignof(struct sigcontext));
-	// Address Datatypes
-	(void)puts(DIVIDER);
-	(void)fprintf(stdout, "uintptr_t:\t\t\t%lu\t%lu\n", (ulint)sizeof(uintptr_t), (ulint)alignof(uintptr_t));
-	const ulint ptrsize = (ulint)sizeof(char*);
-	(void)fprintf(stdout, "Char*:\t\t\t\t%lu\t%lu\n", (ulint)alignof(char*), ptrsize);
-	(void)fprintf(stdout, "&Address:\t\t\t%lu\t%lu\n", (ulint)sizeof(&ptrsize), (ulint)alignof(&ptrsize));
 	// Structure Datatypes
 	(void)puts(DIVIDER);
 	(void)fprintf(stdout, "FILE:\t\t\t\t%lu\t%lu\n", (ulint)sizeof(FILE), (ulint)alignof(FILE));
@@ -147,17 +157,29 @@ noreturn int main(void) {
 	(void)fprintf(stdout, "V4QItype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V4QItype), (ulint)alignof(V4QItype));
 	(void)fprintf(stdout, "V8QItype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V8QItype), (ulint)alignof(V8QItype));
 	(void)fprintf(stdout, "V16QItype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V16QItype), (ulint)alignof(V16QItype));
+	(void)fprintf(stdout, "V32QItype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V32QItype), (ulint)alignof(V32QItype));
+	(void)fprintf(stdout, "V64QItype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V64QItype), (ulint)alignof(V64QItype));
 	(void)fprintf(stdout, "V2HItype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V2HItype), (ulint)alignof(V2HItype));
 	(void)fprintf(stdout, "V4HItype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V4HItype), (ulint)alignof(V4HItype));
 	(void)fprintf(stdout, "V8HItype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V8HItype), (ulint)alignof(V8HItype));
+	(void)fprintf(stdout, "V16HItype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V16HItype), (ulint)alignof(V16HItype));
+	(void)fprintf(stdout, "V32HItype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V32HItype), (ulint)alignof(V32HItype));
 	(void)fprintf(stdout, "V2SItype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V2SItype), (ulint)alignof(V2SItype));
 	(void)fprintf(stdout, "V4SItype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V4SItype), (ulint)alignof(V4SItype));
+	(void)fprintf(stdout, "V8SItype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V8SItype), (ulint)alignof(V8SItype));
+	(void)fprintf(stdout, "V16SItype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V16SItype), (ulint)alignof(V16SItype));
+	(void)fprintf(stdout, "V2DItype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V2DItype), (ulint)alignof(V2DItype));
 	(void)fprintf(stdout, "V4DItype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V4DItype), (ulint)alignof(V4DItype));
+	(void)fprintf(stdout, "V8DItype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V8DItype), (ulint)alignof(V8DItype));
 	(void)fprintf(stdout, "V2SFtype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V2SFtype), (ulint)alignof(V2SFtype));
 	(void)fprintf(stdout, "V4SFtype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V4SFtype), (ulint)alignof(V4SFtype));
 	(void)fprintf(stdout, "V8SFtype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V8SFtype), (ulint)alignof(V8SFtype));
+	(void)fprintf(stdout, "V16SFtype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V16SFtype), (ulint)alignof(V16SFtype));
 	(void)fprintf(stdout, "V2DFtype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V2DFtype), (ulint)alignof(V2DFtype));
 	(void)fprintf(stdout, "V4DFtype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V4DFtype), (ulint)alignof(V4DFtype));
+	(void)fprintf(stdout, "V8DFtype:\t\t\t%lu\t%lu\n", (ulint)sizeof(V8DFtype), (ulint)alignof(V8DFtype));
+	(void)fprintf(stdout, "__m64:\t\t\t\t%lu\t%lu\n", (ulint)sizeof(__m64), (ulint)alignof(__m64));
+	(void)fprintf(stdout, "__m64_u:\t\t\t%lu\t%lu\n", (ulint)sizeof(__m64_u), (ulint)alignof(__m64_u));
 #   endif
 	// Machine Datatypes
 	(void)puts(DIVIDER);
@@ -182,6 +204,28 @@ noreturn int main(void) {
 	(void)fprintf(stdout, "DFtype:\t\t\t\t%lu\t%lu\n", (ulint)sizeof(DFtype), (ulint)alignof(DFtype));
 #   if SUPPORTS_XFTYPE
 	(void)fprintf(stdout, "XFtype:\t\t\t\t%lu\t%lu\n", (ulint)sizeof(XFtype), (ulint)alignof(XFtype));
+#   endif
+#   if SUPPORTS_TFTYPE
+	(void)fprintf(stdout, "TFtype:\t\t\t\t%lu\t%lu\n", (ulint)sizeof(TFtype), (ulint)alignof(TFtype));
+#   endif
+#   if SUPPORTS_DECIMAL_FLOATS
+	(void)fprintf(stdout, "SDtype:\t\t\t\t%lu\t%lu\n", (ulint)sizeof(SDtype), (ulint)alignof(SDtype));
+	(void)fprintf(stdout, "DDtype:\t\t\t\t%lu\t%lu\n", (ulint)sizeof(DDtype), (ulint)alignof(DDtype));
+#   endif
+#   if SUPPORTS_TDTYPE
+	(void)fprintf(stdout, "TDtype:\t\t\t\t%lu\t%lu\n", (ulint)sizeof(TDtype), (ulint)alignof(TDtype));
+#   endif
+#   if SUPPORTS_SCTYPE
+	(void)fprintf(stdout, "SCtype:\t\t\t\t%lu\t%lu\n", (ulint)sizeof(SCtype), (ulint)alignof(SCtype));
+#   endif
+#   if SUPPORTS_DCTYPE
+	(void)fprintf(stdout, "DCtype:\t\t\t\t%lu\t%lu\n", (ulint)sizeof(DCtype), (ulint)alignof(DCtype));
+#   endif
+#   if SUPPORTS_XCTYPE
+	(void)fprintf(stdout, "XCtype:\t\t\t\t%lu\t%lu\n", (ulint)sizeof(XCtype), (ulint)alignof(XCtype));
+#   endif
+#   if SUPPORTS_TCTYPE
+	(void)fprintf(stdout, "TCtype:\t\t\t\t%lu\t%lu\n", (ulint)sizeof(TCtype), (ulint)alignof(TCtype));
 #   endif
 	(void)fprintf(stdout, "PTRtype:\t\t\t%lu\t%lu\n", (ulint)sizeof(PTRtype), (ulint)alignof(PTRtype));
 #   if SUPPORTS_COMPLEX_INT
