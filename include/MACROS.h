@@ -13337,6 +13337,13 @@ typedef struct Float96 {
 } Float96;
 
 
+#if IS_LITTLE_ENDIAN
+struct ld_half { uint64_t lo, hi; };
+#else
+struct ld_half { uint64_t hi, lo; };
+#endif
+
+
 #if SUPPORTS_LONG_DOUBLE
 
 
@@ -13350,6 +13357,7 @@ typedef union long_double_shape {
 	long double value;
 	uint8_t bytes[16];
 	uint16_t octets[8];
+	struct ld_half i2;
 #   if SUPPORTS_INT128
 	int128_t sqword;
 	uint128_t uqword;
@@ -13370,7 +13378,15 @@ typedef union long_double_shape {
 #      error   "Unsupported system endian (long_double_shape_t)!"
 #   endif
 	float f[4];
+	float_shape_t flts[4];
 	double d[2];
+	double_shape_t dbls[2];
+#   if SUPPORTS_DECIMAL32
+	decimal32 dec32[4];
+#   endif
+#   if SUPPORTS_DECIMAL64
+	decimal64 dec64[2];
+#   endif
 #   if SUPPORTS_DECIMAL128
 	decimal128 dec128word;
 #   endif
@@ -13471,9 +13487,24 @@ typedef union long_double_shape {
 
 /** A union that permits conversions between a double and various datatypes */
 typedef union float128_shape {
-	float128 value;
+	double_shape_t dbls[2];
+	float_shape_t flts[4];
+	float128 flt128;
+	long double value;
 	uint8_t bytes[16];
 	uint16_t octets[8];
+	struct ld_half i2;
+	struct ld_parts {
+#   if IS_LITTLE_ENDIAN
+		uint64_t lo;
+		uint32_t m;
+		uint16_t top, se;
+#   else
+		uint16_t se, top;
+		uint32_t m;
+		uint64_t lo;
+#   endif
+	} i;
 #   if SUPPORTS_INT128
 	int128_t shexlet;
 	uint128_t uhexlet;
@@ -13489,16 +13520,15 @@ typedef union float128_shape {
 	struct float128_shape_sparts { int64_t lsw, msw; } sparts;
 	struct float128_shape_parts { uint64_t lsw, msw; } parts;
 #   endif
+#   if SUPPORTS_DECIMAL32
+	decimal32 dec32[4];
+#   endif
+#   if SUPPORTS_DECIMAL64
+	decimal64 dec64[2];
+#   endif
 #   if SUPPORTS_DECIMAL128
 	decimal128 dec128word;
 #   endif
-} float128_shape_t;
-
-
-/** IBM extended format for long double; This is used to access various parts of a long double */
-typedef union ibm_extended_long_double {
-	long double e;
-	union double_shape value[2];
 	struct IEEEl_bits {
 #   if IS_LITTLE_ENDIAN
 		uint64_t manl:64;
@@ -13513,7 +13543,8 @@ typedef union ibm_extended_long_double {
 #   endif
 	} bits;
 	struct ieee854_nan_bits ieee_nan;
-} IBM_Long_Double;
+} float128_shape_t;
+#   define ldshape_t   float128_shape_t
 #   define LDBL_NBIT   (0)
 #   define mask_nbit_l(x)   ((void)0)
 #   define LDBL_MANH_SIZE   (48)
@@ -13521,33 +13552,32 @@ typedef union ibm_extended_long_double {
 #   define LDBL_TO_ARRAY32(LDBL_NUM, val32)   do { (val32)[0] = (uint32_t)(LDBL_NUM).bits.manl; (val32)[1] = (uint32_t)(LDBL_NUM).bits.manh; } while (0x0)
 
 
-typedef union ldshape {
-	long double f;
-	struct ld_parts {
-#   if IS_LITTLE_ENDIAN
-		uint64_t lo;
-		uint32_t m;
-		uint16_t top, se;
-#   else
-		uint16_t se, top;
-		uint32_t m;
-		uint64_t lo;
-#   endif
-	} i;
-#   if IS_LITTLE_ENDIAN
-	struct ld_half { uint64_t lo, hi; } i2;
-#   else
-	struct ld_half { uint64_t hi, lo; } i2;
-#   endif
-} ldshape_t;
-
-
 #elif IS_LDBL_X87
 
 
 /** IEEE2bits for long double; This is used to access various parts of a long double */
 typedef union IEEEl2bits {
+	long double value;
 	long double e;
+	double dbl;
+	float_shape_t flts[3];
+	uint8_t bytes[12];
+	uint16_t octets[6];
+#   if SUPPORTS_DECIMAL32
+	decimal32 dec32[3];
+#   endif
+#   if SUPPORTS_DECIMAL64
+	decimal64 dec64;
+#   endif
+	struct ld_parts {
+#   if IS_LITTLE_ENDIAN
+		uint64_t m;
+		uint16_t se;
+#   else
+		uint16_t se;
+		uint64_t m;
+#   endif
+	} i;
 	struct IEEEl_bits {
 #   if IS_LITTLE_ENDIAN
 		unsigned int manl:32;
@@ -13563,25 +13593,11 @@ typedef union IEEEl2bits {
 		unsigned int manl:32;
 #   endif
 	} bits;
-} alignXF   IEEEl2bits;
+} alignXF   ldshape_t;
 #   define mask_nbit_l(x)   ((x).bits.manh &= 0x7fffffff)
 #   define LDBL_MANH_SIZE   (32)
 #   define LDBL_MANL_SIZE   (32)
 #   define LDBL_TO_ARRAY32(LDBL_NUM, val32)   do { (val32)[0] = (uint32_t)(LDBL_NUM).bits.manl; (val32)[1] = (uint32_t)(LDBL_NUM).bits.manh; } while (0x0)
-
-
-typedef union ldshape {
-	long double f;
-	struct ld_parts {
-#   if IS_LITTLE_ENDIAN
-		uint64_t m;
-		uint16_t se;
-#   else
-		uint16_t se;
-		uint64_t m;
-#   endif
-	} i;
-} ldshape_t;
 
 
 #elif LDBL_EQ_DBL
@@ -13590,7 +13606,14 @@ typedef union ldshape {
 /** IEEE2bits for long double; This is used to access various parts of a long double */
 typedef union IEEEl2bits {
 	double d;
-	long double e;
+	long double value;
+	struct ld_half i2;
+#   if SUPPORTS_DECIMAL32
+	decimal32 dec32[4];
+#   endif
+#   if SUPPORTS_DECIMAL64
+	decimal64 dec64[2];
+#   endif
 	struct s754_bits {
 #   if IS_BIG_ENDIAN
 		unsigned int sign:1;
@@ -13645,16 +13668,6 @@ typedef union IEEEl2bits {
 		unsigned int negative:1;
 #   endif
 	} ieee_nan;
-} IEEEl2bits;
-#   define LDBL_NBIT   (0)
-#   define mask_nbit_l(x)   ((void)0)
-#   define LDBL_MANH_SIZE   (20)
-#   define LDBL_MANL_SIZE   (32)
-#   define LDBL_TO_ARRAY32(LDBL_NUM, val32)   do { (val32)[0] = (uint32_t)(LDBL_NUM).bits.manl; (val32)[1] = (uint32_t)(LDBL_NUM).bits.manh; } while (0x0)
-
-
-typedef union ldshape {
-	long double f;
 	struct ld_parts {
 #   if IS_LITTLE_ENDIAN
 		unsigned int lo:32;
@@ -13668,12 +13681,12 @@ typedef union ldshape {
 		unsigned int lo:32;
 #   endif
 	} i;
-#   if IS_LITTLE_ENDIAN
-	struct ld_half { uint32_t lo, hi; } i2;
-#   else
-	struct ld_half { uint32_t hi, lo; } i2;
-#   endif
 } ldshape_t;
+#   define LDBL_NBIT   (0)
+#   define mask_nbit_l(x)   ((void)0)
+#   define LDBL_MANH_SIZE   (20)
+#   define LDBL_MANL_SIZE   (32)
+#   define LDBL_TO_ARRAY32(LDBL_NUM, val32)   do { (val32)[0] = (uint32_t)(LDBL_NUM).bits.manl; (val32)[1] = (uint32_t)(LDBL_NUM).bits.manh; } while (0x0)
 
 
 #else
@@ -13685,13 +13698,21 @@ typedef union ldshape {
 /** A union that permits conversions between a float256 and various datatypes */
 typedef union float256_shape {
 	float256 value;
+	uint8_t bytes[32];
+	uint16_t octets[16];
+	uint32_t words[8];
+	double_shape_t value[4];
+	float_shape_t flts[8];
+	float128_shape_t flt128s[2];
+#   if (IS_LITTLE_ENDIAN && SUPPORTS_INT128)
+	struct flt256_half { uint128_t lo, hi; } i2;
+#   else
+	struct flt256_half { uint128_t hi, lo; } i2;
+#   endif
 #   if SUPPORTS_INT256
 	int256_t swhole;
 	uint256_t uwhole;
 #   endif
-	uint8_t bytes[32];
-	uint16_t octets[16];
-	uint32_t words[8];
 #   if ((!defined(__MAVERICK__)) && (IS_BIG_ENDIAN || ((!defined(__VFP_FP__)) && (defined(ARCHARM) || defined(ARM_THUMB)))))
 	struct float256_shape_sparts64 { int64_t w0, w1, w2, w3; } sparts64;
 	struct float256_shape_uparts64 { uint64_t w0, w1, w2, w3; } uparts64;
@@ -13707,6 +13728,15 @@ typedef union float256_shape {
 	struct float256_shape_parts { uint128_t lsw, msw; } parts;
 #      endif
 #   endif
+#   if SUPPORTS_DECIMAL32
+	decimal32 dec32[8];
+#   endif
+#   if SUPPORTS_DECIMAL64
+	decimal64 dec64[4];
+#   endif
+#   if SUPPORTS_DECIMAL128
+	decimal128 dec128[2];
+#   endif
 } float256_shape_t;
 #endif
 
@@ -13721,17 +13751,18 @@ typedef union complex_float_shape {
 	uint16_t octets[4];
 	int64_t sword;
 	uint64_t uword;
+	double_shape_t dbl;
 #   if ((!defined(__MAVERICK__)) && (IS_BIG_ENDIAN || ((!defined(__VFP_FP__)) && (defined(ARCHARM) || defined(ARM_THUMB)))))
 	struct complex_float_shape_sparts { int32_t re, im; } sparts;
 	struct complex_float_shape_uparts { uint32_t re, im; } uparts;
-	struct complex_float_shape_floats { float re, im; } floats;
+	struct complex_float_shape_floats { float_shape_t re, im; } floats;
 #      if SUPPORTS_DECIMAL_FLOATS
 	struct complex_float_shape_decfloats { decimal32 re, im; } decfloats;
 #      endif
 #   else
 	struct complex_float_shape_sparts { int32_t im, re; } sparts;
 	struct complex_float_shape_uparts { uint32_t im, re; } uparts;
-	struct complex_float_shape_floats { float im, re; } floats;
+	struct complex_float_shape_floats { float_shape_t im, re; } floats;
 #      if SUPPORTS_DECIMAL_FLOATS
 	struct complex_float_shape_decfloats { decimal32 im, re; } decfloats;
 #      endif
@@ -13746,6 +13777,9 @@ typedef union complex_double_shape {
 	uint16_t octets[8];
 	int32_t swords[4];
 	uint32_t uwords[4];
+	float_shape_t flts[4];
+	double_shape_t dbls[2];
+	long_double_shape_t ldbl;
 #   if SUPPORTS_INT128
 	int128_t swhole;
 	uint128_t uwhole;
@@ -13753,14 +13787,14 @@ typedef union complex_double_shape {
 #   if ((!defined(__MAVERICK__)) && (IS_BIG_ENDIAN || ((!defined(__VFP_FP__)) && (defined(ARCHARM) || defined(ARM_THUMB)))))
 	struct complex_double_shape_sparts { int64_t re, im; } sparts;
 	struct complex_double_shape_uparts { uint64_t re, im; } uparts;
-	struct complex_double_shape_doubles { double re, im; } doubles;
+	struct complex_double_shape_doubles { double_shape_t re, im; } doubles;
 #      if SUPPORTS_DECIMAL_FLOATS
 	struct complex_double_shape_decfloats { decimal64 re, im; } decfloats;
 #      endif
 #   else
 	struct complex_double_shape_sparts { int64_t im, re; } sparts;
 	struct complex_double_shape_uparts { uint64_t im, re; } uparts;
-	struct complex_double_shape_doubles { double im, re; } doubles;
+	struct complex_double_shape_doubles { double_shape_t im, re; } doubles;
 #      if SUPPORTS_DECIMAL_FLOATS
 	struct complex_double_shape_decfloats { decimal64 im, re; } decfloats;
 #      endif
@@ -13781,6 +13815,8 @@ typedef union complex_long_double_shape {
 	uint32_t uwords[8];
 	int64_t sdwords[4];
 	uint64_t udwords[4];
+	float_shape_t flts[8];
+	double_shape_t dbls[4];
 #   if SUPPORTS_INT256
 	int256_t swhole;
 	uint256_t uwhole;
@@ -13790,7 +13826,7 @@ typedef union complex_long_double_shape {
 	struct complex_long_double_shape_sparts { int128_t re, im; } sparts;
 	struct complex_long_double_shape_uparts { uint128_t re, im; } uparts;
 #      endif
-	struct complex_long_double_shape_longdoubles { long double re, im; } longdoubles;
+	struct complex_long_double_shape_longdoubles { long_double_shape_t re, im; } longdoubles;
 #      if SUPPORTS_DECIMAL128
 	struct complex_long_double_shape_decfloats { decimal128 re, im; } decfloats;
 #      endif
@@ -13799,7 +13835,7 @@ typedef union complex_long_double_shape {
 	struct complex_long_double_shape_sparts { int128_t im, re; } sparts;
 	struct complex_long_double_shape_uparts { uint128_t im, re; } uparts;
 #      endif
-	struct complex_long_double_shape_longdoubles { long double im, re; } longdoubles;
+	struct complex_long_double_shape_longdoubles { long_double_shape_t im, re; } longdoubles;
 #      if SUPPORTS_DECIMAL128
 	struct complex_long_double_shape_decfloats { decimal128 im, re; } decfloats;
 #      endif

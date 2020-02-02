@@ -3500,16 +3500,16 @@ LIB_FUNC void ldbl_unpack_ppc(const long double l, double* restrict a, double* r
 
 /** Pack/Unpack/Cononicalize and find the nearbyint of long double implemented as double double */
 LIB_FUNC MATH_FUNC long double default_ldbl_pack(const double a, const double aa) {
-	const union ibm_extended_long_double u = { .value[0].value = a, .value[1].value = aa };
-	return u.e;
+	const float128_shape_t u = { .dbls[0].value = a, .dbls[1].value = aa };
+	return u.value;
 }
 #      define ldbl_pack(a, aa)   default_ldbl_pack((a), (aa))
 
 
 LIB_FUNC void default_ldbl_unpack(const long double l, double* restrict a, double* restrict aa) {
-	const union ibm_extended_long_double u = { .e = l };
-	*a = u.value[0].value;
-	*aa = u.value[1].value;
+	const float128_shape_t u = { .value = l };
+	*a = u.dbls[0].value;
+	*aa = u.dbls[1].value;
 }
 #      define ldbl_unpack(l, a, aa)   default_ldbl_unpack((l), (a), (aa))
 
@@ -4525,54 +4525,53 @@ LIB_FUNC MATH_FUNC long double expl(const long double num) {
 
 LIB_FUNC MATH_FUNC float exp2f(const float num) {
 	float x = num;
-	union __union_exp2f_float { float f; uint32_t i; } u = { x };
-	const uint32_t ix = u.i & 0x7fffffff;
+	float_shape_t u = { .value = x };
+	const uint32_t ix = u.uword & 0x7fffffff;
 	if (ix > 0x42fc0000) {
-		if (u.i >= 0x43000000 && u.i < 0x80000000) {
+		if (u.uword >= 0x43000000 && u.uword < 0x80000000) {
 			x *= 0x1.0P+127F;
 			return x;
-		} else if (u.i >= 0x80000000) {
-			if (u.i >= 0xc3160000 || (u.i & 0xffff)) { FORCE_EVAL(-0x1.0P-149F / x); }
-			if (u.i >= 0xc3160000) { return 0; }
+		} else if (u.uword >= 0x80000000) {
+			if (u.uword >= 0xc3160000 || (u.uword & 0xffff)) { FORCE_EVAL(-0x1.0P-149F / x); }
+			if (u.uword >= 0xc3160000) { return 0; }
 		}
 	} else if (ix <= 0x33000000) { return 1.0F + x; }
-	u.f = x + (0x1.8P+23F / 16);
-	register uint32_t i0 = (uint32_t)u.i;
+	u.value = x + (0x1.8P+23F / 16);
+	register uint32_t i0 = (uint32_t)u.uword;
 	i0 += 16 / 2;
-	const uint32_t k = i0 / 16;
-	union __union_exp2f_double { double f; uint64_t i; } uk = { .i = (uint64_t)(0x3ff + k) << 52 };
+	double_shape_t uk = { .uword = (uint64_t)(0x3ff + (uint32_t)(i0 / 16)) << 52 };
 	i0 &= 16 - 1;
-	u.f -= (0x1.8P+23F / 16);
-	const double z = x - u.f;
+	u.value -= (0x1.8P+23F / 16);
+	const double z = x - u.value;
 	double r = exp2f_exp2ft[i0];
 	double t = r * z;
 	r = r + t * (0x1.62e430P-1 + z * 0x1.ebfbe0P-3) + t * (z * z) * (0x1.c6b348P-5 + z * 0x1.3b2c9cP-7);
-	return (float)(r * uk.f);
+	return (float)(r * uk.value);
 }
 
 
 LIB_FUNC MATH_FUNC double exp2(const double num) {
 	double x = num;
-	union __union_exp2_float { double f; uint64_t i; } u = { x };
-	const uint32_t ix = ((u.i >> 32) & 0x7fffffff);
+	double_shape_t u = { .value = x };
+	const uint32_t ix = ((u.uword >> 32) & 0x7fffffff);
 	if (ix >= 0x408ff000) {
-		if (ix >= 0x40900000 && u.i >> 63 == 0) {
+		if (ix >= 0x40900000 && u.uword >> 63 == 0) {
 			x *= 0x1.0P+1023;
 			return x;
 		} else if (ix >= 0x7ff00000) { return -1 / x; }
-		else if (u.i >> 63) {
+		else if (u.uword >> 63) {
 			if (x <= -1075 || x - 0x1.0P+52 + 0x1.0P+52 != x) { FORCE_EVAL((-0x1.0P-149 / x)); }
 			if (x <= -1075) { return 0; }
 		}
 	} else if (ix < 0x3c900000) { return 1.0 + x; }
-	u.f = x + (0x1.8P+52 / 256);
-	uint32_t i0 = (uint32_t)u.i;
+	u.value = x + (0x1.8P+52 / 256);
+	uint32_t i0 = (uint32_t)u.uword;
 	i0 += 256 / 2;
 	union __union_exp2_int32 { uint32_t u; int32_t i; } k = { .u = i0 / 256 * 256 };
 	k.i /= 256;
 	i0 %= 256;
-	u.f -= (0x1.8P+52 / 256);
-	double z = x - u.f;
+	u.value -= (0x1.8P+52 / 256);
+	double z = x - u.value;
 	const double t = exp2_tbl[i0 + i0];
 	z -= exp2_tbl[(i0 + i0) + 1];
 	double r = t + t * z * (0x1.62e42fefa39efP-1 + z * (0x1.ebfbdff82c575P-3 + z * (0x1.c6b08d704a0a6P-5 + z * (0x1.3b2ab88f70400P-7 + z * 0x1.5d88003875c74P-10))));
@@ -4583,7 +4582,7 @@ LIB_FUNC MATH_FUNC double exp2(const double num) {
 #if IS_LDBL_X87
 LIB_FUNC MATH_FUNC long double exp2l(const long double num) {
 	long double x = num;
-	union ldshape u = { x };
+	ldshape_t u = { .value = x };
 	const int e = u.i.se & 0x7fff;
 	if (e >= 0x3fff + 13) {
 		if (u.i.se >= 0x3fff + 14 && u.i.se >> 15 == 0) { return x * 0x1.0P+16383L; }
@@ -4593,13 +4592,13 @@ LIB_FUNC MATH_FUNC long double exp2l(const long double num) {
 			if (x <= -16446) { return 0; }
 		}
 	} else if (e < 0x3fbf) { return 1 + x; }
-	u.f = x + (0x1.8P+63 / 0x80);
+	u.value = x + (0x1.8P+63 / 0x80);
 	uint32_t i0 = u.i.m + 0x40;
 	union __union_exp2l_int32 {uint32_t u; int32_t i;} k = { .u = i0 / 0x80 * 0x80 };
 	k.i /= 0x80;
 	i0 %= 0x80;
-	u.f -= (0x1.8p63 / 0x80);
-	const long double z = x - u.f;
+	u.value -= (0x1.8p63 / 0x80);
+	const long double z = x - u.value;
 	const long double t_hi = exp2l_tbl[i0 + i0];
 	const long double t_lo = exp2l_tbl[(i0 + i0) + 1];
 	const long double r = t_lo + (t_hi + t_lo) * z * ((0x1.62e42fefa39efP-1) + z * ((0x1.ebfbdff82c58fP-3) + z * ((0x1.c6b08d7049faP-5) + z * ((0x1.3b2ab6fba4da5P-7) + z * ((0x1.5d8804780a736P-10) + z * (0x1.430918835e33dP-13)))))) + t_hi;
@@ -4608,7 +4607,7 @@ LIB_FUNC MATH_FUNC long double exp2l(const long double num) {
 #elif LDBL_EQ_FLOAT128
 LIB_FUNC MATH_FUNC long double exp2l(const long double num) {
 	long double x = num;
-	union ldshape u = { x };
+	ldshape_t u = { .value = x };
 	const int e = u.i.se & 0x7fff;
 	if (e >= 0x3fff + 14) {
 		if (u.i.se >= (0x3fff + 15) && u.i.se >> 15 == 0) { return x * 0x1.0P+16383L; }
@@ -4618,13 +4617,13 @@ LIB_FUNC MATH_FUNC long double exp2l(const long double num) {
 			if (x <= -16446) { return 0; }
 		}
 	} else if (e < 0x3fff - 114) { return 1 + x; }
-	u.f = x + (0x1.8P+112 / 0x80);
+	u.value = x + (0x1.8P+112 / 0x80);
 	uint32_t i0 = (uint32_t)(u.i2.lo + 0x40);
 	union __union_exp2l_int32 { uint32_t u; int32_t i; } k = { .u = i0 / 0x80 * 0x80 };
 	k.i /= 0x80;
 	i0 %= 0x80;
-	u.f -= (0x1.8P+112 / 0x80);
-	long double z = x - u.f;
+	u.value -= (0x1.8P+112 / 0x80);
+	long double z = x - u.value;
 	const long double t = exp2l_tbl[i0];
 	z -= exp2l_eps[i0];
 	const long double r = t + t * z * (0x1.62e42fefa39ef35793c7673007e6P-1L + z * (0x1.ebfbdff82c58ea86f16b06ec9736P-3L + z * (0x1.c6b08d704a0bf8b33a762bad3459P-5L + z * (0x1.3b2ab6fba4e7729ccbbe0b4f3fc2P-7L + z * (0x1.5d87fe78a67311071dee13fd11d9P-10L + z * (0x1.430912f86c7876f4b663b23c5fe5P-13L + z * ((double)(0x1.ffcbfc588b041P-17) + z * ((double)(0x1.62c0223a5c7c7P-20) + z * ((double)(0x1.b52541ff59713P-24) + z * (double)(0x1.e4cf56a391e22P-28))))))))));
@@ -4880,8 +4879,8 @@ LIB_FUNC float frexpf(const float num, int* restrict e) {
 	return 0.5F * ret;
 #   else
 	float x = num;
-	union __union_frexpf { float f; uint32_t i; } y = { x };
-	const int ee = (int)((y.i >> 23) & 0xff);
+	float_shape_t y = { .value = x };
+	const int ee = (int)((y.uword >> 23) & 0xff);
 	if (!ee) {
 		if (x) {
 			x = frexpf((x * 0x1.0P+64F), e);
@@ -4890,9 +4889,9 @@ LIB_FUNC float frexpf(const float num, int* restrict e) {
 		return x;
 	} else if (ee == 0xff) { return x; }
 	*e = ee - 0x7e;
-	y.i &= 0x807fffffUL;
-	y.i |= 0x3f000000UL;
-	return y.f;
+	y.uword &= 0x807fffffUL;
+	y.uword |= 0x3f000000UL;
+	return y.value;
 #   endif
 }
 
@@ -4905,8 +4904,8 @@ LIB_FUNC double frexp(const double num, int* restrict e) {
 	return 0.5 * ret;
 #   else
 	double x = num;
-	union __union_frexp { double d; uint64_t i; } y = { x };
-	const int ee = (int)((y.i >> 52) & 0x7ff);
+	double_shape_t y = { .value = x };
+	const int ee = (int)((y.uword >> 52) & 0x7ff);
 	if (!ee) {
 		if (x) {
 			x = frexp((x * 0x1.0P+64), e);
@@ -4915,9 +4914,9 @@ LIB_FUNC double frexp(const double num, int* restrict e) {
 		return x;
 	} else if (ee == 0x7ff) { return x; }
 	*e = ee - 0x3fe;
-	y.i &= 0x800fffffffffffffULL;
-	y.i |= 0x3fe0000000000000ULL;
-	return y.d;
+	y.uword &= 0x800fffffffffffffULL;
+	y.uword |= 0x3fe0000000000000ULL;
+	return y.value;
 #   endif
 }
 
@@ -6710,7 +6709,7 @@ goto___rem_pio2_medium:
 
 #if IS_LDBL_X87
 LIB_FUNC int __rem_pio2l(const long double x, long double* restrict y) {
-	union ldshape u = { .f = x };
+	ldshape_t u = { .value = x };
 	double tx[3] = { 0.0 }, ty[2] = { 0.0 };
 	const int ex = u.i.se & 0x7fff;
 	if (((((u.i.se & 0x7fffU) << 16) | (u.i.m >> 48)) < (((0x3fff + 25) << 16) | (0x921f >> 1) | 0x8000))) {
@@ -6719,7 +6718,7 @@ LIB_FUNC int __rem_pio2l(const long double x, long double* restrict y) {
 		long double r = x - fn * M_PI_2L;
 		long double w = fn * -1.07463465549719416346E-12L;
 		y[0] = r - w;
-		u.f = y[0];
+		u.value = y[0];
 		int ey = u.i.se & 0x7fff;
 		if ((ex - ey) > 22) {
 			long double t = r;
@@ -6743,15 +6742,14 @@ LIB_FUNC int __rem_pio2l(const long double x, long double* restrict y) {
 		y[0] = y[1] = x - x;
 		return 0;
 	}
-	union ldshape uz = { .f = x };
+	ldshape_t uz = { .value = x };
 	uz.i.se = 0x3fff + 23;
-	long double z = uz.f;
-	register int i;
-	for (i = 0; i < 3 - 1; i++) {
-		tx[i] = (double)((int32_t)z);
-		z = (z - tx[i]) * 0x1.0P+24;
+	register int i = 0;
+	for (; i < 3 - 1; i++) {
+		tx[i] = (double)((int32_t)uz.value);
+		uz.value = (uz.value - tx[i]) * 0x1.0P+24;
 	}
-	tx[i] = (double)z;
+	tx[i] = (double)uz.value;
 	while (tx[i] == 0) { --i; }
 	const int n = __rem_pio2_large(tx, ty, (ex - 0x3fff - 23), (i + 1), 2, 3);
 	long double w = ty[1];
@@ -6769,7 +6767,7 @@ LIB_FUNC int __rem_pio2l(const long double x, long double* restrict y) {
 #   define __ieee754_rem_pio2l(x, y)   __rem_pio2l((x), (y))
 #elif LDBL_EQ_FLOAT128
 LIB_FUNC int __rem_pio2l(const long double x, long double* restrict y) {
-	union ldshape u = { .f = x };
+	ldshape_t u = { .value = x };
 	double tx[5] = { 0.0 }, ty[3] = { 0.0 };
 	const int ex = u.i.se & 0x7fff;
 	if ((((u.i.se & 0x7fffU) << 16 | u.i.top) < ((0x3fff + 45) << 16 | 0x921f))) {
@@ -6778,7 +6776,7 @@ LIB_FUNC int __rem_pio2l(const long double x, long double* restrict y) {
 		long double r = x - fn * M_PI_2L;
 		long double w = fn * 2.0222662487959507323996846200947577E-21L;
 		y[0] = r - w;
-		u.f = y[0];
+		u.value = y[0];
 		int ey = u.i.se & 0x7fff;
 		if (ex - ey > 51) {
 			long double t = r;
@@ -6786,7 +6784,7 @@ LIB_FUNC int __rem_pio2l(const long double x, long double* restrict y) {
 			r = t - w;
 			w = fn * 2.0670321098263988236496903051604844E-43L - ((t - r) - w);
 			y[0] = r - w;
-			u.f = y[0];
+			u.value = y[0];
 			ey = u.i.se & 0x7fff;
 			if (ex - ey > 119) {
 				t = r;
@@ -6802,14 +6800,14 @@ LIB_FUNC int __rem_pio2l(const long double x, long double* restrict y) {
 		y[0] = y[1] = x - x;
 		return 0;
 	}
-	union ldshape uz = { .f = x };
+	ldshape_t uz = { .value = x };
 	uz.i.se = 0x3fff + 23;
 	register int i;
 	for (i = 0; i < 5 - 1; i++) {
-		tx[i] = (double)((int32_t)uz.f);
-		uz.f = (uz.f - tx[i]) * 0x1.0P+24;
+		tx[i] = (double)((int32_t)uz.value);
+		uz.value = (uz.value - tx[i]) * 0x1.0P+24;
 	}
-	const long double z = uz.f;
+	const long double z = uz.value;
 	tx[i] = (double)z;
 	while (tx[i] == 0) { --i; }
 	const int n = __rem_pio2_large(tx, ty, (ex - 0x3fff - 23), (i + 1), 3, 5);
@@ -11800,15 +11798,15 @@ LIB_FUNC MATH_FUNC long double erfcl2(const uint32_t ix, const long double x) {
 		R = -8.299617545269701963973537248996670806850E-5L + s * (-6.243845685115818513578933902532056244108E-3L + s * (-1.141667210620380223113693474478394397230E-1L + s * (-7.521343797212024245375240432734425789409E-1L + s * (-1.765321928311155824664963633786967602934L + s * -1.029403473103215800456761180695263439188L))));
 		S = 8.413244363014929493035952542677768808601E-3L + s * (2.065114333816877479753334599639158060979E-1L + s * (1.639064941530797583766364412782135680148L + s * (4.936788463787115555582319302981666347450L + s * (5.005177727208955487404729933261347679090L + s))));
 	}
-	union ldshape u = { .f = _x };
+	ldshape_t u = { .value = _x };
 	u.i.m &= (-1ULL << 40);
-	const long double z = u.f;
+	const long double z = u.value;
 	return expl(-z * z - 0.5625) * expl((z - _x) * (z + _x) + R / S) / _x;
 }
 
 
 LIB_FUNC MATH_FUNC long double erfl(const long double x) {
-	union ldshape u = { x };
+	ldshape_t u = { .value = x };
 	const uint32_t ix = (uint32_t)(((u.i.se & 0x7fffU) << 16) | (u.i.m >> 48));
 	const int sign = (int)(u.i.se >> 15);
 	if (ix >= 0x7fff0000) { return (1 - (sign + sign)) + 1 / x; }
@@ -11827,7 +11825,7 @@ LIB_FUNC MATH_FUNC long double erfl(const long double x) {
 
 
 LIB_FUNC MATH_FUNC long double erfcl(const long double x) {
-	union ldshape u = { x };
+	ldshape_t u = { .value = x };
 	const uint32_t ix = (uint32_t)(((u.i.se & 0x7fffU) << 16) | (u.i.m >> 48));
 	const int sign = u.i.se >> 15;
 	if (ix >= 0x7fff0000) { return (sign + sign) + 1 / x; }
@@ -12939,40 +12937,40 @@ LIB_FUNC MATH_FUNC double lanczos_sum(const double x) {
 
 LIB_FUNC MATH_FUNC float cimagf(const complex_float z) {
 	const complex_float_shape_t w = { .value = z };
-	return (float)w.floats.im;
+	return (float)w.floats.im.value;
 }
 
 
 LIB_FUNC MATH_FUNC double cimag(const complex_double z) {
 	const complex_double_shape_t w = { .value = z };
-	return (double)w.doubles.im;
+	return (double)w.doubles.im.value;
 }
 
 
 #if SUPPORTS_COMPLEX_LDBL
 LIB_FUNC MATH_FUNC long double cimagl(const complex_long_double z) {
 	const complex_long_double_shape_t w = { .value = z };
-	return (long double)w.longdoubles.im;
+	return (long double)w.longdoubles.im.value;
 }
 #endif
 
 
 LIB_FUNC MATH_FUNC float crealf(const complex_float z) {
 	const complex_float_shape_t w = { .value = z };
-	return (float)w.floats.re;
+	return (float)w.floats.re.value;
 }
 
 
 LIB_FUNC MATH_FUNC double creal(const complex_double z) {
 	const complex_double_shape_t w = { .value = z };
-	return (double)w.doubles.re;
+	return (double)w.doubles.re.value;
 }
 
 
 #if SUPPORTS_COMPLEX_LDBL
 LIB_FUNC MATH_FUNC long double creall(const complex_long_double z) {
 	const complex_long_double_shape_t w = { .value = z };
-	return (long double)w.longdoubles.re;
+	return (long double)w.longdoubles.re.value;
 }
 #endif
 
