@@ -181,6 +181,24 @@ noreturn int main(void) {
 	(void)fprintf(stdout, "__m64:\t\t\t\t%lu\t%lu\n", (ulint)sizeof(__m64), (ulint)alignof(__m64));
 	(void)fprintf(stdout, "__m64_u:\t\t\t%lu\t%lu\n", (ulint)sizeof(__m64_u), (ulint)alignof(__m64_u));
 #   endif
+	// Struct Shape Datatypes
+	(void)puts(DIVIDER);
+	(void)fprintf(stdout, "float_shape_t:\t\t\t%lu\t%lu\n", (ulint)sizeof(float_shape_t), (ulint)alignof(float_shape_t));
+	(void)fprintf(stdout, "double_shape_t:\t\t\t%lu\t%lu\n", (ulint)sizeof(double_shape_t), (ulint)alignof(double_shape_t));
+#   if SUPPORTS_LONG_DOUBLE
+	(void)fprintf(stdout, "long_double_shape_t:\t\t%lu\t%lu\n", (ulint)sizeof(long_double_shape_t), (ulint)alignof(long_double_shape_t));
+	(void)fprintf(stdout, "ldshape_t:\t\t\t%lu\t%lu\n", (ulint)sizeof(ldshape_t), (ulint)alignof(ldshape_t));
+#   endif
+#   if SUPPORTS_FLOAT128
+	(void)fprintf(stdout, "float128_shape_t:\t\t%lu\t%lu\n", (ulint)sizeof(float128_shape_t), (ulint)alignof(float128_shape_t));
+#   endif
+#   if SUPPORTS_COMPLEX
+	(void)fprintf(stdout, "complex_float_shape_t:\t\t%lu\t%lu\n", (ulint)sizeof(complex_float_shape_t), (ulint)alignof(complex_float_shape_t));
+	(void)fprintf(stdout, "complex_double_shape_t:\t\t%lu\t%lu\n", (ulint)sizeof(complex_double_shape_t), (ulint)alignof(complex_double_shape_t));
+#   endif
+#   if SUPPORTS_COMPLEX_LDBL
+	(void)fprintf(stdout, "complex_long_double_shape_t:\t%lu\t%lu\n", (ulint)sizeof(complex_long_double_shape_t), (ulint)alignof(complex_long_double_shape_t));
+#   endif
 	// Machine Datatypes
 	(void)puts(DIVIDER);
 #   if SUPPORTS_BND64
