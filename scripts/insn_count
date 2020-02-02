@@ -131,8 +131,8 @@ disassemble_cmd='objdump --disassemble --disassembler-options=att --no-show-raw-
 if [ -x "$(command -v file)" ]; then
     file "${filename}" | cut -d ' ' -f 2- | grep -F -q 'NE ' && disassemble_cmd='semblance --compilable --disassemble --disassembler-options=att'
 fi
-_disassembly="$(${disassemble_cmd} "${filename}" 2>&1)"
-disassembled_code="$(printf '%s' "${_disassembly}" | cut -f 2 | sed -E 's|Segment.+:||g; s|Module .*: .+||g; s|Note: .+||g; s|Warning: .+||g; s|File: .+||g; s|[ ]*To create a specfile.+||g; s|.*file format.*||g;' | sed -E 's|lock ([A-Za-z0-9]+) .+|lock\1|g; s|rep ([A-Za-z0-9]+) .+|rep\1|g; s|bnd jmpq (.+)|bnd jmpq|g; s|notrack jmpq (.+)|notrack jmpq|g; s|([A-Za-z0-9]+)  .+|\1|g; s| [%0-9\(\)\$\-].*||g; s|[ ]*[0-9]+:[0-9a-f]+:||g; s|.*:||g; s|[ ]*\.\.\.||g;' | awk NF | sort | uniq -c | sort -n)"
+_disassembly="$(${disassemble_cmd} "${filename}" 2> /dev/null)"
+disassembled_code="$(printf '%s' "${_disassembly}" | sed -E 's|Segment.+:||g; s|Module .*: .+||g; s|Note: .+||g; s|Warning: .+||g; s|File: .+||g; s|[ ]*waitWarning:.+||g;' | cut -f 2 | sed -E 's|lock ([A-Za-z0-9]+) .+|lock\1|g; s|rep ([A-Za-z0-9]+) .+|rep\1|g; s|bnd jmpq (.+)|bnd jmpq|g; s|notrack jmpq (.+)|notrack jmpq|g;' | sed -E 's|[ ]*To create a specfile.+||g; s|.*file format.*||g; s|([A-Za-z0-9]+)  .+|\1|g; s| [%0-9\(\)\$\-].*||g; s|[ ]*[0-9]+:[0-9a-f]+:(.+)|\1|g; s|.*:||g; s|[ ]*\.\.\.||g;' | awk NF | sort | uniq -c | sort -n)"
 unset _disassembly
 
 basic_format="$(printf '%s' "${disassembled_code}" | sed 's|| |g;' | awk '{ $1=$1; };1')"
