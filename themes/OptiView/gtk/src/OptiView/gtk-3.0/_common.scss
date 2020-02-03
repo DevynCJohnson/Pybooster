@@ -22,8 +22,6 @@ $asset_suffix: if($variant == "dark", "-dark", "");
   -GtkScrollbar-activate-slider: 1;
   -GtkScrollbar-has-backward-stepper: 1;
   -GtkScrollbar-has-forward-stepper: 1;
-  -GtkScrollbar-slider-width: $slider_min_length;
-  -GtkScrollbar-trough-border: 1;
   -GtkScrolledWindow-scrollbar-spacing: 0;
   -GtkTextView-error-underline-color: $error_color;
   -GtkToolButton-icon-spacing: 4;
@@ -47,6 +45,11 @@ $asset_suffix: if($variant == "dark", "-dark", "");
   outline-width: 1px;
   -gtk-outline-radius: 0px;
   -gtk-secondary-caret-color: $secondary_caret_color;
+}
+
+.grip {
+  background-color: transparent;
+  /*background-image: url("assets/resize-grip.svg");*/
 }
 
 
@@ -854,14 +857,14 @@ $asset_suffix: if($variant == "dark", "-dark", "");
     color: $selected_fg_color;
 
     &:backdrop {
-      color: $backdrop_selected_fg_color;
+      color: $selected_fg_color;
 
       &, &:hover {
         background-color: $selected_bg_color;
       }
 
       &:disabled, &:disabled:active, &:disabled:focus, &:disabled:hover, &:disabled:selected {
-        color: mix($backdrop_selected_fg_color, $selected_bg_color, 30%);
+        color: mix($selected_fg_color, $selected_bg_color, 30%);
       }
     }
     &:disabled, &:disabled:active, &:disabled:focus, &:disabled:hover, &:disabled:selected {
@@ -1613,7 +1616,7 @@ spinbutton {
 
 // Text Entries //
 
-%entry, entry, #MozillaGtkWidget .entry, #MozillaGtkWidget entry {
+%entry, entry, #MozillaGtkWidget .entry, #MozillaGtkWidget entry, .primary-toolbar entry {
   & {
     border-radius: $entry_radius;
     border: 1px solid #919191;
@@ -2375,6 +2378,20 @@ treeview.view {
   }
 }
 
+// List Row Buttons //
+
+.list-rowbutton {
+  background-image: none;
+  border-image: none;
+  border-radius: 0;
+  border-style: none;
+}
+
+.list-rowbutton:selected {
+  text-shadow: none;
+}
+
+
 // Popovers //
 
 popover.background {
@@ -2446,11 +2463,11 @@ popover.background {
   -GtkWidget-window-dragging: false;
 }
 
-#MozillaGtkWidget .context-menu, #MozillaGtkWidget .menu, #MozillaGtkWidget menu, .background .context-menu, .background .menu, .background menu, .context-menu, .csd .context-menu, .csd .menu, .csd menu, .menu, .popup .context-menu, .popup .menu, .popup menu, menu {
+#MozillaGtkWidget .context-menu, #MozillaGtkWidget .menu, #MozillaGtkWidget menu, .background .context-menu, .background .menu, .background menu, .context-menu, .csd .context-menu, .csd .menu, .csd menu, .menu, .popup .context-menu, .popup .menu, .popup menu, combobox menu, menu, toolbar menu, .selection-menu {
   @extend %menu_appearance;
 }
 
-#MozillaGtkWidget .menuitem, #MozillaGtkWidget menuitem, .background menuitem, .csd menuitem, .menuitem, .popup menuitem, menuitem {
+#MozillaGtkWidget .menuitem, #MozillaGtkWidget menuitem, .background menuitem, .csd menuitem, .menubar .menuitem, .menubar.menuitem, .menuitem, .popup menuitem, headerbar button menu menuitem, menuitem, popover menuitem, toolbar headerbar menu menuitem, toolbar menu menuitem, popover menuitem {
   @extend %menuitem;
 }
 
@@ -4489,6 +4506,41 @@ stackswitcher button.text-button.circular {
 
 .context-menu {
   font: initial;
+}
+
+.view.cell:selected,
+.view.cell:active,
+.view:selected,
+.view:active,
+.content-view.view:selected,
+.content-view.view:active {
+  background-color: $selected_bg_color;
+}
+
+:not(iconview).view.cell:disabled,
+.content-view.view:disabled {
+  background-color: $bg_color;
+}
+
+:not(iconview).view.cell:backdrop,
+.content-view.view:backdrop {
+  background-color: $bg_color;
+}
+
+:not(iconview).view.cell:selected:backdrop,
+.content-view.view:selected:backdrop {
+  background-color: $selected_bg_color;
+}
+
+iconview.view.cell:selected,
+iconview.view.cell:selected:focus {
+  background-color: $selected_bg_color;
+  border-style: solid;
+  border-width: 1px;
+}
+
+GdMainIconView.content-view {
+  -GdMainIconView-icon-size: 40;
 }
 
 .dim-label {

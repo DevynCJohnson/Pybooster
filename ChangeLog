@@ -2,6 +2,7 @@
 
 	* color-kit:  Tweaked the UI
 	* color.py:  Fixed some minor formatting bugs & applied improvements
+	* OptiView:  Added more CSS code for various classes
 	* program-analyzer:  Added string searching support
 
 2020-02-01  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
