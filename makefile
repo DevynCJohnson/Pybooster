@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax makefile; indent-mode normal; eol unix; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Main project makefile
 #' @file makefile
-#' @version 2019.12.01
+#' @version 2020.02.03
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 #' @section SYMBOLS
@@ -190,6 +190,10 @@ help :
 	printf '%s\n' '-DENABLE_PRTYPES: Enable prtypes'
 	printf '%s\n' '-DENABLE_XNU_DATATYPES: Enable XNU datatypes'
 	printf '%s\n' '-DDISABLE_ANSI_SGR: Disable ANSI SGR features'
+	printf '%s\n' '-DDISABLE_NETWORK_HEADER: Disable the whole MACROS_NET.h file'
+	printf '%s\n' '-DDISABLE_MISC_HEADER: Disable the whole MACROS_MISC.h file'
+	printf '%s\n' '-DNO_SCAN_FLOATS: The `f` and `g` (float-points) symbols are disabled in `scanf()`'
+	printf '%s\n' '-DNO_CHAR_TABLES: Disables many character tables like armscii, cjk_variants, nextstep, and more'
 	printf '\n\n\x1b[1;4;33m§ %s §\x1b[0m\n\n' 'TWEAK PRINTF'
 	printf '%s\n' '-DNO_PRINT_ACTION: Disable the `%n` (printf action) symbol'
 	printf '%s\n' '-DNO_PRINT_M: Disable the `%m` (error code) symbol'

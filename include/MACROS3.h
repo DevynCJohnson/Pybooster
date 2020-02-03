@@ -4,7 +4,7 @@
 /**
 @brief Standard Macros Header with AT&T-style Assembly
 @file MACROS3.h
-@version 2020.02.01
+@version 2020.02.03
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -36906,6 +36906,9 @@ IGNORE_WOVERLENGTH_STRINGS
 DIAG_POP
 
 
+#ifndef NO_CHAR_TABLES
+
+
 #include "armscii.h"
 #include "atarist.h"
 #include "cjk_variants.h"
@@ -36952,8 +36955,11 @@ static const UNUSED unsigned short legacy_chars[] = {
 };
 
 
+#endif
+
+
 /** Converts a value in the range 0..63 to a base64 encoded char */
-LIB_FUNC unsigned char base64(const unsigned int i) {
+LIB_FUNC unsigned char base64(const unsigned char i) {
 	if (i < 26) { return (unsigned char)(i + 'A'); }
 	else if (i < 52) { return (unsigned char)(i - 26 + 'a'); }
 	else if (i < 62) { return (unsigned char)(i - 52 + '0'); }
@@ -37030,6 +37036,9 @@ LIB_FUNC int fuzzycmp(const unsigned char* restrict a, const unsigned char* rest
 	}
 	return (int)(*a != *b);
 }
+
+
+#ifndef NO_CHAR_TABLES
 
 
 LIB_FUNC int armscii_8_mbtowc(ucs4_t* restrict pwc, const unsigned char* restrict s) {
@@ -37450,6 +37459,9 @@ LIB_FUNC int nextstep_wctomb(unsigned char* restrict r, const ucs4_t wc) {
 	}
 	return RET_ILUNI;
 }
+
+
+#endif
 
 
 /** UTF-16BE (RFC 2781) */

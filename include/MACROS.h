@@ -4,7 +4,7 @@
 /**
 @brief Standard Macros Header Providing Additional Simple Code
 @file MACROS.h
-@version 2020.02.01
+@version 2020.02.03
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -14751,5 +14751,9 @@ This macro expands to a system-dependent integral expression that signifies that
 #include "MACROS2.h"
 #include "MACROS3.h"
 #include "MACROS_MATH.h"
-#include "MACROS_NET.h"
-#include "MACROS_MISC.h"
+#ifndef DISABLE_NETWORK_HEADER
+#   include "MACROS_NET.h"
+#endif
+#ifndef DISABLE_MISC_HEADER
+#   include "MACROS_MISC.h"
+#endif
