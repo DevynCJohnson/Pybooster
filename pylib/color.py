@@ -6,7 +6,7 @@
 
 @file color.py
 @package pybooster.color
-@version 2020.01.26
+@version 2020.02.03
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -273,7 +273,7 @@ def shorthand2sixdigit(_shorthand: str) -> str:
         _red = _shorthand[0] + _shorthand[0]
         _green = _shorthand[1] + _shorthand[1]
         _blue = _shorthand[2] + _shorthand[2]
-    return r'#' + _red + _green + _blue
+    return fr'#{_red}{_green}{_blue}'
 
 
 # CMY #
@@ -491,9 +491,9 @@ def rgb2hex(_red: Union[float, int], _green: Union[float, int], _blue: Union[flo
         _red *= 255.0
         _green *= 255.0
         _blue *= 255.0
-    ret_r: str = hex(round(_red)) if _red < 255.0 else r'ff'
-    ret_g: str = hex(round(_green)) if _green < 255.0 else r'ff'
-    ret_b: str = hex(round(_blue)) if _blue < 255.0 else r'ff'
+    ret_r: str = hex(round(_red).zfill(2)) if _red < 255.0 else r'ff'
+    ret_g: str = hex(round(_green).zfill(2)) if _green < 255.0 else r'ff'
+    ret_b: str = hex(round(_blue).zfill(2)) if _blue < 255.0 else r'ff'
     return ret_r, ret_g, ret_b
 
 
@@ -576,6 +576,8 @@ def rgb2hsv(_red: Union[float, int], _green: Union[float, int], _blue: Union[flo
 def rgb2html(_red: Union[float, int], _green: Union[float, int], _blue: Union[float, int], _float_notation: bool = True, _uppercase: bool = False) -> str:
     """RGB -> HTML-notation.
 
+    >>> rgb2html(0.0, 1.0, 1.0)
+    '#00ffff'
     >>> rgb2html(1.0, 1.0, 1.0)
     '#ffffff'
     >>> rgb2html(255, 255, 255, False, True)
@@ -585,7 +587,7 @@ def rgb2html(_red: Union[float, int], _green: Union[float, int], _blue: Union[fl
         _red *= 255.0
         _green *= 255.0
         _blue *= 255.0
-    _output: str = r'#' + hex(round(_red))[2:4] + hex(round(_green))[2:4] + hex(round(_blue))[2:4]
+    _output: str = fr'#{hex(round(_red))[2:4].zfill(2)}{hex(round(_green))[2:4].zfill(2)}{hex(round(_blue))[2:4].zfill(2)}'
     if _uppercase:
         return _output.upper()
     return _output
