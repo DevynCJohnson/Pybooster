@@ -6,6 +6,7 @@
 	* makefile:  Added more special flags for controlling features in the standard C-library headers
 	* OptiView:  Added more CSS code for various classes
 	* program-analyzer:  Added string searching support
+	* PyBooster:  Added number_properties.c
 
 2020-02-01  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
