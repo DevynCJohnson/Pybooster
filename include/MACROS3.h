@@ -13938,7 +13938,7 @@ LIB_FUNC MATH_FUNC int ffsll(const long long i) {
 /** Find First Set */
 LIB_FUNC MATH_FUNC int ffs32(const uint32_t xint) {
 	if (!xint) { return 0; }
-	register int _v = 1;
+	register uint32_t _v = 1;
 	register uint32_t x = xint;
 	if ((x & UINT16_MAX) == 0) {
 		x >>= 16;
@@ -13960,14 +13960,14 @@ LIB_FUNC MATH_FUNC int ffs32(const uint32_t xint) {
 		x >>= 1;
 		_v += 1;
 	}
-	return _v;
+	return (int)_v;
 }
 
 
 /** Find First Set */
 LIB_FUNC MATH_FUNC int ffs64(const uint64_t xint) {
 	if (!xint) { return 0; }
-	register int _v = 1;
+	register uint32_t _v = 1;
 	register uint64_t x = xint;
 	if ((x & UINT32_MAX) == 0) {
 		x >>= 32;
@@ -13993,7 +13993,7 @@ LIB_FUNC MATH_FUNC int ffs64(const uint64_t xint) {
 		x >>= 1;
 		_v += 1;
 	}
-	return _v;
+	return (int)_v;
 }
 
 
@@ -15359,15 +15359,17 @@ LIB_FUNC MATH_FUNC float packFloat32(const int zSign, const int16_t zExp, const 
 }
 
 
-/** Convert a signed long long to a float-point */
+/** Convert an unsigned integer to a 32-bit float */
 LIB_FUNC MATH_FUNC SFtype __floatunsisf(const USItype u) {
 	const SItype s = (SItype)u;
-	if (s < 0) { return (SFtype)2.0 * (SFtype)((SItype)((u & 1) | (u >> 1))); }
+	if (s < 0) {
+		return (SFtype)2.0 * (SFtype)((SItype)((u & 1) | (u >> 1)));
+	}
 	return (SFtype)s;
 }
 
 
-/** Convert a signed long long to a float-point */
+/** Convert an unsigned integer to a double */
 LIB_FUNC MATH_FUNC DFtype __floatunsidf(const USItype u) {
 	const SItype s = (SItype)u;
 	register DFtype r = (DFtype)s;
@@ -15375,6 +15377,12 @@ LIB_FUNC MATH_FUNC DFtype __floatunsidf(const USItype u) {
 		r += (DFtype)2.0 * (DFtype)((USItype)1 << (sizeof(USItype) * CHARBITS - 1));
 	}
 	return r;
+}
+
+
+/** Convert an unsigned 64-bit integer to a double */
+LIB_FUNC MATH_FUNC DFtype __floatundidf(const UDItype u) {
+	return (DFtype)((UDItype)(u >> (64 - DBL_MANT_DIG))) / (DFtype)((UDItype)1ULL << DBL_MANT_DIG);
 }
 
 
@@ -15392,7 +15400,7 @@ LIB_FUNC MATH_FUNC XFtype __floatunsixf(const USItype u) {
 
 
 #if SUPPORTS_TFTYPE
-/** Convert a signed long long to a float-point */
+/** Convert an unsigned 32-bit integer to a 128-bit float */
 LIB_FUNC MATH_FUNC TFtype __floatunsitf(const USItype u) {
 	const SItype s = (SItype)u;
 	TFtype r = (TFtype)s;
@@ -15400,6 +15408,14 @@ LIB_FUNC MATH_FUNC TFtype __floatunsitf(const USItype u) {
 		r += (TFtype)2.0 * (TFtype)((USItype)1 << (sizeof(USItype) * CHARBITS - 1));
 	}
 	return r;
+}
+#endif
+
+
+#if (SUPPORTS_TFTYPE && SUPPORTS_TITYPE)
+/** Convert an unsigned 64-bit integer to a 128-bit float */
+LIB_FUNC MATH_FUNC TFtype __floatunditf(const UDItype u) {
+	return (TFtype)((UTItype)(u >> (128 - FLT128_MANT_DIG))) / (TFtype)((UTItype)1ULL << FLT128_MANT_DIG);
 }
 #endif
 
@@ -17706,6 +17722,25 @@ enum ROUNDING_DIRECTIONS {
 #ifndef UDIV_NEEDS_NORMALIZATION
 #   define UDIV_NEEDS_NORMALIZATION   0
 #endif
+
+#ifdef _FP_DECL_EX
+#   define FP_DECL_EX   int _fex = 0; _FP_DECL_EX
+#else
+#   define FP_DECL_EX    int _fex = 0
+#endif
+#if _FP_W_TYPE_SIZE < 64
+#   define FP_DECL_Q(X)   _FP_DECL(4, X)
+#   define FP_UNPACK_RAW_Q(X, val)   _FP_UNPACK_RAW_4(Q, X, (val))
+#   define FP_UNPACK_RAW_QP(X, val)   _FP_UNPACK_RAW_4_P(Q, X, (val))
+#   define FP_PACK_RAW_Q(val, X)   _FP_PACK_RAW_4(Q, (val), X)
+#else
+#   define FP_DECL_Q(X)   _FP_DECL(2, X)
+#   define FP_UNPACK_RAW_Q(X, val)   _FP_UNPACK_RAW_2(Q, X, (val))
+#   define FP_UNPACK_RAW_QP(X, val)   _FP_UNPACK_RAW_2_P(Q, X, (val))
+#   define FP_PACK_RAW_Q(val, X)   _FP_PACK_RAW_2(Q, (val), X)
+#endif
+
+
 
 
 #if (!(defined(CPU_MATH_PRIVATE_H) || defined(_CPU_MATH_PRIVATE_H_) || defined(GENERIC_MATH_PRIVATE_H) || defined(_GENERIC_MATH_PRIVATE_H_)))  // GENERIC FENV FUNCTIONS

@@ -3979,6 +3979,10 @@ typedef struct __kernel_fsid { long val[2]; }   __kernel_fsid_t;
 /* PRINTING & SCANNING FORMAT SPECIFIERS */
 
 
+#ifndef __STDC_FORMAT_MACROS
+#   define __STDC_FORMAT_MACROS   (1)
+#endif
+
 #if ((!defined(PRINTF_SCANF_FORMAT_SPECIFIERS_H)) && defined(ALLOW_HEADER_PRINTF_SCANF_FORMAT_SPECIFIERS_H))
 #define PRINTF_SCANF_FORMAT_SPECIFIERS_H   (1)
 

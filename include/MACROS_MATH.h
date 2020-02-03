@@ -4,7 +4,7 @@
 /**
 @brief Standard Macros Header Providing Math Related-Code
 @file MACROS_MATH.h
-@version 2020.01.31
+@version 2020.02.03
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -5448,19 +5448,19 @@ LIB_FUNC MATH_FUNC uint64_t isqrt64(const uint64_t num) {
 
 
 /** Return the Triangular root of the given number ((√(8*num+1)−1)/2) */
-LIB_FUNC MATH_FUNC double triangular_root(const long num) {
+LIB_FUNC MATH_FUNC double triangular_root(const uint64_t num) {
 	return ((sqrt((double)(8 * num + 1)) - 1.0) * 0.5);
 }
 
 
 /** Return the Hexagonal root of the given number ((√(8*num+1)+1)/4) */
-LIB_FUNC MATH_FUNC double hexagonal_root(const long num) {
+LIB_FUNC MATH_FUNC double hexagonal_root(const uint64_t num) {
 	return ((sqrt((double)(8 * num + 1)) + 1.0) * 0.25);
 }
 
 
 /** Return the Heptagonal root of the given number ((√(40*num+9)+3)/10) */
-LIB_FUNC MATH_FUNC double heptagonal_root(const long num) {
+LIB_FUNC MATH_FUNC double heptagonal_root(const uint64_t num) {
 	return ((sqrt((double)(40 * num + 9)) + 3.0) * 0.1);
 }
 
@@ -8830,25 +8830,25 @@ LIB_FUNC MATH_FUNC long double __ieee754_hypotl(const long double x, const long 
 
 
 /** Return the hypotenuse */
-LIB_FUNC MATH_FUNC float __hypotf(const float x, const float y) {
+LIB_FUNC MATH_FUNC float hypotf(const float x, const float y) {
 	return __ieee754_hypotf(x, y);
 }
-#define hypotf(x, y)   __hypotf((x), (y))
+#define __hypotf(x, y)   hypotf((x), (y))
 
 
 /** Return the hypotenuse */
-LIB_FUNC MATH_FUNC double __hypot(const double x, const double y) {
+LIB_FUNC MATH_FUNC double hypot(const double x, const double y) {
 	return __ieee754_hypot(x, y);
 }
-#define hypot(x, y)   __hypot((x), (y))
+#define __hypot(x, y)   hypot((x), (y))
 
 
 #if SUPPORTS_LONG_DOUBLE
 /** Return the hypotenuse */
-LIB_FUNC MATH_FUNC long double __hypotl(const long double x, const long double y) {
+LIB_FUNC MATH_FUNC long double hypotl(const long double x, const long double y) {
 	return __ieee754_hypotl(x, y);
 }
-#   define hypotl(x, y)   __hypotl((x), (y))
+#   define __hypotl(x, y)   hypotl((x), (y))
 #endif
 
 
@@ -11730,7 +11730,7 @@ LIB_FUNC MATH_FUNC float erff(const float x) {
 }
 
 
-/** erf(x) is the probability a normal distributed event occures within the range [0,x]. erfc(x) is the probability a normal distributed event occures within the range [x,inf] */
+/** erf(x) is the probability a normal distributed event occures within the range [0,x]. erfc(x) is the probability a normal distributed event occurs within the range [x,inf] */
 LIB_FUNC MATH_FUNC double erf(const double x) {
 	return (double)(x < 0.0 ? -0.5 + (double)gauss(-x) : 0.5 - (double)gauss(x));
 }
