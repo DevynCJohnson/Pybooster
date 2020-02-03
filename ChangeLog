@@ -1,8 +1,16 @@
+2020-02-03  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* color-kit:  Tweaked the UI
+	* color.py:  Fixed some minor formatting bugs & applied improvements
+	* program-analyzer:  Added string searching support
+
 2020-02-01  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* cleansystem:  Fixed some minor bugs
+	* insn_count:  Added support for 16-bit Windows & DOS executables
 	* MACROS*.h:  Improved various datatype definitions & applied optimizations
 	* MACROS3.h:  Optimized various functions
+	* program-analyzer:  Added support for 16-bit Windows & DOS executables
 	* typesize.c:  Added more datatypes
 
 2020-01-31  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>

@@ -5,7 +5,7 @@
 """@brief View various information about a library or executable.
 
 @file program-analyzer
-@version 2020.02.02
+@version 2020.02.03
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -44,7 +44,7 @@ from os.path import (
 from signal import SIGINT, SIG_DFL, signal
 from subprocess import getoutput, getstatusoutput  # nosec
 from sys import argv, stderr
-from typing import Any, Callable, List, Tuple, Union
+from typing import Any, List, Tuple, Union
 
 from pybooster.filemagic import MIME_ENCODING, NONE_MAGIC
 from pybooster.fs import convumask
@@ -220,8 +220,8 @@ Author: Devyn Collier Johnson
                             <property name="AtkObject::accessible-role" translatable="yes">menu-item</property>
                           </object>
                         </child>
-                        <accelerator key="q" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <accelerator key="w" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="q" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </object>
                     </child>
                     <child internal-child="accessible">
@@ -253,6 +253,7 @@ Author: Devyn Collier Johnson
         </child>
         <child>
           <object class="GtkNotebook" id="tabs">
+            <property name="name">tabs</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="margin_left">4</property>
@@ -271,6 +272,7 @@ Author: Devyn Collier Johnson
                 <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_prop">
+                    <property name="name">textview_prop</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
@@ -315,6 +317,7 @@ Author: Devyn Collier Johnson
                 <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_sym_tbl">
+                    <property name="name">textview_sym_tbl</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
@@ -364,6 +367,7 @@ objdump --line-numbers --special-syms --syms</property>
                 <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_dyn_sym">
+                    <property name="name">textview_dyn_sym</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
@@ -413,6 +417,7 @@ objdump --line-numbers --dynamic-syms --special-syms</property>
                 <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_nm_sym">
+                    <property name="name">textview_nm_sym</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
@@ -462,6 +467,7 @@ nm --debug-syms --dynamic --line-numbers --numeric-sort --print-armap --print-si
                 <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_dyn_reloc">
+                    <property name="name">textview_dyn_reloc</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
@@ -511,6 +517,7 @@ objdump --dynamic-reloc --line-numbers</property>
                 <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_ldd">
+                    <property name="name">textview_ldd</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
@@ -561,10 +568,10 @@ ldd --unused --verbose</property>
                 <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_dis">
+                    <property name="name">textview_dis</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="buffer">buf_dis</property>
-                    <property name="accepts_tab">False</property>
                     <property name="monospace">True</property>
                     <child internal-child="accessible">
                       <object class="AtkObject" id="textview_dis-atkobject">
@@ -609,6 +616,7 @@ objdump --disassemble --no-show-raw-insn --source</property>
                 <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_readelf">
+                    <property name="name">textview_readelf</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
@@ -658,6 +666,7 @@ readelf --arch-specific --debug-dump --decompress --file-header --histogram --no
                 <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_headers">
+                    <property name="name">textview_headers</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
@@ -707,6 +716,7 @@ objdump --all-headers --archive-header --dwarf-check --file-offsets --full-conte
                 <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_size">
+                    <property name="name">textview_size</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
@@ -757,6 +767,7 @@ size --format=SysV</property>
                 <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_str">
+                    <property name="name">textview_str</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
@@ -806,6 +817,7 @@ strings --all</property>
                 <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_func">
+                    <property name="name">textview_func</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
@@ -854,6 +866,7 @@ strings --all</property>
                 <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_const">
+                    <property name="name">textview_const</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
@@ -902,6 +915,7 @@ strings --all</property>
                 <property name="min_content_height">800</property>
                 <child>
                   <object class="GtkTextView" id="textview_ldconfig">
+                    <property name="name">textview_ldconfig</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
@@ -943,6 +957,7 @@ strings --all</property>
             </child>
             <child>
               <object class="GtkBox" id="about_box">
+                <property name="name">about_box</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="margin_left">4</property>
@@ -963,7 +978,7 @@ strings --all</property>
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
                         <property name="label">Program-Analyzer
-Version: 2020.02.02
+Version: 2020.02.03
 Author: Devyn Collier Johnson
 &amp;lt;&lt;a href="mailto:DevynCJohnson@Gmail.com"&gt;DevynCJohnson@Gmail.com&lt;/a&gt;&amp;gt;</property>
                         <property name="use_markup">True</property>
@@ -1147,6 +1162,29 @@ Author: Devyn Collier Johnson
                 <property name="always_show_image">True</property>
                 <signal name="clicked" handler="_winexit" object="ezwin" swapped="no"/>
                 <accelerator key="q" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
+              </object>
+              <packing>
+                <property name="left_attach">3</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSearchEntry" id="entry_search">
+                <property name="name">entry_search</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="primary_icon_stock">gtk-find</property>
+                <property name="primary_icon_name">edit-find-symbolic</property>
+                <property name="primary_icon_activatable">False</property>
+                <property name="primary_icon_sensitive">False</property>
+                <signal name="next-match" handler="find_text_next" swapped="no"/>
+                <signal name="previous-match" handler="find_text_prev" swapped="no"/>
+                <signal name="search-changed" handler="find_text" swapped="no"/>
+                <signal name="stop-search" handler="clear_search_data" swapped="no"/>
+                <accelerator key="equal" signal="next-match" modifiers="GDK_CONTROL_MASK"/>
+                <accelerator key="Return" signal="next-match" modifiers="GDK_SHIFT_MASK"/>
+                <accelerator key="minus" signal="previous-match" modifiers="GDK_CONTROL_MASK"/>
+                <accelerator key="Return" signal="previous-match" modifiers="GDK_MOD1_MASK"/>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -1470,6 +1508,8 @@ class DataTable:  # pylint: disable=R0903
     readelf_all: str = r''
     sha512: str = r''
     strings: str = r''
+    # Searching
+    start_iter: Union[Gtk.TextIter, None] = None
 
 
 class MainWindow:  # pylint: disable=R0902
@@ -1491,6 +1531,7 @@ class MainWindow:  # pylint: disable=R0902
         self.about_box = self.ui_get_object(name=r'about_box')
         self.binutils_info = self.ui_get_object(name=r'binutils_info')
         self.btn_save = self.ui_get_object(name=r'btn_save')
+        self.entry_search = self.ui_get_object(name=r'entry_search')
         self.menuitem_save = self.ui_get_object(name=r'menuitem_save')
         self.menuitem_saveas = self.ui_get_object(name=r'menuitem_saveas')
         self.l_file = self.ui_get_object(name=r'l_file')
@@ -1522,12 +1563,17 @@ class MainWindow:  # pylint: disable=R0902
         self.textview_size = self.ui_get_object(name=r'textview_size')
         self.textview_str = self.ui_get_object(name=r'textview_str')
         self.textview_sym_tbl = self.ui_get_object(name=r'textview_sym_tbl')
+        self.entry_search.set_visible(False)
         # Window Title
         self.l_file.set_text(r'Program-Analyzer')
         # Set GNU-Binutls Info in About-tab
         self.binutils_info.set_text(getoutput(r'objdump --version'))
         # Signal Handlers
         self.ui.connect_signals({
+            r'clear_search_data': self.clear_search_data,
+            r'find_text': self.find_text,
+            r'find_text_next': self.find_text_next,
+            r'find_text_prev': self.find_text_prev,
             r'gtk_open': self.gtk_open,
             r'gtk_save': self.gtk_save,
             r'gtk_saveas': self.gtk_saveas,
@@ -1546,11 +1592,14 @@ class MainWindow:  # pylint: disable=R0902
 
     def show_hide_save(self, _notebook: Gtk.Notebook, page: Union[Gtk.Box, Gtk.ScrolledWindow], page_num: int) -> None:  # pylint: disable=W0613
         """Show or hide the save buttons."""
+        self.clear_search_data()
         if page_num == _notebook.page_num(self.about_box):
+            self.entry_search.set_visible(False)
             self.btn_save.set_visible(False)
             self.menuitem_save.set_visible(False)
             self.menuitem_saveas.set_visible(False)
         elif page.is_visible():
+            self.entry_search.set_visible(True)
             self.btn_save.set_visible(True)
             self.menuitem_save.set_visible(True)
             self.menuitem_saveas.set_visible(True)
@@ -1559,35 +1608,36 @@ class MainWindow:  # pylint: disable=R0902
         """Place a message in the statusbar."""
         self.statusbar.push(context_id, _msg)
 
-    def retreive_data_buffer(self, active_tab: int, tabs_page_num: Callable) -> Gtk.TextBuffer:  # noqa: C901,R701  # pylint: disable=R0911
+    def retreive_data_buffer(self) -> Gtk.TextBuffer:  # noqa: C901,R701  # pylint: disable=R0911
         """Get the data in the currently active data buffer."""
-        if active_tab == tabs_page_num(self.scrwin_prop):  # tab_prop
+        active_tab: int = self.tabs.get_current_page()
+        if active_tab == self.tabs.page_num(self.scrwin_prop):  # tab_prop
             return self.textview_prop.get_buffer()
-        if active_tab == tabs_page_num(self.scrwin_sym_tbl):  # tab_sym_tbl
+        if active_tab == self.tabs.page_num(self.scrwin_sym_tbl):  # tab_sym_tbl
             return self.textview_sym_tbl.get_buffer()
-        if active_tab == tabs_page_num(self.scrwin_dyn_sym):  # tab_dyn_sym
+        if active_tab == self.tabs.page_num(self.scrwin_dyn_sym):  # tab_dyn_sym
             return self.textview_dyn_sym.get_buffer()
-        if active_tab == tabs_page_num(self.scrwin_nm_sym):  # tab_nm_sym
+        if active_tab == self.tabs.page_num(self.scrwin_nm_sym):  # tab_nm_sym
             return self.textview_nm_sym.get_buffer()
-        if active_tab == tabs_page_num(self.scrwin_dyn_reloc):  # tab_dyn_reloc
+        if active_tab == self.tabs.page_num(self.scrwin_dyn_reloc):  # tab_dyn_reloc
             return self.textview_dyn_reloc.get_buffer()
-        if active_tab == tabs_page_num(self.scrwin_dis):  # tab_dis
+        if active_tab == self.tabs.page_num(self.scrwin_dis):  # tab_dis
             return self.textview_dis.get_buffer()
-        if active_tab == tabs_page_num(self.scrwin_readelf):  # tab_readelf
+        if active_tab == self.tabs.page_num(self.scrwin_readelf):  # tab_readelf
             return self.textview_readelf.get_buffer()
-        if active_tab == tabs_page_num(self.scrwin_headers):  # tab_headers
+        if active_tab == self.tabs.page_num(self.scrwin_headers):  # tab_headers
             return self.textview_headers.get_buffer()
-        if active_tab == tabs_page_num(self.scrwin_ldconfig):  # tab_ldconfig
+        if active_tab == self.tabs.page_num(self.scrwin_ldconfig):  # tab_ldconfig
             return self.textview_ldconfig.get_buffer()
-        if active_tab == tabs_page_num(self.scrwin_ldd):  # tab_ldd
+        if active_tab == self.tabs.page_num(self.scrwin_ldd):  # tab_ldd
             return self.textview_ldd.get_buffer()
-        if active_tab == tabs_page_num(self.scrwin_size):  # tab_size_size
+        if active_tab == self.tabs.page_num(self.scrwin_size):  # tab_size_size
             return self.textview_size.get_buffer()
-        if active_tab == tabs_page_num(self.scrwin_str):  # tab_str
+        if active_tab == self.tabs.page_num(self.scrwin_str):  # tab_str
             return self.textview_str.get_buffer()
-        if active_tab == tabs_page_num(self.scrwin_func):  # tab_func
+        if active_tab == self.tabs.page_num(self.scrwin_func):  # tab_func
             return self.textview_str.get_buffer()
-        if active_tab == tabs_page_num(self.scrwin_const):  # tab_const
+        if active_tab == self.tabs.page_num(self.scrwin_const):  # tab_const
             return self.textview_const.get_buffer()
         return r''
 
@@ -1623,7 +1673,7 @@ class MainWindow:  # pylint: disable=R0902
         if not isinstance(DataTable.lastused, str) or DataTable.lastused in {r'', r'cancel'}:
             self.gtk_saveas(_button)
             return
-        self.save_data(self.tabs.get_current_page(), DataTable.lastused)
+        self.save_data(DataTable.lastused)
 
     def gtk_saveas(self, _button: Gtk.Button) -> None:
         """Choose where to save the data."""
@@ -1643,12 +1693,12 @@ class MainWindow:  # pylint: disable=R0902
             self.status(self.context_id, r'File saving cancelled by user')
             return
         # Sava Data
-        self.save_data(self.tabs.get_current_page(), savefilepath)
+        self.save_data(savefilepath)
 
-    def save_data(self, active_tab: int, savefilepath: str) -> None:  # noqa: C901
+    def save_data(self, savefilepath: str) -> None:  # noqa: C901
         """Perform the actual data-save."""
         DataTable.lastused = savefilepath
-        save_buffer_data: Gtk.TextBuffer = self.retreive_data_buffer(active_tab, self.tabs.page_num)
+        save_buffer_data: Gtk.TextBuffer = self.retreive_data_buffer()
         try:
             self.write2file(savefilepath, save_buffer_data.get_text(save_buffer_data.get_start_iter(), save_buffer_data.get_end_iter(), True))
             del save_buffer_data
@@ -1667,6 +1717,61 @@ class MainWindow:  # pylint: disable=R0902
         self.status(self.context_id, STATUS_WRITING[1])
         with open(_filename, mode=r'wt', encoding=r'utf-8') as _file:
             _file.write(_write)  # type: ignore
+
+    # SEARCHING
+
+    def find_text(self, search_entry: Gtk.SearchEntry) -> None:
+        """Find text in a textview."""
+        search_buffer_data: Gtk.TextBuffer = self.retreive_data_buffer()
+        if search_buffer_data.get_iter_at_mark(search_buffer_data.get_insert()).get_offset() == search_buffer_data.get_char_count():
+            search_buffer_data.get_start_iter().set_offset(0)
+            search_buffer_data.get_end_iter().set_offset(0)
+            search_buffer_data.place_cursor(search_buffer_data.get_start_iter())
+            search_buffer_data.get_iter_at_mark(search_buffer_data.get_insert()).set_offset(0)
+            found: tuple = search_buffer_data.get_start_iter().forward_search(search_entry.get_text(), 0, search_buffer_data.get_end_iter())
+        else:
+            found = search_buffer_data.get_start_iter().forward_search(search_entry.get_text(), 0, search_buffer_data.get_end_iter())
+        if found:
+            search_buffer_data.select_range(found[0], found[1])
+            self.tabs.get_nth_page(self.tabs.get_current_page()).get_child().scroll_to_iter(found[0], 0.0, True, 0.5, 0.5)
+            DataTable.start_iter = found[1]
+
+    def find_text_next(self, search_entry: Gtk.SearchEntry) -> None:
+        """Find the next match in a textview."""
+        search_buffer_data: Gtk.TextBuffer = self.retreive_data_buffer()
+        if search_buffer_data.get_iter_at_mark(search_buffer_data.get_insert()).get_offset() == search_buffer_data.get_char_count():
+            search_buffer_data.get_start_iter().set_offset(0)
+            search_buffer_data.get_end_iter().set_offset(0)
+            search_buffer_data.place_cursor(search_buffer_data.place_cursor(search_buffer_data.get_start_iter()))
+            search_buffer_data.get_iter_at_mark(search_buffer_data.get_insert()).set_offset(0)
+            found: tuple = DataTable.start_iter.forward_search(search_entry.get_text(), 0, search_buffer_data.get_end_iter())  # type: ignore
+        else:
+            found = DataTable.start_iter.forward_search(search_entry.get_text(), 0, search_buffer_data.get_end_iter())  # type: ignore
+        if found:
+            search_buffer_data.select_range(found[0], found[1])
+            self.tabs.get_nth_page(self.tabs.get_current_page()).get_child().scroll_to_iter(found[0], 0.0, True, 0.5, 0.5)
+            DataTable.start_iter = found[1]
+
+    def find_text_prev(self, search_entry: Gtk.SearchEntry) -> None:
+        """Find the previous match in a textview."""
+        search_buffer_data: Gtk.TextBuffer = self.retreive_data_buffer()
+        if search_buffer_data.get_iter_at_mark(search_buffer_data.get_insert()).get_offset():
+            found: tuple = DataTable.start_iter.backward_search(search_entry.get_text(), 0, search_buffer_data.get_start_iter())  # type: ignore
+        else:
+            search_buffer_data.get_start_iter().set_offset(search_buffer_data.get_char_count())
+            search_buffer_data.get_end_iter().set_offset(search_buffer_data.get_char_count())
+            search_buffer_data.place_cursor(search_buffer_data.get_start_iter())
+            search_buffer_data.get_iter_at_mark(search_buffer_data.get_insert()).set_offset(search_buffer_data.get_char_count())
+            found = DataTable.start_iter.backward_search(search_entry.get_text(), 0, search_buffer_data.get_start_iter())  # type: ignore
+        if found:
+            search_buffer_data.select_range(found[0], found[1])
+            self.tabs.get_nth_page(self.tabs.get_current_page()).get_child().scroll_to_iter(found[0], 0.0, True, 0.5, 0.5)
+            DataTable.start_iter = found[0]
+
+    def clear_search_data(self) -> None:
+        """Cleanup all data used for searching."""
+        DataTable.start_iter = None
+        self.entry_search.set_text(r'')
 
     # ANALYSIS
 
