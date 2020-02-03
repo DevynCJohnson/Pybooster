@@ -1090,13 +1090,8 @@ $(BIN)/typesize : $(BIN) $(SRCDIR)/typesize.c $(MACROSPATH)
 # TEST PROGRAM RULES #
 
 
-ifdef DEBUG
-$(BIN)/test_dev : $(BIN) $(SRCDIR)/test_dev.c $(MACROSPATH)
-	$(CC) -DPRINTF_BUF128 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $(SRCDIR)/$(@F).c -o $@ && md5sum --tag $@ && sha1sum --tag $@ && sha512sum --tag $@ && b2sum --tag $@
-else
 $(BIN)/test_dev : $(BIN) $(SRCDIR)/test_dev.c $(MACROSPATH)
 	$(CC) -DPRINTF_BUF128 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(@F)\" $(MINEXE_PARAMS) $(SRCDIR)/$(@F).c -o $@ && $(STRIP) $@ && md5sum --tag $@ && sha1sum --tag $@ && sha512sum --tag $@ && b2sum --tag $@
-endif
 
 $(TESTINGDIR)/test_dev.s : $(TESTINGDIR) $(SRCDIR)/test_dev.c $(MACROSPATH)
 	$(CC) -DPRINTF_BUF128 -D__SINGLE_THREAD__ -DPROGRAM_NAME=\"$(*F)\" $(MINEXE_PARAMS) -S $(SRCDIR)/$(@F).c -o $@

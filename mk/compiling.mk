@@ -320,6 +320,7 @@ ifdef DEBUG
     else ifeq ($(DEBUG),4)
         override DEBUG::=-DNDEBUG -DNOAUTHOR -DNOVERSION -g1 -ggdb1 -fverbose-asm
         override DCJ_DEBUG::=
+        override STRIP::=printf '%s\n'
     else
         override DEBUG::=$(DCJ_DEBUG)
     endif
