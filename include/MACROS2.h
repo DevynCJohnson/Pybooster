@@ -5969,6 +5969,9 @@ DECL_FUNC NONNULL void bit8tostr(const uint8_t bits, char* restrict outstr);
 DECL_FUNC NONNULL void bit16tostr(const uint16_t bits, char* restrict outstr);
 DECL_FUNC NONNULL void bit32tostr(const uint32_t bits, char* restrict outstr);
 DECL_FUNC NONNULL void bit64tostr(const uint64_t bits, char* restrict outstr);
+#if SUPPORTS_UINT128
+DECL_FUNC NONNULL void bit128tostr(const uint128_t bits, char* restrict outstr);
+#endif
 DECL_FUNC NONNULL void bitlongtostr(const unsigned long bits, char* restrict outstr);
 DECL_FUNC void* calloc(const size_t num_members, const size_t elem_size);
 DECL_FUNC clock_t clock(void);
@@ -6135,6 +6138,11 @@ DECL_FUNC NONNULL void ulltooct(const unsigned long long num, char* restrict res
 DECL_FUNC NONNULL void ultodec(const unsigned long num, char* restrict result);
 DECL_FUNC NONNULL void ultohex(const unsigned long num, const int use_upper, char* restrict result);
 DECL_FUNC NONNULL void ultooct(const unsigned long num, char* restrict result);
+#if SUPPORTS_UINT128
+DECL_FUNC NONNULL void u128todec(const uint128_t num, char* restrict result);
+DECL_FUNC NONNULL void u128tohex(const uint128_t num, const int use_upper, char* restrict result);
+DECL_FUNC NONNULL void u128tooct(const uint128_t num, char* restrict result);
+#endif
 DECL_FUNC int uname(struct utsname* uts);
 DECL_FUNC NONNULL size_t utf32toutf8(const ucs4_t* restrict codepoints, unsigned char* restrict utf8str);
 DECL_FUNC void unlist_locked_file(FILE* f);

@@ -14481,6 +14481,16 @@ LIB_FUNC ATTR_CF uint64_t test_bit64(const uint64_t bits, const uint8_t pos, con
 }
 
 
+#if SUPPORTS_UINT128
+/** Test if a particular bit (`pos`) is a particular `value` (0 or 1) in the named data (`bits`) */
+LIB_FUNC ATTR_CF uint128_t test_bit128(const uint128_t bits, const uint8_t pos, const uint8_t value) {
+	register const uint128_t mask = (uint128_t)((uint128_t)1U << (uint128_t)(pos - 1U));
+	if (value) { return ((bits & mask) != 0); }
+	else { return ((bits & mask) == 0); }
+}
+#endif
+
+
 LIB_FUNC int constant_test_bit(const int nr, const volatile void* restrict addr) {
 	return ((1UL << (nr & 31)) & (((const volatile unsigned int*)addr)[nr >> 5])) != 0;
 }
@@ -25677,6 +25687,9 @@ LIB_FUNC ATTR_PF ssize_t skip_to(const char* restrict format) {
 #elif (defined(PRINTF_BUF1024) || defined(PRINTF_BUF1K))
 /** Size of the internal printf buffer */
 #   define PRINTF_BUF_SIZE   1024
+#elif (defined(PRINTF_BUF2048) || defined(PRINTF_BUF2K))
+/** Size of the internal printf buffer */
+#   define PRINTF_BUF_SIZE   2048
 #else
 /** Size of the internal printf buffer */
 #   define PRINTF_BUF_SIZE   128
@@ -25710,8 +25723,16 @@ struct __v_printf_internals {
 	union printf_number {
 		long_double_shape_t lfloat;
 		double_shape_t dfloat;
+#if SUPPORTS_UINT128
+		uint128_t u128number;
+		int128_t i128number;
+#endif
 		unsigned long long ullnumber;
 		long long llnumber;
+#if SUPPORTS_UINT128
+		const uint128_t* i128cptr;
+		uint128_t* u128ptr;
+#endif
 		const unsigned long long* llcptr;
 		unsigned long long* llptr;
 		const unsigned long* lcptr;
@@ -25778,6 +25799,8 @@ Format specifiers follow this layout: %[flags][width][.precision][length]specifi
  - PRINTF_BUF128: Set the size of the internal printf buffer to 128-bytes
  - PRINTF_BUF256: Set the size of the internal printf buffer to 256-bytes
  - PRINTF_BUF512: Set the size of the internal printf buffer to 512-bytes
+ - PRINTF_BUF1024: Set the size of the internal printf buffer to 1024-bytes
+ - PRINTF_BUF2048: Set the size of the internal printf buffer to 2048-bytes
 */
 LIB_FUNC NOLIBCALL ATTR_PRINTF(2, 0) int __v_printf(const struct arg_printf* restrict fn, const char* format, va_list arg_ptr) {
 	ssize_t len = 0;
@@ -25941,21 +25964,32 @@ goto_parse_printf:  // Parse printf "%" syntax
 				// Length Specifiers
 				case 'h':  // short integer
 					--internalvals.flag_long;
-					if (internalvals.flag_long < -2) { return -1; }  // No more than two "h" flags
+					if (internalvals.flag_long > 3) { return -1; }  // No more than three "l" flags
 					goto goto_parse_printf;
 				case 'l':  // long integer
 					++internalvals.flag_long;
-					if (internalvals.flag_long > 2) { return -1; }  // No more than two "l" flags
+					if (internalvals.flag_long > 3) { return -1; }  // No more than three "l" flags
 					goto goto_parse_printf;
 				case 'I':  // 64-bit integer
 					if ((*format == '3') && (*(format + 1) == '2')) {  // I32
 						internalvals.flag_long = 0;
 						format += 2;
-					} else if (((*format == '6') && (*(format + 1) == '4')) || (*format == 'I')) {  // I64 & II
+					} else if ((*format == '6') && (*(format + 1) == '4')) {  // I64
 						internalvals.flag_long = PRINTF_LONG_FLAG;
-						format += 2;
+						format += 3;
+					} else if (*format == 'I') {  // II
+						internalvals.flag_long = PRINTF_LONG_FLAG;
+						++format;
 					} else { internalvals.flag_long = PRINTF_LONG_FLAG; }
 					goto goto_parse_printf;
+#   if ((!defined(NO_PRINT_INT128)) && SUPPORTS_INT128)
+				case 'T':  // 128-bit integers
+					++internalvals.flag_long;
+					++internalvals.flag_long;
+					++internalvals.flag_long;
+					if (internalvals.flag_long > 3) { return -1; }  // No more than three "l" flags
+					goto goto_parse_printf;
+#   endif
 				case 'j':  // intmax_t & uintmax_t
 				case 't':  // ptrdiff_t
 				case 'z':  // size_t & ssize_t
@@ -26202,6 +26236,19 @@ goto_inum_printf:
 					internalvals.suffix_ptr = (char*)&internalvals.suffix_buf;
 					// Integer length & sign
 					switch (internalvals.flag_long) {
+#      if ((!defined(NO_PRINT_INT128)) && SUPPORTS_INT128)
+						case 3:
+							if (internalvals.flag_sign) {
+								internalvals.pfmtnum.i128number = (int128_t)va_arg(arg_ptr, int128_t);
+								if (internalvals.pfmtnum.i128number < 0) {
+									internalvals.pfmtnum.u128number = (uint128_t)-internalvals.pfmtnum.i128number;
+									internalvals.flag_ex_sign = '-';
+								} else { internalvals.pfmtnum.u128number = (uint128_t)internalvals.pfmtnum.i128number; }
+							} else {
+								internalvals.pfmtnum.u128number = (uint128_t)va_arg(arg_ptr, uint128_t);
+							}
+							break;
+#      endif
 						case 2:
 							if (internalvals.flag_sign) {
 								internalvals.pfmtnum.llnumber = (long long)va_arg(arg_ptr, long long);
@@ -26278,17 +26325,30 @@ goto_inum_printf:
 								*internalvals.prefix_ptr++ = '0';
 								*internalvals.prefix_ptr++ = 'b';
 							}
-							if (internalvals.flag_long == 2) {
-								bit64tostr((uint64_t)internalvals.pfmtnum.ullnumber, xptr);
-							} else if (internalvals.flag_long == 1) {
-								bitlongtostr((unsigned long)internalvals.pfmtnum.ulnumber, xptr);
-							} else if (internalvals.flag_long == 0) {
-								bit32tostr((uint32_t)internalvals.pfmtnum.unumber, xptr);
-							} else if (internalvals.flag_long == -1) {
-								bit16tostr((uint16_t)internalvals.pfmtnum.usnumber, xptr);
-							} else if (internalvals.flag_long == -2) {
-								bit8tostr((uint8_t)internalvals.pfmtnum.ucnumber, xptr);
-							} else { return -1; }
+							switch (internalvals.flag_long) {
+								case 2:
+									bit64tostr((uint64_t)internalvals.pfmtnum.ullnumber, xptr);
+									break;
+								case 1:
+									bitlongtostr((unsigned long)internalvals.pfmtnum.ulnumber, xptr);
+									break;
+								case 0:
+									bit32tostr((uint32_t)internalvals.pfmtnum.unumber, xptr);
+									break;
+								case -1:
+									bit16tostr((uint16_t)internalvals.pfmtnum.usnumber, xptr);
+									break;
+								case -2:
+									bit8tostr((uint8_t)internalvals.pfmtnum.ucnumber, xptr);
+									break;
+#      if ((!defined(NO_PRINT_INT128)) && SUPPORTS_INT128)
+								case 3:
+									bit128tostr((uint128_t)internalvals.pfmtnum.u128number, xptr);
+									break;
+#      endif
+								default:
+									return -1;
+							}
 							internalvals.flag_ex_sign = 0;
 							internalvals.flag_sign = 0;
 							break;
@@ -26296,51 +26356,90 @@ goto_inum_printf:
 							if (PREDICT_LIKELY(internalvals.flag_hash)) {  // Append integer prefix
 								*internalvals.prefix_ptr++ = '0';
 							}
-							if (internalvals.flag_long == 2) {
-								ulltooct((unsigned long long)internalvals.pfmtnum.ullnumber, xptr);
-							} else if (internalvals.flag_long == 1) {
-								ultooct((unsigned long)internalvals.pfmtnum.ulnumber, xptr);
-							} else if (internalvals.flag_long == 0) {
-								utooct((unsigned int)internalvals.pfmtnum.unumber, xptr);
-							} else if (internalvals.flag_long == -1) {
-								uhtooct((unsigned short)internalvals.pfmtnum.usnumber, xptr);
-							} else if (internalvals.flag_long == -2) {
-								u8tooct((uint8_t)internalvals.pfmtnum.ucnumber, xptr);
-							} else { return -1; }
+							switch (internalvals.flag_long) {
+								case 2:
+									ulltooct((unsigned long long)internalvals.pfmtnum.ullnumber, xptr);
+									break;
+								case 1:
+									ultooct((unsigned long)internalvals.pfmtnum.ulnumber, xptr);
+									break;
+								case 0:
+									utooct((unsigned int)internalvals.pfmtnum.unumber, xptr);
+									break;
+								case -1:
+									uhtooct((unsigned short)internalvals.pfmtnum.usnumber, xptr);
+									break;
+								case -2:
+									u8tooct((uint8_t)internalvals.pfmtnum.ucnumber, xptr);
+									break;
+#      if ((!defined(NO_PRINT_INT128)) && SUPPORTS_INT128)
+								case 3:
+									u128tooct((uint128_t)internalvals.pfmtnum.u128number, xptr);
+									break;
+#      endif
+								default:
+									return -1;
+							}
 							break;
 						case 10:  // Decimal
 							if (PREDICT_UNLIKELY(internalvals.flag_hash)) {  // Append decimal-point
 								*internalvals.suffix_ptr++ = '.';
 								*internalvals.suffix_ptr++ = '0';
 							}
-							if (internalvals.flag_long == 2) {
-								ulltodec((unsigned long long)internalvals.pfmtnum.ullnumber, xptr);
-							} else if (internalvals.flag_long == 1) {
-								ultodec((unsigned long)internalvals.pfmtnum.ulnumber, xptr);
-							} else if (internalvals.flag_long == 0) {
-								utodec((unsigned int)internalvals.pfmtnum.unumber, xptr);
-							} else if (internalvals.flag_long == -1) {
-								uhtodec((unsigned short)internalvals.pfmtnum.usnumber, xptr);
-							} else if (internalvals.flag_long == -2) {
-								u8todec((uint8_t)internalvals.pfmtnum.ucnumber, xptr);
-							} else { return -1; }
+							switch (internalvals.flag_long) {
+								case 2:
+									ulltodec((unsigned long long)internalvals.pfmtnum.ullnumber, xptr);
+									break;
+								case 1:
+									ultodec((unsigned long)internalvals.pfmtnum.ulnumber, xptr);
+									break;
+								case 0:
+									utodec((unsigned int)internalvals.pfmtnum.unumber, xptr);
+									break;
+								case -1:
+									uhtodec((unsigned short)internalvals.pfmtnum.usnumber, xptr);
+									break;
+								case -2:
+									u8todec((uint8_t)internalvals.pfmtnum.ucnumber, xptr);
+									break;
+#      if ((!defined(NO_PRINT_INT128)) && SUPPORTS_INT128)
+								case 3:
+									u128todec((uint128_t)internalvals.pfmtnum.u128number, xptr);
+									break;
+#      endif
+								default:
+									return -1;
+							}
 							break;
 						case 16:  // Hexadecimal
 							if (PREDICT_LIKELY(internalvals.flag_hash)) {  // Append integer prefix
 								*internalvals.prefix_ptr++ = '0';
 								*internalvals.prefix_ptr++ = (char)(internalvals.flag_upcase ? 'X' : 'x');
 							}
-							if (internalvals.flag_long == 2) {
-								ulltohex((unsigned long long)internalvals.pfmtnum.ullnumber, (int)internalvals.flag_upcase, xptr);
-							} else if (internalvals.flag_long == 1) {
-								ultohex((unsigned long)internalvals.pfmtnum.ulnumber, (int)internalvals.flag_upcase, xptr);
-							} else if (internalvals.flag_long == 0) {
-								utohex((unsigned int)internalvals.pfmtnum.unumber, (int)internalvals.flag_upcase, xptr);
-							} else if (internalvals.flag_long == -1) {
-								uhtohex((unsigned short)internalvals.pfmtnum.usnumber, (int)internalvals.flag_upcase, xptr);
-							} else if (internalvals.flag_long == -2) {
-								u8tohex((uint8_t)internalvals.pfmtnum.ucnumber, (int)internalvals.flag_upcase, xptr);
-							} else { return -1; }
+							switch (internalvals.flag_long) {
+								case 2:
+									ulltohex((unsigned long long)internalvals.pfmtnum.ullnumber, (int)internalvals.flag_upcase, xptr);
+									break;
+								case 1:
+									ultohex((unsigned long)internalvals.pfmtnum.ulnumber, (int)internalvals.flag_upcase, xptr);
+									break;
+								case 0:
+									utohex((unsigned int)internalvals.pfmtnum.unumber, (int)internalvals.flag_upcase, xptr);
+									break;
+								case -1:
+									uhtohex((unsigned short)internalvals.pfmtnum.usnumber, (int)internalvals.flag_upcase, xptr);
+									break;
+								case -2:
+									u8tohex((uint8_t)internalvals.pfmtnum.ucnumber, (int)internalvals.flag_upcase, xptr);
+									break;
+#      if ((!defined(NO_PRINT_INT128)) && SUPPORTS_INT128)
+								case 3:
+									u128tohex((uint128_t)internalvals.pfmtnum.u128number, (int)internalvals.flag_upcase, xptr);
+									break;
+#      endif
+								default:
+									return -1;
+							}
 							break;
 						default: return -1;
 					}
@@ -26377,27 +26476,27 @@ goto_inum_printf:
 #      ifndef NO_PRINT_WIDTH_PREC
 					if (PREDICT_UNLIKELY(internalvals.flag_preci)) {  // If `preci` is 0, then do not write number
 						*xptr = '\0';
-					} else if (internalvals.flag_dot && (internalvals.preci > 0)) {  // Write precision padding
+					} else if (internalvals.flag_dot && internalvals.preci) {  // Write precision padding
 						__v_printf_write_if_full(internalvals.preci);
 						memset_no_output(bufptr, '0', internalvals.preci);
 						__v_printf_write_epilogue(internalvals.preci);
 					}
 #      endif
 					// Write integer string
-					if (PREDICT_UNLIKELY((numstrlen > 0) && (*xptr != '\0'))) {
+					if (PREDICT_UNLIKELY((numstrlen) && (*xptr != '\0'))) {
 						if (((buf_space_left - (ssize_t)numstrlen) - (ssize_t)suffixlen) < 0) {
 							__v_printf_write_buf();
 						}
 						memcpy_no_output(bufptr, &xbuf, numstrlen);
 						__v_printf_write_epilogue(numstrlen);
-						if (PREDICT_UNLIKELY(suffixlen > 0)) {  // Write suffix string
+						if (PREDICT_UNLIKELY(suffixlen)) {  // Write suffix string
 							memcpy_no_output(bufptr, &internalvals.suffix_buf._buf, suffixlen);
 							__v_printf_write_epilogue(suffixlen);
 						}
 					}
 					// Integer width padding & left-justify
 #      ifndef NO_PRINT_WIDTH_PREC
-					if (PREDICT_UNLIKELY((internalvals.width != 0) && internalvals.flag_justify)) {
+					if (PREDICT_UNLIKELY((internalvals.width) && internalvals.flag_justify)) {
 						__v_printf_write_if_full(internalvals.width);
 						memset_no_output(bufptr, internalvals.padwith, internalvals.width);
 						__v_printf_write_epilogue(internalvals.width);
@@ -26471,7 +26570,7 @@ goto_float_printf:
 					__v_printf_write_epilogue(internalvals.outstrlen);
 					// Float-point width padding & left-justify
 #      ifndef NO_PRINT_WIDTH_PREC
-					if (PREDICT_UNLIKELY((internalvals.width > 0) && internalvals.flag_justify)) {
+					if (PREDICT_UNLIKELY(internalvals.width && internalvals.flag_justify)) {
 						__v_printf_write_if_full(internalvals.width);
 						memset_no_output(bufptr, internalvals.padwith, internalvals.width);
 						__v_printf_write_epilogue(internalvals.width);
@@ -26516,7 +26615,7 @@ goto_action_printf:
 	}  // End of `while (*format)`
 	// Ensure that the buffer has been written before ending function
 	register const size_t tmpsz = strlen(buf);
-	if (tmpsz > 0) {
+	if (tmpsz) {
 		if (((internalvals.tmpi = fn->puts((const void*)buf, tmpsz, fn->data)) == -1) || ((buf_space_left + (ssize_t)internalvals.tmpi) != (PRINTF_BUF_SIZE - 1))) { return -1; }
 		bzero(buf, PRINTF_BUF_SIZE);
 	}
@@ -27608,7 +27707,7 @@ LIB_FUNC void puts_err_no_output(const char* src) {
 /** Print an integer to stdout as a string */
 LIB_FUNC void puti(const int num) {
 	if (ferror(stdout)) { return; }
-	align16 char puti_tmpbuf[__UIM_BUFLEN_INT + 2] = { 0 };
+	align32 char puti_tmpbuf[__UIM_BUFLEN_INT + 2] = { 0 };
 	char* restrict p = puti_tmpbuf;
 	register int i = num;
 	if (num < 0) { *p++ = '-'; i = -i; }
@@ -27632,7 +27731,7 @@ LIB_FUNC void puti(const int num) {
 /** Print a signed 64-bit integer to stdout as a string */
 LIB_FUNC void puti64(const int64_t num) {
 	if (ferror(stdout)) { return; }
-	align32 char tmpbuf[__UIM_BUFLEN_INT64 + 2] = { 0 };
+	align64 char tmpbuf[__UIM_BUFLEN_INT64 + 2] = { 0 };
 	char* restrict p = tmpbuf;
 	register int64_t i = num;
 	if (num < 0) { *p++ = '-'; i = -i; }
@@ -27677,6 +27776,30 @@ LIB_FUNC void putu64(const uint64_t num) {
 
 
 #if SUPPORTS_UINT128
+/** Print a signed 128-bit integer to stdout as a string */
+LIB_FUNC void puti128(const int128_t num) {
+	if (ferror(stdout)) { return; }
+	align128 char tmpbuf[__UIM_BUFLEN_INT128 + 2] = { 0 };
+	char* restrict p = tmpbuf;
+	register int128_t i = num;
+	if (num < 0) { *p++ = '-'; i = -i; }
+	register uint128_t shifter = (uint128_t)i;
+	do {  // Move to representation ending
+		++p;
+		shifter /= 10;
+	} while (shifter);
+	*p = stdout->lbf;
+	const size_t len = (size_t)(1 + (size_t)p - (size_t)&tmpbuf);
+	do {  // Move back, inserting digits
+		*--p = str_digit[i % 10];
+		i /= 10;
+	} while (i);
+	FLOCK(stdout);
+	(void)__write_stdout((const char*)tmpbuf, len);
+	FUNLOCK(stdout);
+}
+
+
 /** Print an unsigned 128-bit integer to stdout as a string */
 LIB_FUNC void putu128(const uint128_t num) {
 	if (ferror(stdout)) { return; }
@@ -31083,6 +31206,18 @@ LIB_FUNC NONNULL void bit64tostr(const uint64_t bits, char* restrict outstr) {
 }
 
 
+#if SUPPORTS_UINT128
+/** Convert sixteen literal bytes (128-bit value) to a string */
+LIB_FUNC NONNULL void bit128tostr(const uint128_t bits, char* restrict outstr) {
+	for (register uint8_t i = 128, k = 0; ((i != 0) && k != 129); i--, k++) {
+		if (test_bit128(bits, (uint8_t)i, (uint8_t)1U)) { outstr[k] = '1'; }
+		else { outstr[k] = '0'; }
+	}
+	outstr[129] = '\0';
+}
+#endif
+
+
 /** Convert a long integer into a string of literal bytes */
 LIB_FUNC NONNULL void bitlongtostr(const unsigned long bits, char* restrict outstr) {
 #   if LONG_EQ_INT
@@ -31556,6 +31691,64 @@ LIB_FUNC NONNULL long a64l(const char* restrict s) {
 	for (; e < 36 && *s; e += 6, s++) { x |= (uint32_t)((strchr(a64l_digits, *s) - a64l_digits) << e); }
 	return (long)x;
 }
+
+
+#if SUPPORTS_INT128
+/** Convert string to an int128_t */
+LIB_FUNC NONNULL ATTR_PF int128_t atoi128(const char* restrict s) {
+	register int neg = 0;
+	while (PREDICT_UNLIKELY(isspace(*s))) { ++s; }
+	switch (*s) {
+		case '-': neg = 1;  attr_fallthrough
+		case '+': ++s;  attr_fallthrough
+		default: break;
+	}
+	int128_t n = 0;
+	while (PREDICT_LIKELY(isdigit(*s))) { n = (int128_t)((10 * n) + (*s++ - '0')); }
+	return (int128_t)(neg ? -n : n);
+}
+
+
+/** Convert string to an int128_t (the string must only contain "0"-"9", "-", & "+") */
+LIB_FUNC NONNULL ATTR_PF int128_t xatoui128(const char* restrict s) {
+	register int neg = 0;
+	switch (*s) {
+		case '-': neg = 1;  attr_fallthrough
+		case '+': ++s;  attr_fallthrough
+		default: break;
+	}
+	int128_t n = 0;
+	while (PREDICT_LIKELY(isdigit(*s))) { n = (int128_t)((10 * n) + (*s++ - '0')); }
+	return (int128_t)(neg ? -n : n);
+}
+
+
+/** Convert string to an uint128_t */
+LIB_FUNC NONNULL ATTR_PF uint128_t atou128(const char* restrict s) {
+	while (PREDICT_UNLIKELY(isspace(*s))) { ++s; }
+	switch (*s) {
+		case '-':  attr_fallthrough
+		case '+': ++s;  attr_fallthrough
+		default: break;
+	}
+	uint128_t n = 0;
+	while (PREDICT_LIKELY(isdigit(*s))) { n = (uint128_t)((uint128_t)(10U * n) + (uint128_t)(*s++ - '0')); }
+	return n;
+}
+
+
+/** Convert string to an uint128_t (the string must only contain "0"-"9", "-", & "+") */
+LIB_FUNC NONNULL ATTR_PF uint128_t xatou128(const char* restrict s) {
+	switch (*s) {
+		case '-':  attr_fallthrough
+		case '+': ++s;  attr_fallthrough
+		default: break;
+	}
+	uint128_t n = 0;
+	while (PREDICT_LIKELY(isdigit(*s))) { n = (uint128_t)(((uint128_t)10U * n) + (uint128_t)(*s++ - '0')); }
+	return n;
+}
+#endif
 
 
 /** Convert an integer to a string */
@@ -32703,6 +32896,241 @@ LIB_FUNC int __lltostr(char* s, int size, unsigned long long i, const int base, 
 	return (int)j;
 }
 #define lltostr(s, size, i, base, UpCase)   __lltostr((s), (size), (i), (base), (UpCase))
+
+
+#if SUPPORTS_INT128
+/** Convert an int128_t to a decimal string */
+LIB_FUNC NONNULL void i128todec(const int128_t num, char* restrict result) {
+	char* restrict p = result;
+	int128_t i = num;
+	if (i < 0) { *p++ = '-'; i *= -1; }
+	uint128_t shifter = (uint128_t)i;
+	do {  // Move to representation ending
+		++p;
+		shifter /= 10;
+	} while (shifter);
+	*p = '\0';
+	do {  // Move back, inserting digits
+		*--p = (char)(48 + (i % 10));
+		i /= 10;
+	} while (i);
+}
+
+
+/** Convert an uint128_t to a decimal string */
+LIB_FUNC NONNULL void u128todec(const uint128_t num, char* restrict result) {
+	char* restrict p = result;
+	uint128_t shifter = (uint128_t)num;
+	do {  // Move to representation ending
+		++p;
+		shifter /= 10;
+	} while (shifter);
+	*p = '\0';
+	uint128_t i = num;
+	do {  // Move back, inserting digits
+		*--p = (char)(48 + (i % 10));
+		i /= 10;
+	} while (i);
+}
+
+
+/** Convert an int128_t to an octal string */
+LIB_FUNC ATTR_PF char* i128tooctstr(const int128_t num) {
+	static align128 char buf[__UIM_BUFLEN_UINT128] = { 0 };
+	char* restrict p = buf;
+	int128_t i = num;
+	if (i < 0) { *p++ = '-'; i *= -1; }
+	uint128_t shifter = (uint128_t)i;
+	do {  // Move to representation ending
+		++p;
+		shifter /= 8;
+	} while (shifter);
+	*p = '\0';
+	do {  // Move back, inserting digits
+		*--p = (char)(48 + (i % 8));
+		i /= 8;
+	} while (i);
+	return buf;
+}
+
+
+/** Convert a int128_t to an octal string */
+LIB_FUNC NONNULL void i128tooct(const int128_t num, char* restrict result) {
+	char* restrict p = result;
+	int128_t i = num;
+	if (i < 0) { *p++ = '-'; i *= -1; }
+	uint128_t shifter = (uint128_t)i;
+	do {  // Move to representation ending
+		++p;
+		shifter /= 8;
+	} while (shifter);
+	*p = '\0';
+	do {  // Move back, inserting digits
+		*--p = (char)(48 + (i % 8));
+		i /= 8;
+	} while (i);
+}
+
+
+/** Convert an uint128_t to an octal string */
+LIB_FUNC ATTR_PF char* u128tooctstr(const uint128_t num) {
+	static align128 char buf[__UIM_BUFLEN_UINT128] = { 0 };
+	char* restrict p = buf;
+	uint128_t shifter = (uint128_t)num;
+	do {  // Move to representation ending
+		++p;
+		shifter /= 8;
+	} while (shifter);
+	*p = '\0';
+	uint128_t i = num;
+	do {  // Move back, inserting digits
+		*--p = (char)(48 + (i % 8));
+		i /= 8;
+	} while (i);
+	return buf;
+}
+
+
+/** Convert an uint128_t to an octal string */
+LIB_FUNC NONNULL void u128tooct(const uint128_t num, char* restrict result) {
+	char* restrict p = result;
+	uint128_t shifter = (uint128_t)num;
+	do {  // Move to representation ending
+		++p;
+		shifter /= 8;
+	} while (shifter);
+	*p = '\0';
+	uint128_t i = num;
+	do {  // Move back, inserting digits
+		*--p = (char)(48 + (i % 8));
+		i /= 8;
+	} while (i);
+}
+
+
+/** Convert an int128_t to a hexadecimal string */
+LIB_FUNC ATTR_PF char* i128tohexstr(const int128_t num, const int use_upper) {
+	static align128 char buf[__UIM_BUFLEN_UINT128] = { 0 };
+	char* restrict p = buf;
+	int128_t i = num;
+	if (i < 0) { *p++ = '-'; i *= -1; }
+	uint128_t shifter = (uint128_t)i;
+	do {  // Move to representation ending
+		++p;
+		shifter /= 16;
+	} while (shifter);
+	*p = '\0';
+	if (use_upper) {
+		do {  // Move back, inserting digits
+			*--p = xdigits_u[i % 16];
+			i /= 16;
+		} while (i);
+	} else {
+		do {  // Move back, inserting digits
+			*--p = xdigits_l[i % 16];
+			i /= 16;
+		} while (i);
+	}
+	return buf;
+}
+
+
+/** Convert an int128_t to a hexadecimal string */
+LIB_FUNC NONNULL void i128tohex(const int128_t num, const int use_upper, char* restrict result) {
+	char* restrict p = result;
+	int128_t i = num;
+	if (i < 0) { *p++ = '-'; i *= -1; }
+	uint128_t shifter = (uint128_t)i;
+	do {  // Move to representation ending
+		++p;
+		shifter /= 16;
+	} while (shifter);
+	*p = '\0';
+	if (use_upper) {
+		do {  // Move back, inserting digits
+			*--p = xdigits_u[i % 16];
+			i /= 16;
+		} while (i);
+	} else {
+		do {  // Move back, inserting digits
+			*--p = xdigits_l[i % 16];
+			i /= 16;
+		} while (i);
+	}
+}
+
+
+/** Convert an uint128_t to a hexadecimal string */
+LIB_FUNC ATTR_PF char* u128tohexstr(const uint128_t num, const int use_upper) {
+	static align128 char buf[__UIM_BUFLEN_UINT128] = { 0 };
+	char* restrict p = buf;
+	uint128_t shifter = (uint128_t)num;
+	do {  // Move to representation ending
+		++p;
+		shifter /= 16;
+	} while (shifter);
+	*p = '\0';
+	uint128_t i = num;
+	if (use_upper) {
+		do {  // Move back, inserting digits
+			*--p = xdigits_u[i % 16];
+			i /= 16;
+		} while (i);
+	} else {
+		do {  // Move back, inserting digits
+			*--p = xdigits_l[i % 16];
+			i /= 16;
+		} while (i);
+	}
+	return buf;
+}
+
+
+/** Convert an uint128_t to a hexadecimal string */
+LIB_FUNC NONNULL void u128tohex(const uint128_t num, const int use_upper, char* restrict result) {
+	char* restrict p = result;
+	uint128_t shifter = (uint128_t)num;
+	do {  // Move to representation ending
+		++p;
+		shifter /= 16;
+	} while (shifter);
+	*p = '\0';
+	uint128_t i = num;
+	if (use_upper) {
+		do {  // Move back, inserting digits
+			*--p = xdigits_u[i % 16];
+			i /= 16;
+		} while (i);
+	} else {
+		do {  // Move back, inserting digits
+			*--p = xdigits_l[i % 16];
+			i /= 16;
+		} while (i);
+	}
+}
+
+
+/** Convert an uint128_t to a string given the value, string buffer, and number base */
+LIB_FUNC void u128tostr(const uint128_t value, char* restrict str_buf, const int base) {
+	register int count = 0;
+	if (NULL == str_buf) { return; }
+	else if (value == 0) { ++count; }
+	uint128_t t = 0, tmp = value, tmpval = value;
+	while (tmp > 0) {
+		tmp = (uint128_t)tmp / (uint128_t)base;
+		++count;
+	}
+	str_buf += count;
+	*str_buf = '\0';
+	uint128_t res = 0;
+	do {
+		res = tmpval - (uint128_t)base * (t = (uint128_t)tmpval / (uint128_t)base);
+		if (res < 10) { *--str_buf = (char)('0' + res); }
+		else if ((res >= 10) && (res < 16)) { *--str_buf = (char)((uint128_t)('A' - 10) + res); }
+	} while ((tmpval = t) != 0);
+}
+#define u128toa(value, str_buf, base)   u128tostr((value), (str_buf), (base))
+#endif
 
 
 /** Convert a float-point to a string */

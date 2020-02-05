@@ -32,6 +32,6 @@ along with this software.
 
 noreturn int main(rargc, rargv) {
 	TWO_ARGS_REQUIRED_F;
-	putu128(factorial_u128((uint64_t)atoull(argv[1])));
+	putu128(factorial_u128(atoui128(argv[1])));
 	fast_exit(EXIT_SUCCESS);
 }
