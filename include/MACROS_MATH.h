@@ -12387,6 +12387,17 @@ LIB_FUNC MATH_FUNC int isheptagonal(const uint64_t num) {
 }
 
 
+/** Where `sides` is the number of sides (≧4) and `test_num` is the number to test. If the returned value is not `0`, then it will indicate that the given number is the nth Ngonal number */
+LIB_FUNC MATH_FUNC uint64_t isNgonal(const uint64_t sides, const uint64_t test_num) {
+	if (sides < 4) {
+		return 0;
+	}
+	const double n = (sqrt((double)(test_num * (8 * sides - 16) + ((sides - 4) * (sides - 4)))) + (double)sides - 4.0) / (double)(2 * sides - 4);
+	if (ISDBL_INT(n)) { return (uint64_t)n; }
+	return 0;
+}
+
+
 /** Test if the given number is a Power-of-Two */
 LIB_FUNC MATH_FUNC int ispoweroftwo(const uint64_t num) {
 	return ((num != 0ULL) && !(num & (num - 1ULL)));
@@ -16176,6 +16187,65 @@ LIB_FUNC long double __floatscan(FILE* restrict f, const int prec, const int pok
 
 
 #endif  // FLOATSCAN_H
+
+
+/* NUMBER THEORY */
+
+
+#ifndef NUMBER_THEORY_H
+#define NUMBER_THEORY_H   (1)
+
+
+/** Place the prime numbers equal to or less than the given number into the given array and return the number of primes found */
+LIB_FUNC MATH_FUNC uint64_t primes_under(const uint64_t num, const size_t arraylen, uint64_t* restrict primearray) {
+	if (!arraylen) {
+		return 0;
+	}
+	if (num < 2) {
+		return 0;
+	}
+	if (num == 2) {
+		primearray[0] = 2;
+		return 1;
+	}
+	uint64_t pos = 0;
+	for (register uint64_t testnum = 3; testnum <= num; testnum += 2) {
+		if (isprime(testnum)) {
+			primearray[pos++] = testnum;
+			if (pos == arraylen) {
+				return pos;
+			}
+		}
+	}
+	return pos;
+}
+
+
+/** Von Mangoldt function */
+LIB_FUNC MATH_FUNC double von_mangoldt(const uint64_t num) {
+	switch (num) {
+		case 0:
+		case 1:
+			return 0.0;
+		case 2:
+			return LN2;
+		default:
+			break;
+	}
+	const double log_num = log((double)num);
+	for (register uint64_t primenum = 3; primenum <= num; primenum += 2) {
+		if (isprime(primenum)) {
+			const double testnum = log_num / log((double)primenum);
+			if (ISDBL_INT(testnum)) {
+				return log((double)primenum);
+			}
+		}
+	}
+	return 0.0;
+}
+
+
+#endif  // NUMBER_THEORY_H
 
 
 /* PHYSICS (<physics.h>) */

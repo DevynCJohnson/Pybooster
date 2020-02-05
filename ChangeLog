@@ -1,5 +1,6 @@
 2020-02-05  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* MACROS*.h:  Added more math functions & improved some code
 	* xmath.py:  Applied minor tweaks to `primes_under()`
 
 2020-02-03  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>

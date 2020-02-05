@@ -13913,6 +13913,8 @@ typedef union complex_long_double_shape {
 #define EXPF(fp)   __extension__ ({ const float_shape_t __union_float = { .value = (float)fp }; __union_float.ieee.exponent; })
 /** Return the mantissa of a float */
 #define MANTF(fp)   __extension__ ({ const float_shape_t __union_float = { .value = (float)fp }; __union_float.ieee.mantissa; })
+/** Test if the given 32-bit float-point could be an integer */
+#define ISFLT_INT(fp)   (MANTF((fp)) == 0)
 /** Create a float-point value manually using unsigned integers */
 #define PACKF(s, e, m)   __extension__ ({ const float_shape_t __union_float = { .ieee.negative = (unsigned int)s, .ieee.exponent = (unsigned int)e, .ieee.mantissa = (unsigned int)m }; __union_float.value; })
 /** Set the mantissa of a float to `mant` */
@@ -13954,9 +13956,11 @@ typedef union complex_long_double_shape {
 /** Return the exponent of a double */
 #define EXPD(fp)   __extension__ ({ const double_shape_t __union_double = { .value = (double)fp }; __union_double.ieee.exponent; })
 /** Return the mantissa of a double */
-#define MANTD(fp)   __extension__ ({ const double_shape_t __union_double = { .value = (double)fp }; (((((__union_double.ieee.mantissa0) & 0xfffff) | HIDDEND) << 10) | (__union_double.ieee.mantissa1 >> 22)); })
+#define MANTD(fp)   __extension__ ({ const double_shape_t __union_double = { .value = (double)fp }; (((((__union_double.ieee.mantissa0) & 0xfffffU) | (uint32_t)HIDDEND) << 10U) | (__union_double.ieee.mantissa1 >> 22U)); })
+/** Test if the given 64-bit float-point could be an integer */
+#define ISDBL_INT(fp)   (MANTD((fp)) == 0)
 /** Create a double manually using unsigned integers */
-#define PACKD(s, e, m0, m1)   __extension__ ({ const double_shape_t __union_double = { .ieee.negative = (unsigned int)s, .ieee.exponent = (unsigned int)e, .ieee.mantissa0 = (unsigned int)m0, .ieee.mantissa1 = (unsigned int)m1 }; __union_double.f; })
+#define PACKD(s, e, m0, m1)   __extension__ ({ const double_shape_t __union_double = { .ieee.negative = (uint32_t)s, .ieee.exponent = (unsigned int)e, .ieee.mantissa0 = (unsigned int)m0, .ieee.mantissa1 = (uint32_t)m1 }; __union_double.f; })
 #define SET_MANTISSA_DOUBLE(flt, mant)   do { double_shape_t u = { .value = (double)(flt) }; u.ieee_nan.mantissa0 = ((mant) >> 32); u.ieee_nan.mantissa1 = (mant); if ((u.ieee.mantissa0 | u.ieee.mantissa1) != 0) { flt = u.d; } } while (0x0)
 /** Get two 32-bit ints from a double */
 #define EXTRACT_WORDS(ix0, ix1, d)   do { const double_shape_t ew_u = { .value = (double)(d) }; ix0 = ew_u.parts.msw; ix1 = ew_u.parts.lsw; } while (0x0)
@@ -14007,8 +14011,10 @@ typedef union complex_long_double_shape {
 #define MANTL(fp)   ((fp & (HIDDEND_LL - 1)) | HIDDEND_LL)
 /** Return the mantissa of a long double */
 #define MANTD_LL(fp)   MANTL(fp)
+/** Test if the given long double could be an integer */
+#define ISLDBL_INT(fp)   (MANTL((fp)) == 0)
 /** Create a long double manually using unsigned integers */
-#define PACKD_LL(s, e, m0, m1, m2, m3)   __extension__ ({ const long_double_shape_t __union_long_double = { .ieee.negative = (unsigned int)s, .ieee.exponent = (unsigned int)e, .ieee.mantissa0 = (unsigned int)m0, .ieee.mantissa1 = (unsigned int)m1, .ieee.mantissa2 = (unsigned int)m2, .ieee.mantissa3 = (unsigned int)m3 }; __union_long_double.value; })
+#define PACKD_LL(s, e, m0, m1, m2, m3)   __extension__ ({ const long_double_shape_t __union_long_double = { .ieee.negative = (uint32_t)s, .ieee.exponent = (uint32_t)e, .ieee.mantissa0 = (uint32_t)m0, .ieee.mantissa1 = (uint32_t)m1, .ieee.mantissa2 = (uint32_t)m2, .ieee.mantissa3 = (uint32_t)m3 }; __union_long_double.value; })
 /** Get two 64 bit ints from a long double */
 #define GET_LDOUBLE_WORDS64(ix0, ix1, d)   do { const long_double_shape_t qw_gu = { .value = (long double)(d) }; (ix0) = qw_gu.uparts64.msw; (ix1) = qw_gu.uparts64.lsw; } while (0x0)
 /** Get two signed 64 bit ints from a long double */
