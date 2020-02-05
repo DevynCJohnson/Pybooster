@@ -6,7 +6,7 @@
 
 @file xmath.py
 @package pybooster.xmath
-@version 2020.01.29
+@version 2020.02.05
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -747,7 +747,7 @@ def primes_under(_num: int) -> set:
         return set()
     if _num == 2:
         return {2}
-    _primes: set = {_num2 for _num2 in range(3, _num + 1, 2) if _num2 % 2 != 0 and isprime(_num2)}
+    _primes: set = {_num2 for _num2 in range(3, _num + 1, 2) if isprime(_num2)}
     _primes.add(2)
     return _primes
 
