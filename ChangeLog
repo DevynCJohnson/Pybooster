@@ -2,6 +2,7 @@
 
 	* MACROS*.h:  Added more math functions & improved some code
 	* PyBooster:  Added popcount.c, factorial.c, & unfactorial.c
+	* snippets.conf:  Fixed a bug
 	* xmath.py:  Applied minor tweaks to `primes_under()`
 
 2020-02-03  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
