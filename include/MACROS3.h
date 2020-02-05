@@ -27676,6 +27676,31 @@ LIB_FUNC void putu64(const uint64_t num) {
 }
 
 
+#if SUPPORTS_UINT128
+/** Print an unsigned 128-bit integer to stdout as a string */
+LIB_FUNC void putu128(const uint128_t num) {
+	if (ferror(stdout)) { return; }
+	align128 char tmpbuf[__UIM_BUFLEN_UINT128 + 2] = { 0 };
+	char* restrict p = tmpbuf;
+	register uint128_t i = num;
+	register uint128_t shifter = i;
+	do {  // Move to representation ending
+		++p;
+		shifter /= 10;
+	} while (shifter);
+	*p = stdout->lbf;
+	const size_t len = (size_t)(1 + (size_t)p - (size_t)&tmpbuf);
+	do {  // Move back, inserting digits
+		*--p = str_digit[i % 10];
+		i /= 10;
+	} while (i);
+	FLOCK(stdout);
+	(void)__write_stdout((const char*)tmpbuf, len);
+	FUNLOCK(stdout);
+}
+#endif
+
+
 LIB_FUNC ssize_t getdelim(char** restrict s, size_t* restrict n, const int delim, FILE* restrict fp) {
 	char* tmp;
 	unsigned char* z;

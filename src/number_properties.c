@@ -4,7 +4,7 @@
 /**
 @brief Print the various properties (in CSV format) of a given number or print all of them within a range
 @file number_properties.c
-@version number_properties.c
+@version 2020.02.05
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 

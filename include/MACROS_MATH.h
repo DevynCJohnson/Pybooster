@@ -11856,11 +11856,22 @@ LIB_FUNC MATH_FUNC uint64_t factorial(const uint64_t num) {
 #elif IS_32
 	if (num > 10ULL) { return 0; }
 #endif
-	else if (num == 0LL || num == 1LL) { return 1LL; }
+	else if (num == 0ULL || num == 1ULL) { return 1ULL; }
 	register uint64_t fct = num;
-	for (register uint64_t i = fct - 1LL; --i;) fct *= i;
+	for (register uint64_t i = fct - 1ULL; --i;) fct *= i;
 	return fct;
 }
+
+
+#if SUPPORTS_UINT128
+/** Factorial (n!); return 0 on error */
+LIB_FUNC MATH_FUNC uint128_t factorial_u128(const uint128_t num) {
+	if (num == (uint128_t)0 || num == (uint128_t)1) { return (uint128_t)1; }
+	register uint128_t fct = num;
+	for (register uint128_t i = fct - (uint128_t)1; --i;) fct *= i;
+	return fct;
+}
+#endif
 
 
 /** Double Factorial (n!!); return 0 on error */
@@ -11955,11 +11966,14 @@ LIB_FUNC MATH_FUNC uint64_t superfactorial(const unsigned int num) {
 }
 
 
-/** Find the number used to produce the factorial */
+/** Find the number used to produce the factorial; return `0` if none */
 LIB_FUNC MATH_FUNC uint64_t unfactorial(const uint64_t num) {
 	register uint64_t x = 1;
 	register uint64_t y = num;
-	for (; y != x; ++x) { y /= x; }
+	for (; y != x && y >= 1; ++x) { y /= x; }
+	if (y < 1) {
+		return 0;
+	}
 	return x;
 }
 

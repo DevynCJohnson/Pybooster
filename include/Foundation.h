@@ -7269,6 +7269,8 @@ Maximum value representable as type sig_atomic_t */
 #endif
 /** 39 digits + sign + NULL */
 #define __UIM_BUFLEN_INT128   41
+/** 39 digits + NULL */
+#define __UIM_BUFLEN_UINT128   40
 #if (SUPPORTS_INT128 && (INTMAX_MAX < INT64_MAX))  // 170141183460469231731687303715884105727i128
 #   define __UIM_BUFLEN   41  // 39 digits + sign + NULL
 #elif (INTMAX_MAX == 9223372036854775807LL)
