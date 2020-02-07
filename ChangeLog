@@ -1,3 +1,7 @@
+2020-02-07  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyLib:  Added some constants
+
 2020-02-05  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* MACROS*.h:  Added more math functions & improved some code

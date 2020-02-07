@@ -6,7 +6,7 @@
 
 @file net.py
 @package pybooster.net
-@version 2019.12.23
+@version 2020.02.07
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -36,6 +36,9 @@ from urllib.request import urlopen
 
 
 __all__: list = [
+    # CONSTANTS #
+    r'SCHEME_PORT_MAP',
+    r'NETLOC_SCHEMES',
     # IPV4/6 CONVERTIONS #
     r'ints2ipv6',
     r'lst2ipv6',
@@ -47,6 +50,60 @@ __all__: list = [
     r'hasnet',
     r'getwebpage'
 ]
+
+
+# CONSTANTS #
+
+
+SCHEME_PORT_MAP: dict = {
+    r'acap': 674,
+    r'afp': 548,
+    r'dict': 2628,
+    r'dns': 53,
+    r'file': None,
+    r'ftp': 21,
+    r'git': 9418,
+    r'gopher': 70,
+    r'http': 80,
+    r'https': 443,
+    r'imap': 143,
+    r'ipp': 631,
+    r'ipps': 631,
+    r'irc': 194,
+    r'ircs': 6697,
+    r'ldap': 389,
+    r'ldaps': 636,
+    r'mms': 1755,
+    r'msrp': 2855,
+    r'msrps': None,
+    r'mtqp': 1038,
+    r'nfs': 111,
+    r'nntp': 119,
+    r'nntps': 563,
+    r'pop': 110,
+    r'prospero': 1525,
+    r'redis': 6379,
+    r'rsync': 873,
+    r'rtsp': 554,
+    r'rtsps': 322,
+    r'rtspu': 5005,
+    r'sftp': 22,
+    r'smb': 445,
+    r'snmp': 161,
+    r'ssh': 22,
+    r'steam': None,
+    r'svn': 3690,
+    r'telnet': 23,
+    r'ventrilo': 3784,
+    r'vnc': 5900,
+    r'wais': 210,
+    r'ws': 80,
+    r'wss': 443,
+    r'xmpp': None
+}
+
+
+NETLOC_SCHEMES: set = {r'about', r'bitcoin', r'blob', r'data', r'geo', r'magnet', r'mailto', r'news', r'pkcs11', r'sip', r'sips', r'tel', r'urn'}
 
 
 # IPV4/6 CONVERTIONS #

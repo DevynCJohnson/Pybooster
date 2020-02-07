@@ -6,7 +6,7 @@
 
 @file libchar.py
 @package pybooster.libchar
-@version 2019.07.14
+@version 2020.02.07
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -136,7 +136,11 @@ __all__: list = [
     r'CODEPOINT2NAME',
     r'ENTITYDEFS',
     r'HTML5',
-    r'NAME2CODEPOINT'
+    r'NAME2CODEPOINT',
+    # URL STRINGS #
+    r'URL_DELIMITERS',
+    r'URL_SUB_DELIMITERS',
+    r'URL_ALL_DELIMITERS'
 ]
 
 
@@ -4976,3 +4980,15 @@ NAME2CODEPOINT: dict = {  # type: ignore
     r'zwj': 0x200d,  # Zero width joiner, U+200D NEW RFC 2070
     r'zwnj': 0x200c  # Zero width non-joiner, U+200C NEW RFC 2070
 }
+
+
+# URL STRINGS #
+
+
+URL_DELIMITERS: frozenset = frozenset({r'#', r'/', r':', r'?', r'@', r'[', r']'})
+
+
+URL_SUB_DELIMITERS: frozenset = frozenset({'\'', r'!', r'$', r'&', r'(', r')', r'*', r'+', r',', r';', r'='})
+
+
+URL_ALL_DELIMITERS: frozenset = URL_DELIMITERS | URL_SUB_DELIMITERS
