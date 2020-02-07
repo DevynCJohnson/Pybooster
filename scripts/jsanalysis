@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Wrapper for scanning JavaScript files with various syntax checkers
 #' @file jsanalysis
-#' @version 2019.12.26
+#' @version 2020.02.07
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -34,6 +34,13 @@ if [ -n "$(command -v jshint)" ]; then
     JSHINT_EXISTS=1
 else
     printf 'jshint: command not found!\n' >&2
+fi
+
+JSLINT_EXISTS=0
+if [ -n "$(command -v jslint)" ]; then
+    JSLINT_EXISTS=1
+else
+    printf 'jslint: command not found!\n' >&2
 fi
 
 CODE_ANALYSIS_EXISTS=0
@@ -66,6 +73,15 @@ jshint_func() {
 }
 
 
+#' Run JS-Lint
+jslint_func() {
+    if [ "$JSLINT_EXISTS" -eq 1 ]; then
+        printf '======  *JSLINT*  ======\n'
+        jslint "${1}" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
+    fi
+}
+
+
 #' Run Code-Analysis
 code_analysis_func() {
     if [ "$CODE_ANALYSIS_EXISTS" -eq 1 ]; then
@@ -81,15 +97,18 @@ for file in "$@"; do
     { [ ! -r "$file" ] || [ -d "$file" ]; } && printf '%s: The specified file is non-readable or non-existent!\n' "$file" >&2 && continue
 
     JSHINT_BUFFER="/tmp/$(uuid).jsanalysis.tmp"
+    JSLINT_BUFFER="/tmp/$(uuid).jsanalysis.tmp"
     CODE_ANALYSIS_BUFFER="/tmp/$(uuid).jsanalysis.tmp"
 
     jshint_func "$file" > "${JSHINT_BUFFER}" &
+    jslint_func "$file" > "${JSLINT_BUFFER}" &
     code_analysis_func "$file" > "${CODE_ANALYSIS_BUFFER}" &
 
     wait
 
-    printf "%s\\n%s\\n" "$(cat < "${JSHINT_BUFFER}")" "$(cat < "${CODE_ANALYSIS_BUFFER}")"
-    rm -f "${JSHINT_BUFFER}" "${CODE_ANALYSIS_BUFFER}" || true
+    printf "%s\\n%s\\n" "$(cat < "${JSHINT_BUFFER}")" "$(cat < "${JSLINT_BUFFER}")"
+    printf "%s\\n" "$(cat < "${CODE_ANALYSIS_BUFFER}")"
+    rm -f "${JSHINT_BUFFER}" "${JSLINT_BUFFER}" "${CODE_ANALYSIS_BUFFER}" || true
 
 
 done

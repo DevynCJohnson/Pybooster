@@ -1,5 +1,7 @@
 2020-02-07  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* Geany:  Added `*.mjs` as a JavaScript file-extension
+	* jsanalysis:  Added support for JSLint
 	* PyLib:  Added some constants
 
 2020-02-05  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
