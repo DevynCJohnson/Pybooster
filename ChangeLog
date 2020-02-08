@@ -1,3 +1,8 @@
+2020-02-08  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* insn_count:  Fixed some minor bugs
+	* program-analyzer:  Tweaked some in-code documentation, added logging, & fixed some bugs
+
 2020-02-07  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* Geany:  Added `*.mjs` as a JavaScript file-extension
