@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Disassemble compiled code and count the number of each assembly instruction
 #' @file insn_count
-#' @version 2020.02.02
+#' @version 2020.02.08
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -161,8 +161,8 @@ fi
 
 
 if [ "$use_mach" -eq 1 ] || [ "$save_chart" -eq 1 ]; then
-    num_array="$(printf '%s' "${disassembled_code}" | awk '{ print $1; };' | tr '\n' ' ' | sed 's| |,|g; s|^|[|; s|,$|]|;')"
-    insn_array="$(printf '%s' "${disassembled_code}" | awk '{ print $2; };' | tr '\n' ' ' | sed 's| |","|g; s|^|"|; s|,"$||; s|| |g;')"
+    num_array="$(printf '%s\n' "${disassembled_code}" | awk '{ print $1; };' | tr '\n' ' ' | sed 's| |,|g; s|^|[|; s|,$|]|;')"
+    insn_array="$(printf '%s\n' "${disassembled_code}" | awk '{ print $2; };' | tr '\n' ' ' | sed 's| |","|g; s|^|"|; s|,"$||; s|| |g;')"
 fi
 
 
@@ -178,14 +178,14 @@ if [ "$save_chart" -eq 1 ]; then  # Save chart
         octave --no-gui --no-history --norc --silent --eval "num_array = ${num_array}; insn_array = {${insn_array}}; insnlim = 1; if (${total_insns} < 300) insnlim = 1; elseif (${total_insns} < 500) insnlim = 2; elseif (${total_insns} < 1000) insnlim = 10; elseif (${total_insns} < 2000) insnlim = 20; elseif (${total_insns} < 5000) insnlim = 30; elseif (${total_insns} < 10000) insnlim = 50; elseif (${total_insns} < 100000) insnlim = 100; else insnlim = 1000; endif; other = 0; cnt = 1; for i = 1:length(num_array) if (num_array(1:1, i) < insnlim) other += num_array(1:1, i); cnt += 1; else break; endif; endfor; cnt -= 1; if (cnt > 0) num_array(1:1, cnt) = other; insn_array(cnt) = 'Other'; else cnt = 1; endif; set(0, 'defaultaxesfontsize', 6); set(0, 'defaulttextfontsize', 6); output = pie(shift(num_array(1:1, cnt:end), 1), shift(insn_array(cnt:end), 1)); title('Assembly Instructions in \"${exefile}\"', 'fontsize', 12); print('insns_pie_${exefile}.${saveas}', '-d${saveas}', '-r600');" &
     fi
 elif [ "$use_col" -eq 1 ]; then  # Columnar format
-    printf '%s' "${disassembled_code}" | sed 's|| |g;' | column
+    printf '%s\n' "${disassembled_code}" | sed -e 's|| |g; s/^[ \t]*//;' | column
     printf '\nTotal Instructions: %s\n' "${total_insns}"
 elif [ "$use_mach" -eq 1 ]; then  # Default machine-friendly format
     printf '%s, [%s]' "${num_array}" "${insn_array}"
 elif [ "$use_no_indent" -eq 1 ]; then  # Display output without indentation
     printf '%s\n%s total\n' "${basic_format}" "${total_insns}"
 else  # Default format
-    printf '%s\n\nTotal Instructions: %s\n' "${disassembled_code}" "${total_insns}" | sed 's|| |g;'
+    printf '%s\n\nTotal Instructions: %s\n' "${disassembled_code}" "${total_insns}" | sed -e 's|| |g; s/^[ \t]*//;'
 fi
 
 exit $?
