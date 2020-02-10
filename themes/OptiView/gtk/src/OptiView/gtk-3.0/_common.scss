@@ -797,7 +797,6 @@ $asset_suffix: if($variant == "dark", "-dark", "");
 }
 
 %scale_highlight {
-  background-color: $scale_color;
   border-radius: $scale_radius;
   border: 1px solid $selected_bg_color;
 
@@ -1107,7 +1106,7 @@ $asset_suffix: if($variant == "dark", "-dark", "");
   }
 
   &:focus, &:hover {
-    background-color: $selected_bg_color;
+    background-color: $focus_color;
     color: $selected_fg_color;
   }
 
@@ -1140,7 +1139,7 @@ $asset_suffix: if($variant == "dark", "-dark", "");
     margin-right: 8px;
   }
 
-  &:focus, &:hover {
+  &:active, &:focus, &:hover {
     background-color: lighten($entry_tag_bg, 10%);
   }
 
@@ -1167,15 +1166,15 @@ $asset_suffix: if($variant == "dark", "-dark", "");
   }
 }
 
-.view, iconview, textview {
+.view, iconview, textview, XfdesktopIconView {
   background-color: $secondary_bg_color;
   border-radius: 0px;
   caret-color: $caret_color;
   color: $text_color;
 
   &:backdrop {
-    color: $backdrop_text_color;
     background-color: $secondary_bg_color;
+    color: $backdrop_text_color;
     &:disabled, &:disabled:active, &:disabled:focus, &:disabled:hover, &:disabled:selected {
       color: $backdrop_insensitive_color;
     }
@@ -1198,6 +1197,10 @@ $asset_suffix: if($variant == "dark", "-dark", "");
   text {
     background-color: $secondary_bg_color;
     color: $text_color;
+    &:selected {
+      background-color: $focus_color;
+      color: $selected_text_color;
+    }
     selection {
       background-color: $selected_bg_color;
       color: $selected_text_color;
@@ -1213,8 +1216,8 @@ textview border {
 }
 
 .rubberband, rubberband {
-  background-color: transparentize(darken($selected_bg_color, 10%), 0.8);
-  border: 1px solid darken($selected_bg_color, 10%);
+  background-color: transparentize(darken($focus_color, 10%), 0.8);
+  border: 1px solid darken($focus_color, 10%);
 }
 
 flowbox {
@@ -2296,20 +2299,24 @@ treeview.view {
       color: $base_color;
     }
 
-    background-color: $selected_bg_color;
-    background-image: image($selected_bg_color);
+    background-color: $progress_color;
     box-shadow: none;
+
+    &:active, &:focus, &:hover {
+      background-color: lighten($progress_color, 8%);
+    }
 
     &:selected {
       &:focus, & {
         @if $variant == "light" {
-          color: $selected_bg_color;
+          color: $bg_color;
         }
         @else {
           box-shadow: inset 0 1px transparentize(white, 0.95);
         }
 
-        background-image: image($base_color);
+        background-color: lighten($progress_color, 8%);
+        border-color: $focus_color;
 
         &:backdrop {
           @if $variant == "light" {
@@ -2330,9 +2337,13 @@ treeview.view {
   &.trough {
     background-color: transparentize($fg_color, 0.9);
 
+    &:active, &:focus, &:hover {
+      background-color: if($variant == "light", transparentize($selected_fg_color, 0.8), darken($selected_bg_color, 12%));
+    }
+
     &:selected {
       &:focus, & {
-        background-color: if($variant == "light", transparentize($selected_fg_color, 0.7), darken($selected_bg_color, 10%));
+        background-color: if($variant == "light", transparentize($selected_fg_color, 0.8), darken($selected_bg_color, 12%));
       }
     }
   }
@@ -2385,6 +2396,9 @@ treeview.view {
   border-image: none;
   border-radius: 0;
   border-style: none;
+  &:active, &:focus, &:hover {
+    background-color: $progress_color;
+  }
 }
 
 .list-rowbutton:selected {
@@ -2405,10 +2419,14 @@ popover.background {
 
   box-shadow: 0 1px 2px $shadow_color;
 
+  & modelbutton.flat:active,
+  &.menuitem.button.flat:active,
   & modelbutton.flat:focus,
   &.menuitem.button.flat:focus,
   & modelbutton.flat:hover,
-  &.menuitem.button.flat:hover {
+  &.menuitem.button.flat:hover,
+  & modelbutton.flat:selected,
+  &.menuitem.button.flat:selected {
     background-color: $selected_bg_color;
     border-radius: $button_radius;
     color: $selected_fg_color;
@@ -3114,22 +3132,22 @@ levelbar {
     border: 1px outset $borders_color;
     border-radius: 0px;
 
+    &.high,
+    &:not(.empty) {
+      background-color: $scale_color;
+      border-color: if($variant == "light", darken($selected_bg_color, 20%), $selected_bg_color);
+
+      &:backdrop {
+        border-color: $selected_bg_color;
+      }
+    }
+
     &.low {
       background-color: $warning_color;
       border-color: if($variant == "light", darken($warning_color, 20%), $warning_color);
 
       &:backdrop {
         border-color: $warning_color;
-      }
-    }
-
-    &.high,
-    &:not(.empty) {
-      background-color: $selected_bg_color;
-      border-color: if($variant == "light", darken($selected_bg_color, 20%), $selected_bg_color);
-
-      &:backdrop {
-        border-color: $selected_bg_color;
       }
     }
 
@@ -3189,6 +3207,7 @@ progressbar {
   }
 
   progress {
+    background-color: $progress_color;
     @extend %scale_highlight;
     border-radius: $scale_radius;
 
@@ -3299,6 +3318,7 @@ scale {
   }
 
   highlight {
+    background-color: $scale_color;
     @extend %scale_highlight;
   }
 
@@ -3675,7 +3695,7 @@ row {
   transition: 0s;
 
   &.activatable {
-    &.has-open-popup, &:hover {
+    &.has-open-popup, &:active, &:hover {
       background-color: $selected_bg_color;
     }
 
@@ -3688,7 +3708,7 @@ row {
         box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.5);
       }
 
-      &.has-open-popup, &:hover {
+      &.has-open-popup, &:active, &:hover {
         background-color: $selected_bg_color;
       }
     }
@@ -4495,7 +4515,7 @@ stackswitcher button.text-button.circular {
 .content-view {
   background-color: darken($bg_color, 7%);
 
-  &:hover {
+  &:active, &:hover {
     -gtk-icon-effect: highlight;
   }
 
@@ -4508,26 +4528,27 @@ stackswitcher button.text-button.circular {
   font: initial;
 }
 
-.view.cell:selected,
 .view.cell:active,
-.view:selected,
+.view.cell:hover,
+.view.cell:selected,
 .view:active,
-.content-view.view:selected,
-.content-view.view:active {
+.view:selected,
+.content-view.view:active,
+.content-view.view:selected {
   background-color: $selected_bg_color;
 }
 
-:not(iconview).view.cell:disabled,
+iconview.view.cell:disabled,
 .content-view.view:disabled {
   background-color: $bg_color;
 }
 
-:not(iconview).view.cell:backdrop,
+iconview.view.cell:backdrop,
 .content-view.view:backdrop {
   background-color: $bg_color;
 }
 
-:not(iconview).view.cell:selected:backdrop,
+iconview.view.cell:selected:backdrop,
 .content-view.view:selected:backdrop {
   background-color: $selected_bg_color;
 }
@@ -4691,4 +4712,11 @@ buttonbox.horizontal.linked button {
 
 buttonbox.vertical.linked button {
   margin: 2px;
+}
+
+
+#MozillaGtkWidget .view text {
+  &:selected {
+    background-color: $focus_color;
+  }
 }

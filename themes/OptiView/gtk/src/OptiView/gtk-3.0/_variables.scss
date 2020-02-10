@@ -43,6 +43,7 @@ $osd_insensitive_fg_color: mix($osd_fg_color, opacify($osd_bg_color, 1), 50%);
 $popover_bg_color: mix($bg_color, $base_color, 50%);
 $popover_hover_color: lighten($bg_color, 5%);
 $scale_color: if($variant == "light", #34D, #2DC);
+$progress_color: if($variant == "light", #85C, #4C7);
 $scrollbar_slider_active_color: if($variant == "light", darken($selected_bg_color, 10%), lighten($selected_bg_color, 10%));
 $scrollbar_slider_color: mix($fg_color, $bg_color, 50%);
 $scrollbar_slider_hover_color: mix($fg_color, $bg_color, 80%);
@@ -79,7 +80,7 @@ $backdrop_borders_color: mix($borders_color, $bg_color, 90%);
 $backdrop_dark_fill: mix($backdrop_borders_color, $bg_color, 35%);
 $backdrop_fg_color: mix($fg_color, $bg_color, 50%);
 $backdrop_insensitive_color: if($variant == "light", darken($bg_color, 15%), lighten($bg_color, 15%));
-$backdrop_menu_color: $menu_bg_color;
+$backdrop_menu_color: if($variant == "light", lighten($fg_color, 20%), darken($fg_color, 20%));
 $backdrop_scrollbar_slider_color: mix($backdrop_fg_color, $bg_color, 40%);
 $backdrop_sidebar_bg_color: mix($bg_color, $base_color, 50%);
 $backdrop_text_color: mix($text_color, $base_color, 80%);
@@ -158,6 +159,7 @@ $shortest_duration: 100ms;
 // Timing Function
 
 $deceleration_curve: cubic-bezier(0, 0, 0.2, 1);
+$switch_animation: switch_ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1);
 
 
 // Keyframes
@@ -170,4 +172,31 @@ $deceleration_curve: cubic-bezier(0, 0, 0.2, 1);
 
 @keyframes spin {
   to { -gtk-icon-transform: rotate(1turn); }
+}
+
+@keyframes switch_ripple_effect {
+  from {
+    background-image: radial-gradient(circle farthest-corner at center, $success_color 0%, transparent 0%);
+  }
+  to {
+    background-image: radial-gradient(circle farthest-corner at center, $success_color 100%, transparent 0%);
+  }
+}
+
+@keyframes header_ripple_effect {
+  from {
+    background-image: radial-gradient(circle farthest-corner at center, $header_bg 0%, transparent 0%);
+  }
+  to {
+    background-image: radial-gradient(circle farthest-corner at center, $header_bg 100%, transparent 0%);
+  }
+}
+
+@keyframes ripple_effect {
+  from {
+    background-image: radial-gradient(circle farthest-corner at center, $focus_color 0%, transparent 0%);
+  }
+  to {
+    background-image: radial-gradient(circle farthest-corner at center, $focus_color 100%, transparent 0%);
+  }
 }
