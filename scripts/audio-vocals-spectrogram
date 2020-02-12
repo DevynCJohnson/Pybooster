@@ -28,7 +28,7 @@ along with this software.
 """
 
 
-# pylint: disable=C0103
+# pylint: disable=C0103,C0413
 
 
 import argparse
@@ -38,15 +38,15 @@ from os.path import expanduser
 from warnings import filterwarnings
 
 environ[r'LIBROSA_CACHE_COMPRESS'] = r'0'
-environ[r'LIBROSA_CACHE_DIR'] = r'/tmp/librosa_cache'
+environ[r'LIBROSA_CACHE_DIR'] = r'/tmp/librosa_cache'  # nosec
 environ[r'LIBROSA_CACHE_LEVEL'] = r'50'
 environ[r'LIBROSA_CACHE_VERBOSE'] = r'0'
 
-import librosa
-import librosa.display
-import matplotlib
-import matplotlib.pyplot as plt
-import numpy as np
+import librosa  # noqa: E402
+import librosa.display  # noqa: E402
+import matplotlib  # noqa: E402
+import matplotlib.pyplot as plt  # noqa: E402
+import numpy as np  # noqa: E402
 
 
 filterwarnings(r'ignore', category=UserWarning)
@@ -82,7 +82,7 @@ def plot_spectrogram(file_path: str, out_dir: str):
     S_full, phase = librosa.magphase(librosa.stft(_y))
     idx = slice(*librosa.time_to_frames([30, 35], sr=_sr))
     S_filter = np.minimum(S_full, librosa.decompose.nn_filter(S_full, aggregate=np.median, metric=r'cosine', width=int(librosa.time_to_frames(2, sr=_sr))))
-    S_foreground = librosa.util.softmask(S_full - S_filter, 10 * S_filter, power=2) * S_full
+    S_foreground = librosa.util.softmask(S_full - S_filter, 80 * S_filter, power=2) * S_full
     plt.figure(figsize=(24, 10))
     librosa.display.specshow(librosa.amplitude_to_db(S_foreground[:, idx], ref=np.max), sr=_sr, x_axis=r'time', y_axis=r'log')
     plt.colorbar(format=r'%+2.0f dB')

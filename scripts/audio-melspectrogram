@@ -28,7 +28,7 @@ along with this software.
 """
 
 
-# pylint: disable=C0103
+# pylint: disable=C0103,C0413
 
 
 import argparse
@@ -38,15 +38,15 @@ from os.path import expanduser
 from warnings import filterwarnings
 
 environ[r'LIBROSA_CACHE_COMPRESS'] = r'0'
-environ[r'LIBROSA_CACHE_DIR'] = r'/tmp/librosa_cache'
+environ[r'LIBROSA_CACHE_DIR'] = r'/tmp/librosa_cache'  # nosec
 environ[r'LIBROSA_CACHE_LEVEL'] = r'50'
 environ[r'LIBROSA_CACHE_VERBOSE'] = r'0'
 
-import librosa
-import librosa.display
-import matplotlib
-import matplotlib.pyplot as plt
-import numpy as np
+import librosa  # noqa: E402
+import librosa.display  # noqa: E402
+import matplotlib  # noqa: E402
+import matplotlib.pyplot as plt  # noqa: E402
+import numpy as np  # noqa: E402
 
 
 filterwarnings(r'ignore', category=UserWarning)
@@ -79,9 +79,8 @@ def get_file_checksum(file_path):
 def plot_melspectrogram(file_path: str, out_dir: str):
     """Save the melspectrogram plot as a JPEG."""
     _y, _sr = librosa.load(file_path)
-    melspectrogram = librosa.feature.melspectrogram(y=_y, sr=_sr)
     plt.figure(figsize=(24, 10))
-    librosa.display.specshow(librosa.power_to_db(melspectrogram, ref=np.max), x_axis=r'time', y_axis=r'mel', sr=_sr, fmax=8000)
+    librosa.display.specshow(librosa.power_to_db(librosa.feature.melspectrogram(_y, sr=_sr, power=2.0), ref=np.max), x_axis=r'time', y_axis=r'log', sr=_sr, fmax=8000)
     plt.colorbar(format=r'%+2.0f dB')
     plt.title(r'Mel-frequency Spectrogram')
     plt.tight_layout()
