@@ -1,0 +1,102 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
+"""@brief Produce melspectrograms from an audio file.
+
+@file audio-melspectrogram
+@version 2020.02.12
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@copyright LGPLv3
+
+@section LICENSE
+GNU Lesser General Public License v3
+Copyright (c) Devyn Collier Johnson, All rights reserved.
+
+This software is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This software is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with this software.
+"""
+
+
+# pylint: disable=C0103
+
+
+import argparse
+from hashlib import blake2b
+from os.path import expanduser
+from warnings import filterwarnings
+
+import librosa
+import librosa.display
+import matplotlib
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+filterwarnings(r'ignore', category=UserWarning)
+filterwarnings(r'ignore', category=FutureWarning)
+
+matplotlib.use(r'TkAgg')
+
+
+# CONSTANTS #
+
+
+PICDIR: str = expanduser(r'~') + r'/Pictures/'
+
+
+# FUNCTIONS #
+
+
+def get_file_checksum(file_path):
+    """Retrieve the checksum of the file"""
+    checksum = blake2b()
+    with open(file_path, mode=r'rb') as _file:
+        while True:
+            data = _file.read(65536)
+            if not data:
+                break
+            checksum.update(data)
+    return checksum.hexdigest()
+
+
+def plot_melspectrogram(file_path: str, out_dir: str):
+    """Save the melspectrogram plot as a JPEG"""
+    _y, _sr = librosa.load(file_path)
+    melspectrogram = librosa.feature.melspectrogram(y=_y, sr=_sr)
+    plt.figure(figsize=(20, 8))
+    librosa.display.specshow(librosa.power_to_db(melspectrogram, ref=np.max), x_axis=r'time', y_axis=r'mel', sr=_sr, fmax=8000)
+    plt.colorbar(format=r'%+2.0f dB')
+    plt.title(r'Mel-frequency Spectrogram')
+    plt.tight_layout()
+    plt.savefig(fr'{out_dir}{get_file_checksum(file_path)}_melspectrogram.jpg', bbox_inches=r'tight', dpi=100, quality=90)
+
+
+# MAIN #
+
+
+if __name__ == '__main__':
+    PARSER = argparse.ArgumentParser()
+    PARSER.add_argument(r'file', help=r'Path to the audio file')
+    PARSER.add_argument(
+        r'-o', r'--outdir', r'--output',
+        help=r'Directory for placing the generated file',
+        default=PICDIR,
+        type=str,
+        metavar=r'OUTDIR'
+    )
+    OPTIONS = PARSER.parse_args()
+    if not OPTIONS.outdir.endswith(r'/'):
+        OPTIONS.outdir += r'/'
+    plot_melspectrogram(OPTIONS.file, OPTIONS.outdir)
+    raise SystemExit(0)
