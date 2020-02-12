@@ -2,9 +2,9 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Produce melspectrograms from an audio file.
+"""@brief Produce spectrograms for the harmonic and percussive components of an audio file.
 
-@file audio-melspectrogram
+@file audio-hpss-spectrogram
 @version 2020.02.12
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
@@ -33,8 +33,14 @@ along with this software.
 
 import argparse
 from hashlib import blake2b
+from os import environ
 from os.path import expanduser
 from warnings import filterwarnings
+
+environ[r'LIBROSA_CACHE_COMPRESS'] = r'0'
+environ[r'LIBROSA_CACHE_DIR'] = r'/tmp/librosa_cache'
+environ[r'LIBROSA_CACHE_LEVEL'] = r'50'
+environ[r'LIBROSA_CACHE_VERBOSE'] = r'0'
 
 import librosa
 import librosa.display
@@ -70,16 +76,33 @@ def get_file_checksum(file_path):
     return checksum.hexdigest()
 
 
-def plot_melspectrogram(file_path: str, out_dir: str):
-    """Save the melspectrogram plot as a JPEG."""
+def plot_spectrogram(file_path: str, out_dir: str):
+    """Save the spectrogram plots as JPEG files."""
     _y, _sr = librosa.load(file_path)
-    melspectrogram = librosa.feature.melspectrogram(y=_y, sr=_sr)
+    y_harmonic, y_percussive = librosa.decompose.hpss(librosa.stft(_y))
+    filename: str = fr'{out_dir}{get_file_checksum(file_path)}_'
+    plot_harmonic_spectrogram(filename, y_harmonic)
+    plot_percussive_spectrogram(filename, y_percussive)
+
+
+def plot_harmonic_spectrogram(filename: str, y_harmonic):
+    """Save the harmonic spectrogram plot as a JPEG."""
     plt.figure(figsize=(20, 8))
-    librosa.display.specshow(librosa.power_to_db(melspectrogram, ref=np.max), x_axis=r'time', y_axis=r'mel', sr=_sr, fmax=8000)
+    librosa.display.specshow(librosa.amplitude_to_db(np.abs(y_harmonic), ref=np.max), y_axis=r'log')
     plt.colorbar(format=r'%+2.0f dB')
-    plt.title(r'Mel-frequency Spectrogram')
+    plt.title(r'Harmonic Power Spectrogram')
     plt.tight_layout()
-    plt.savefig(fr'{out_dir}{get_file_checksum(file_path)}_melspectrogram.jpg', bbox_inches=r'tight', dpi=100, quality=90)
+    plt.savefig(fr'{filename}harmonic_spectrogram.jpg', bbox_inches=r'tight', dpi=100, quality=90)
+
+
+def plot_percussive_spectrogram(filename: str, y_percussive):
+    """Save the percussive spectrogram plot as a JPEG."""
+    plt.figure(figsize=(20, 8))
+    librosa.display.specshow(librosa.amplitude_to_db(np.abs(y_percussive), ref=np.max), y_axis=r'log')
+    plt.colorbar(format=r'%+2.0f dB')
+    plt.title(r'Percussive Power Spectrogram')
+    plt.tight_layout()
+    plt.savefig(fr'{filename}percussive_spectrogram.jpg', bbox_inches=r'tight', dpi=100, quality=90)
 
 
 # MAIN #
@@ -98,5 +121,5 @@ if __name__ == '__main__':
     OPTIONS = PARSER.parse_args()
     if not OPTIONS.outdir.endswith(r'/'):
         OPTIONS.outdir += r'/'
-    plot_melspectrogram(OPTIONS.file, OPTIONS.outdir)
+    plot_spectrogram(OPTIONS.file, OPTIONS.outdir)
     raise SystemExit(0)

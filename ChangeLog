@@ -1,6 +1,6 @@
 2020-02-12  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
-	* PyBooster:  Added audio-melspectrogram
+	* PyBooster:  Added audio-hpss-spectrogram & audio-melspectrogram
 
 2020-02-09  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
