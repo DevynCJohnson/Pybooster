@@ -87,8 +87,8 @@ def plot_spectrogram(file_path: str, out_dir: str):
 
 def plot_harmonic_spectrogram(filename: str, y_harmonic):
     """Save the harmonic spectrogram plot as a JPEG."""
-    plt.figure(figsize=(20, 8))
-    librosa.display.specshow(librosa.amplitude_to_db(np.abs(y_harmonic), ref=np.max), y_axis=r'log')
+    plt.figure(figsize=(24, 10))
+    librosa.display.specshow(librosa.amplitude_to_db(np.abs(y_harmonic), ref=np.max), x_axis=r'time', y_axis=r'log')
     plt.colorbar(format=r'%+2.0f dB')
     plt.title(r'Harmonic Power Spectrogram')
     plt.tight_layout()
@@ -97,8 +97,8 @@ def plot_harmonic_spectrogram(filename: str, y_harmonic):
 
 def plot_percussive_spectrogram(filename: str, y_percussive):
     """Save the percussive spectrogram plot as a JPEG."""
-    plt.figure(figsize=(20, 8))
-    librosa.display.specshow(librosa.amplitude_to_db(np.abs(y_percussive), ref=np.max), y_axis=r'log')
+    plt.figure(figsize=(24, 10))
+    librosa.display.specshow(librosa.amplitude_to_db(np.abs(y_percussive), ref=np.max), x_axis=r'time', y_axis=r'log')
     plt.colorbar(format=r'%+2.0f dB')
     plt.title(r'Percussive Power Spectrogram')
     plt.tight_layout()
@@ -113,7 +113,7 @@ if __name__ == '__main__':
     PARSER.add_argument(r'file', help=r'Path to the audio file')
     PARSER.add_argument(
         r'-o', r'--outdir', r'--output',
-        help=r'Directory for placing the generated file',
+        help=r'Directory for placing the generated spectrogram files',
         default=PICDIR,
         type=str,
         metavar=r'OUTDIR'
