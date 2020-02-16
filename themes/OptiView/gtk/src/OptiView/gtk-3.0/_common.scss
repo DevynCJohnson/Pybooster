@@ -1409,11 +1409,12 @@ tooltip {
   &.background {
     background-clip: padding-box;
     background-color: rgba(0, 0, 0, 0.8);
-    border: 1px solid $tooltip_borders_color;
   }
 
+  border: 1px solid $tooltip_borders_color;
   border-radius: 0px;
-  box-shadow: none;
+  box-shadow: $shadow_hover;
+  font-size:32px;
   padding: 0px;
   text-shadow: 0 1px black;
 
@@ -2483,6 +2484,7 @@ popover.background {
 
 #MozillaGtkWidget .context-menu, #MozillaGtkWidget .menu, #MozillaGtkWidget menu, .background .context-menu, .background .menu, .background menu, .context-menu, .csd .context-menu, .csd .menu, .csd menu, .menu, .popup .context-menu, .popup .menu, .popup menu, combobox menu, menu, toolbar menu, .selection-menu {
   @extend %menu_appearance;
+  box-shadow: $menu_shadow;
 }
 
 #MozillaGtkWidget .menuitem, #MozillaGtkWidget menuitem, .background menuitem, .csd menuitem, .menubar .menuitem, .menubar.menuitem, .menuitem, .popup menuitem, headerbar button menu menuitem, menuitem, popover menuitem, toolbar headerbar menu menuitem, toolbar menu menuitem, popover menuitem {

@@ -1,3 +1,7 @@
+2020-02-16  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* OptiView:  Fixed various bugs
+
 2020-02-12  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* PyBooster:  Added audio-hpss-spectrogram, audio-melspectrogram, audio-vocals-spectrogram, & audio-waveplot
