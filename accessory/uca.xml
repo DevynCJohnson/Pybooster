@@ -193,5 +193,23 @@
     <patterns>*</patterns>
     <image-files/>
   </action>
+  <action>
+    <icon>jpeg</icon>
+    <name>Shrink JPEG</name>
+    <unique-id>7300000000000012-1</unique-id>
+    <command>[ -x "$(command -v jpegoptim)" ] &amp;&amp; jpegoptim --preserve --preserve-perms --quiet --strip-all --strip-com --strip-exif %F</command>
+    <description>Reduce the size of JPEG files</description>
+    <patterns>*.jpg;*.jpeg</patterns>
+    <image-files/>
+  </action>
+  <action>
+    <icon>pdf</icon>
+    <name>Convert PostScript to PDF</name>
+    <unique-id>7300000000000013-1</unique-id>
+    <command>[ -x "$(command -v ps2pdf)" ] &amp;&amp; ps2pdf %F</command>
+    <description>Convert PostScript to PDF</description>
+    <patterns>*.ps;*.pdf</patterns>
+    <image-files/>
+  </action>
 
 </actions>
