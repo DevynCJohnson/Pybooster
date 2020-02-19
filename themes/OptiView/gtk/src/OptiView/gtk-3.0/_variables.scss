@@ -117,7 +117,6 @@ $titlebutton-width: 64px;
 
 $box_shadow_color: if($variant == "light", #28C, #EE7);
 $shadow_hover: 0px 0px 8px 4px $box_shadow_color;
-$menu_shadow: 8px 8px 16px 8px rgba(17, 17, 17, 0.8);
 $slider_hover_shadow: 0px 0px 8px 4px $selected_bg_color;
 $entry_inner_shadow: inset 0px 1px $shadow_color_hover, inset 0px 1px $shadow_color_hover;
 $inset_color: if($variant == "light", rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
