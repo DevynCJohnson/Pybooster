@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Remove cache, logs, and other unneeded files
 #' @file cleansystem
-#' @version 2020.02.01
+#' @version 2020.02.19
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -38,7 +38,7 @@ rmDirFromList() {
     for _filename in "${@}"; do
         if [ -n "${_filename:-}" ]; then
             # shellcheck disable=SC2086
-            printf '%s\n' ${_filename:-} | xargs -d '\n' -I % rm -f -r % 2> /dev/null || true
+            printf '%s\n' ${_filename:-} | xargs -d '\n' -I % rm -f -r % >&2 2> /dev/null || true
         fi
     done
 }
@@ -50,7 +50,7 @@ rmFilesFromList() {
     for _filename in "${@}"; do
         if [ -n "${_filename:-}" ]; then
             # shellcheck disable=SC2086
-            printf '%s\n' ${_filename:-} | xargs -d '\n' -I % rm -f % 2> /dev/null || true
+            printf '%s\n' ${_filename:-} | xargs -d '\n' -I % rm -f % >&2 2> /dev/null || true
         fi
     done
 }
@@ -69,9 +69,9 @@ rmfiles() {
             printf 'ERROR: Parameters are missing or invalid!\n' >&2
         fi
     elif [ -n "${2:-}" ] && [ -d "$2" ]; then
-        find "$2" -regextype awk -regex '^/bin/.*$' -prune -o -regextype awk -regex '^/boot/.*$' -prune -o -regextype awk -regex '^/dev/.*$' -prune -o -regextype awk -regex '^/usr/.*$' -prune -o -type f -regextype awk -regex ".*/${1}" -exec rm -f '{}' + 2> /dev/null
+        find "$2" -regextype awk -regex '^/bin/.*$' -prune -o -regextype awk -regex '^/boot/.*$' -prune -o -regextype awk -regex '^/dev/.*$' -prune -o -regextype awk -regex '^/usr/.*$' -prune -o -type f -regextype awk -regex ".*/${1}" -exec rm -f '{}' + >&2 2> /dev/null
     else
-        find . -regextype awk -regex '^/bin/.*$' -prune -o -regextype awk -regex '^/boot/.*$' -prune -o -regextype awk -regex '^/dev/.*$' -prune -o -regextype awk -regex '^/usr/.*$' -prune -o -type f -regextype awk -regex ".*/${1}" -exec rm -f '{}' + 2> /dev/null
+        find . -regextype awk -regex '^/bin/.*$' -prune -o -regextype awk -regex '^/boot/.*$' -prune -o -regextype awk -regex '^/dev/.*$' -prune -o -regextype awk -regex '^/usr/.*$' -prune -o -type f -regextype awk -regex ".*/${1}" -exec rm -f '{}' + >&2 2> /dev/null
     fi
 }
 
@@ -190,31 +190,31 @@ rmDirFromList "${RM_CHROME_DIRS}"
 rmFilesFromList "${RM_CHROME_FILES}"
 
 # Epiphany
-{ rm -f -r ~/.gnome2/epiphany/favicon_cache/ ~/.gnome2/epiphany/mozilla/epiphany/Cache/ ~/.local/share/webkitgtk/localstorage/ 2> /dev/null || true; } &
-{ rm -f ~/.config/epiphany/cookies.sqlite ~/.gnome2/epiphany/ephy-favicon-cache.xml ~/.gnome2/epiphany/mozilla/epiphany/cookies.sqlite ~/.gnome2/epiphany/mozilla/epiphany/cookies.sqlite-journal ~/.gnome2/epiphany/mozilla/epiphany/cookies.txt 2> /dev/null || true; } &
+{ rm -f -r ~/.gnome2/epiphany/favicon_cache/ ~/.gnome2/epiphany/mozilla/epiphany/Cache/ ~/.local/share/webkitgtk/localstorage/ >&2 2> /dev/null || true; } &
+{ rm -f ~/.config/epiphany/cookies.sqlite ~/.gnome2/epiphany/ephy-favicon-cache.xml ~/.gnome2/epiphany/mozilla/epiphany/cookies.sqlite ~/.gnome2/epiphany/mozilla/epiphany/cookies.sqlite-journal ~/.gnome2/epiphany/mozilla/epiphany/cookies.txt >&2 2> /dev/null || true; } &
 # Firefox & Seamonkey
 if [ -d ~/.mozilla/ ]; then
-    { rm -f -r ~/.mozilla/firefox/Crash\ Reports/ ~/.mozilla/firefox/Pending\ Pings/ ~/.mozilla/seamonkey/*/Cache/ ~/.mozilla/seamonkey/Profiles/*/Cache/ 2> /dev/null || true; } &
-    { rm -f ~/.mozilla/*/*/chatzilla/logs/*log ~/.mozilla/*/*/cookies.txt ~/.mozilla/*/*/history.dat ~/.mozilla/seamonkey/*/downloads.sqlite ~/.mozilla/seamonkey/*/urlbarhistory.sqlite 2> /dev/null || true; } &
+    { rm -f -r ~/.mozilla/firefox/Crash\ Reports/ ~/.mozilla/firefox/Pending\ Pings/ ~/.mozilla/seamonkey/*/Cache/ ~/.mozilla/seamonkey/Profiles/*/Cache/ >&2 2> /dev/null || true; } &
+    { rm -f ~/.mozilla/*/*/chatzilla/logs/*log ~/.mozilla/*/*/cookies.txt ~/.mozilla/*/*/history.dat ~/.mozilla/seamonkey/*/downloads.sqlite ~/.mozilla/seamonkey/*/urlbarhistory.sqlite >&2 2> /dev/null || true; } &
 fi
 # Konqueror
 if [ -d ~/.kde/ ]; then
-    { rm -f -r ~/.kde/share/apps/kcookiejar/cookies/ ~/.kde/share/apps/konqueror/autosave/ ~/.kde4/share/apps/kcookiejar/cookies/ ~/.kde4/share/apps/konqueror/autosave/ 2> /dev/null || true; } &
-    { rm -f ~/.kde/share/apps/konqueror/closeditems_saved ~/.kde/share/apps/konqueror/konq_history ~/.kde/share/config/konq_history ~/.kde4/share/apps/konqueror/closeditems_saved ~/.kde4/share/apps/konqueror/konq_history ~/.kde4/share/config/konq_history 2> /dev/null || true; } &
+    { rm -f -r ~/.kde/share/apps/kcookiejar/cookies/ ~/.kde/share/apps/konqueror/autosave/ ~/.kde4/share/apps/kcookiejar/cookies/ ~/.kde4/share/apps/konqueror/autosave/ >&2 2> /dev/null || true; } &
+    { rm -f ~/.kde/share/apps/konqueror/closeditems_saved ~/.kde/share/apps/konqueror/konq_history ~/.kde/share/config/konq_history ~/.kde4/share/apps/konqueror/closeditems_saved ~/.kde4/share/apps/konqueror/konq_history ~/.kde4/share/config/konq_history >&2 2> /dev/null || true; } &
 fi
 # Opera
 if [ -d ~/.opera/ ]; then
-    { rm -f -r ~/.opera/*cache/ ~/.opera/cache*/ ~/.opera/cache/ ~/.opera/icons/ ~/.opera/pstorage/ ~/.opera/thumbnails/ 2> /dev/null || true; } &
-    { rm -f ~/.opera/cookies4.dat ~/.opera/download.dat ~/.opera/global.dat ~/.opera/global_history.dat ~/.opera/search_field_history.dat ~/.opera/sessions/autosave.win ~/.opera/sessions/autosave.win.* ~/.opera/typed_history.xml ~/.opera/vlink4.dat ~/.opera/vps/*/md.dat 2> /dev/null || true; } &
+    { rm -f -r ~/.opera/*cache/ ~/.opera/cache*/ ~/.opera/cache/ ~/.opera/icons/ ~/.opera/pstorage/ ~/.opera/thumbnails/ >&2 2> /dev/null || true; } &
+    { rm -f ~/.opera/cookies4.dat ~/.opera/download.dat ~/.opera/global.dat ~/.opera/global_history.dat ~/.opera/search_field_history.dat ~/.opera/sessions/autosave.win ~/.opera/sessions/autosave.win.* ~/.opera/typed_history.xml ~/.opera/vlink4.dat ~/.opera/vps/*/md.dat >&2 2> /dev/null || true; } &
 fi
 # Thunderbird
 if [ -d ~/.thunderbird/ ]; then
-    { rm -f -r ~/.thunderbird/Crash\ Reports/ ~/.thunderbird/*/crashes/ ~/.thunderbird/Profiles/*/crashes/ ~/.thunderbird/*/Cache/ ~/.thunderbird/Profiles/*/Cache/ 2> /dev/null || true; } &
-    { rm -f ~/.thunderbird/*/*/cookies.sqlite ~/.thunderbird/*/cookies.sqlite 2> /dev/null || true; } &
+    { rm -f -r ~/.thunderbird/Crash\ Reports/ ~/.thunderbird/*/crashes/ ~/.thunderbird/Profiles/*/crashes/ ~/.thunderbird/*/Cache/ ~/.thunderbird/Profiles/*/Cache/ >&2 2> /dev/null || true; } &
+    { rm -f ~/.thunderbird/*/*/cookies.sqlite ~/.thunderbird/*/cookies.sqlite >&2 2> /dev/null || true; } &
 fi
 # Tor
 if [ -d ~/.tor/ ]; then
-    { rm -f -r ~/.tor/*/.cache/ 2> /dev/null || true; } &
+    { rm -f -r ~/.tor/*/.cache/ >&2 2> /dev/null || true; } &
 fi
 
 wait
@@ -232,10 +232,10 @@ if [ -x "$(command -v sqlite3)" ]; then
     # Firefox
     [ -d ~/.mozilla/firefox/ ] && [ "$extra_clean" -eq 1 ] && (echo "DROP TABLE \`moz_inputhistory\`;" | sqlite3 ~/.mozilla/firefox/*/places.sqlite >&2 2> /dev/null)
     [ -d ~/.mozilla/firefox/ ] && (sqlvacuum ~/.mozilla/firefox/*/*.sqlite >&2 2> /dev/null) &
-    [ -d ~/.mozilla/firefox/Profiles/ ] && sqlvacuum ~/.mozilla/firefox/Profiles/*/*.sqlite &
+    [ -d ~/.mozilla/firefox/Profiles/ ] && (sqlvacuum ~/.mozilla/firefox/Profiles/*/*.sqlite >&2 2> /dev/null) &
     # Thunderbird
-    [ -d ~/.thunderbird/ ] && sqlvacuum ~/.thunderbird/*/*.sqlite &
-    [ -d ~/.thunderbird/Profiles/ ] && sqlvacuum ~/.thunderbird/Profiles/*/*.sqlite &
+    [ -d ~/.thunderbird/ ] && (sqlvacuum ~/.thunderbird/*/*.sqlite >&2 2> /dev/null) &
+    [ -d ~/.thunderbird/Profiles/ ] && (sqlvacuum ~/.thunderbird/Profiles/*/*.sqlite >&2 2> /dev/null) &
 fi
 
 # Clear Compiler Cache (CCACHE)
@@ -255,16 +255,16 @@ fi
 current_user="$(whoami)"
 if [ -n "${current_user:-}" ]; then
     if [ "${current_user}" != 'root' ] && [ -d "/home/${current_user}" ]; then
-        chown -R "${current_user}:${current_user}" "/home/${current_user}"
-        chmod -R o-rwx "/home/${current_user}"
+        chown -f -R "${current_user}:${current_user}" "/home/${current_user}" >&2 2> /dev/null
+        chmod -R o-rwx "/home/${current_user}" >&2 2> /dev/null
         if [ -d "/home/${current_user}/Public" ]; then
-            chmod o+rwx "/home/${current_user}/Public"
+            chmod o+rwx "/home/${current_user}/Public" >&2 2> /dev/null
         fi
     elif [ "${current_user}" = 'root' ] && [ -d /root ]; then
-        chown -R root:root /root >&2 2> /dev/null
+        chown -f -R root:root /root >&2 2> /dev/null
         chmod -R o-rwx /root >&2 2> /dev/null
         if [ -d /root/Public ]; then
-            chmod o+rwx /root/Public
+            chmod o+rwx /root/Public >&2 2> /dev/null
         fi
     fi
 fi
@@ -280,10 +280,10 @@ _system="$(uname | tr '[:upper:]' '[:lower:]')"
 # Apple-Specific Cache & Logs
 
 if [ "${_system:-}" = 'darwin' ] && [ -d "${HOME}/Library" ]; then
-    { rm -f -r ~/Library/Caches/* ~/Library/Cookies/* ~/Library/Logs/* 2> /dev/null || true; } &
+    { rm -f -r ~/Library/Caches/* ~/Library/Cookies/* ~/Library/Logs/* >&2 2> /dev/null || true; } &
     if [ -x "$(command -v brew)" ]; then  # Package Manager Cleanup
         brew prune && brew cleanup -s
-        rm -f -r "$(brew --cache)" 2> /dev/null || true
+        rm -f -r "$(brew --cache)" >&2 2> /dev/null || true
         brew doctor
     fi
 fi
@@ -301,7 +301,7 @@ if [ "$(id -u)" -eq 0 ]; then
     # Recreate System Font Cache
     { [ -x "$(command -v xdg-desktop-menu)" ] && xdg-desktop-menu forceupdate --mode system; } &
     # Various Cleaners
-    { [ "$_system" = 'darwin' ] && [ -d /root/Library ] && (rm -f -r /root/Library/Caches/* /root/Library/Cookies/* /root/Library/Logs/* 2> /dev/null || true); } &
+    { [ "$_system" = 'darwin' ] && [ -d /root/Library ] && (rm -f -r /root/Library/Caches/* /root/Library/Cookies/* /root/Library/Logs/* >&2 2> /dev/null || true); } &
     # SQLite3 Cleaners
     if [ -x "$(command -v sqlite3)" ]; then
         sqlvacuum /var/cache/yum/*/*.sqlite &
@@ -342,16 +342,16 @@ if [ "$(id -u)" -eq 0 ]; then
         zypper remove --clean-deps
     fi
     wait
-    [ -d /var/cache/apt/archives/partial/ ] && chown -R _apt:root /var/cache/apt/archives/partial/ && chmod -R 770 /var/cache/apt/archives/partial/
+    [ -d /var/cache/apt/archives/partial/ ] && chown -f -R _apt:root /var/cache/apt/archives/partial/ && chmod -R 770 /var/cache/apt/archives/partial/
     { [ -x "$(command -v update-apt-xapian-index)" ] && update-apt-xapian-index --force; } &
-    { [ -x "$(command -v appstreamcli)" ] && appstreamcli refresh-cache > /dev/null; } &
+    { [ -x "$(command -v appstreamcli)" ] && appstreamcli refresh-cache >&2 2> /dev/null; } &
     # Delete Locales
     if [ "$del_locales" -eq 1 ]; then
-        { [ -d /usr/lib/libreoffice/share/autocorr/ ] && find /usr/lib/libreoffice/share/autocorr/ -regextype awk -regex '.*en\-US.+' -prune -o -type f -regextype awk -regex '.+/.+\.dat' -exec rm -f '{}' + 2> /dev/null; } &
-        { [ -d /usr/share/i18n/locales/ ] && find /usr/share/i18n/locales/ -name '/usr/share/i18n/locales/' -prune -o -name 'en_US' -prune -o -regextype awk -regex '.*/translit.+' -prune -o -name 'C' -prune -o -name 'POSIX' -prune -o -regextype awk -regex '.*/en@.+' -prune -o -type f -regextype awk -regex '/usr/share/i18n/locales/.+' -exec rm -f '{}' + 2> /dev/null; } &
-        { [ -d /usr/share/locale/ ] && find /usr/share/locale/ -name '/usr/share/locale/' -prune -o -regextype awk -regex '.*/en_US.*' -prune -o -name 'locale.alias' -prune -o -name 'en' -prune -o -regextype awk -regex '.*/en@.+' -prune -o -type d -regextype awk -regex '/usr/share/locale/.+' -exec rm -f -r '{}' + 2> /dev/null; } &
-        { [ -d /usr/share/locale-langpack/ ] && find /usr/share/locale-langpack/ -name '/usr/share/locale-langpack/' -prune -o -regextype awk -regex '.*/en_US.*' -prune -o -name 'en' -prune -o -regextype awk -regex '.*/en@.+' -prune -o -type d -regextype awk -regex '/usr/share/locale-langpack/.+' -exec rm -f -r '{}' + 2> /dev/null; } &
-        { [ -d /usr/share/man/ ] && find /usr/share/man/ -name '/usr/share/man/' -prune -o -regextype awk -regex '.*/man[1-8]' -prune -o -type d -regextype awk -regex '/usr/share/man/.+' -exec rm -f -r '{}' + 2> /dev/null; } &
+        { [ -d /usr/lib/libreoffice/share/autocorr/ ] && find /usr/lib/libreoffice/share/autocorr/ -regextype awk -regex '.*en\-US.+' -prune -o -type f -regextype awk -regex '.+/.+\.dat' -exec rm -f '{}' + >&2 2> /dev/null; } &
+        { [ -d /usr/share/i18n/locales/ ] && find /usr/share/i18n/locales/ -name '/usr/share/i18n/locales/' -prune -o -name 'en_US' -prune -o -regextype awk -regex '.*/translit.+' -prune -o -name 'C' -prune -o -name 'POSIX' -prune -o -regextype awk -regex '.*/en@.+' -prune -o -type f -regextype awk -regex '/usr/share/i18n/locales/.+' -exec rm -f '{}' + >&2 2> /dev/null; } &
+        { [ -d /usr/share/locale/ ] && find /usr/share/locale/ -name '/usr/share/locale/' -prune -o -regextype awk -regex '.*/en_US.*' -prune -o -name 'locale.alias' -prune -o -name 'en' -prune -o -regextype awk -regex '.*/en@.+' -prune -o -type d -regextype awk -regex '/usr/share/locale/.+' -exec rm -f -r '{}' + >&2 2> /dev/null; } &
+        { [ -d /usr/share/locale-langpack/ ] && find /usr/share/locale-langpack/ -name '/usr/share/locale-langpack/' -prune -o -regextype awk -regex '.*/en_US.*' -prune -o -name 'en' -prune -o -regextype awk -regex '.*/en@.+' -prune -o -type d -regextype awk -regex '/usr/share/locale-langpack/.+' -exec rm -f -r '{}' + >&2 2> /dev/null; } &
+        { [ -d /usr/share/man/ ] && find /usr/share/man/ -name '/usr/share/man/' -prune -o -regextype awk -regex '.*/man[1-8]' -prune -o -type d -regextype awk -regex '/usr/share/man/.+' -exec rm -f -r '{}' + >&2 2> /dev/null; } &
         { [ -d /usr/share/cups/locale/ ] && rm -f -r /usr/share/cups/locale; } &
     fi
     # Deep Clean
