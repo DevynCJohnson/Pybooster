@@ -6,7 +6,7 @@
 
 @file datastruct.py
 @package pybooster.datastruct
-@version 2019.12.25
+@version 2020.02.19
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -199,7 +199,7 @@ def convertinibool(_file: str, _destfile: str) -> None:
 def opencsvfile(_filepath: str, _retodict: bool = False, _fieldnames: Union[Sequence[str], None] = None, _delimiter: str = r',', _quotechar: str = r'"') -> list:
     """Convert the specified CSV file to a list of ordered Python dictionaries or a plain list."""
     ensurefileexists(_filepath)
-    with codec_opener(_filepath, mode=r'rt', encoding=r'utf-8') as _file:
+    with codec_opener(_filepath, mode=r'rb', encoding=r'utf-8') as _file:
         if _retodict:
             return list(DictReader(_file, fieldnames=_fieldnames, delimiter=_delimiter, quotechar=_quotechar))  # type: ignore
         return list(creader(_file, delimiter=_delimiter, quotechar=_quotechar))

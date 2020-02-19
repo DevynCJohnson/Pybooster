@@ -1,6 +1,7 @@
 2020-02-19  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* cleansystem:  Fixed some minor bugs
+	* datastruct.py:  Fixed a bug
 	* OptiView:  Removed the menu shadows
 
 2020-02-17  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
