@@ -6,7 +6,7 @@
 
 @file fs.py
 @package pybooster.fs
-@version 2019.12.25
+@version 2020.02.21
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -136,11 +136,11 @@ def doesfileexist(_filename: str) -> bool:
 def ensuredirexists(_dirname: str) -> None:
     """Ensure that the specified directory exists; if not, then raise an exception."""
     if not pathexists(_dirname) or not isdir(_dirname):
-        stderr.write(_dirname + ': The specified directory is non-readable or non-existent!\n')
+        stderr.write(f':{_dirname} The specified directory is non-readable or non-existent!\n')
     elif isfile(_dirname):
-        stderr.write(_dirname + ': This "directory" is actually a file!\n')
+        stderr.write(f':{_dirname} : This "directory" is actually a file!\n')
     elif not fileaccess(_dirname, R_OK):
-        stderr.write(r'Permission Error: Unable to read from "' + _dirname + '"!\n')
+        stderr.write(f'Permission Error: Unable to read from "{_dirname}"!\n')
     else:
         return
     raise SystemExit(1)
@@ -149,11 +149,11 @@ def ensuredirexists(_dirname: str) -> None:
 def ensurefileexists(_filename: str) -> None:
     """Ensure that the specified file exists; if not, then raise an exception."""
     if not pathexists(_filename) or not isfile(_filename):
-        stderr.write(_filename + ': The specified file is non-readable or non-existent!\n')
+        stderr.write(f'{_filename}: The specified file is non-readable or non-existent!\n')
     elif isdir(_filename):
-        stderr.write(_filename + ': This "file" is actually a directory!\n')
+        stderr.write(f'{_filename}: This "file" is actually a directory!\n')
     elif not fileaccess(_filename, R_OK):
-        stderr.write(r'Permission Error: Unable to read from "' + _filename + '"!\n')
+        stderr.write(f'Permission Error: Unable to read from "{_filename}"!\n')
     else:
         return
     raise SystemExit(1)
