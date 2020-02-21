@@ -2,8 +2,9 @@
 
 	* alphabetize_lines:  Use `casefold` instead of `lower`
 	* cartioid:  Applied minor tweaks & optimizations
-	* PyLib:  Use `casefold` instead of `lower` in multiple Python scripts
 	* fs.py:  Applied minor tweaks
+	* PyBooster:  Added machine_learning
+	* PyLib:  Use `casefold` instead of `lower` in multiple Python scripts
 
 2020-02-19  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 

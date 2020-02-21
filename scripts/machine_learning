@@ -1,0 +1,1179 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on; line-numbers on;
+"""@brief Algorithms and functions for machine learning
+
+@file machine_learning
+@version 2020.02.21
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@copyright LGPLv3
+
+@section HELPFUL_LINK
+https://scikit-learn.org/stable/modules/classes.html
+
+@section RETURN_CODES
+ - 1: General error
+ - 2: File either not found or not readable
+
+@section LICENSE
+GNU Lesser General Public License v3
+Copyright (c) Devyn Collier Johnson, All rights reserved.
+
+This software is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This software is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with this software.
+"""
+
+
+# pylint: disable=R0913,R0914,W0703
+
+
+from argparse import ArgumentParser, RawTextHelpFormatter
+from multiprocessing import Process, ProcessError, Queue
+from pprint import PrettyPrinter
+from sys import stderr, stdout
+from time import sleep
+from typing import Callable, Generator
+import warnings
+
+from pybooster.datastruct import opencsvfile
+from pybooster.fs import doesfileexist
+from pybooster.iterables import frange
+from pybooster.xmath import avgoffset
+
+from joblib import dump, load
+
+try:  # Import Cupy or Numpy
+    import cupy as xp
+    from cupy.cuda.runtime import CUDARuntimeError
+except ImportError:
+    try:  # Random Modules
+        import numpy as xp
+        CUDARuntimeError = RuntimeError
+    except ImportError:
+        pass
+
+try:  # Import Sklearn
+    import h2ogpu as sklearn
+    from h2ogpu import ensemble, linear_model, model_selection, naive_bayes
+except ImportError:
+    import sklearn
+    from sklearn import ensemble, linear_model, model_selection, naive_bayes
+
+
+# pyinstall memory_profiler
+# from memory_profiler import profile
+# @profile
+# https://pypi.org/project/memory_profiler/
+# mprof run
+# mprof list
+# mprof clean
+# mprof plot
+
+
+__all__: list = [
+    # GENERAL FUNCTIONS #
+    r'bytefromfile',
+    # CLASSES #
+    r'LearningSession',
+    # ENSEMBLE TRAINING #
+    r'adaboostclassifier_training',
+    r'adaboostregressor_training',
+    r'baggingclassifier_training',
+    r'baggingregressor_training',
+    r'extratreesclassifier_training',
+    r'extratreesregressor_training',
+    r'gradientboostingclassifier_training',
+    r'gradientboostingregressor_training',
+    r'randomforestclassifier_training',
+    r'randomforestregressor_training',
+    # LINEAR REGRESSION TRAINING #
+    r'bayesianridge_training',
+    r'elasticnet_training',
+    r'elasticnetcv_training',
+    r'lasso_training',
+    r'lassolarscv_training',
+    r'linear_regression_training',
+    r'perceptron_training',
+    r'ridge_training',
+    r'theilsenregressor_training',
+    # NAIVE BAYES TRAINING #
+    r'bernoullinb_training',
+    r'categoricalnb_training',
+    r'complementnb_training',
+    r'gaussiannb_training',
+    r'multinomialnb_training'
+]
+
+
+# GENERAL FUNCTIONS #
+
+
+def bytefromfile(_filename: str) -> Generator:
+    """Get one byte from the file at a time."""
+    with open(_filename, mode=r'rb') as _file:
+        counter: int = 0
+        byte = _file.read(1).decode(r'utf8', r'strict')
+        counter += 1
+        yield int(byte)
+        while byte and counter <= 5000:
+            byte = _file.read(1).decode(r'utf8', r'strict')
+            counter += 1
+            while byte and byte not in {r'0', r'1', r'2', r'3', r'4', r'5', r'6', r'7', r'8', r'9'} and counter <= 5000:
+                byte = _file.read(1).decode(r'utf8', r'strict')
+                counter += 1
+            if byte:
+                yield int(byte)
+
+
+def compare_model_results(_model, _results: list, answer_data: list, best_model: dict) -> dict:
+    """Compare two models and choose the best model."""
+    try:
+        _results_offset: float = avgoffset(_results, answer_data)
+        best_model[r'offset_worst'] = _results_offset if best_model[r'offset_worst'] is None or _results_offset > best_model[r'offset_worst'] else best_model[r'offset_worst']
+        if best_model[r'results'] is None or _results_offset < best_model[r'offset']:
+            best_model[r'model'] = _model
+            best_model[r'offset'] = _results_offset
+        return best_model
+    except BaseException:
+        return {r'algorithm': best_model[r'algorithm']}
+
+
+# CLASSES #
+
+
+class LearningSession:  # pylint: disable=R0902
+    """Class providing machine-learning capabilities."""
+
+    def __init__(self, training_data: list = [], target_data: list = [], test_data: list = [], answer_data: list = [], prediction_data: list = [], fast_mode: bool = False) -> None:  # pylint: disable=W0102
+        """Initialize the learning session."""
+        warnings.filterwarnings(r'ignore')
+        self.fast_mode: bool = fast_mode
+        self.model = None
+        self.best_results: list = []
+        self.results: list = []
+        self.training_data = training_data
+        self.target_data = target_data
+        self.test_data = test_data
+        self.answer_data = answer_data
+        self.prediction_data = prediction_data
+        self.model_queue: Queue = Queue(maxsize=32)
+
+    def start_training(self) -> None:
+        """Perform training."""
+        self.run_workers([
+            # Ensemble Algorithms
+            Process(group=None, target=self.training_subprocess, name=r'AdaBoostClassifier', args=(adaboostclassifier_training,)),
+            Process(group=None, target=self.training_subprocess, name=r'AdaBoostRegressor', args=(adaboostregressor_training,)),
+            Process(group=None, target=self.training_subprocess, name=r'BaggingClassifier', args=(baggingclassifier_training,)),
+            Process(group=None, target=self.training_subprocess, name=r'BaggingRegressor', args=(baggingregressor_training,)),
+            Process(group=None, target=self.training_subprocess, name=r'ExtraTreesClassifier', args=(extratreesclassifier_training,)),
+            Process(group=None, target=self.training_subprocess, name=r'ExtraTreesRegressor', args=(extratreesregressor_training,)),
+            Process(group=None, target=self.training_subprocess, name=r'GradientBoostingClassifier', args=(gradientboostingclassifier_training,)),
+            Process(group=None, target=self.training_subprocess, name=r'GradientBoostingRegressor', args=(gradientboostingregressor_training,)),
+            Process(group=None, target=self.training_subprocess, name=r'RandomForestClassifier', args=(randomforestclassifier_training,)),
+            Process(group=None, target=self.training_subprocess, name=r'RandomForestRegressor', args=(randomforestregressor_training,)),
+            # Linear Regression Algorithms
+            Process(group=None, target=self.training_subprocess, name=r'BayesianRidge', args=(bayesianridge_training,)),
+            Process(group=None, target=self.training_subprocess, name=r'ElasticNet', args=(elasticnet_training,)),
+            Process(group=None, target=self.training_subprocess, name=r'ElasticNetCV', args=(elasticnetcv_training,)),
+            Process(group=None, target=self.training_subprocess, name=r'Lasso', args=(lasso_training,)),
+            Process(group=None, target=self.training_subprocess, name=r'LassoLarsCV', args=(lassolarscv_training,)),
+            Process(group=None, target=self.training_subprocess, name=r'LinearRegression', args=(linear_regression_training,)),
+            Process(group=None, target=self.training_subprocess, name=r'Perceptron', args=(perceptron_training,)),
+            Process(group=None, target=self.training_subprocess, name=r'Ridge', args=(ridge_training,)),
+            Process(group=None, target=self.training_subprocess, name=r'TheilsenRegressor', args=(theilsenregressor_training,)),
+            # Naive Bayes Algorithms
+            Process(group=None, target=self.training_subprocess, name=r'BernoulliNB', args=(bernoullinb_training,)),
+            Process(group=None, target=self.training_subprocess, name=r'CategoricalNB', args=(categoricalnb_training,)),
+            Process(group=None, target=self.training_subprocess, name=r'ComplementNB', args=(complementnb_training,)),
+            Process(group=None, target=self.training_subprocess, name=r'GaussianNB', args=(gaussiannb_training,)),
+            Process(group=None, target=self.training_subprocess, name=r'MultinomialNB', args=(multinomialnb_training,))
+        ])
+        # Get the Best Results
+        if self.results:
+            self.best_results = self.results[0]
+            for _data in self.results[1:]:
+                if _data[r'offset'] < self.best_results[r'offset']:  # type: ignore
+                    self.best_results = _data
+            self.model = self.best_results[r'model']  # type: ignore
+
+    def predict(self, long_format: bool = False) -> int:
+        """Perform data prediction."""
+        if not (self.prediction_data and self.model):
+            return 1
+        try:
+            predictions: list = self.model.predict(self.prediction_data)
+        except BaseException as _err:
+            stderr.write(f'ERROR: Prediction failed: {_err}\n')
+            return 1
+        # Display results
+        if long_format:
+            for idx in range(len(self.prediction_data)):
+                stdout.write(fr'Input={self.prediction_data[idx]}, Predicted={predictions[idx]}')
+        else:
+            for idx in range(len(self.prediction_data)):
+                stdout.write(fr'"{self.prediction_data[idx]}","{predictions[idx]}"')
+        return 0
+
+    def load_trained_model(self, _filename: str) -> None:
+        """Load the trained model from a file."""
+        if doesfileexist(_filename):
+            self.model = load(_filename)
+        stderr.write(f'Error: Unable to read "{_filename}"!\n')
+
+    def save_trained_model(self, _filename: str) -> None:
+        """Save the trained model to a file."""
+        if _filename:
+            dump(self.model, _filename)
+
+    # THREAD HELPER FUNCTIONS #
+
+    def training_subprocess(self, training_func: Callable[[list, list, list, list, bool], dict]) -> int:
+        """Retrieve the output from the threaded training."""
+        if r'seterr' in dir(xp):
+            xp.seterr(divide=r'ignore', invalid=r'ignore', over=r'ignore', under=r'ignore')
+        try:
+            results: dict = training_func(self.training_data[:], self.target_data[:], self.test_data[:], self.answer_data[:], self.fast_mode)
+            if results:
+                self.model_queue.put(results, block=False, timeout=None)
+                return 0
+        except BaseException as _err:
+            stderr.write(f'ERROR: {_err}\n')
+        return 1
+
+    def run_workers(self, _workers: list) -> None:  # noqa: C901,R701  # pylint: disable=R0912
+        """Run the worker training jobs."""
+        try:  # pylint: disable=R1702
+            for _worker in _workers:
+                _worker.start()
+                sleep(0.1)
+            # Wait for workers to finish
+            while _workers:
+                sleep(0.2)
+                if self.model_queue.empty():
+                    for _num, _worker in enumerate(_workers):
+                        if _worker.is_alive():
+                            continue
+                        _worker.join(timeout=None)
+                        _workers.pop(_num)
+                    continue
+                model_data: dict = self.model_queue.get(block=True, timeout=None)
+                if model_data and r'model' in model_data and model_data[r'model']:
+                    model_data[r'params'] = model_data[r'model'].get_params()
+                    self.results.append(model_data)
+                for _num, _worker in enumerate(_workers):
+                    if _worker.name == model_data[r'algorithm']:
+                        _worker.join(timeout=None)
+                        _workers.pop(_num)
+                        if _worker.exitcode is None:
+                            _worker.terminate()
+                        break
+        except (KeyboardInterrupt, MemoryError, ProcessError):
+            for _worker in _workers:
+                if not _worker:
+                    continue
+                try:
+                    stderr.write(f'Terminated {_worker.name}\n')
+                    _worker.terminate()
+                except BaseException:
+                    continue
+            return
+        except BaseException as _err:
+            stderr.write(str(_err) + '\n')
+            return
+        finally:
+            self.model_queue.close()
+            self.model_queue.join_thread()
+            stderr.flush()
+            stdout.flush()
+
+    # OUTPUT FUNCTIONS #
+
+    def display_results(self) -> int:
+        """Display results to stdout."""
+        if not self.results:
+            stderr.write('No results were produced!\n')
+            return 1
+        stdout.write('\n')
+        ppobj = PrettyPrinter(indent=4)
+        self.results.sort(key=lambda x: x[r'algorithm'].casefold())
+        for _data in self.results:
+            if not _data:
+                continue
+            ppobj.pprint(_data)
+            stdout.write('\n')
+        stdout.write('\nBest Results:\n\n\n')
+        ppobj.pprint(self.best_results)
+        stdout.write('\n')
+        return 0
+
+
+# ENSEMBLE TRAINING #
+
+
+def adaboostclassifier_training(training_data: list, target_data: list, test_data: list, answer_data: list, fast_mode: bool = True) -> dict:
+    """Train multiple AdaBoostClassifier models (each with different hyperparameters) for the given datasets and return a dictionary containing the best model."""
+    best_model: dict = {r'algorithm': r'AdaBoostClassifier', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
+    # Train model
+    try:
+        _model = model_selection.GridSearchCV(
+            ensemble.AdaBoostClassifier(),  # base_estimator=None, n_estimators=50, learning_rate=1.0, algorithm=r'SAMME.R', random_state=None
+            {
+                r'algorithm': [r'SAMME.R'] if fast_mode else [r'SAMME', r'SAMME.R'],
+                r'learning_rate': [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0] if fast_mode else list(frange(0.0, 1.0, 0.05)),
+                r'n_estimators': [50] if fast_mode else [25, 50, 100, 150]
+            },
+            cv=5,
+            return_train_score=True
+        )
+        _model.fit(training_data, target_data)
+    except (CUDARuntimeError, sklearn.exceptions.NotFittedError) as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to CUDA errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    except BaseException as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    # Evaluate & save test results
+    best_model = compare_model_results(_model, _model.predict(test_data), answer_data, best_model)
+    # Close
+    stdout.write(r'Finished ' + best_model[r'algorithm'] + ' training\n')
+    return best_model
+
+
+def adaboostregressor_training(training_data: list, target_data: list, test_data: list, answer_data: list, fast_mode: bool = True) -> dict:
+    """Train multiple AdaBoostRegressor models (each with different hyperparameters) for the given datasets and return a dictionary containing the best model."""
+    best_model: dict = {r'algorithm': r'AdaBoostRegressor', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
+    # Train model
+    try:
+        _model = model_selection.GridSearchCV(
+            ensemble.AdaBoostRegressor(),  # base_estimator=None, learning_rate=1.0, loss='linear', n_estimators=50, random_state=None
+            {
+                r'n_estimators': [50] if fast_mode else [25, 50, 100, 150, 200, 250],
+                r'learning_rate': [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0] if fast_mode else list(frange(0.0, 1.0, 0.05)),
+                r'loss': [r'linear'] if fast_mode else [r'exponential', r'linear', r'square']
+            },
+            cv=5,
+            return_train_score=True
+        )
+        _model.fit(training_data, target_data)
+    except (CUDARuntimeError, sklearn.exceptions.NotFittedError) as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to CUDA errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    except BaseException as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    # Evaluate & save test results
+    best_model = compare_model_results(_model, _model.predict(test_data), answer_data, best_model)
+    # Close
+    stdout.write(r'Finished ' + best_model[r'algorithm'] + ' training\n')
+    return best_model
+
+
+def baggingclassifier_training(training_data: list, target_data: list, test_data: list, answer_data: list, fast_mode: bool = True) -> dict:
+    """Train multiple BaggingClassifier models (each with different hyperparameters) for the given datasets and return a dictionary containing the best model."""
+    best_model: dict = {r'algorithm': r'BaggingClassifier', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
+    # Train model
+    try:
+        _model = model_selection.GridSearchCV(
+            ensemble.BaggingClassifier(),  # base_estimator=None, n_estimators=10, max_samples=1.0, max_features=1.0, bootstrap=True, bootstrap_features=False, oob_score=False, warm_start=False, n_jobs=None, random_state=None, verbose=0
+            {
+                r'max_features': [1.0, 1.5, 2.0] if fast_mode else [1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0],
+                r'max_samples': [1.0, 1.5, 2.0] if fast_mode else [1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0],
+                r'n_estimators': [10, 20] if fast_mode else [10, 15, 20, 25, 30],
+                r'oob_score': [False] if fast_mode else [False, True]
+            },
+            cv=5,
+            return_train_score=True
+        )
+        _model.fit(training_data, target_data)
+    except (CUDARuntimeError, sklearn.exceptions.NotFittedError) as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to CUDA errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    except BaseException as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    # Evaluate & save test results
+    best_model = compare_model_results(_model, _model.predict(test_data), answer_data, best_model)
+    # Close
+    stdout.write(r'Finished ' + best_model[r'algorithm'] + ' training\n')
+    return best_model
+
+
+def baggingregressor_training(training_data: list, target_data: list, test_data: list, answer_data: list, fast_mode: bool = True) -> dict:
+    """Train multiple BaggingRegressor models (each with different hyperparameters) for the given datasets and return a dictionary containing the best model."""
+    best_model: dict = {r'algorithm': r'BaggingRegressor', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
+    # Train model
+    try:
+        _model = model_selection.GridSearchCV(
+            ensemble.BaggingRegressor(),  # base_estimator=None, n_estimators=10, max_samples=1.0, max_features=1.0, bootstrap=True, bootstrap_features=False, oob_score=False, warm_start=False, n_jobs=None, random_state=None, verbose=0
+            {
+                r'max_features': [1.0, 1.5, 2.0] if fast_mode else [1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0],
+                r'max_samples': [1.0, 1.5, 2.0] if fast_mode else [1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0],
+                r'n_estimators': [10, 20] if fast_mode else [10, 15, 20, 25, 30],
+                r'oob_score': [False] if fast_mode else [False, True]
+            },
+            cv=5,
+            return_train_score=True
+        )
+        _model.fit(training_data, target_data)
+    except (CUDARuntimeError, sklearn.exceptions.NotFittedError) as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to CUDA errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    except BaseException as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    # Evaluate & save test results
+    best_model = compare_model_results(_model, _model.predict(test_data), answer_data, best_model)
+    # Close
+    stdout.write(r'Finished ' + best_model[r'algorithm'] + ' training\n')
+    return best_model
+
+
+def extratreesclassifier_training(training_data: list, target_data: list, test_data: list, answer_data: list, fast_mode: bool = True) -> dict:
+    """Train multiple ExtraTreesClassifier models (each with different hyperparameters) for the given datasets and return a dictionary containing the best model."""
+    best_model: dict = {r'algorithm': r'ExtraTreesClassifier', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
+    # Train model
+    try:
+        _model = model_selection.GridSearchCV(
+            ensemble.ExtraTreesClassifier(),  # n_estimators=100, criterion='gini', max_depth=None, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features='auto', max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, bootstrap=False, oob_score=False, n_jobs=None, random_state=None, verbose=0, warm_start=False, class_weight=None, ccp_alpha=0.0, max_samples=None
+            {
+                r'criterion': [r'gini'] if fast_mode else [r'entropy', r'gini'],
+                r'min_samples_split': [2, 3, 4, 5],
+                r'n_estimators': [50, 100] if fast_mode else [50, 100, 150, 200, 250, 300],
+                r'oob_score': [False] if fast_mode else [False, True]
+            },
+            cv=5,
+            return_train_score=True
+        )
+        _model.fit(training_data, target_data)
+    except (CUDARuntimeError, sklearn.exceptions.NotFittedError) as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to CUDA errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    except BaseException as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    # Evaluate & save test results
+    best_model = compare_model_results(_model, _model.predict(test_data), answer_data, best_model)
+    # Close
+    stdout.write(r'Finished ' + best_model[r'algorithm'] + ' training\n')
+    return best_model
+
+
+def extratreesregressor_training(training_data: list, target_data: list, test_data: list, answer_data: list, fast_mode: bool = True) -> dict:
+    """Train multiple ExtraTreesRegressor models (each with different hyperparameters) for the given datasets and return a dictionary containing the best model."""
+    best_model: dict = {r'algorithm': r'ExtraTreesRegressor', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
+    # Train model
+    try:
+        _model = model_selection.GridSearchCV(
+            ensemble.ExtraTreesRegressor(),  # n_estimators=100, criterion='mse', max_depth=None, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features='auto', max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, bootstrap=False, oob_score=False, n_jobs=None, random_state=None, verbose=0, warm_start=False, ccp_alpha=0.0, max_samples=None
+            {
+                r'criterion': [r'mae'] if fast_mode else [r'mae', r'mse'],
+                r'min_samples_split': [2, 3, 4, 5],
+                r'n_estimators': [50, 100] if fast_mode else [50, 100, 150, 200, 250, 300],
+                r'oob_score': [False] if fast_mode else [False, True]
+            },
+            cv=5,
+            return_train_score=True
+        )
+        _model.fit(training_data, target_data)
+    except (CUDARuntimeError, sklearn.exceptions.NotFittedError) as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to CUDA errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    except BaseException as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    # Evaluate & save test results
+    best_model = compare_model_results(_model, _model.predict(test_data), answer_data, best_model)
+    # Close
+    stdout.write(r'Finished ' + best_model[r'algorithm'] + ' training\n')
+    return best_model
+
+
+def gradientboostingclassifier_training(training_data: list, target_data: list, test_data: list, answer_data: list, fast_mode: bool = True) -> dict:
+    """Train multiple GradientBoostingClassifier models (each with different hyperparameters) for the given datasets and return a dictionary containing the best model."""
+    best_model: dict = {r'algorithm': r'GradientBoostingClassifier', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
+    # Train model
+    try:
+        _model = model_selection.GridSearchCV(
+            ensemble.GradientBoostingClassifier(),  # loss='deviance', learning_rate=0.1, n_estimators=100, subsample=1.0, criterion='friedman_mse', min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_depth=3, min_impurity_decrease=0.0, min_impurity_split=None, init=None, random_state=None, max_features=None, verbose=0, max_leaf_nodes=None, warm_start=False, presort='deprecated', validation_fraction=0.1, n_iter_no_change=None, tol=0.0001, ccp_alpha=0.0
+            {
+                r'criterion': [r'friedman_mse'] if fast_mode else [r'friedman_mse', r'mae', r'mse'],
+                r'loss': [r'deviance'] if fast_mode else [r'deviance', r'exponential'],
+                r'max_depth': [3] if fast_mode else [2, 3, 4, 5],
+                r'min_samples_split': [2] if fast_mode else [2, 3, 4, 5],
+                r'n_estimators': [100] if fast_mode else [50, 100, 150, 200, 250, 300],
+                r'tol': [0.00001, 0.0001, 0.001] if fast_mode else list(frange(0.00001, 0.01, 0.00001))
+            },
+            cv=5,
+            return_train_score=True
+        )
+        _model.fit(training_data, target_data)
+    except (CUDARuntimeError, sklearn.exceptions.NotFittedError) as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to CUDA errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    except BaseException as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    # Evaluate & save test results
+    best_model = compare_model_results(_model, _model.predict(test_data), answer_data, best_model)
+    # Close
+    stdout.write(r'Finished ' + best_model[r'algorithm'] + ' training\n')
+    return best_model
+
+
+def gradientboostingregressor_training(training_data: list, target_data: list, test_data: list, answer_data: list, fast_mode: bool = True) -> dict:
+    """Train multiple GradientBoostingRegressor models (each with different hyperparameters) for the given datasets and return a dictionary containing the best model."""
+    best_model: dict = {r'algorithm': r'GradientBoostingRegressor', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
+    # Train model
+    try:
+        _model = model_selection.GridSearchCV(
+            ensemble.GradientBoostingRegressor(),  # loss='ls', learning_rate=0.1, n_estimators=100, subsample=1.0, criterion='friedman_mse', min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_depth=3, min_impurity_decrease=0.0, min_impurity_split=None, init=None, random_state=None, max_features=None, alpha=0.9, verbose=0, max_leaf_nodes=None, warm_start=False, presort='deprecated', validation_fraction=0.1, n_iter_no_change=None, tol=0.0001, ccp_alpha=0.0
+            {
+                r'criterion': [r'friedman_mse'] if fast_mode else [r'friedman_mse', r'mae', r'mse'],
+                r'loss': [r'ls'] if fast_mode else [r'huber', r'lad', r'ls', r'quantile'],
+                r'min_samples_split': [2, 3, 4, 5],
+                r'n_estimators': [50, 100] if fast_mode else [50, 100, 150, 200, 250, 300],
+                r'tol': [0.00001, 0.0001, 0.001, 0.01, 0.1] if fast_mode else list(frange(0.00001, 0.01, 0.00001))
+            },
+            cv=5,
+            return_train_score=True
+        )
+        _model.fit(training_data, target_data)
+    except (CUDARuntimeError, sklearn.exceptions.NotFittedError) as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to CUDA errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    except BaseException as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    # Evaluate & save test results
+    best_model = compare_model_results(_model, _model.predict(test_data), answer_data, best_model)
+    # Close
+    stdout.write(r'Finished ' + best_model[r'algorithm'] + ' training\n')
+    return best_model
+
+
+def randomforestclassifier_training(training_data: list, target_data: list, test_data: list, answer_data: list, fast_mode: bool = True) -> dict:
+    """Train multiple RandomForestClassifier models (each with different hyperparameters) for the given datasets and return a dictionary containing the best model."""
+    best_model: dict = {r'algorithm': r'RandomForestClassifier', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
+    # Train model
+    try:
+        _model = model_selection.GridSearchCV(
+            ensemble.RandomForestClassifier(),  # n_estimators=100, criterion=r'gini', max_depth=None, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features=r'auto', max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, bootstrap=True, oob_score=False, n_jobs=-1, random_state=None, verbose=0, warm_start=False, class_weight=None
+            {
+                r'criterion': [r'gini'] if fast_mode else [r'entropy', r'gini'],
+                r'min_samples_split': [2, 3, 4, 5],
+                r'n_estimators': [100] if fast_mode else [50, 100, 150, 200, 250, 300],
+            },
+            cv=5,
+            return_train_score=True
+        )
+        _model.fit(training_data, target_data)
+    except (CUDARuntimeError, sklearn.exceptions.NotFittedError) as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to CUDA errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    except BaseException as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    # Evaluate & save test results
+    best_model = compare_model_results(_model, _model.predict(test_data), answer_data, best_model)
+    # Close
+    stdout.write(r'Finished ' + best_model[r'algorithm'] + ' training\n')
+    return best_model
+
+
+def randomforestregressor_training(training_data: list, target_data: list, test_data: list, answer_data: list, fast_mode: bool = True) -> dict:
+    """Train multiple RandomForestRegressor models (each with different hyperparameters) for the given datasets and return a dictionary containing the best model."""
+    best_model: dict = {r'algorithm': r'RandomForestRegressor', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
+    # Train model
+    try:
+        _model = model_selection.GridSearchCV(
+            ensemble.RandomForestRegressor(),  # n_estimators=100, criterion=r'mse', max_depth=None, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features=r'auto', max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, bootstrap=True, oob_score=False, n_jobs=-1, random_state=None, verbose=0, warm_start=False
+            {
+                r'criterion': [r'mae'] if fast_mode else [r'mae', r'mse'],
+                r'min_samples_split': [2, 3, 4, 5],
+                r'n_estimators': [100] if fast_mode else [50, 100, 150, 200, 250, 300],
+            },
+            cv=5,
+            return_train_score=True
+        )
+        _model.fit(training_data, target_data)
+    except (CUDARuntimeError, sklearn.exceptions.NotFittedError) as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to CUDA errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    except BaseException as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    # Evaluate & save test results
+    best_model = compare_model_results(_model, _model.predict(test_data), answer_data, best_model)
+    # Close
+    stdout.write(r'Finished ' + best_model[r'algorithm'] + ' training\n')
+    return best_model
+
+
+# LINEAR REGRESSION TRAINING #
+
+
+def bayesianridge_training(training_data: list, target_data: list, test_data: list, answer_data: list, fast_mode: bool = True) -> dict:
+    """Train multiple BayesianRidge models (each with different hyperparameters) for the given datasets and return a dictionary containing the best model."""
+    best_model: dict = {r'algorithm': r'BaysianRidge', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
+    # Train model
+    try:
+        _model = model_selection.GridSearchCV(
+            linear_model.BayesianRidge(),  # n_iter=300, tol=tol, alpha_1=1e-06, alpha_2=1e-06, lambda_1=1e-06, lambda_2=1e-06, compute_score=False, fit_intercept=True, normalize=False, copy_X=False, verbose=False
+            {
+                r'alpha_1': [0.0001, 0.001, 0.01, 0.1, 1.0] if fast_mode else list(frange(0.001, 1.0, 0.001)),
+                r'alpha_2': [0.0001, 0.001, 0.01, 0.1, 1.0] if fast_mode else list(frange(0.001, 1.0, 0.001)),
+                r'compute_score': [False],
+                r'copy_X': [False],
+                r'fit_intercept': [True] if fast_mode else [True, False],
+                r'n_iter': [300] if fast_mode else [300, 400],
+                r'normalize': [False] if fast_mode else [True, False],
+                r'tol': [0.00001, 0.0001, 0.001, 0.01, 0.1] if fast_mode else list(frange(0.00001, 0.01, 0.00001)),
+                r'verbose': [False]
+            },
+            cv=5,
+            return_train_score=True
+        )
+        _model.fit(training_data, target_data)
+    except (CUDARuntimeError, sklearn.exceptions.NotFittedError) as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to CUDA errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    except BaseException as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    # Evaluate & save test results
+    best_model = compare_model_results(_model, _model.predict(test_data), answer_data, best_model)
+    # Close
+    stdout.write(r'Finished ' + best_model[r'algorithm'] + ' training\n')
+    return best_model
+
+
+def elasticnet_training(training_data: list, target_data: list, test_data: list, answer_data: list, fast_mode: bool = True) -> dict:
+    """Train multiple ElasticNet models (each with different hyperparameters) for the given datasets and return a dictionary containing the best model."""
+    best_model: dict = {r'algorithm': r'ElasticNet', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
+    # Train model
+    try:
+        _model = model_selection.GridSearchCV(
+            linear_model.ElasticNet(),  # alpha=1.0, l1_ratio=0.5, fit_intercept=True, normalize=False, precompute=False, max_iter=1000, copy_X=True, tol=0.0001, warm_start=False, positive=False, random_state=None, selection=r'cyclic'
+            {
+                r'alpha': [0.0001, 0.0005, 0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1.0] if fast_mode else list(frange(0.001, 1.0, 0.001)),
+                r'copy_X': [False],
+                r'fit_intercept': [True] if fast_mode else [True, False],
+                r'max_iter': [1000] if fast_mode else [250, 500, 1000],
+                r'normalize': [False] if fast_mode else [True, False],
+                r'tol': [0.00001, 0.00005, 0.0001, 0.0005, 0.001, 0.005, 0.01, 0.05, 0.1] if fast_mode else list(frange(0.00001, 0.01, 0.00001))
+            },
+            cv=5,
+            return_train_score=True
+        )
+        _model.fit(training_data, target_data)
+    except (CUDARuntimeError, sklearn.exceptions.NotFittedError) as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to CUDA errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    except BaseException as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    # Evaluate & save test results
+    best_model = compare_model_results(_model, _model.predict(test_data), answer_data, best_model)
+    # Close
+    stdout.write(r'Finished ' + best_model[r'algorithm'] + ' training\n')
+    return best_model
+
+
+def elasticnetcv_training(training_data: list, target_data: list, test_data: list, answer_data: list, fast_mode: bool = True) -> dict:
+    """Train multiple ElasticNetCV models (each with different hyperparameters) for the given datasets and return a dictionary containing the best model."""
+    best_model: dict = {r'algorithm': r'ElasticNetCV', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
+    # Train model
+    try:
+        _model = model_selection.GridSearchCV(
+            linear_model.ElasticNetCV(),  # l1_ratio=0.5, eps=0.001, n_alphas=100, alphas=None, fit_intercept=True, normalize=False, precompute=r'auto', max_iter=1000, tol=0.0001, cv=None, copy_X=True, verbose=0, n_jobs=None, positive=False, random_state=None, selection=r'cyclic'
+            {
+                r'copy_X': [False],
+                r'fit_intercept': [True] if fast_mode else [True, False],
+                r'l1_ratio': [0.0001, 0.001, 0.01, 0.1, 1.0] if fast_mode else list(frange(0.001, 1.0, 0.001)),
+                r'max_iter': [1000] if fast_mode else [250, 500, 1000],
+                r'n_alphas': [100] if fast_mode else [50, 100, 150],
+                r'normalize': [False] if fast_mode else [True, False],
+                r'tol': [0.00001, 0.0001, 0.001, 0.01, 0.1] if fast_mode else list(frange(0.00001, 0.1, 0.00001))
+            },
+            cv=5,
+            return_train_score=True
+        )
+        _model.fit(training_data, target_data)
+    except (CUDARuntimeError, sklearn.exceptions.NotFittedError) as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to CUDA errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    except BaseException as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    # Evaluate & save test results
+    best_model = compare_model_results(_model, _model.predict(test_data), answer_data, best_model)
+    # Close
+    stdout.write(r'Finished ' + best_model[r'algorithm'] + ' training\n')
+    return best_model
+
+
+def lasso_training(training_data: list, target_data: list, test_data: list, answer_data: list, fast_mode: bool = True) -> dict:
+    """Train multiple Lasso models (each with different hyperparameters) for the given datasets and return a dictionary containing the best model."""
+    best_model: dict = {r'algorithm': r'Lasso', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
+    # Train model
+    try:
+        _model = model_selection.GridSearchCV(
+            linear_model.Lasso(),  # alpha=1.0, fit_intercept=True, normalize=False, precompute=False, copy_X=True, max_iter=1000, tol=0.0001, warm_start=False, positive=False, random_state=None, selection=r'cyclic'
+            {
+                r'alpha': [0.0001, 0.0005, 0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1.0] if fast_mode else list(frange(0.001, 1.0, 0.001)),
+                r'copy_X': [False],
+                r'fit_intercept': [True] if fast_mode else [True, False],
+                r'max_iter': [1000] if fast_mode else [250, 500, 1000],
+                r'normalize': [False] if fast_mode else [True, False],
+                r'tol': [0.00001, 0.00005, 0.0001, 0.0005, 0.001, 0.005, 0.01, 0.05, 0.1] if fast_mode else list(frange(0.00001, 0.01, 0.00001))
+            },
+            cv=5,
+            return_train_score=True
+        )
+        _model.fit(training_data, target_data)
+    except (CUDARuntimeError, sklearn.exceptions.NotFittedError) as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to CUDA errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    except BaseException as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    # Evaluate & save test results
+    best_model = compare_model_results(_model, _model.predict(test_data), answer_data, best_model)
+    # Close
+    stdout.write(r'Finished ' + best_model[r'algorithm'] + ' training\n')
+    return best_model
+
+
+def lassolarscv_training(training_data: list, target_data: list, test_data: list, answer_data: list, fast_mode: bool = True) -> dict:
+    """Train multiple LassoLarsCV models (each with different hyperparameters) for the given datasets and return a dictionary containing the best model."""
+    best_model: dict = {r'algorithm': r'LassoLarsCV', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
+    # Train model
+    try:
+        _model = model_selection.GridSearchCV(
+            linear_model.LassoLarsCV(),  # fit_intercept=True, verbose=False, max_iter=500, normalize=True, precompute=r'auto', cv=None, max_n_alphas=1000, n_jobs=None, eps=2.220446049250313e-16, copy_X=True, positive=False
+            {
+                r'copy_X': [False],
+                r'fit_intercept': [True] if fast_mode else [True, False],
+                r'max_iter': [500] if fast_mode else [250, 500, 1000],
+                r'max_n_alphas': [10, 50, 100, 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000] if fast_mode else list(range(0, 4000, 1)),
+                r'normalize': [True] if fast_mode else [True, False]
+            },
+            cv=5,
+            return_train_score=True
+        )
+        _model.fit(training_data, target_data)
+    except (CUDARuntimeError, sklearn.exceptions.NotFittedError) as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to CUDA errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    except BaseException as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    # Evaluate & save test results
+    best_model = compare_model_results(_model, _model.predict(test_data), answer_data, best_model)
+    # Close
+    stdout.write(r'Finished ' + best_model[r'algorithm'] + ' training\n')
+    return best_model
+
+
+def linear_regression_training(training_data: list, target_data: list, test_data: list, answer_data: list, fast_mode: bool = True) -> dict:
+    """Train multiple Linear-Regression models (each with different hyperparameters) for the given datasets and return a dictionary containing the best model."""
+    best_model: dict = {r'algorithm': r'LinearRegression', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
+    # Train model
+    try:
+        _model = model_selection.GridSearchCV(
+            linear_model.LinearRegression(),  # fit_intercept=True, normalize=False, copy_X=True, n_jobs=None
+            {
+                r'copy_X': [False],
+                r'fit_intercept': [True] if fast_mode else [True, False],
+                r'normalize': [True, False]
+            },
+            cv=5,
+            return_train_score=True
+        )
+        _model.fit(training_data, target_data)
+    except (CUDARuntimeError, sklearn.exceptions.NotFittedError) as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to CUDA errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    except BaseException as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    # Evaluate & save test results
+    best_model = compare_model_results(_model, _model.predict(test_data), answer_data, best_model)
+    # Close
+    stdout.write(r'Finished ' + best_model[r'algorithm'] + ' training\n')
+    return best_model
+
+
+def perceptron_training(training_data: list, target_data: list, test_data: list, answer_data: list, fast_mode: bool = True) -> dict:
+    """Train multiple Perceptron models (each with different hyperparameters) for the given datasets and return a dictionary containing the best model."""
+    best_model: dict = {r'algorithm': r'Perceptron', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
+    # Train model
+    try:
+        _model = model_selection.GridSearchCV(
+            linear_model.Perceptron(),  # penalty=None, alpha=0.0001, fit_intercept=True, max_iter=1000, tol=0.001, shuffle=True, verbose=0, eta0=1.0, n_jobs=None, random_state=0, early_stopping=False, validation_fraction=0.1, n_iter_no_change=5, class_weight=None, warm_start=False
+            {
+                r'alpha': [0.00001, 0.0001, 0.001, 0.01, 0.1] if fast_mode else list(frange(0.0001, 1.0, 0.0001)),
+                r'fit_intercept': [True] if fast_mode else [True, False],
+                r'max_iter': [1000] if fast_mode else [250, 500, 1000],
+                r'tol': [0.00001, 0.0001, 0.001, 0.01, 0.1] if fast_mode else list(frange(0.00001, 0.01, 0.00001))
+            },
+            cv=5,
+            return_train_score=True
+        )
+        _model.fit(training_data, target_data)
+    except (CUDARuntimeError, sklearn.exceptions.NotFittedError) as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to CUDA errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    except BaseException as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    # Evaluate & save test results
+    best_model = compare_model_results(_model, _model.predict(test_data), answer_data, best_model)
+    # Close
+    stdout.write(r'Finished ' + best_model[r'algorithm'] + ' training\n')
+    return best_model
+
+
+def ridge_training(training_data: list, target_data: list, test_data: list, answer_data: list, fast_mode: bool = True) -> dict:
+    """Train multiple Ridge models (each with different hyperparameters) for the given datasets and return a dictionary containing the best model."""
+    best_model: dict = {r'algorithm': r'Ridge', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
+    # Train model
+    try:
+        _model = model_selection.GridSearchCV(
+            linear_model.Ridge(),  # alpha=1.0, fit_intercept=True, normalize=False, copy_X=True, max_iter=None, tol=0.001, solver='auto', random_state=None
+            {
+                r'alpha': [0.0001, 0.0005, 0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1.0] if fast_mode else list(frange(0.001, 1.0, 0.001)),
+                r'fit_intercept': [True] if fast_mode else [True, False],
+                r'normalize': [True] if fast_mode else [True, False],
+                r'tol': [0.00001, 0.0001, 0.001, 0.01, 0.1] if fast_mode else list(frange(0.00001, 0.01, 0.00001))
+            },
+            cv=5,
+            return_train_score=True
+        )
+        _model.fit(training_data, target_data)
+    except (CUDARuntimeError, sklearn.exceptions.NotFittedError) as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to CUDA errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    except BaseException as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    # Evaluate & save test results
+    best_model = compare_model_results(_model, _model.predict(test_data), answer_data, best_model)
+    # Close
+    stdout.write(r'Finished ' + best_model[r'algorithm'] + ' training\n')
+    return best_model
+
+
+def theilsenregressor_training(training_data: list, target_data: list, test_data: list, answer_data: list, fast_mode: bool = True) -> dict:
+    """Train multiple TheilSenRegressor models (each with different hyperparameters) for the given datasets and return a dictionary containing the best model."""
+    best_model: dict = {r'algorithm': r'TheilSenRegressor', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
+    # Train model
+    try:
+        _model = model_selection.GridSearchCV(
+            linear_model.TheilSenRegressor(),  # fit_intercept=True, copy_X=True, max_subpopulation=10000.0, n_subsamples=None, max_iter=300, tol=0.001, random_state=None, n_jobs=None, verbose=False
+            {
+                r'copy_X': [False],
+                r'fit_intercept': [True] if fast_mode else [True, False],
+                r'max_iter': [300] if fast_mode else [200, 300, 400, 500],
+                r'tol': [0.00001, 0.00005, 0.0001, 0.0005, 0.001, 0.005, 0.01, 0.05, 0.1] if fast_mode else list(frange(0.00001, 0.01, 0.00001))
+            },
+            cv=5,
+            return_train_score=True
+        )
+        _model.fit(training_data, target_data)
+    except (CUDARuntimeError, sklearn.exceptions.NotFittedError) as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to CUDA errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    except BaseException as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    # Evaluate & save test results
+    best_model = compare_model_results(_model, _model.predict(test_data), answer_data, best_model)
+    # Close
+    stdout.write(r'Finished ' + best_model[r'algorithm'] + ' training\n')
+    return best_model
+
+
+# NAIVE BAYES TRAINING #
+
+
+def bernoullinb_training(training_data: list, target_data: list, test_data: list, answer_data: list, fast_mode: bool = True) -> dict:
+    """Train multiple BernoulliNB models (each with different hyperparameters) for the given datasets and return a dictionary containing the best model."""
+    best_model: dict = {r'algorithm': r'BernoulliNB', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
+    # Train model
+    try:
+        _model = model_selection.GridSearchCV(
+            naive_bayes.BernoulliNB(),  # alpha=1.0, binarize=0.0, fit_prior=True, class_prior=None
+            {
+                r'alpha': [0.0001, 0.0003, 0.0005, 0.003, 0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1.0] if fast_mode else list(frange(0.0001, 1.0, 0.0001)),
+                r'fit_prior': [True, False]
+            },
+            cv=5,
+            return_train_score=True
+        )
+        _model.fit(training_data, target_data)
+    except (CUDARuntimeError, sklearn.exceptions.NotFittedError) as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to CUDA errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    except BaseException as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    # Evaluate & save test results
+    best_model = compare_model_results(_model, _model.predict(test_data), answer_data, best_model)
+    # Close
+    stdout.write(r'Finished ' + best_model[r'algorithm'] + ' training\n')
+    return best_model
+
+
+def categoricalnb_training(training_data: list, target_data: list, test_data: list, answer_data: list, fast_mode: bool = True) -> dict:
+    """Train multiple CategoricalNB models (each with different hyperparameters) for the given datasets and return a dictionary containing the best model."""
+    best_model: dict = {r'algorithm': r'CategoricalNB', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
+    # Train model
+    try:
+        _model = model_selection.GridSearchCV(
+            naive_bayes.CategoricalNB(),  # alpha=1.0, fit_prior=True, class_prior=None
+            {
+                r'alpha': [0.0001, 0.0005, 0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1.0] if fast_mode else list(frange(0.0001, 1.0, 0.0001)),
+                r'fit_prior': [True, False]
+            },
+            cv=5,
+            return_train_score=True
+        )
+        _model.fit(training_data, target_data)
+    except (CUDARuntimeError, sklearn.exceptions.NotFittedError) as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to CUDA errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    except BaseException as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    # Evaluate & save test results
+    best_model = compare_model_results(_model, _model.predict(test_data), answer_data, best_model)
+    # Close
+    stdout.write(r'Finished ' + best_model[r'algorithm'] + ' training\n')
+    return best_model
+
+
+def complementnb_training(training_data: list, target_data: list, test_data: list, answer_data: list, fast_mode: bool = True) -> dict:
+    """Train multiple ComplementNB models (each with different hyperparameters) for the given datasets and return a dictionary containing the best model."""
+    best_model: dict = {r'algorithm': r'ComplementNB', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
+    # Train model
+    try:
+        _model = model_selection.GridSearchCV(
+            naive_bayes.ComplementNB(),  # alpha=1.0, fit_prior=True, class_prior=None, norm=False
+            {
+                r'alpha': [0.0001, 0.0005, 0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1.0] if fast_mode else list(frange(0.0001, 1.0, 0.0001)),
+                r'fit_prior': [True, False],
+                r'norm': [True, False]
+            },
+            cv=5,
+            return_train_score=True
+        )
+        _model.fit(training_data, target_data)
+    except (CUDARuntimeError, sklearn.exceptions.NotFittedError) as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to CUDA errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    except BaseException as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    # Evaluate & save test results
+    best_model = compare_model_results(_model, _model.predict(test_data), answer_data, best_model)
+    # Close
+    stdout.write(r'Finished ' + best_model[r'algorithm'] + ' training\n')
+    return best_model
+
+
+def gaussiannb_training(training_data: list, target_data: list, test_data: list, answer_data: list, fast_mode: bool = True) -> dict:
+    """Train multiple GaussianNB models (each with different hyperparameters) for the given datasets and return a dictionary containing the best model."""
+    best_model: dict = {r'algorithm': r'GaussianNB', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
+    # Train model
+    try:
+        _model = model_selection.GridSearchCV(
+            naive_bayes.GaussianNB(),  # priors=None, var_smoothing=1e-09
+            {
+                r'var_smoothing': [0.000000001, 0.000000005, 0.00000001, 0.00000005, 0.0000001, 0.0000005, 0.000001, 0.000005, 0.00001, 0.00005, 0.0001, 0.0005] if fast_mode else list(frange(0.000000001, 0.0001, 0.000000001))
+            },
+            cv=5,
+            return_train_score=True
+        )
+        _model.fit(training_data, target_data)
+    except (CUDARuntimeError, sklearn.exceptions.NotFittedError) as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to CUDA errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    except BaseException as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    # Evaluate & save test results
+    best_model = compare_model_results(_model, _model.predict(test_data), answer_data, best_model)
+    # Close
+    stdout.write(r'Finished ' + best_model[r'algorithm'] + ' training\n')
+    return best_model
+
+
+def multinomialnb_training(training_data: list, target_data: list, test_data: list, answer_data: list, fast_mode: bool = True) -> dict:
+    """Train multiple MultinomialNB models (each with different hyperparameters) for the given datasets and return a dictionary containing the best model."""
+    best_model: dict = {r'algorithm': r'MultinomialNB', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
+    # Train model
+    try:
+        _model = model_selection.GridSearchCV(
+            naive_bayes.MultinomialNB(),  # alpha=1.0, fit_prior=True, class_prior=None
+            {
+                r'alpha': [0.0001, 0.0005, 0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1.0] if fast_mode else list(frange(0.0001, 1.0, 0.0001)),
+                r'fit_prior': [True, False]
+            },
+            cv=5,
+            return_train_score=True
+        )
+        _model.fit(training_data, target_data)
+    except (CUDARuntimeError, sklearn.exceptions.NotFittedError) as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to CUDA errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    except BaseException as _err:
+        stdout.write(r'Finished ' + best_model[r'algorithm'] + f' training due to errors: {_err}\n')
+        return {r'algorithm': best_model[r'algorithm']}
+    # Evaluate & save test results
+    best_model = compare_model_results(_model, _model.predict(test_data), answer_data, best_model)
+    # Close
+    stdout.write(r'Finished ' + best_model[r'algorithm'] + ' training\n')
+    return best_model
+
+
+# MAIN #
+
+
+def training(training_file: str, test_file: str, pickled_model: str = r'', read_digits: bool = False, fast_mode: bool = False) -> int:
+    """Training entry-point."""
+    # PREPARE THE GIVEN DATA #
+    if not doesfileexist(training_file):
+        stderr.write(f'ERROR: Unable to find nor read the training file "{training_file}"!\n')
+        return 2
+    if not doesfileexist(test_file):
+        stderr.write(f'ERROR: Unable to find nor read the test file "{test_file}"!\n')
+        return 2
+    if read_digits:
+        training_data: list = [[x] for x in bytefromfile(training_file)]
+        target_data: list = list(range(5000))
+    else:
+        raw_data: list = opencsvfile(training_file)
+        training_data = [list(map(int, x[:-1])) for x in raw_data]
+        target_data = [int(x[-1]) for x in raw_data]
+    raw_test_data: list = opencsvfile(test_file)
+    test_data: list = [list(map(int, x[:-1])) for x in raw_test_data]
+    answer_data: list = [int(x[-1]) for x in raw_test_data]
+    # BEGIN MACHINE-LEARNING #
+    learning_session = LearningSession(training_data, target_data, test_data, answer_data, [], fast_mode)
+    learning_session.start_training()
+    # PRESENT RESULTS & CLOSE #
+    if pickled_model:
+        learning_session.save_trained_model(pickled_model)
+    return learning_session.display_results()
+
+
+def prediction(prediction_file: str, pickled_model: str, long_format: bool = False) -> int:
+    """Prediction entry-point."""
+    # PREPARE THE GIVEN DATA #
+    if not doesfileexist(prediction_file):
+        stderr.write(f'ERROR: Unable to find nor read "{prediction_file}"!\n')
+        return 2
+    prediction_data: list = [list(map(int, x)) for x in opencsvfile(prediction_file)]
+    if not doesfileexist(pickled_model):
+        stderr.write(f'ERROR: Unable to find nor read "{pickled_model}"!\n')
+        return 2
+    # PERFORM PREDICTION #
+    learning_session = LearningSession([], [], [], [], prediction_data)
+    learning_session.load_trained_model(pickled_model)
+    return learning_session.predict(long_format)
+
+
+if __name__ == '__main__':
+    # SETUP ARGUMENTS #
+    PARSER = ArgumentParser(
+        prog=r'machine_learning',
+        description=r'Find and train the best model against the given data',
+        epilog=None,
+        formatter_class=RawTextHelpFormatter
+    )
+    ACTION_GROUP = PARSER.add_mutually_exclusive_group(required=True)
+    ACTION_GROUP.add_argument(
+        r'-T', r'--train',
+        action=r'store_true',
+        default=False,
+        help=r'Train a new model'
+    )
+    ACTION_GROUP.add_argument(
+        r'-P', r'--predict',
+        action=r'store_true',
+        default=False,
+        help=r'Run prediction using the pickled model from a file'
+    )
+    PARSER.add_argument(
+        r'training_file',
+        nargs=r'?',
+        help=r'Filepath to the CSV file containing the training and target data',
+        metavar=r'TrainingData'
+    )
+    PARSER.add_argument(
+        r'test_file',
+        nargs=r'?',
+        help=r'Filepath to the CSV file containing the testing data',
+        metavar=r'TestData'
+    )
+    PARSER.add_argument(
+        r'prediction_file',
+        nargs=r'?',
+        help=r'Filepath to the CSV file containing the data needing predictions',
+        metavar=r'PredictionData'
+    )
+    PARSER.add_argument(
+        r'-p', r'--pickled-model',
+        default=r'',
+        type=str,
+        help=r'Filepath for saving or loading the pickled model',
+        metavar=r'PickledModel'
+    )
+    PARSER.add_argument(
+        r'-d', r'--digits',
+        action=r'store_true',
+        default=False,
+        help=r'Read digits from the input-file'
+    )
+    PARSER.add_argument(
+        r'-f', r'--fast',
+        action=r'store_true',
+        default=False,
+        help=r'Use fast-mode'
+    )
+    PARSER.add_argument(
+        r'-l', r'--long-format',
+        action=r'store_true',
+        default=False,
+        help=r'Print the predicted results in long-format instead of CSV'
+    )
+    ARGS = PARSER.parse_args()
+    del PARSER
+    # PARSE FLAGS #
+    if ARGS.train and not (ARGS.training_file, ARGS.test_file):
+        stderr.write('ERROR: Both a training file and test file must be specified for training!\n')
+        raise SystemExit(1)
+    if ARGS.predict and not (ARGS.pickled_model and ARGS.prediction_file):
+        stderr.write('ERROR: Both a pickled model file and prediction data file must be specified for prediction!\n')
+        raise SystemExit(1)
+    # RUN PROGRAM #
+    if ARGS.train:
+        raise SystemExit(training(ARGS.training_file, ARGS.test_file, ARGS.pickled_model, ARGS.digits, ARGS.fast))
+    if ARGS.predict:
+        raise SystemExit(prediction(ARGS.prediction_file, ARGS.pickled_model, ARGS.long_format))
+    # It is very unlikely to get here, but just in-case
+    stderr.write('ERROR: Run this script in either training-mode or prediction-mode!\n')
+    raise SystemExit(1)
