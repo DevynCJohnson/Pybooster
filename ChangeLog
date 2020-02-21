@@ -1,5 +1,6 @@
 2020-02-21  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* alphabetize_lines:  Use `casefold` instead of `lower`
 	* fs.py:  Applied minor tweaks
 
 2020-02-19  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>

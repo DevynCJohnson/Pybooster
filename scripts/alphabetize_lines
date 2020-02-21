@@ -5,7 +5,7 @@
 """@brief Sort lines (or list) in data stream alphabetically.
 
 @file alphabetize_lines
-@version 2019.12.26
+@version 2020.02.21
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -68,7 +68,7 @@ def alphadupsort_delimiter_codec(data: str, delimiter: str) -> str:
 def alphasort_delimiter_codec(data: str, delimiter: str) -> str:
     """Sort the lines alphabetically using the specified delimiter."""
     _out: list = data.split(delimiter)
-    _out.sort(key=str.lower)
+    _out.sort(key=str.casefold)
     return delimiter.join(_out).rstrip()
 
 
@@ -87,9 +87,9 @@ def alphabetize_string(_data: str, sort_func: Callable[[str, str], str]) -> str:
             return sort_func(_data, pattern)
     # Character sorting
     if sort_func.__name__ == r'alphadupsort_delimiter_codec':
-        return r''.join(sorted(set(_data), key=str.lower))
+        return r''.join(sorted(set(_data), key=str.casefold))
     _out: List[str] = list(_data)
-    _out.sort(key=str.lower)
+    _out.sort(key=str.casefold)
     return r''.join(_out)
 
 
