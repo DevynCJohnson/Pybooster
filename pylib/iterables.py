@@ -6,7 +6,7 @@
 
 @file iterables.py
 @package pybooster.iterables
-@version 2019.07.14
+@version 2020.02.21
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -234,8 +234,8 @@ def rmdupkey_casein(_dict: dict) -> dict:
     """
     _out: dict = {}
     for _key, val in _dict.items():
-        if _key.lower() not in _out.keys():
-            _out[_key.lower()] = val
+        if _key.casefold() not in _out.keys():
+            _out[_key.casefold()] = val
     return _out
 
 

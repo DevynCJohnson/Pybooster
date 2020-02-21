@@ -38,6 +38,10 @@ available in ``flake8``::
 Changes
 -------
 
+2020.02.21 - 2020-02-21
+```````````````````````
+* Use `casefold` instead of `lower`
+
 2019.07.14 - 2019-07-14
 ```````````````````````
 * Mild tweaks & adjustments

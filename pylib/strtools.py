@@ -6,7 +6,7 @@
 
 @file strtools.py
 @package pybooster.strtools
-@version 2019.12.23
+@version 2020.02.21
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -211,7 +211,7 @@ def lowercase(_str: str) -> str:
     >>> lowercase('THIS IS A TEST.')
     'this is a test.'
     """
-    return _str.lower()
+    return _str.casefold()
 
 
 def sentence(_str: str) -> str:
@@ -266,9 +266,9 @@ def camelcase2snakecase(string: str) -> str:
     from_char_position: int = 0
     for current_char_position, char in enumerate(string):
         if char.isupper() and from_char_position < current_char_position:
-            words.append(string[from_char_position:current_char_position].lower())
+            words.append(string[from_char_position:current_char_position].casefold())
             from_char_position = current_char_position
-    words.append(string[from_char_position:].lower())
+    words.append(string[from_char_position:].casefold())
     return r'_'.join(words)
 
 
@@ -282,7 +282,7 @@ def pascalcase2camelcase(string: str) -> str:
     >>> pascalcase2camelcase('TestString AnotherString ThirdSymbol')
     'testString anotherString thirdSymbol'
     """
-    return r' '.join([_word[0].lower() + _word[1:] for _word in string.split(r' ')])
+    return r' '.join([_word[0].casefold() + _word[1:] for _word in string.split(r' ')])
 
 
 def pascalcase2snakecase(string: str) -> str:
@@ -299,9 +299,9 @@ def pascalcase2snakecase(string: str) -> str:
     from_char_position: int = 0
     for current_char_position, char in enumerate(string):
         if char.isupper() and from_char_position < current_char_position:
-            words.append(string[from_char_position:current_char_position].lower())
+            words.append(string[from_char_position:current_char_position].casefold())
             from_char_position = current_char_position
-    words.append(string[from_char_position:].lower())
+    words.append(string[from_char_position:].casefold())
     return r'_'.join(words).replace(r' _', r' ')
 
 
@@ -316,7 +316,7 @@ def snakecase2camelcase(string: str) -> str:
     'testString anotherString thirdSymbol'
     """
     split_string: List[str] = string.split(r'_')
-    return split_string[0].lower() + r''.join([_str.capitalize() for _str in split_string[1:]])
+    return split_string[0].casefold() + r''.join([_str.capitalize() for _str in split_string[1:]])
 
 
 def snakecase2pascalcase(string: str) -> str:
@@ -393,7 +393,7 @@ def num2ordinal(_str: str) -> str:
     """
     for _key in NUMBER_LIST:
         if _str == _key:
-            _str = _str.lower().replace(_key, NUMBER_LIST[_key])
+            _str = _str.casefold().replace(_key, NUMBER_LIST[_key])
     return _str
 
 
@@ -405,7 +405,7 @@ def ordinal2num(_str: str) -> str:
     """
     for _key in ORDINAL_LIST:
         if _str == _key:
-            _str = _str.lower().replace(_key, ORDINAL_LIST[_key])
+            _str = _str.casefold().replace(_key, ORDINAL_LIST[_key])
     return _str
 
 

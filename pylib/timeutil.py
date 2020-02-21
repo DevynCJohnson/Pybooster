@@ -6,7 +6,7 @@
 
 @file timeutil.py
 @package pybooster.timeutil
-@version 2019.12.23
+@version 2020.02.21
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -76,7 +76,7 @@ YEAR = int(pytime.strftime(r'%Y'))
 
 def istoday(_weekday: str) -> bool:
     """Test if today is a particular weekday."""
-    return _weekday.lower() == pytime.strftime(r'%A').lower()
+    return _weekday.casefold() == pytime.strftime(r'%A').casefold()
 
 
 def istodaysunday() -> bool:
@@ -135,7 +135,7 @@ def currentseason(_hemisphere: str = 'n') -> str:
         season = r'fall'
     else:  # Winter
         season = r'winter'
-    _hemisphere = _hemisphere.lower()
+    _hemisphere = _hemisphere.casefold()
     if _hemisphere != 'n':
         if season == r'spring':
             return r'fall'

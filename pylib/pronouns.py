@@ -6,7 +6,7 @@
 
 @file pronouns.py
 @package pybooster.pronouns
-@version 2019.07.14
+@version 2020.02.21
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -124,7 +124,7 @@ def swap_pronouns(_str: str, _pronouns: tuple) -> str:
     _flag: bool = False
     for _word in _test:
         for _pair in _pronouns:
-            if _word.lower() == _pair[0].lower():
+            if _word.casefold() == _pair[0].casefold():
                 _swap.append(_pair[1])
                 _flag = True
                 break

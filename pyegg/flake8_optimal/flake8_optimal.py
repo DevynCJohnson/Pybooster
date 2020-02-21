@@ -5,7 +5,7 @@
 """@brief Flake8 plugin used to scan for various inconsistencies and issues.
 
 @file flake8_optimal.py
-@version 2019.07.14
+@version 2020.02.21
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -190,7 +190,7 @@ class MagicCommentChecker():
     @classmethod
     def parse_options(cls: object, options: object) -> None:
         """Parse options for the flake8 magic-comment-checker."""
-        cls.encodings = [e.strip().lower() for e in options.valid_encodings]  # noqa: T484
+        cls.encodings = [e.strip().casefold() for e in options.valid_encodings]  # noqa: T484
 
     def run(self: object) -> Generator[Tuple[int, int, str, object], None, None]:  # noqa: C901,T484  # pylint: disable=R0912
         """PEP-263 states that a magic comment must be placed into the source files either as first or second line in the file."""
@@ -207,7 +207,7 @@ class MagicCommentChecker():
         # Magic-Emacs-Comment
         matched = rgxsearch(r'^# \-\*\- coding: ([a-z0-9\-]+); Mode: Python; indent\-tabs\-mode: nil; tab\-width: 4 \-\*\-$', lines[1])
         if matched:
-            if matched.group(1).lower() not in self.encodings:  # noqa: T484
+            if matched.group(1).casefold() not in self.encodings:  # noqa: T484
                 yield 2, 0, r'MG02 : Unknown encoding found in Magic-Emacs-Comment', type(self)
             elif not matched:
                 yield 0, 0, r'MG01 : Magic-Emacs-Comment is either not found, misplaced, or ill-formed', type(self)
@@ -300,7 +300,7 @@ def x006(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], No
     if noqa or any(_test in logical_line for _test in {r'gzip.open', r'bz2.open', r'lzma.open', r'tarfile.open', r'urlopen', r'Popen', r'_open'}):
         return None
     _match = REGEX_OPEN.search(logical_line)
-    if _match and 'encoding=\'utf8\'' in logical_line.lower():
+    if _match and 'encoding=\'utf8\'' in logical_line.casefold():
         yield _match.start(), r'X006 : Invalid encoding value'
     return None
 

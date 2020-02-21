@@ -6,7 +6,7 @@
 
 @file ezwin.py
 @package pybooster.ezwin.ezwin
-@version 2019.07.14
+@version 2020.02.21
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -62,7 +62,7 @@ __all__: list = [
 
 __author__: str = r'Devyn Collier Johnson'
 __copyright__: str = r'LGPLv3'
-__version__: str = r'2019.07.14'
+__version__: str = r'2020.02.21'
 
 
 __about__: str = (
@@ -491,13 +491,14 @@ def ezq(_msg: str = r'Question', _type: str = r'yn') -> str:
     * 'ynclose' || 'close': Add a 'Close' button
     * 'yncancel' || 'cancel': Add a 'Cancel' button
     """
-    if _type.lower() in {r'yn', r'yesno'}:
+    _tmp: str = _type.casefold()
+    if _tmp in {r'yn', r'yesno'}:
         _gf = _GQYN
-    elif _type.lower() in {r'ynq', r'quit'}:
+    elif _tmp in {r'ynq', r'quit'}:
         _gf = _GQYNQ
-    elif _type.lower() in {r'ynclose', r'close'}:
+    elif _tmp in {r'ynclose', r'close'}:
         _gf = _GQYNCLOSE
-    elif _type.lower() in {r'yncancel', r'cancel'}:
+    elif _tmp in {r'yncancel', r'cancel'}:
         _gf = _GQYNCANCEL
     else:
         raise Exception(
@@ -573,15 +574,16 @@ def ezcolor(_datatype: str = r'list') -> object:
     Gtk.main()
     if _rgba:
         _round = 6
+        _tmp: str = _datatype.casefold()
         _r: float = round(_rgba.red, _round)
         _g: float = round(_rgba.green, _round)
         _b: float = round(_rgba.blue, _round)
         _a: float = round(_rgba.alpha, _round)
-        if _datatype.lower() in {r'list', r'lst'}:
+        if _tmp in {r'list', r'lst'}:
             return [_r, _g, _b, _a]
-        if _datatype.lower() in {r'dict', r'dic'}:
+        if _tmp in {r'dict', r'dic'}:
             return {r'red': _r, r'green': _g, r'blue': _b, r'alpha': _a}
-        if _datatype.lower() in {r'str', r'string'}:
+        if _tmp in {r'str', r'string'}:
             return str(_r) + r' ' + str(_g) + r' ' + str(_b) + r' ' + str(_a)
         return _rgba
     return None
@@ -590,7 +592,7 @@ def ezcolor(_datatype: str = r'list') -> object:
 def eztext(_msg: str = r'Message', _type: str = r'') -> str:
     """Input Text Dialog: Get text from the user."""
     ui = Gtk.Builder()
-    _gf = _GTEXTC if r'c' in _type.lower() else _GTEXT
+    _gf = _GTEXTC if r'c' in _type.casefold() else _GTEXT
     ui.add_from_file(_gf)
     _obj = ui.get_object(r'entry1')
     _out: str = r''
@@ -615,7 +617,7 @@ def eztext(_msg: str = r'Message', _type: str = r'') -> str:
 def ezpswd(_msg: str = r'Message', _type: str = r'') -> str:
     """Password Dialog: Get a password from the user."""
     ui = Gtk.Builder()
-    _gf = _GPSWDC if r'c' in _type.lower() else _GPSWD
+    _gf = _GPSWDC if r'c' in _type.casefold() else _GPSWD
     ui.add_from_file(_gf)
     _obj = ui.get_object(r'entry1')
     _out: str = r''
@@ -838,16 +840,17 @@ def ezfilech(  # noqa: C901,R701  # pylint: disable=R0915
 
 if __name__ == '__main__':  # noqa: C901
     # Command Help/Info
-    if len(argv) == 2 and argv[1].lower() in {r'-h', r'--help'}:
+    _tmp: str = argv[1].casefold()
+    if len(argv) == 2 and _tmp in {r'-h', r'--help'}:
         stdout.write(__help__ + '\n')
         raise SystemExit(0)
-    if len(argv) == 2 and argv[1].lower() == r'--api':
+    if len(argv) == 2 and _tmp == r'--api':
         stdout.write(__api__ + '\n')
         raise SystemExit(0)
-    if len(argv) == 2 and argv[1].lower() in {r'-v', r'--version'}:
+    if len(argv) == 2 and _tmp in {r'-v', r'--version'}:
         stdout.write(__version__ + '\n')
         raise SystemExit(0)
-    if len(argv) == 2 and argv[1].lower() in {r'-d', r'--doc'}:
+    if len(argv) == 2 and _tmp in {r'-d', r'--doc'}:
         stdout.write(__doc__ + '\n')
         stdout.write(__version__ + '\n')
         stdout.write(__copyright__ + '\n')
@@ -855,7 +858,7 @@ if __name__ == '__main__':  # noqa: C901
         stdout.write(__api__ + '\n')
         raise SystemExit(0)
     # Windows/GUI
-    if argv[1].lower() in {r'-f', r'--file', r'--dir', r'--folder'}:
+    if _tmp in {r'-f', r'--file', r'--dir', r'--folder'}:
         # File Chooser
         multiple: bool = False
         viewhidden: bool = False
@@ -894,33 +897,33 @@ if __name__ == '__main__':  # noqa: C901
                 # Specify initial path
                 # This must be the last parameter (--path PATH)
                 init_path = argv[-1]
-        if argv[1].lower() in {r'-f', r'--file'}:
+        if _tmp in {r'-f', r'--file'}:
             stdout.write(str(ezfilech(
                 True, False, multiple, save, viewhidden,
                 file_exten, init_path, __local,
                 return_uri, return_dtype
             )) + '\n')
-        elif argv[1].lower() in {r'--dir', r'--folder'}:
+        elif _tmp in {r'--dir', r'--folder'}:
             stdout.write(str(ezfilech(
                 False, True, multiple, save, viewhidden,
                 file_exten, init_path, __local,
                 return_uri, return_dtype
             )) + '\n')
         raise SystemExit(0)
-    if argv[1].lower() in {r'--color', r'--colour'}:
+    if _tmp in {r'--color', r'--colour'}:
         # Color Selector
-        if len(argv) == 3 and argv[2].lower() in {r'list', r'lst'}:
+        if len(argv) == 3 and argv[2].casefold() in {r'list', r'lst'}:
             stdout.write(str(ezcolor(r'list')) + '\n')
-        elif len(argv) == 3 and argv[2].lower() in {r'dict', r'dic'}:
+        elif len(argv) == 3 and argv[2].casefold() in {r'dict', r'dic'}:
             stdout.write(str(ezcolor(r'dict')) + '\n')
-        elif len(argv) == 3 and argv[2].lower() in {r'str', r'string'}:
+        elif len(argv) == 3 and argv[2].casefold() in {r'str', r'string'}:
             stdout.write(str(ezcolor(r'str')) + '\n')
         else:
             stdout.write(str(ezcolor(r'rgba')) + '\n')
         raise SystemExit(0)
     if len(argv) >= 3:
         # Text Input/Output Command Agruments
-        _wintype = argv[1].lower()
+        _wintype = _tmp
         MESSAGE = r' '.join(
             str(i) for i in argv[2:]
         ).replace('\\n', '\n').replace('\\t', '\t')

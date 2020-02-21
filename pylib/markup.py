@@ -6,7 +6,7 @@
 
 @file markup.py
 @package pybooster.markup
-@version 2019.12.23
+@version 2020.02.21
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -1055,7 +1055,7 @@ def repair_svg_tag(_tag: str) -> str:
 
 def repair_svg_attr(_tag: str, _attr: str) -> str:  # noqa: R701
     """Auto-correct commonly mistyped/illformed SVG attribute names."""
-    if _tag == r'svg' and _attr.lower() == r'viewbox':
+    if _tag == r'svg' and _attr.casefold() == r'viewbox':
         _attr = r'viewBox'
     elif _tag == r'feGaussianBlur':
         if _attr == r'stddeviation':
@@ -1092,7 +1092,7 @@ def condense_hex_colors(_css: str) -> str:
     while match:
         first = match.group(2) + match.group(4) + match.group(6)
         second = match.group(3) + match.group(5) + match.group(7)
-        if first.lower() == second.lower():
+        if first.casefold() == second.casefold():
             _css = _css.replace(match.group(), r'#' + first.upper())
             match = HEX_COLOR.search(_css, match.end() - 3)
         else:
@@ -1524,7 +1524,7 @@ class ParserBase:  # pylint: disable=R0902
             name = _str.strip()
             if (i + len(_str)) == length:
                 return (None, -1)  # End of buffer
-            return (name.lower(), _match.end())
+            return (name.casefold(), _match.end())
         self.updatepos(declstartpos, i)
         self.error(fr'Expected name token at {rawdata[declstartpos:declstartpos + 20]}')
         return (None, -2)
@@ -1582,7 +1582,7 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
 
     def set_cdata_mode(self, elem: str) -> None:
         """Lowercase HTML element names."""
-        self.cdata_elem = elem.lower()
+        self.cdata_elem = elem.casefold()
         self.interesting = rgxcompile(fr'</\s*{self.cdata_elem}\s*>', flags=IGNORECASE)
 
     def clear_cdata_mode(self) -> None:
@@ -1707,7 +1707,7 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
             return self.parse_comment(i)
         if rawdata[i:i + 3] == r'<![':
             return self.parse_marked_section(i)
-        if rawdata[i:i + 9].lower() == r'<!doctype':  # Find the closing >
+        if rawdata[i:i + 9].casefold() == r'<!doctype':  # Find the closing >
             gtpos = rawdata.find(r'>', i + 9)
             if gtpos == -1:
                 return -1
@@ -1760,7 +1760,7 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
         if self.in_xml:
             self.lasttag = tag
         else:
-            self.lasttag = tag = tag.lower()
+            self.lasttag = tag = tag.casefold()
         while k < endpos:  # Parse Attributes
             _match = ATTRFIND_TOLERANT.match(rawdata, k)
             if not _match:
@@ -1775,7 +1775,7 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
             if self.in_xml:
                 attrs.append((attrname, attrvalue))
             else:
-                attrs.append((attrname.lower(), attrvalue))
+                attrs.append((attrname.casefold(), attrvalue))
             attrs.sort(key=attr_sort)
             k = _match.end()
         end: str = rawdata[k:endpos].strip()
@@ -1849,7 +1849,7 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
                 return self.parse_bogus_comment(i)
             tagname = namematch.group(1)
             if not self.in_xml:
-                tagname = tagname.lower()
+                tagname = tagname.casefold()
             elif self.in_xml and tagname in XML_ROOT_TAGS:
                 self.in_xml = False
             # Consume and ignore other stuff between the name and the >
@@ -1859,7 +1859,7 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
         # script or style
         elem = match.group(1)
         if not self.in_xml:
-            elem = elem.lower()
+            elem = elem.casefold()
         elif self.in_xml and elem in XML_ROOT_TAGS:
             self.in_xml = False
         if self.cdata_elem:
@@ -2289,7 +2289,7 @@ class XMLMinParser(HTMLParser):  # pylint: disable=R0902
     def handle_pi(self, data: str) -> None:
         """Process the processing instruction tag."""
         if data.strip().startswith(r'xml'):
-            if r'standalone="yes"' in data.lower() or 'standalone=\'yes\'' in data.lower():
+            if r'standalone="yes"' in data.casefold() or 'standalone=\'yes\'' in data.casefold():
                 self._data_buffer.append(r'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>')
             else:
                 self._data_buffer.append(r'<?xml version="1.0" encoding="UTF-8" standalone="no"?>')
