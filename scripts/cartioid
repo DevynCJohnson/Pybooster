@@ -2,10 +2,10 @@
 # -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
 # vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
 # kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
-"""@brief Generate circular graphs as PNG files.
+"""@brief Generate circular graphs as image files.
 
 @file cartioid
-@version 2020.01.02
+@version 2020.02.21
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -31,7 +31,7 @@ along with this software.
 import argparse
 from functools import lru_cache, partial
 from multiprocessing import cpu_count, Pool, ProcessError
-from operator import floordiv, mod, mul, or_, pow as power, truediv
+from operator import floordiv, mod, mul, pow as power, truediv
 from typing import Generator
 
 from matplotlib import rc
@@ -75,9 +75,9 @@ class PlotGraph:
         points_on_edge: tuple = calc_points_on_edge()
         self.ax1.plot(list(points_on_edge[0]), list(points_on_edge[1]), color=r'black', dash_capstyle=r'round', linewidth=1, markersize=0.5, solid_capstyle=r'round')
 
-    def plot_line(self, theta: float, position: list) -> None:
+    def plot_line(self, coordinates: tuple) -> None:
         """Plot a line on the figure."""
-        self.ax1.plot([position[0], xp.cos(theta)], [position[1], xp.sin(theta)], color=self.color, dash_capstyle=r'round', linewidth=1, markersize=0.4, solid_capstyle=r'round')
+        self.ax1.plot(coordinates[0], coordinates[1], color=self.color, dash_capstyle=r'round', linewidth=1, markersize=0.4, solid_capstyle=r'round')
 
     def create_and_save_figure(self, tab_var: float, num_var: int, mathop: str) -> None:
         """Create and save the figure after adding text to the figure."""
@@ -103,7 +103,6 @@ def format_for_starmap(headings: list, lst_of_lsts: list) -> list:
     return output
 
 
-@lru_cache(maxsize=4, typed=True)
 def create_reference_points(num_var: int) -> list:
     """Create reference points."""
     position: list = []
@@ -113,11 +112,16 @@ def create_reference_points(num_var: int) -> list:
     return position
 
 
-@lru_cache(maxsize=1, typed=True)
 def calc_points_on_edge() -> tuple:
     """Calculate the points on the edge."""
     points_on_edge = xp.arange(-xp.pi, xp.pi, 0.01)
     return xp.cos(points_on_edge), xp.sin(points_on_edge)
+
+
+@lru_cache(maxsize=32, typed=True)
+def calc_coordinates(theta: float, position: list) -> tuple:
+    """Calculate the coordinates of each end of the line."""
+    return [position[0], xp.cos(theta)], [position[1], xp.sin(theta)]
 
 
 def line_calc(tab_var: float, num_var: int, math_operation) -> Generator:
@@ -141,7 +145,7 @@ def circle_calculations(tab_var: float, num_points: int = 1000, color: str = r'#
     position: list = create_reference_points(num_points)
     # Calculate Lines #
     for idx, theta in line_calc(tab_var, num_points, math_operation):
-        graph.plot_line(theta, position[idx])
+        graph.plot_line(calc_coordinates(theta, position[idx]))
     position = []
     # Set Figure Text & Save File #
     graph.create_and_save_figure(tab_var, num_points, mathop)

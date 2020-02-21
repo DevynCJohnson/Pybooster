@@ -1,6 +1,7 @@
 2020-02-21  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* alphabetize_lines:  Use `casefold` instead of `lower`
+	* cartioid:  Applied minor tweaks & optimizations
 	* PyLib:  Use `casefold` instead of `lower` in multiple Python scripts
 	* fs.py:  Applied minor tweaks
 
