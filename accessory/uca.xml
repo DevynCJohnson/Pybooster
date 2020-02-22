@@ -247,5 +247,14 @@
     <patterns>*.png</patterns>
     <image-files/>
   </action>
+  <action>
+    <icon>media-audio</icon>
+    <name>Remove Silence</name>
+    <unique-id>7300000000000018-1</unique-id>
+    <command>[ -x "$(command -v ffmpeg)" ] &amp;&amp; export ACCESS_TIME="$(stat --format '%x' %f)" &amp;&amp; export MODIFICATION_TIME="$(stat --format '%y' %f)" &amp;&amp; ffmpeg -hide_banner -loglevel panic -threads "$(nproc)" -sn -vn -i %f -af silenceremove=start_periods=1:start_duration=1:start_threshold=-20dB:stop_periods=-1:stop_duration=1:stop_threshold=-20dB /tmp/%n &amp;&amp; mv /tmp/%n %f &amp;&amp; touch -a -d "${ACCESS_TIME}" %f &amp;&amp; touch -m -d "${MODIFICATION_TIME}" %f &amp;&amp; notify-send --icon=media-audio 'Audio Processing' 'Finished trimming silence from audio'</command>
+    <description>Remove silence from the beginning and end of audio files</description>
+    <patterns>*</patterns>
+    <audio-files/>
+  </action>
 
 </actions>
