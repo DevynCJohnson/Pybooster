@@ -203,12 +203,48 @@
     <image-files/>
   </action>
   <action>
-    <icon>pdf</icon>
+    <icon>application-pdf</icon>
     <name>Convert PostScript to PDF</name>
     <unique-id>7300000000000013-1</unique-id>
-    <command>[ -x "$(command -v ps2pdf)" ] &amp;&amp; ps2pdf %F</command>
+    <command>[ -x "$(command -v ps2pdf)" ] &amp;&amp; ps2pdf %F &amp;&amp; mv -f %F.pdf %F</command>
     <description>Convert PostScript to PDF</description>
-    <patterns>*.ps;*.pdf</patterns>
+    <patterns>*.pdf;*.ps</patterns>
+    <other-files/>
+  </action>
+  <action>
+    <icon>jpeg</icon>
+    <name>Resize Image to 512px</name>
+    <unique-id>7300000000000014-1</unique-id>
+    <command>[ -x "$(command -v convert)" ] &amp;&amp; convert %f -resize 512 %f</command>
+    <description>Proportionally change the dimensions of image files to 512px wide</description>
+    <patterns>*</patterns>
+    <image-files/>
+  </action>
+  <action>
+    <icon>jpeg</icon>
+    <name>Resize Image to 1500px</name>
+    <unique-id>7300000000000015-1</unique-id>
+    <command>[ -x "$(command -v convert)" ] &amp;&amp; convert %f -resize 1500 %f</command>
+    <description>Proportionally change the dimensions of image files to 1500px wide</description>
+    <patterns>*</patterns>
+    <image-files/>
+  </action>
+  <action>
+    <icon>jpeg</icon>
+    <name>Resize Image to 3000px</name>
+    <unique-id>7300000000000016-1</unique-id>
+    <command>[ -x "$(command -v convert)" ] &amp;&amp; convert %f -resize 3000 %f</command>
+    <description>Proportionally change the dimensions of image files to 3000px wide</description>
+    <patterns>*</patterns>
+    <image-files/>
+  </action>
+  <action>
+    <icon>jpeg</icon>
+    <name>Convert PNG to JPEG</name>
+    <unique-id>7300000000000017-1</unique-id>
+    <command>[ -x "$(command -v convert)" ] &amp;&amp; convert %f "$(basename %f .png).jpg"</command>
+    <description>Convert PNG to JPG</description>
+    <patterns>*.png</patterns>
     <image-files/>
   </action>
 
