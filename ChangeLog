@@ -1,3 +1,7 @@
+2020-02-22  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* snippets.conf:  Fixed a snippet for Geany
+
 2020-02-21  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* alphabetize_lines:  Use `casefold` instead of `lower`
