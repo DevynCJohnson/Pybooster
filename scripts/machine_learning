@@ -5,7 +5,7 @@
 """@brief Algorithms and functions for machine learning
 
 @file machine_learning
-@version 2020.02.21
+@version 2020.02.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -46,7 +46,7 @@ from time import sleep
 from typing import Callable, Generator
 import warnings
 
-from pybooster.datastruct import opencsvfile
+from pybooster.datastruct import opencsvfile, openjsonfile
 from pybooster.fs import doesfileexist
 from pybooster.iterables import frange
 from pybooster.xmath import avgoffset
@@ -84,6 +84,7 @@ except ImportError:
 __all__: list = [
     # GENERAL FUNCTIONS #
     r'bytefromfile',
+    r'compare_model_results',
     # CLASSES #
     r'LearningSession',
     # ENSEMBLE TRAINING #
@@ -1052,7 +1053,7 @@ def multinomialnb_training(training_data: list, target_data: list, test_data: li
 # MAIN #
 
 
-def training(training_file: str, test_file: str, pickled_model: str = r'', read_digits: bool = False, fast_mode: bool = False) -> int:
+def training(training_file: str, test_file: str, pickled_model: str = r'', read_digits: bool = False, read_json: bool = False, fast_mode: bool = False) -> int:  # noqa: C901,R701
     """Training entry-point."""
     # PREPARE THE GIVEN DATA #
     if not doesfileexist(training_file):
@@ -1064,13 +1065,24 @@ def training(training_file: str, test_file: str, pickled_model: str = r'', read_
     if read_digits:
         training_data: list = [[x] for x in bytefromfile(training_file)]
         target_data: list = list(range(5000))
+        raw_test_data: list = opencsvfile(test_file)
+        test_data: list = [list(map(int, x[:-1])) for x in raw_test_data]
+        answer_data: list = [int(x[-1]) for x in raw_test_data]
+    elif read_json:
+        raw_data: list = openjsonfile(training_file)
+        training_data = [x[:-1] for x in raw_data]
+        target_data = [x[-1] for x in raw_data]
+        raw_test_data = openjsonfile(test_file)
+        test_data = [x[:-1] for x in raw_test_data]
+        answer_data = [x[-1] for x in raw_test_data]
     else:
-        raw_data: list = opencsvfile(training_file)
-        training_data = [list(map(int, x[:-1])) for x in raw_data]
-        target_data = [int(x[-1]) for x in raw_data]
-    raw_test_data: list = opencsvfile(test_file)
-    test_data: list = [list(map(int, x[:-1])) for x in raw_test_data]
-    answer_data: list = [int(x[-1]) for x in raw_test_data]
+        raw_data = opencsvfile(training_file)
+        training_data = [list(map(float, x[:-1])) for x in raw_data]
+        target_data = [float(x[-1]) for x in raw_data]
+    if not read_digits:
+        raw_test_data = opencsvfile(test_file)
+        test_data = [list(map(float, x[:-1])) for x in raw_test_data]
+        answer_data = [float(x[-1]) for x in raw_test_data]
     # BEGIN MACHINE-LEARNING #
     learning_session = LearningSession(training_data, target_data, test_data, answer_data, [], fast_mode)
     learning_session.start_training()
@@ -1080,16 +1092,19 @@ def training(training_file: str, test_file: str, pickled_model: str = r'', read_
     return learning_session.display_results()
 
 
-def prediction(prediction_file: str, pickled_model: str, long_format: bool = False) -> int:
+def prediction(prediction_file: str, pickled_model: str, read_json: bool = False, long_format: bool = False) -> int:
     """Prediction entry-point."""
     # PREPARE THE GIVEN DATA #
     if not doesfileexist(prediction_file):
         stderr.write(f'ERROR: Unable to find nor read "{prediction_file}"!\n')
         return 2
-    prediction_data: list = [list(map(int, x)) for x in opencsvfile(prediction_file)]
     if not doesfileexist(pickled_model):
         stderr.write(f'ERROR: Unable to find nor read "{pickled_model}"!\n')
         return 2
+    if read_json:
+        prediction_data: list = openjsonfile(prediction_file).values()
+    else:
+        prediction_data = [list(map(float, x)) for x in opencsvfile(prediction_file)]
     # PERFORM PREDICTION #
     learning_session = LearningSession([], [], [], [], prediction_data)
     learning_session.load_trained_model(pickled_model)
@@ -1117,6 +1132,19 @@ if __name__ == '__main__':
         default=False,
         help=r'Run prediction using the pickled model from a file'
     )
+    INPUT_TYPE_GROUP = PARSER.add_mutually_exclusive_group(required=False)
+    INPUT_TYPE_GROUP.add_argument(
+        r'-d', r'--digits',
+        action=r'store_true',
+        default=False,
+        help=r'Read digits from the input-file'
+    )
+    INPUT_TYPE_GROUP.add_argument(
+        r'-j', r'--json',
+        action=r'store_true',
+        default=False,
+        help=r'Read JSON from the input-file'
+    )
     PARSER.add_argument(
         r'training_file',
         nargs=r'?',
@@ -1143,12 +1171,6 @@ if __name__ == '__main__':
         metavar=r'PickledModel'
     )
     PARSER.add_argument(
-        r'-d', r'--digits',
-        action=r'store_true',
-        default=False,
-        help=r'Read digits from the input-file'
-    )
-    PARSER.add_argument(
         r'-f', r'--fast',
         action=r'store_true',
         default=False,
@@ -1171,9 +1193,9 @@ if __name__ == '__main__':
         raise SystemExit(1)
     # RUN PROGRAM #
     if ARGS.train:
-        raise SystemExit(training(ARGS.training_file, ARGS.test_file, ARGS.pickled_model, ARGS.digits, ARGS.fast))
+        raise SystemExit(training(ARGS.training_file, ARGS.test_file, ARGS.pickled_model, ARGS.digits, ARGS.json, ARGS.fast))
     if ARGS.predict:
-        raise SystemExit(prediction(ARGS.prediction_file, ARGS.pickled_model, ARGS.long_format))
+        raise SystemExit(prediction(ARGS.prediction_file, ARGS.pickled_model, ARGS.json, ARGS.long_format))
     # It is very unlikely to get here, but just in-case
     stderr.write('ERROR: Run this script in either training-mode or prediction-mode!\n')
     raise SystemExit(1)
