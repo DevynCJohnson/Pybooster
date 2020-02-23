@@ -6,7 +6,7 @@
 
 @file datastruct.py
 @package pybooster.datastruct
-@version 2020.02.19
+@version 2020.02.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -241,7 +241,7 @@ def openjsonfile(_filename: str, _encoding: str = r'utf-8', _jsondata: bool = Tr
     try:
         _out: str = r''
         ensurefileexists(_filename)
-        with codec_opener(_filename, mode=r'rt', encoding=_encoding, buffering=1) as _file:
+        with codec_opener(_filename, mode=r'rb', encoding=_encoding, buffering=1) as _file:
             _out = r''.join(_file.readlines())
         return jloads(_out) if _jsondata else _out
     except JSONDecodeError:

@@ -1,5 +1,6 @@
 2020-02-22  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* datastruct.py:  Fixed a bug
 	* machine_learning:  Added support for JSON files
 	* snippets.conf:  Fixed a snippet for Geany
 	* uca.xml:  Added additional actions for audio & image manipulation
