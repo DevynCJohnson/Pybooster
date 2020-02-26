@@ -664,12 +664,14 @@ $asset_suffix: if($variant == "dark", "-dark", "");
     background-color: inherit;
     color: $insensitive_fg_color;
   }
+  box-shadow: none;
 }
 
 %menu_arrow {
   @extend %undecorated_button;
   background-color: $menu_bg_color;
   border: none;
+  box-shadow: none;
   color: $text_color;
   min-height: 16px;
   min-width: 16px;
@@ -2479,6 +2481,7 @@ popover.background {
     padding-right: 2px;
   }
   @extend %menu_appearance;
+  box-shadow: none;
   -GtkWidget-window-dragging: false;
 }
 
@@ -2489,6 +2492,7 @@ popover.background {
 
 #MozillaGtkWidget .menuitem, #MozillaGtkWidget menuitem, .background menuitem, .csd menuitem, .menubar .menuitem, .menubar.menuitem, .menuitem, .popup menuitem, headerbar button menu menuitem, menuitem, popover menuitem, toolbar headerbar menu menuitem, toolbar menu menuitem, popover menuitem {
   @extend %menuitem;
+  box-shadow: none;
 }
 
 // Notebooks & Tabs //
