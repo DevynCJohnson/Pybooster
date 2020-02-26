@@ -235,7 +235,7 @@ class LearningSession:  # pylint: disable=R0902
 
     def save_trained_model(self, _filename: str) -> None:
         """Save the trained model to a file."""
-        if _filename:
+        if _filename and self.model:
             dump(self.model, _filename)
 
     # THREAD HELPER FUNCTIONS #
