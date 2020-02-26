@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax makefile; indent-mode normal; eol unix; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Makefile compiling header
 #' @file compiling.mk
-#' @version 2020.01.01
+#' @version 2020.02.26
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -42,10 +42,13 @@ endif
 # GNU-GCC FLAGS #
 
 
-override GCC_PARAMS::=--param ggc-min-expand=200 --param ggc-min-heapsize=393216 --param max-gcse-memory=134217728 --param max-cselib-memory-locations=1023 --param max-reload-search-insns=511 --param max-sched-ready-insns=511 --param large-function-growth=200 --param large-function-insns=3200 --param large-unit-insns=20000 --param max-inline-insns-auto=63 --param early-inlining-insns=16 --param inline-min-speedup=4 --param inline-unit-growth=40 --param ipcp-unit-growth=30 --param large-stack-frame=512 --param large-stack-frame-growth=1100
-override GCC_PARAMS::=$(GCC_PARAMS) --param max-inline-insns-recursive=512 --param max-inline-insns-recursive-auto=512 --param max-inline-recursive-depth=16 --param max-inline-recursive-depth-auto=16 --param integer-share-limit=65536 --param gcse-unrestricted-cost=2 --param max-hoist-depth=64 --param max-unrolled-insns=256 --param max-average-unrolled-insns=128 --param max-unroll-times=16 --param avg-loop-niter=16 --param vect-max-version-for-alignment-checks=4 --param vect-max-version-for-alias-checks=8 --param max-iterations-to-track=2000 --param max-predicted-iterations=512 --param selsched-max-lookahead=128 --param prefetch-latency=128 --param simultaneous-prefetches=4 --param max-partial-antic-length=256 --param loop-invariant-max-bbs-in-loop=20000 --param loop-max-datarefs-for-datadeps=2000 --param ipa-cp-value-list-size=16
-override GCC_OPT::=$(GCC_PARAMS) -O3 -funroll-loops -funroll-all-loops -funswitch-loops -floop-unroll-and-jam -floop-interchange -faggressive-loop-optimizations -funsafe-loop-optimizations -fira-loop-pressure -fbranch-target-load-optimize2 -fwrapv -fwrapv-pointer -fdelete-dead-exceptions -fno-keep-static-consts -fomit-frame-pointer -fstdarg-opt -ftree-vectorize -fmodulo-sched -fmodulo-sched-allow-regmoves -fselective-scheduling -fselective-scheduling2 -freschedule-modulo-scheduled-loops -fsel-sched-pipelining -fsel-sched-pipelining-outer-loops -fsel-sched-reschedule-pipelined -fgcse -fgcse-sm -fgcse-las -fgcse-after-reload -fdevirtualize-speculatively -fdevirtualize-at-ltrans -flive-range-shrinkage -fisolate-erroneous-paths-attribute -flimit-function-alignment
-override GCC_OPT_SKYLAKE::=-maccumulate-outgoing-args -maes -mavx -mavx2 -mbmi -mbmi2 -mcld -mclflushopt -mcrc32 -mcx16 -mf16c -mfsgsbase -minline-all-stringops -mlong-double-128 -mmmx -mmovbe -momit-leaf-frame-pointer -mpclmul -mpopcnt -mrdrnd -mrdseed -mrecip -msahf -msse -msse2 -msse3 -msse4.1 -msse4.2 -mssse3 -mvzeroupper -mxsave -mxsavec -mxsaves -Wl,-z,ibtplt
+override GCC_PARAMS::=--param ggc-min-expand=100 --param ggc-min-heapsize=786432 --param max-gcse-memory=536870912 --param max-cselib-memory-locations=4096 --param max-reload-search-insns=2048 --param max-sched-ready-insns=1024 --param large-function-growth=200 --param large-function-insns=3200 --param large-unit-insns=20000 --param max-inline-insns-auto=32 --param early-inlining-insns=16 --param inline-min-speedup=16 --param inline-unit-growth=40 --param ipcp-unit-growth=40 --param large-stack-frame=512 --param large-stack-frame-growth=1100
+override GCC_PARAMS::=$(GCC_PARAMS) --param max-inline-insns-recursive=512 --param max-inline-insns-recursive-auto=512 --param max-inline-recursive-depth=16 --param max-inline-recursive-depth-auto=16 --param gcse-unrestricted-cost=2 --param max-hoist-depth=128 --param max-unrolled-insns=256 --param max-average-unrolled-insns=128 --param max-unroll-times=16 --param avg-loop-niter=16 --param vect-max-version-for-alignment-checks=16 --param vect-max-version-for-alias-checks=32 --param max-iterations-to-track=2048 --param max-predicted-iterations=1024 --param selsched-max-lookahead=512 --param max-partial-antic-length=512 --param loop-invariant-max-bbs-in-loop=32768 --param loop-max-datarefs-for-datadeps=4096 --param ipa-cp-value-list-size=32
+override GCC_PARAMS::=$(GCC_PARAMS) --param max-rtl-if-conversion-insns=64 --param max-crossjump-edges=256 --param max-grow-copy-bb-insns=8 --param max-goto-duplication-insns=16 --param max-delay-slot-insn-search=256 --param max-delay-slot-live-search=512 --param max-gcse-insertion-ratio=32 --param max-pending-list-length=64 --param max-modulo-backtrack-attempts=64 --param max-early-inliner-iterations=2 --param gcse-cost-distance-ratio=32 --param max-tail-merge-comparisons=16 --param max-tail-merge-iterations=4 --param store-merging-allow-unaligned=0 --param max-stores-to-merge=64 --param max-peeled-insns=128 --param max-peel-times=32 --param max-peel-branches=64 --param max-completely-peeled-insns=256 --param max-completely-peel-times=32 --param max-completely-peel-loop-nest-depth=16 --param max-unswitch-insns=64 --param max-unswitch-level=8 --param iv-consider-all-candidates-bound=64 --param iv-max-considered-uses=512 --param iv-always-prune-cand-set-bound=32
+override GCC_PARAMS::=$(GCC_PARAMS) --param dse-max-object-size=1024 --param dse-max-alias-queries-per-store=1024 --param align-loop-iterations=4 --param max-cse-path-length=16 --param max-cse-insns=2048 --param max-sched-region-blocks=32 --param max-pipeline-region-blocks=32 --param max-sched-region-insns=256 --param max-pipeline-region-insns=512 --param loop-interchange-max-num-stmts=128 --param rpo-vn-max-loop-depth=16 --param max-last-value-rtl=16384 --param max-combine-insns=4 --param sccvn-max-alias-queries-per-access=2048 --param ira-max-loops-num=128 --param ira-max-conflict-table-size=2048 --param max-vartrack-size=50331648 --param max-vartrack-expr-depth=32 --param graphite-max-nb-scop-params=16 --param loop-block-tile-size=128 --param lto-max-streaming-parallelism=64 --param max-slsr-cand-scan=64 --param max-fsm-thread-path-insns=256 --param max-fsm-thread-length=16 --param max-fsm-thread-paths=16 --param max-tracked-strlens=20000 --param max-loop-header-insns=32 --param slp-max-insns-in-bb=2048
+override GCC_PARAMS::=$(GCC_PARAMS) --param max-pow-sqrt-depth=8 --param max-isl-operations=400000 --param graphite-max-arrays-per-scop=128 --param max-vartrack-reverse-op-size=64 --param uninit-control-dep-attempts=2048 --param max-once-peeled-insns=512 --param loop-versioning-max-inner-insns=256 --param loop-versioning-max-outer-insns=128 --param ssa-name-def-chain-limit=512
+override GCC_OPT::=$(GCC_PARAMS) -O3 -funroll-loops -funroll-all-loops -faggressive-loop-optimizations -funsafe-loop-optimizations -fira-loop-pressure -fbranch-target-load-optimize2 -fwrapv -fwrapv-pointer -fdelete-dead-exceptions -fno-keep-static-consts -fstdarg-opt -ftree-vectorize -fmodulo-sched -fmodulo-sched-allow-regmoves -fselective-scheduling -fselective-scheduling2 -freschedule-modulo-scheduled-loops -fsel-sched-pipelining -fsel-sched-pipelining-outer-loops -fsel-sched-reschedule-pipelined -fgcse -fgcse-sm -fgcse-las -fgcse-after-reload -fdevirtualize-speculatively -fdevirtualize-at-ltrans -flive-range-shrinkage -fisolate-erroneous-paths-attribute -flimit-function-alignment
+override GCC_OPT_SKYLAKE::=-maccumulate-outgoing-args -momit-leaf-frame-pointer -minline-all-stringops -mlong-double-128 -maes -mavx -mavx2 -mbmi -mbmi2 -mcld -mclflushopt -mcrc32 -mcx16 -mf16c -mfsgsbase -mmmx -mmovbe -mpclmul -mpopcnt -mrdrnd -mrdseed -mrecip -msahf -msse -msse2 -msse3 -msse4.1 -msse4.2 -mssse3 -mvzeroupper -mxsave -mxsavec -mxsaves -Wl,-z,ibtplt
 
 ifndef ARCH
     ARCH::=
@@ -297,7 +300,7 @@ endif
 # DEBUGGING #
 
 
-override DCJ_DEBUG::=-DNDEBUG -DNOAUTHOR -DNOVERSION -g0 -ggdb0 -s -fno-verbose-asm
+override DCJ_DEBUG::=-DNDEBUG -DNOAUTHOR -DNOVERSION -g0 -ggdb0 -s -feliminate-unused-debug-symbols -fno-verbose-asm
 ifeq ($(OS),WINDOWS)
     override DCJ_DEBUG::=$(DCJ_DEBUG) -Wl,--strip-all
 else
@@ -312,13 +315,13 @@ ifdef DEBUG
         override DEBUG::=-DDEBUG
         override DCJ_DEBUG::=
     else ifeq ($(DEBUG),2)
-        override DEBUG::=-DDEBUG -Og -g2 -ggdb2 -fverbose-asm
+        override DEBUG::=-DDEBUG -Og -g2 -ggdb2 -fverbose-asm -fno-eliminate-unused-debug-symbols
         override DCJ_DEBUG::=
     else ifeq ($(DEBUG),3)
-        override DEBUG::=-DDEBUG -Og -g3 -ggdb3 -fverbose-asm
+        override DEBUG::=-DDEBUG -Og -g3 -ggdb3 -fverbose-asm -fno-eliminate-unused-debug-symbols
         override DCJ_DEBUG::=
     else ifeq ($(DEBUG),4)
-        override DEBUG::=-DNDEBUG -DNOAUTHOR -DNOVERSION -g1 -ggdb1 -fverbose-asm
+        override DEBUG::=-DNDEBUG -DNOAUTHOR -DNOVERSION -g1 -ggdb1 -fverbose-asm -fno-eliminate-unused-debug-symbols
         override DCJ_DEBUG::=
         override STRIP::=printf '%s\n'
     else

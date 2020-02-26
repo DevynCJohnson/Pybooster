@@ -1,5 +1,6 @@
 2020-02-26  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* compiling.mk:  Added more `--param` options for GCC
 	* machine_learning:  Minor tweak
 
 2020-02-22  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
