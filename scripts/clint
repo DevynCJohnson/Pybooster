@@ -5,7 +5,7 @@
 """@brief Linter and checker for C source code.
 
 @file clint
-@version 2019.12.28
+@version 2020.02.26
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -533,10 +533,10 @@ def x000(filepath: str, line_num: int, line: str, log_line: str, no_str_line: st
         output_info(filepath, line_num, line, r'X011', r'Single white-space before bracket, not more than one', _match, bool(_match))
     if r'/*' in no_str_line and r'*/' in no_str_line and not any(_test in no_str_line for _test in SPECIAL_CMTS):
         # X012
-        if r'<' not in no_str_line and no_str_line.upper() != no_str_line and r'" : ' not in no_str_line:
+        if r'<' not in no_str_line and no_str_line.upper() != no_str_line and r'" : ' not in no_str_line and not no_str_line.endswith(r');'):
             output_info(filepath, line_num, line, r'X012', r'Section headings (`/* SECTION */`) should not contain lowercase letters')
         # X013
-        if r'/* ' not in no_str_line or ' */' not in no_str_line:
+        if (r'/* ' not in no_str_line or ' */' not in no_str_line) and no_str_line.endswith(r'*/'):
             output_info(filepath, line_num, line, r'X013', r'Section headings (`/* SECTION */`) should have a single space on each side of the section name')
     # X014
     if (r'[]' in log_line or r'[ ]' in log_line) and not any(_test in log_line for _test in {r' main(', r'[];', r'[]);', r'[],', r'[] = {', r' argv[]', r' envp[]'}) and not any(log_line.startswith(_test) for _test in {r'extern', r'UNUSED', r'LIB_FUNC', r'DECL_FUNC'}):
