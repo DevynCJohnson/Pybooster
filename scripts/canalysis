@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Wrapper for scanning C source code with various syntax checkers
 #' @file canalysis
-#' @version 2019.12.26
+#' @version 2020.02.26
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -147,7 +147,7 @@ clint_func() {
 cppcheck_func() {
     if [ "$CPPCHECK_EXISTS" -eq 1 ]; then
         printf '======  *CPPCHECK*  ======\n'
-        cppcheck -j 1 --language=c --std=c11 -I. -I../include --force --inconclusive --inline-suppr --template=gcc --enable=performance --enable=portability --std=posix --enable=style --enable=warning "${cppcheck_supressions}" "${1}" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/^Checking .+$/, ""); if (NF > 0) { print; } }'
+        cppcheck -j 1 --language=c --std=c11 -I. -I../include --force --inconclusive --inline-suppr --template=gcc --enable=performance --enable=portability --enable=style --enable=warning "${cppcheck_supressions}" "${1}" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/^Checking .+$/, ""); if (NF > 0) { print; } }'
     fi
 }
 
