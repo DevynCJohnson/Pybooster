@@ -4,7 +4,7 @@
 /**
 @brief Standard Macros Header with AT&T-style Assembly
 @file MACROS3.h
-@version 2020.02.03
+@version 2020.02.26
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -3308,8 +3308,7 @@ An instruction that should crash any program */
 #   define ABORT_INSTRUCTION   vasm("sleep;"); UNREACHABLE
 #elif defined(ARCHTILE)  // Tile
 #   define ABORT_INSTRUCTION   vasm("ill;"); UNREACHABLE
-#else
-#   define ABORT_INSTRUCTION
+#elif (!defined(ABORT_INSTRUCTION))
 #   if has_builtin(__builtin_trap)
 #      define ABORT_INSTRUCTION   __builtin_trap(); UNREACHABLE
 #   else
@@ -8211,7 +8210,7 @@ LIB_FUNC long syscall6(const long n, const long a1, const long a2, const long a3
 
 // UNIX X86-32 SYSCALL INTRINSICS
 
-#if  (defined(OSUNIX) && defined(ARCHX86_32))
+#if (defined(OSUNIX) && defined(ARCHX86_32))
 
 
 #   define SUPPORTS_SYSCALLS   1
@@ -12517,7 +12516,7 @@ LIB_FUNC void BUILD_CLDEMOTE _cldemote(const void* restrict __P) {
 
 
 LIB_FUNC void BUILD_CLFLUSHOPT _mm_clflushopt(void const* restrict __m) {
-  __builtin_ia32_clflushopt(__m);
+	__builtin_ia32_clflushopt(__m);
 }
 
 
@@ -25836,7 +25835,7 @@ LIB_FUNC NOLIBCALL ATTR_PRINTF(2, 0) int __v_printf(const struct arg_printf* res
 		.padwith = ' '
 	};
 	while (*format) {
-		internalvals = (struct __v_printf_internals){
+		internalvals = (struct __v_printf_internals) {
 			.pfmtnum.lfloat.words = { 0 },
 			.prefix_ptr = NULL,
 			.suffix_ptr = NULL,
@@ -26510,7 +26509,7 @@ goto_float_printf:
 				{
 					if (internalvals.flag_long > 1 || internalvals.flag_long < 0) { return -1; }
 					internalvals.flag_sign = 1;
-					internalvals.pfmtnum.dfloat.value = 0.0 ;
+					internalvals.pfmtnum.dfloat.value = 0.0;
 					// Float length & sign
 					switch (internalvals.flag_long) {  // FIXME: Add support for long double
 						// case 1:

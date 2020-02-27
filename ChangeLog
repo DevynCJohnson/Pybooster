@@ -4,6 +4,7 @@
 	* clint:  Fixed some minor bugs
 	* compiling.mk:  Added more `--param` options for GCC
 	* machine_learning:  Minor tweak
+	* MACROS*.h:  Fixed some minor issues
 	* OptiView:  Applied some minor tweaks
 
 2020-02-22  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>

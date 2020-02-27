@@ -1489,7 +1489,6 @@ LIB_FUNC MATH_FUNC long lrint(const double x) {
 	register int32_t j0 = (int32_t)(((i0 >> 20) & 0x7ff) - 0x3ff);
 	register long sx = (long)(i0 >> 31);
 	i0 = (uint32_t)((i0 & 0xfffff) | 0x100000);
-	register long result = 0;
 	if (j0 < 20) {
 		register double t = (double)((TWO52[sx] + x) - TWO52[sx]);
 		ew_u.value = (double)((t));
@@ -1497,8 +1496,10 @@ LIB_FUNC MATH_FUNC long lrint(const double x) {
 		i1 = (uint32_t)ew_u.parts.lsw;
 		j0 = (int32_t)(((i0 >> 20) & 0x7ff) - 0x3ff);
 		i0 = (uint32_t)((i0 & 0xfffff) | 0x100000);
-		result = (long)((j0 < 0) ? 0 : ((int32_t)i0 >> (20 - j0)));
+		register long result = (long)((j0 < 0) ? 0 : ((int32_t)i0 >> (20 - j0)));
+		return (long)(sx ? (-result) : result);
 	} else if (j0 < (int32_t)(BITS_PER_LONG) - 1) {
+		register long result = 0;
 		if (j0 >= 52) { result = (long)(((int32_t)i0 << (j0 - 20)) | (int32_t)((int32_t)i1 << (j0 - 52))); }
 		register double t = (double)((TWO52[sx] + x) - TWO52[sx]);
 		EXTRACT_WORDS(i0, i1, t);
@@ -1506,8 +1507,9 @@ LIB_FUNC MATH_FUNC long lrint(const double x) {
 		i0 = (uint32_t)((i0 & 0xfffff) | 0x100000);
 		if (j0 == 20) { result = (long)i0; }
 		else { result = (long)((int32_t)i0 << (j0 - 20)) | (int32_t)((int32_t)i1 >> (52 - j0)); }
-	} else { return (long)x; }  // The number is too large
-	return (long)(sx ? (-result) : result);
+		return (long)(sx ? (-result) : result);
+	}
+	return (long)x;  // The number is too large
 }
 #define __lrint(x)   lrint((x))
 
@@ -1838,7 +1840,7 @@ LIB_FUNC MATH_FUNC double trunc(const double num) {
 			xw_u.parts.lsw = 0U;
 			return xw_u.value;
 		}
-	} else if (j0 > 51 && j0 == 0x400) {  // x is inf or NaN
+	} else if (j0 >= 0x400) {  // x is inf or NaN
 		return x + x;
 	}
 	xw_u.sparts.msw = i0;
@@ -2460,7 +2462,6 @@ LIB_FUNC float remquof(const float xnum, const float ynum, int* quo) {
 		}
 	}
 	*quo = (qs ? (-cquo) : cquo);
-	if (x == 0.0F) { x = 0.0F; }  // Ensure correct sign of zero result in round-downward mode
 	if (sx) { x = (-x); }
 	return x;
 }
@@ -2592,7 +2593,7 @@ LIB_FUNC MATH_FUNC double nextafter(const double xnum, const double ynum) {
 		x = xw_u.value;  // Return +-minsubnormal
 		y = x * x;
 		if (PREDICT_LIKELY(y == x)) { return y; }  // Raise underflow flag
-		else { return x; }
+		return x;
 	} else if (hx >= 0) {  // x > 0
 		if (hx > hy || ((hx == hy) && (lx > ly))) {  // x > y, x -= ulp
 			if (lx == 0) { --hx; }
@@ -6446,8 +6447,7 @@ LIB_FUNC int __rem_pio2_large(double* restrict x, double* restrict y, const int 
 	register double fw = 0.0;
 	if (j < 0) { for (i = 0; (i <= m) && (i < 20); i++) { f[i] = 0.0; } }
 	else { for (i = 0; (i <= m) && (i < 20) && (j < ipio2_items); i++) { f[i] = (double)ipio2[j]; } }
-	for (i = 0; (i <= jk) && (i < 20); i++) {
-		if (i >= 20) { break; }
+	for (i = 0; (i <= jk) && (i <= 20); i++) {
 		for (j = xitems, fw = 0.0; (j <= jx) && (j < 5) && ((jx + i - j) < 20); j++) {
 			if (j >= xitems) { break; }
 			fw += (x[j] * f[jx + i - j]);
@@ -11897,14 +11897,12 @@ LIB_FUNC MATH_FUNC uint64_t doublefactorial(const uint64_t num) {
 	register uint64_t fct = num;
 	if ((num % 2ULL) == 0ULL) {  // Even
 		for (register uint64_t i = (fct - 2ULL); i > 1; i = (i - 2ULL)) {
-			if (i <= 1) { break; }
-			else if (i == 2) { fct *= i; break; }
+			if (i == 2) { fct *= i; break; }
 			fct *= i;
 		}
 	} else {  // Odd
 		for (register uint64_t i = (fct - 2ULL); i > 2; i = (i - 2ULL)) {
-			if (i <= 2) { break; }
-			else if (i == 3) { fct *= i; break; }
+			if (i == 3) { fct *= i; break; }
 			fct *= i;
 		}
 	}

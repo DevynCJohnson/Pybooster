@@ -4,7 +4,7 @@
 /**
 @brief Header for simple yet essential macros
 @file Foundation.h
-@version 2020.01.31
+@version 2020.02.26
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -10518,10 +10518,10 @@ typedef char*   va_list;
 #else
 #   ifdef ARCHX86_64
 typedef struct va_struct {
-   uint32_t gp_offset;  //!< Holds the offset in bytes from `reg_save_area` to the place where the next available general purpose argument register is saved. If all the argument registers are exhausted, then it is set to the value `48`.
-   uint32_t fp_offset;  //!< Holds the offset in bytes from `reg_save_area` to the place where the next available ﬂoating point argument register is saved. If all the argument registers are exhausted, then it is set to the value `304`.
-   void* overflow_arg_area;  //!< Pointer used to fetch arguments passed on the stack. It is initialized with the address of the ﬁrst argument passed on the stack (if any). It is always updated to point to the start of the next argument on the stack.
-   void* reg_save_area;  //!< Pointer to the start of the register save area
+	uint32_t gp_offset;  //!< Holds the offset in bytes from `reg_save_area` to the place where the next available general purpose argument register is saved. If all the argument registers are exhausted, then it is set to the value `48`.
+	uint32_t fp_offset;  //!< Holds the offset in bytes from `reg_save_area` to the place where the next available ﬂoating point argument register is saved. If all the argument registers are exhausted, then it is set to the value `304`.
+	void* overflow_arg_area;  //!< Pointer used to fetch arguments passed on the stack. It is initialized with the address of the ﬁrst argument passed on the stack (if any). It is always updated to point to the start of the next argument on the stack.
+	void* reg_save_area;  //!< Pointer to the start of the register save area
 } va_list[1];
 #   else
 typedef uintptr_t   va_list;

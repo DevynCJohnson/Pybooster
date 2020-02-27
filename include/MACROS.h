@@ -4,7 +4,7 @@
 /**
 @brief Standard Macros Header Providing Additional Simple Code
 @file MACROS.h
-@version 2020.02.03
+@version 2020.02.26
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -3993,7 +3993,7 @@ typedef struct __kernel_fsid { long val[2]; }   __kernel_fsid_t;
 #else
 #   define __PRI64_PREFIX   "ll"
 #   define __PRIPTR_PREFIX   "ll"
-# endif
+#endif
 #ifndef PRI64_PREFIX
 #   define PRI64_PREFIX   __PRI64_PREFIX
 #endif

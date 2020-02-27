@@ -4,7 +4,7 @@
 /**
 @brief Standard Macros Header with AT&T-style Assembly
 @file MACROS2.h
-@version 2020.02.01
+@version 2020.02.26
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -2360,7 +2360,7 @@ typedef uint32_t    bank_action_t;
 // MINIX DATATYPES
 
 /** Virtual addresses/lengths in bytes */
-typedef unsigned long int   vir_bytes;
+typedef unsigned long   vir_bytes;
 #ifdef OSMINIX
 /** Asynchronous API */
 typedef int   bdev_id_t;
