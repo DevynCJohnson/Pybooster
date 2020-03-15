@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://www.devhelp.net/book" author="" base="/usr/share/doc/mesa-common-dev" language="C" link="index.html" name="Mesa-Common-Dev" title="Mesa-Common-Dev Documentation" version="2">
+  <chapters>
+    <sub name="Index" link="index.html" />
+    <sub name="FAQ" link="faq.html" />
+    <sub name="Coding-style" link="codingstyle.html" />
+    <sub name="Devinfo" link="devinfo.html" />
+    <sub name="EGL" link="egl.html" />
+    <sub name="Environment Variables" link="envvars.html" />
+    <sub name="Extensions" link="extensions.html" />
+    <sub name="LLVM Pipe" link="llvmpipe.html" />
+    <sub name="OpenGLES" link="opengles.html" />
+    <sub name="OS Mesa" link="osmesa.html" />
+    <sub name="Utilities" link="utilities.html" />
+  </chapters>
+</book>

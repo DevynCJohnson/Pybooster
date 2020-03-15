@@ -1,5 +1,6 @@
 2020-03-15  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* Devhelp:  Added additional DevHelp files
 	* install_devhelp_docs.sh:  Made the Devhelp document installation a separate script
 	* libajax.js:  Applied minor improvements
 	* libhtml.js:  Added more functions

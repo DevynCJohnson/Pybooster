@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://www.devhelp.net/book" author="" base="/usr/share/doc/libmpfr-doc" language="C" link="index.html" name="libmpfr" title="LibMPFR Documentation" version="2">
+  <chapters>
+    <sub name="Index" link="index.html" />
+    <sub name="API-Compatibility" link="API-Compatibility.html" />
+    <sub name="Basics" link="MPFR-Basics.html" />
+    <sub name="Conversion Functions" link="Conversion-Functions.html" />
+    <sub name="Exceptions" link="Exceptions.html" />
+    <sub name="Headers and Libraries" link="Headers-and-Libraries.html" />
+    <sub name="Memory Handling" link="Memory-Handling.html" />
+    <sub name="Miscellaneous Functions" link="Miscellaneous-Functions.html" />
+    <sub name="Special Functions" link="Special-Functions.html" />
+  </chapters>
+</book>

@@ -33,8 +33,6 @@ install_devhelp_docs() {
     { [ -d /usr/share/doc/dpdk/ ] && [ ! -d /usr/share/devhelp/books/dpdk ] && ln -f -s /usr/share/doc/dpdk /usr/share/devhelp/books/dpdk && cp -f --preserve=mode "${DEVHELPDIR}/dpdk.devhelp2" /usr/share/devhelp/books/dpdk/; } &
     # GDB
     { [ -d /usr/share/doc/gdb-doc/html/ ] && [ ! -d /usr/share/devhelp/books/gdb ] && ln -f -s /usr/share/doc/gdb-doc/html /usr/share/devhelp/books/gdb && cp -f --preserve=mode "${DEVHELPDIR}/gdb.devhelp2" /usr/share/devhelp/books/gdb/; } &
-    # Python Numpy
-    { [ -d /usr/share/doc/python-numpy-doc/html/ ] && [ ! -d /usr/share/devhelp/books/numpy ] && ln -f -s /usr/share/doc/python-numpy-doc/html/ /usr/share/devhelp/books/numpy && cp -f --preserve=mode "${DEVHELPDIR}/numpy.devhelp2" /usr/share/devhelp/books/numpy/; } &
     # Clang
     { if [ ! -d /usr/share/devhelp/books/clang ]; then
         if [ -d /usr/share/doc/clang-10-doc/html ]; then
@@ -79,6 +77,16 @@ install_devhelp_docs() {
     fi; } &
     # Flask
     { [ ! -d /usr/share/devhelp/books/flask ] && [ -d /usr/share/doc/python-flask-doc/html ] && ln -f -s /usr/share/doc/python-flask-doc/html /usr/share/devhelp/books/flask && cp -f --preserve=mode "${DEVHELPDIR}/flask.devhelp2" /usr/share/devhelp/books/flask/; } &
+    # Fontforge
+    { [ -d /usr/share/doc/fontforge/ ] && [ ! -d /usr/share/devhelp/books/fontforge ] && ln -f -s /usr/share/doc/fontforge /usr/share/devhelp/books/fontforge && cp -f --preserve=mode "${DEVHELPDIR}/fontforge.devhelp2" /usr/share/devhelp/books/fontforge/; } &
+    # libgegl
+    { [ -d /usr/share/doc/libgegl/ ] && [ ! -d /usr/share/devhelp/books/libgegl ] && ln -f -s /usr/share/doc/libgegl /usr/share/devhelp/books/libgegl && cp -f --preserve=mode "${DEVHELPDIR}/libgegl.devhelp2" /usr/share/devhelp/books/libgegl/; } &
+    # libmpfr
+    { [ -d /usr/share/doc/libmpfr-doc/ ] && [ ! -d /usr/share/devhelp/books/libmpfr ] && ln -f -s /usr/share/doc/libmpfr-doc /usr/share/devhelp/books/libmpfr && cp -f --preserve=mode "${DEVHELPDIR}/libmpfr.devhelp2" /usr/share/devhelp/books/libmpfr/; } &
+    # mesa-common-dev
+    { [ -d /usr/share/doc/mesa-common-dev/ ] && [ ! -d /usr/share/devhelp/books/mesa-common-dev ] && ln -f -s /usr/share/doc/mesa-common-dev /usr/share/devhelp/books/mesa-common-dev && cp -f --preserve=mode "${DEVHELPDIR}/mesa-common-dev.devhelp2" /usr/share/devhelp/books/mesa-common-dev/; } &
+    # Numpy
+    { [ -d /usr/share/doc/python-numpy-doc/html/ ] && [ ! -d /usr/share/devhelp/books/numpy ] && ln -f -s /usr/share/doc/python-numpy-doc/html/ /usr/share/devhelp/books/numpy && cp -f --preserve=mode "${DEVHELPDIR}/numpy.devhelp2" /usr/share/devhelp/books/numpy/; } &
     # SQLAlchemy
     { [ ! -d /usr/share/devhelp/books/sqlalchemy ] && [ -d /usr/share/doc/python-sqlalchemy-doc/html ] && ln -f -s /usr/share/doc/python-sqlalchemy-doc/html /usr/share/devhelp/books/sqlalchemy && cp -f --preserve=mode "${DEVHELPDIR}/sqlalchemy.devhelp2" /usr/share/devhelp/books/sqlalchemy/; } &
     # Werkzeug

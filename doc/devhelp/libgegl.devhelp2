@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://www.devhelp.net/book" author="" base="/usr/share/doc/libgegl" language="C" link="index.html" name="libgegl" title="LibGEGL Documentation" version="2">
+  <chapters>
+    <sub name="Index" link="index.html" />
+    <sub name="Command-line" link="commandline.html" />
+    <sub name="Environment" link="environment.html" />
+    <sub name="Features" link="features.html" />
+    <sub name="Headers" link="gegl.h.html" />
+    <sub name="Glossary" link="glossary.html" />
+  </chapters>
+</book>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://www.devhelp.net/book" author="" base="/usr/share/doc/fontforge" language="C" link="index.html" name="Fontforge" title="Fontforge Documentation" version="2">
+  <chapters>
+    <sub name="Index" link="index.html" />
+    <sub name="FAQ" link="faq.html" />
+    <sub name="Glossary" link="glossary.html" />
+    <sub name="Font Info" link="fontinfo.html" />
+    <sub name="Font Lint" link="fontlint.html" />
+    <sub name="Font Styles" link="fontstyles.html" />
+    <sub name="Font Utils" link="fontutils.html" />
+    <sub name="Hinting" link="hinting.html" />
+    <sub name="Preferences" link="prefs.html" />
+  </chapters>
+</book>
