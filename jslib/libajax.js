@@ -6,7 +6,7 @@
 @brief Miscellaneous functions used to communicate with the server
 @file libajax.js
 @package libutils
-@version 2019.03.28
+@version 2020.03.15
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -35,7 +35,7 @@ along with this software.
 /** Stringify a JavaScript object */
 function JSONx_stringify(jsonobj, ilevel = 0) {
   return JSON.stringify(jsonobj, function(jsonobj, xobj) {
-    let objstr;
+    let objstr = null;
     return ((xobj instanceof Function) || (typeof xobj === 'function')) ? (objstr = xobj.toString(), ((objstr.length < 8) || ('function' !== objstr.substring(0, 8))) ? '_NuFrRa_' + objstr : objstr) : xobj instanceof RegExp ? '_PxEgEr_' + xobj : xobj;
   }, ilevel);
 }
@@ -43,10 +43,10 @@ function JSONx_stringify(jsonobj, ilevel = 0) {
 
 /** Parse/Unstringify a JavaScript object */
 function JSONx_parse(jsonobj, boolval) {
-  let xobj = boolval ? /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*)?)Z$/ : !1;
+  const xobj = boolval ? /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*)?)Z$/ : !1;
   return JSON.parse(jsonobj, function(jsonobj, cobj) {
     if ((typeof cobj !== 'string') || (cobj.length < 8)) { return cobj }
-    let estr = cobj.substring(0, 8);
+    const estr = cobj.substring(0, 8);
     return (xobj && cobj.match(xobj)) ? new Date(cobj) : (estr === 'function') ? eval('(' + cobj + ')') : ((estr === '_PxEgEr_') || (estr === '_NuFrRa_')) ? eval(cobj.slice(8)) : cobj;
   });
 }
@@ -61,11 +61,10 @@ function JSONx_clone(obj2clone) {
 /** Get the value of the specified query parameter in the URL */
 function getRequestParam(paramName) {
   let result = null;
-  var tmp = [];
-  let items = location.search.substr(1).split('&');
-  let item_len = items.length;
+  const items = location.search.substr(1).split('&');
+  const item_len = items.length;
   for (let index = 0; index < item_len; index++) {
-    tmp = items[index].split('=');
+    let tmp = items[index].split('=');
     if (tmp[0] === paramName) { result = decodeURIComponent(tmp[1]); }
   }
   return result;
@@ -77,7 +76,7 @@ function getRequestParam(paramName) {
 @param httpcode A string or integer representing the HTTP status code
 */
 function httpAlert(httpcode) {
-  let _httpcode = parseInt(httpcode, 10);
+  const _httpcode = parseInt(httpcode, 10);
   if (typeof _httpcode !== 'number') { throw 'The provided HTTP status code could not be converted to an integer!'; }
   switch (this.status) {
     case 200: alert('OK: Succesfully received request'); break;
