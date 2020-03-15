@@ -5,7 +5,7 @@
 """@brief Algorithms and functions for machine learning
 
 @file machine_learning
-@version 2020.02.22
+@version 2020.03.15
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -65,10 +65,12 @@ except ImportError:
 
 try:  # Import Sklearn
     import h2ogpu as sklearn
-    from h2ogpu import ensemble, linear_model, model_selection, naive_bayes
+    from h2ogpu import ensemble, linear_model, naive_bayes
+    from h2ogpu.model_selection import GridSearchCV
 except ImportError:
     import sklearn
-    from sklearn import ensemble, linear_model, model_selection, naive_bayes
+    from sklearn import ensemble, linear_model, naive_bayes
+    from sklearn.model_selection import GridSearchCV
 
 
 # pyinstall memory_profiler
@@ -328,7 +330,7 @@ def adaboostclassifier_training(training_data: list, target_data: list, test_dat
     best_model: dict = {r'algorithm': r'AdaBoostClassifier', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
     # Train model
     try:
-        _model = model_selection.GridSearchCV(
+        _model = GridSearchCV(
             ensemble.AdaBoostClassifier(),  # base_estimator=None, n_estimators=50, learning_rate=1.0, algorithm=r'SAMME.R', random_state=None
             {
                 r'algorithm': [r'SAMME.R'] if fast_mode else [r'SAMME', r'SAMME.R'],
@@ -357,7 +359,7 @@ def adaboostregressor_training(training_data: list, target_data: list, test_data
     best_model: dict = {r'algorithm': r'AdaBoostRegressor', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
     # Train model
     try:
-        _model = model_selection.GridSearchCV(
+        _model = GridSearchCV(
             ensemble.AdaBoostRegressor(),  # base_estimator=None, learning_rate=1.0, loss='linear', n_estimators=50, random_state=None
             {
                 r'n_estimators': [50] if fast_mode else [25, 50, 100, 150, 200, 250],
@@ -386,7 +388,7 @@ def baggingclassifier_training(training_data: list, target_data: list, test_data
     best_model: dict = {r'algorithm': r'BaggingClassifier', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
     # Train model
     try:
-        _model = model_selection.GridSearchCV(
+        _model = GridSearchCV(
             ensemble.BaggingClassifier(),  # base_estimator=None, n_estimators=10, max_samples=1.0, max_features=1.0, bootstrap=True, bootstrap_features=False, oob_score=False, warm_start=False, n_jobs=None, random_state=None, verbose=0
             {
                 r'max_features': [1.0, 1.5, 2.0] if fast_mode else [1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0],
@@ -416,7 +418,7 @@ def baggingregressor_training(training_data: list, target_data: list, test_data:
     best_model: dict = {r'algorithm': r'BaggingRegressor', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
     # Train model
     try:
-        _model = model_selection.GridSearchCV(
+        _model = GridSearchCV(
             ensemble.BaggingRegressor(),  # base_estimator=None, n_estimators=10, max_samples=1.0, max_features=1.0, bootstrap=True, bootstrap_features=False, oob_score=False, warm_start=False, n_jobs=None, random_state=None, verbose=0
             {
                 r'max_features': [1.0, 1.5, 2.0] if fast_mode else [1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0],
@@ -446,7 +448,7 @@ def extratreesclassifier_training(training_data: list, target_data: list, test_d
     best_model: dict = {r'algorithm': r'ExtraTreesClassifier', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
     # Train model
     try:
-        _model = model_selection.GridSearchCV(
+        _model = GridSearchCV(
             ensemble.ExtraTreesClassifier(),  # n_estimators=100, criterion='gini', max_depth=None, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features='auto', max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, bootstrap=False, oob_score=False, n_jobs=None, random_state=None, verbose=0, warm_start=False, class_weight=None, ccp_alpha=0.0, max_samples=None
             {
                 r'criterion': [r'gini'] if fast_mode else [r'entropy', r'gini'],
@@ -476,7 +478,7 @@ def extratreesregressor_training(training_data: list, target_data: list, test_da
     best_model: dict = {r'algorithm': r'ExtraTreesRegressor', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
     # Train model
     try:
-        _model = model_selection.GridSearchCV(
+        _model = GridSearchCV(
             ensemble.ExtraTreesRegressor(),  # n_estimators=100, criterion='mse', max_depth=None, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features='auto', max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, bootstrap=False, oob_score=False, n_jobs=None, random_state=None, verbose=0, warm_start=False, ccp_alpha=0.0, max_samples=None
             {
                 r'criterion': [r'mae'] if fast_mode else [r'mae', r'mse'],
@@ -506,7 +508,7 @@ def gradientboostingclassifier_training(training_data: list, target_data: list, 
     best_model: dict = {r'algorithm': r'GradientBoostingClassifier', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
     # Train model
     try:
-        _model = model_selection.GridSearchCV(
+        _model = GridSearchCV(
             ensemble.GradientBoostingClassifier(),  # loss='deviance', learning_rate=0.1, n_estimators=100, subsample=1.0, criterion='friedman_mse', min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_depth=3, min_impurity_decrease=0.0, min_impurity_split=None, init=None, random_state=None, max_features=None, verbose=0, max_leaf_nodes=None, warm_start=False, presort='deprecated', validation_fraction=0.1, n_iter_no_change=None, tol=0.0001, ccp_alpha=0.0
             {
                 r'criterion': [r'friedman_mse'] if fast_mode else [r'friedman_mse', r'mae', r'mse'],
@@ -538,7 +540,7 @@ def gradientboostingregressor_training(training_data: list, target_data: list, t
     best_model: dict = {r'algorithm': r'GradientBoostingRegressor', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
     # Train model
     try:
-        _model = model_selection.GridSearchCV(
+        _model = GridSearchCV(
             ensemble.GradientBoostingRegressor(),  # loss='ls', learning_rate=0.1, n_estimators=100, subsample=1.0, criterion='friedman_mse', min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_depth=3, min_impurity_decrease=0.0, min_impurity_split=None, init=None, random_state=None, max_features=None, alpha=0.9, verbose=0, max_leaf_nodes=None, warm_start=False, presort='deprecated', validation_fraction=0.1, n_iter_no_change=None, tol=0.0001, ccp_alpha=0.0
             {
                 r'criterion': [r'friedman_mse'] if fast_mode else [r'friedman_mse', r'mae', r'mse'],
@@ -569,7 +571,7 @@ def randomforestclassifier_training(training_data: list, target_data: list, test
     best_model: dict = {r'algorithm': r'RandomForestClassifier', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
     # Train model
     try:
-        _model = model_selection.GridSearchCV(
+        _model = GridSearchCV(
             ensemble.RandomForestClassifier(),  # n_estimators=100, criterion=r'gini', max_depth=None, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features=r'auto', max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, bootstrap=True, oob_score=False, n_jobs=-1, random_state=None, verbose=0, warm_start=False, class_weight=None
             {
                 r'criterion': [r'gini'] if fast_mode else [r'entropy', r'gini'],
@@ -598,7 +600,7 @@ def randomforestregressor_training(training_data: list, target_data: list, test_
     best_model: dict = {r'algorithm': r'RandomForestRegressor', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
     # Train model
     try:
-        _model = model_selection.GridSearchCV(
+        _model = GridSearchCV(
             ensemble.RandomForestRegressor(),  # n_estimators=100, criterion=r'mse', max_depth=None, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features=r'auto', max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, bootstrap=True, oob_score=False, n_jobs=-1, random_state=None, verbose=0, warm_start=False
             {
                 r'criterion': [r'mae'] if fast_mode else [r'mae', r'mse'],
@@ -627,10 +629,10 @@ def randomforestregressor_training(training_data: list, target_data: list, test_
 
 def bayesianridge_training(training_data: list, target_data: list, test_data: list, answer_data: list, fast_mode: bool = True) -> dict:
     """Train multiple BayesianRidge models (each with different hyperparameters) for the given datasets and return a dictionary containing the best model."""
-    best_model: dict = {r'algorithm': r'BaysianRidge', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
+    best_model: dict = {r'algorithm': r'BayesianRidge', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
     # Train model
     try:
-        _model = model_selection.GridSearchCV(
+        _model = GridSearchCV(
             linear_model.BayesianRidge(),  # n_iter=300, tol=tol, alpha_1=1e-06, alpha_2=1e-06, lambda_1=1e-06, lambda_2=1e-06, compute_score=False, fit_intercept=True, normalize=False, copy_X=False, verbose=False
             {
                 r'alpha_1': [0.0001, 0.001, 0.01, 0.1, 1.0] if fast_mode else list(frange(0.001, 1.0, 0.001)),
@@ -665,7 +667,7 @@ def elasticnet_training(training_data: list, target_data: list, test_data: list,
     best_model: dict = {r'algorithm': r'ElasticNet', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
     # Train model
     try:
-        _model = model_selection.GridSearchCV(
+        _model = GridSearchCV(
             linear_model.ElasticNet(),  # alpha=1.0, l1_ratio=0.5, fit_intercept=True, normalize=False, precompute=False, max_iter=1000, copy_X=True, tol=0.0001, warm_start=False, positive=False, random_state=None, selection=r'cyclic'
             {
                 r'alpha': [0.0001, 0.0005, 0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1.0] if fast_mode else list(frange(0.001, 1.0, 0.001)),
@@ -697,7 +699,7 @@ def elasticnetcv_training(training_data: list, target_data: list, test_data: lis
     best_model: dict = {r'algorithm': r'ElasticNetCV', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
     # Train model
     try:
-        _model = model_selection.GridSearchCV(
+        _model = GridSearchCV(
             linear_model.ElasticNetCV(),  # l1_ratio=0.5, eps=0.001, n_alphas=100, alphas=None, fit_intercept=True, normalize=False, precompute=r'auto', max_iter=1000, tol=0.0001, cv=None, copy_X=True, verbose=0, n_jobs=None, positive=False, random_state=None, selection=r'cyclic'
             {
                 r'copy_X': [False],
@@ -730,7 +732,7 @@ def lasso_training(training_data: list, target_data: list, test_data: list, answ
     best_model: dict = {r'algorithm': r'Lasso', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
     # Train model
     try:
-        _model = model_selection.GridSearchCV(
+        _model = GridSearchCV(
             linear_model.Lasso(),  # alpha=1.0, fit_intercept=True, normalize=False, precompute=False, copy_X=True, max_iter=1000, tol=0.0001, warm_start=False, positive=False, random_state=None, selection=r'cyclic'
             {
                 r'alpha': [0.0001, 0.0005, 0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1.0] if fast_mode else list(frange(0.001, 1.0, 0.001)),
@@ -762,7 +764,7 @@ def lassolarscv_training(training_data: list, target_data: list, test_data: list
     best_model: dict = {r'algorithm': r'LassoLarsCV', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
     # Train model
     try:
-        _model = model_selection.GridSearchCV(
+        _model = GridSearchCV(
             linear_model.LassoLarsCV(),  # fit_intercept=True, verbose=False, max_iter=500, normalize=True, precompute=r'auto', cv=None, max_n_alphas=1000, n_jobs=None, eps=2.220446049250313e-16, copy_X=True, positive=False
             {
                 r'copy_X': [False],
@@ -793,7 +795,7 @@ def linear_regression_training(training_data: list, target_data: list, test_data
     best_model: dict = {r'algorithm': r'LinearRegression', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
     # Train model
     try:
-        _model = model_selection.GridSearchCV(
+        _model = GridSearchCV(
             linear_model.LinearRegression(),  # fit_intercept=True, normalize=False, copy_X=True, n_jobs=None
             {
                 r'copy_X': [False],
@@ -822,7 +824,7 @@ def perceptron_training(training_data: list, target_data: list, test_data: list,
     best_model: dict = {r'algorithm': r'Perceptron', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
     # Train model
     try:
-        _model = model_selection.GridSearchCV(
+        _model = GridSearchCV(
             linear_model.Perceptron(),  # penalty=None, alpha=0.0001, fit_intercept=True, max_iter=1000, tol=0.001, shuffle=True, verbose=0, eta0=1.0, n_jobs=None, random_state=0, early_stopping=False, validation_fraction=0.1, n_iter_no_change=5, class_weight=None, warm_start=False
             {
                 r'alpha': [0.00001, 0.0001, 0.001, 0.01, 0.1] if fast_mode else list(frange(0.0001, 1.0, 0.0001)),
@@ -852,7 +854,7 @@ def ridge_training(training_data: list, target_data: list, test_data: list, answ
     best_model: dict = {r'algorithm': r'Ridge', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
     # Train model
     try:
-        _model = model_selection.GridSearchCV(
+        _model = GridSearchCV(
             linear_model.Ridge(),  # alpha=1.0, fit_intercept=True, normalize=False, copy_X=True, max_iter=None, tol=0.001, solver='auto', random_state=None
             {
                 r'alpha': [0.0001, 0.0005, 0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1.0] if fast_mode else list(frange(0.001, 1.0, 0.001)),
@@ -882,7 +884,7 @@ def theilsenregressor_training(training_data: list, target_data: list, test_data
     best_model: dict = {r'algorithm': r'TheilSenRegressor', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
     # Train model
     try:
-        _model = model_selection.GridSearchCV(
+        _model = GridSearchCV(
             linear_model.TheilSenRegressor(),  # fit_intercept=True, copy_X=True, max_subpopulation=10000.0, n_subsamples=None, max_iter=300, tol=0.001, random_state=None, n_jobs=None, verbose=False
             {
                 r'copy_X': [False],
@@ -915,7 +917,7 @@ def bernoullinb_training(training_data: list, target_data: list, test_data: list
     best_model: dict = {r'algorithm': r'BernoulliNB', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
     # Train model
     try:
-        _model = model_selection.GridSearchCV(
+        _model = GridSearchCV(
             naive_bayes.BernoulliNB(),  # alpha=1.0, binarize=0.0, fit_prior=True, class_prior=None
             {
                 r'alpha': [0.0001, 0.0003, 0.0005, 0.003, 0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1.0] if fast_mode else list(frange(0.0001, 1.0, 0.0001)),
@@ -943,7 +945,7 @@ def categoricalnb_training(training_data: list, target_data: list, test_data: li
     best_model: dict = {r'algorithm': r'CategoricalNB', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
     # Train model
     try:
-        _model = model_selection.GridSearchCV(
+        _model = GridSearchCV(
             naive_bayes.CategoricalNB(),  # alpha=1.0, fit_prior=True, class_prior=None
             {
                 r'alpha': [0.0001, 0.0005, 0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1.0] if fast_mode else list(frange(0.0001, 1.0, 0.0001)),
@@ -971,7 +973,7 @@ def complementnb_training(training_data: list, target_data: list, test_data: lis
     best_model: dict = {r'algorithm': r'ComplementNB', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
     # Train model
     try:
-        _model = model_selection.GridSearchCV(
+        _model = GridSearchCV(
             naive_bayes.ComplementNB(),  # alpha=1.0, fit_prior=True, class_prior=None, norm=False
             {
                 r'alpha': [0.0001, 0.0005, 0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1.0] if fast_mode else list(frange(0.0001, 1.0, 0.0001)),
@@ -1000,7 +1002,7 @@ def gaussiannb_training(training_data: list, target_data: list, test_data: list,
     best_model: dict = {r'algorithm': r'GaussianNB', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
     # Train model
     try:
-        _model = model_selection.GridSearchCV(
+        _model = GridSearchCV(
             naive_bayes.GaussianNB(),  # priors=None, var_smoothing=1e-09
             {
                 r'var_smoothing': [0.000000001, 0.000000005, 0.00000001, 0.00000005, 0.0000001, 0.0000005, 0.000001, 0.000005, 0.00001, 0.00005, 0.0001, 0.0005] if fast_mode else list(frange(0.000000001, 0.0001, 0.000000001))
@@ -1027,7 +1029,7 @@ def multinomialnb_training(training_data: list, target_data: list, test_data: li
     best_model: dict = {r'algorithm': r'MultinomialNB', r'model': None, r'offset': 5000.0, r'offset_worst': None, r'results': None}
     # Train model
     try:
-        _model = model_selection.GridSearchCV(
+        _model = GridSearchCV(
             naive_bayes.MultinomialNB(),  # alpha=1.0, fit_prior=True, class_prior=None
             {
                 r'alpha': [0.0001, 0.0005, 0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1.0] if fast_mode else list(frange(0.0001, 1.0, 0.0001)),
