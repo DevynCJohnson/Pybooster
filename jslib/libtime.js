@@ -6,7 +6,7 @@
 @brief Miscellaneous time and date functions and prototypes
 @file libtime.js
 @package libtime
-@version 2019.03.28
+@version 2020.03.15
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -33,22 +33,22 @@ along with this software.
 
 
 Date.prototype.mmddyyyy = function() {
-  let mm = this.getMonth() + 1;
-  let dd = this.getDate();
+  const mm = this.getMonth() + 1;
+  const dd = this.getDate();
   return [(mm > 9 ? '' : '0') + mm, (dd > 9 ? '' : '0') + dd, this.getFullYear()].join('');
 };
 
 
 Date.prototype.mm_dd_yyyy = function() {
-  let mm = this.getMonth() + 1;
-  let dd = this.getDate();
+  const mm = this.getMonth() + 1;
+  const dd = this.getDate();
   return [(mm > 9 ? '' : '0') + mm, '/', (dd > 9 ? '' : '0') + dd, '/', this.getFullYear()].join('');
 };
 
 
 Date.prototype.yyyymmdd = function() {
-  let mm = this.getMonth() + 1;
-  let dd = this.getDate();
+  const mm = this.getMonth() + 1;
+  const dd = this.getDate();
   return [this.getFullYear(), (mm > 9 ? '' : '0') + mm, (dd > 9 ? '' : '0') + dd].join('');
 };
 
@@ -62,12 +62,12 @@ Date.prototype.yyyy_mm_dd = function() {
 
 
 Date.prototype.mmyyyy = function() {
-  let mm = this.getMonth() + 1;
+  const mm = this.getMonth() + 1;
   return [(mm > 9 ? '' : '0') + mm, this.getFullYear()].join('');
 };
 
 
 Date.prototype.mm_yyyy = function() {
-  let mm = this.getMonth() + 1;
+  const mm = this.getMonth() + 1;
   return [(mm > 9 ? '' : '0') + mm, '/', this.getFullYear()].join('');
 };
