@@ -1,3 +1,10 @@
+2020-03-15  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* libajax.js:  Applied minor improvements
+	* libhtml.js:  Added more functions
+	* libtime.js:  Applied minor improvements
+	* libutils.js:  Added more functions & added documentation
+
 2020-02-26  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* canalysis:  Removed a deprecated option from CPPCheck
