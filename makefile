@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax makefile; indent-mode normal; eol unix; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Main project makefile
 #' @file makefile
-#' @version 2020.02.21
+#' @version 2020.03.15
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 #' @section SYMBOLS
@@ -644,55 +644,7 @@ uninstall_desktop_entry_maker :
 install_devhelp : | fixperm
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Devhelp Files ==='
 	if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
-	# BASH
-	# TODO: Place all of this code in its own script
-	([ -d /usr/share/doc/bash/ ] && [ ! -d /usr/share/devhelp/books/bash ] && $(LNDIR) /usr/share/doc/bash /usr/share/devhelp/books/bash && $(COPY) $(DEVHELPDIR)/bash.devhelp2 /usr/share/devhelp/books/bash/) || true
-	# Debian
-	([ -d /usr/share/debian-reference/ ] && [ ! -d /usr/share/devhelp/books/debian ] && $(LNDIR) /usr/share/debian-reference /usr/share/devhelp/books/debian && $(COPY) $(DEVHELPDIR)/debian.devhelp2 /usr/share/devhelp/books/debian/) || true
-	([ -d /usr/share/doc/debian-kernel-handbook/kernel-handbook.html/ ] && [ ! -d /usr/share/devhelp/books/debian-kernel ] && $(LNDIR) /usr/share/doc/debian-kernel-handbook/kernel-handbook.html/ /usr/share/devhelp/books/debian-kernel && $(COPY) $(DEVHELPDIR)/debian-kernel.devhelp2 /usr/share/devhelp/books/debian-kernel/) || true
-	# DPDK
-	([ -d /usr/share/doc/dpdk/ ] && [ ! -d /usr/share/devhelp/books/dpdk ] && $(LNDIR) /usr/share/doc/dpdk /usr/share/devhelp/books/dpdk && $(COPY) $(DEVHELPDIR)/dpdk.devhelp2 /usr/share/devhelp/books/dpdk/) || true
-	# GDB
-	([ -d /usr/share/doc/gdb-doc/html/ ] && [ ! -d /usr/share/devhelp/books/gdb ] && $(LNDIR) /usr/share/doc/gdb-doc/html /usr/share/devhelp/books/gdb && $(COPY) $(DEVHELPDIR)/gdb.devhelp2 /usr/share/devhelp/books/gdb/) || true
-	# Python Numpy
-	([ -d /usr/share/doc/python-numpy-doc/html/ ] && [ ! -d /usr/share/devhelp/books/numpy ] && $(LNDIR) /usr/share/doc/python-numpy-doc/html/ /usr/share/devhelp/books/numpy && $(COPY) $(DEVHELPDIR)/numpy.devhelp2 /usr/share/devhelp/books/numpy/) || true
-	# Clang
-	([ ! -d /usr/share/devhelp/books/clang ] && [ -d /usr/share/doc/clang-9-doc/html ] && $(LNDIR) /usr/share/doc/clang-9-doc/html /usr/share/devhelp/books/clang && $(COPY) $(DEVHELPDIR)/clang.devhelp2 /usr/share/devhelp/books/clang/) || true
-	([ ! -d /usr/share/devhelp/books/clang ] && [ -d /usr/share/doc/clang-8-doc/html ] && $(LNDIR) /usr/share/doc/clang-8-doc/html /usr/share/devhelp/books/clang && $(COPY) $(DEVHELPDIR)/clang.devhelp2 /usr/share/devhelp/books/clang/) || true
-	([ ! -d /usr/share/devhelp/books/clang ] && [ -d /usr/share/doc/clang-7-doc/html ] && $(LNDIR) /usr/share/doc/clang-7-doc/html /usr/share/devhelp/books/clang && $(COPY) $(DEVHELPDIR)/clang.devhelp2 /usr/share/devhelp/books/clang/) || true
-	([ ! -d /usr/share/devhelp/books/clang ] && [ -d /usr/share/doc/clang-6-doc/html ] && $(LNDIR) /usr/share/doc/clang-6-doc/html /usr/share/devhelp/books/clang && $(COPY) $(DEVHELPDIR)/clang.devhelp2 /usr/share/devhelp/books/clang/) || true
-	# LLVM
-	([ ! -d /usr/share/devhelp/books/llvm ] && [ -d /usr/share/doc/llvm-9-doc/html ] && $(LNDIR) /usr/share/doc/llvm-9-doc/html /usr/share/devhelp/books/llvm && $(COPY) $(DEVHELPDIR)/llvm.devhelp2 /usr/share/devhelp/books/llvm/) || true
-	([ ! -d /usr/share/devhelp/books/llvm ] && [ -d /usr/share/doc/llvm-8-doc/html ] && $(LNDIR) /usr/share/doc/llvm-8-doc/html /usr/share/devhelp/books/llvm && $(COPY) $(DEVHELPDIR)/llvm.devhelp2 /usr/share/devhelp/books/llvm/) || true
-	([ ! -d /usr/share/devhelp/books/llvm ] && [ -d /usr/share/doc/llvm-7-doc/html ] && $(LNDIR) /usr/share/doc/llvm-7-doc/html /usr/share/devhelp/books/llvm && $(COPY) $(DEVHELPDIR)/llvm.devhelp2 /usr/share/devhelp/books/llvm/) || true
-	([ ! -d /usr/share/devhelp/books/llvm ] && [ -d /usr/share/doc/llvm-6-doc/html ] && $(LNDIR) /usr/share/doc/llvm-6-doc/html /usr/share/devhelp/books/llvm && $(COPY) $(DEVHELPDIR)/llvm.devhelp2 /usr/share/devhelp/books/llvm/) || true
-	# GCC
-	([ ! -d /usr/share/devhelp/books/gcc ] && [ -d /usr/share/doc/gcc-10-base ] && $(LNDIR) /usr/share/doc/gcc-10-base /usr/share/devhelp/books/gcc && $(COPY) $(DEVHELPDIR)/gcc.devhelp2 /usr/share/devhelp/books/gcc/) || true
-	([ ! -d /usr/share/devhelp/books/gcc ] && [ -d /usr/share/doc/gcc-9-base ] && $(LNDIR) /usr/share/doc/gcc-9-base /usr/share/devhelp/books/gcc && $(COPY) $(DEVHELPDIR)/gcc.devhelp2 /usr/share/devhelp/books/gcc/) || true
-	([ ! -d /usr/share/devhelp/books/gcc ] && [ -d /usr/share/doc/gcc-8-base ] && $(LNDIR) /usr/share/doc/gcc-8-base /usr/share/devhelp/books/gcc && $(COPY) $(DEVHELPDIR)/gcc.devhelp2 /usr/share/devhelp/books/gcc/) || true
-	([ ! -d /usr/share/devhelp/books/gcc ] && [ -d /usr/share/doc/gcc-7-base ] && $(LNDIR) /usr/share/doc/gcc-7-base /usr/share/devhelp/books/gcc && $(COPY) $(DEVHELPDIR)/gcc.devhelp2 /usr/share/devhelp/books/gcc/) || true
-	([ ! -d /usr/share/devhelp/books/gcc ] && [ -d /usr/share/doc/gcc-6-base ] && $(LNDIR) /usr/share/doc/gcc-6-base /usr/share/devhelp/books/gcc && $(COPY) $(DEVHELPDIR)/gcc.devhelp2 /usr/share/devhelp/books/gcc/) || true
-	# Flask
-	([ ! -d /usr/share/devhelp/books/flask ] && [ -d /usr/share/doc/python-flask-doc/html ] && $(LNDIR) /usr/share/doc/python-flask-doc/html /usr/share/devhelp/books/flask && $(COPY) $(DEVHELPDIR)/flask.devhelp2 /usr/share/devhelp/books/flask/) || true
-	# SQLAlchemy
-	([ ! -d /usr/share/devhelp/books/sqlalchemy ] && [ -d /usr/share/doc/python-sqlalchemy-doc/html ] && $(LNDIR) /usr/share/doc/python-sqlalchemy-doc/html /usr/share/devhelp/books/sqlalchemy && $(COPY) $(DEVHELPDIR)/sqlalchemy.devhelp2 /usr/share/devhelp/books/sqlalchemy/) || true
-	# Werkzeug
-	([ ! -d /usr/share/devhelp/books/werkzeug ] && [ -d /usr/share/doc/python-werkzeug-doc/html ] && $(LNDIR) /usr/share/doc/python-werkzeug-doc/html /usr/share/devhelp/books/werkzeug && $(COPY) $(DEVHELPDIR)/werkzeug.devhelp2 /usr/share/devhelp/books/werkzeug/) || true
-	# Xapian
-	([ ! -d /usr/share/devhelp/books/xapian ] && [ -d /usr/share/doc/python3-xapian/html ] && $(LNDIR) /usr/share/doc/python3-xapian/html /usr/share/devhelp/books/xapian && $(COPY) $(DEVHELPDIR)/xapian.devhelp2 /usr/share/devhelp/books/xapian/) || true
-	# REPAIR DEVHELP DOCUMENTS
-	# gtkglext
-	([ -f /usr/share/gtk-doc/html/gtkglext/gtkglext.devhelp.gz ] && gunzip /usr/share/gtk-doc/html/gtkglext/gtkglext.devhelp.gz && sed -i -e 's| link="index.html" author="" name="gtkglext">| link="index.html" author="" name="gtkglext" language="C" version="2">|;s|<function |<keyword type="function" |;' /usr/share/gtk-doc/html/gtkglext/gtkglext.devhelp && mv /usr/share/gtk-doc/html/gtkglext/gtkglext.devhelp /usr/share/gtk-doc/html/gtkglext/gtkglext.devhelp2 && gzip /usr/share/gtk-doc/html/gtkglext/gtkglext.devhelp2) || true
-	# pygobject
-	([ -f /usr/share/gtk-doc/html/pygobject/pygobject.devhelp ] && sed -i -e 's| link="index.html" author="" name="gtkglext">| link="index.html" author="" name="gtkglext" version="2">|;s|<function |<keyword type="function" |;' /usr/share/gtk-doc/html/pygobject/pygobject.devhelp && mv /usr/share/gtk-doc/html/pygobject/pygobject.devhelp /usr/share/gtk-doc/html/pygobject/pygobject.devhelp2) || true
-	# CPP-Reference
-	([ -f /usr/share/devhelp/books/cppreference-doxygen-local.tag.xml ] && cp /usr/share/devhelp/books/cppreference-doxygen-local.tag.xml /usr/share/devhelp/books/cppreference-doc-en-c && cp /usr/share/devhelp/books/cppreference-doxygen-web.tag.xml /usr/share/devhelp/books/cppreference-doc-en-c && mv /usr/share/devhelp/books/cppreference-doxygen-local.tag.xml /usr/share/devhelp/books/cppreference-doc-en-cpp && mv /usr/share/devhelp/books/cppreference-doxygen-web.tag.xml /usr/share/devhelp/books/cppreference-doc-en-cpp) || true
-	# Python3.6
-	([ -f /usr/share/devhelp/books/python3.6/python3.6.devhelp.gz ] && gunzip /usr/share/devhelp/books/python3.6/python3.6.devhelp.gz && sed -i -e 's|<book title="Python 3.6 Documentation" name="Python 3.6" version="3.6" link="index.html">|<book title="Python 3.6 Documentation" name="Python 3.6" language="Python" version="2" link="index.html">|;s|<function |<keyword type="function" |;' /usr/share/devhelp/books/python3.6/python3.6.devhelp && mv /usr/share/devhelp/books/python3.6/python3.6.devhelp /usr/share/devhelp/books/python3.6/python3.6.devhelp2 && gzip /usr/share/devhelp/books/python3.6/python3.6.devhelp2) || true
-	# Python3.7
-	([ -f /usr/share/devhelp/books/python3.7/python3.7.devhelp.gz ] && gunzip /usr/share/devhelp/books/python3.7/python3.7.devhelp.gz && sed -i -e 's|<book title="Python 3.7 Documentation" name="Python 3.7" version="3.7" link="index.html">|<book title="Python 3.7 Documentation" name="Python 3.7" language="Python" version="2" link="index.html">|;s|<function |<keyword type="function" |;' /usr/share/devhelp/books/python3.7/python3.7.devhelp && mv /usr/share/devhelp/books/python3.7/python3.7.devhelp /usr/share/devhelp/books/python3.7/python3.7.devhelp2 && gzip /usr/share/devhelp/books/python3.7/python3.7.devhelp2) || true
-	# Python3.8
-	([ -f /usr/share/devhelp/books/python3.8/python3.8.devhelp.gz ] && gunzip /usr/share/devhelp/books/python3.8/python3.8.devhelp.gz && sed -i -e 's|<book title="Python 3.8 Documentation" name="Python 3.8" version="3.8" link="index.html">|<book title="Python 3.8 Documentation" name="Python 3.8" language="Python" version="2" link="index.html">|;s|<function |<keyword type="function" |;' /usr/share/devhelp/books/python3.8/python3.8.devhelp && mv /usr/share/devhelp/books/python3.8/python3.8.devhelp /usr/share/devhelp/books/python3.8/python3.8.devhelp2 && gzip /usr/share/devhelp/books/python3.8/python3.8.devhelp2) || true
+	./tools/install_devhelp_docs.sh '$(DEVHELPDIR)'
 
 uninstall_devhelp :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Devhelp Files ==='
