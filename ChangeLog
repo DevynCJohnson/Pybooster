@@ -1,3 +1,7 @@
+2020-03-22  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* MACROS*.h:  Dropped support for various processors such as Arc, Chris, NIOS, Tile, etc.
+
 2020-03-20  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* PyBooster:  Added more CSS tags to Geany

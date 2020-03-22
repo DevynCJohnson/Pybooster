@@ -4,7 +4,7 @@
 /**
 @brief Standard Macros Header with AT&T-style Assembly
 @file MACROS3.h
-@version 2020.02.26
+@version 2020.03.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -14191,8 +14191,6 @@ LIB_FUNC unsigned long find_next_bit_le(const unsigned long* restrict addr, cons
 #   endif
 #elif defined(__alpha_cix__)
 #   define COUNT_LEADING_ZEROS_0   64
-#elif defined(ARCHARC)
-#   define COUNT_LEADING_ZEROS_0   32
 #elif IS_WORDSIZE_32
 #   define COUNT_LEADING_ZEROS_0   32
 #elif IS_WORDSIZE_64
@@ -16136,24 +16134,6 @@ LIB_FUNC void libc_feupdateenv_vfp(const fenv_t* fenvp) {
 #endif
 
 
-#if (defined(ARCHARC) && IS_WORDSIZE_32)
-#   define add_ssaaaa(sh, sl, ah, al, bh, bl)   asm ("add.f %1, %4, %5ntadc %0, %2, %3" : "=r"((USItype)(sh)), "=&r"((USItype)(sl)) : "%r"((USItype)(ah)), "rIJ"((USItype)(bh)), "%r"((USItype)(al)), "rIJ"((USItype)(bl)))
-#   define sub_ddmmss(sh, sl, ah, al, bh, bl)   asm ("sub.f %1, %4, %5ntsbc %0, %2, %3" : "=r"((USItype)(sh)), "=&r"((USItype)(sl)) : "r"((USItype)(ah)), "rIJ"((USItype)(bh)), "r"((USItype)(al)), "rIJ"((USItype)(bl)))
-#   define __umulsidi3(u, v)   ((UDItype)(USItype)u*(USItype)v)
-#   if (defined(__ARC_NORM__) && (!defined(count_leading_zeros)))
-#      define count_leading_zeros2(count, x)  do { SItype c_; asm ("norm.ft%0, %1ntmov.mit%0,-1;" : "=r"(c_) : "r"(x) : "cc"); (count) = c_ + 1; } while (0x0)
-#   endif
-#endif
-
-
-#ifdef ARCHCRIS
-#   if (__CRIS_arch_version >= 10)
-#      define __umulsidi3(u, v)   ((UDItype)(USItype)(u) * (UDItype)(USItype)(v))
-#   endif
-#   define umul_ppmm(w1, w0, u, v)   do { const UDItype __x = __umulsidi3(u, v); (w0) = (USItype)(__x); (w1) = (USItype)(__x >> 32); } while (0x0)
-#endif
-
-
 #if (defined(ARCHCOLDFIRE) || defined(ARCHM68K))
 #   define COLDFIRE_MATH_PRIVATE_H   (1)
 #   define M68K_MATH_PRIVATE_H   (1)
@@ -16421,43 +16401,6 @@ LIB_FUNC int libc_fetestexcept_mips(const int excepts) {
 #      define UMUL_TIME   10
 #      define UDIV_TIME   100
 #   endif
-#endif
-
-
-#ifdef ARCHNIOS2
-#   define NIO2_MATH_PRIVATE_H   (1)
-#   define _NIO2_MATH_PRIVATE_H_   (1)
-#   define CPU_MATH_PRIVATE_H   (1)
-#   define LDBL_CLASSIFY_COMPAT   (1)
-#   define libc_fesetround(rnd)   __extension__ ({ 0; })
-#   define libc_fetestexcept(exc)   __extension__ ({ 0; })
-#   define libc_feholdexcept_setround(env, exc)   __extension__ ({ (void)(env); 0; })
-#   define libc_feupdateenv_test(env, exc)   __extension__ ({ (void)(env); 0; })
-#   define feraiseexcept(excepts)   __extension__ ({ 0; })
-#   define __feraiseexcept(excepts)   __extension__ ({ 0; })
-#   define feclearexcept(exc)   __extension__ ({ 0; })
-#   define _FP_W_TYPE   unsigned long
-#   define _FP_WS_TYPE   signed long
-#   define _FP_I_TYPE   long
-#   define _FP_MUL_MEAT_S(R, X, Y)   _FP_MUL_MEAT_1_wide(_FP_WFRACBITS_S, R, X, Y, umul_ppmm)
-#   define _FP_MUL_MEAT_D(R, X, Y)   _FP_MUL_MEAT_2_wide(_FP_WFRACBITS_D, R, X, Y, umul_ppmm)
-#   define _FP_MUL_MEAT_Q(R, X, Y)   _FP_MUL_MEAT_4_wide(_FP_WFRACBITS_Q, R, X, Y, umul_ppmm)
-#   define _FP_MUL_MEAT_DW_S(R, X, Y)   _FP_MUL_MEAT_DW_1_wide(_FP_WFRACBITS_S, R, X, Y, umul_ppmm)
-#   define _FP_MUL_MEAT_DW_D(R, X, Y)   _FP_MUL_MEAT_DW_2_wide(_FP_WFRACBITS_D, R, X, Y, umul_ppmm)
-#   define _FP_MUL_MEAT_DW_Q(R, X, Y)   _FP_MUL_MEAT_DW_4_wide(_FP_WFRACBITS_Q, R, X, Y, umul_ppmm)
-#   define _FP_DIV_MEAT_S(R, X, Y)   _FP_DIV_MEAT_1_loop(S, R, X, Y)
-#   define _FP_DIV_MEAT_D(R, X, Y)   _FP_DIV_MEAT_2_udiv(D, R, X, Y)
-#   define _FP_DIV_MEAT_Q(R, X, Y)   _FP_DIV_MEAT_4_udiv(Q, R, X, Y)
-#   define _FP_NANFRAC_S   ((_FP_QNANBIT_S << 1) - 1)
-#   define _FP_NANFRAC_D   ((_FP_QNANBIT_D << 1) - 1), -1
-#   define _FP_NANFRAC_Q   ((_FP_QNANBIT_Q << 1) - 1), -1, -1, -1
-#   define _FP_NANSIGN_S   0
-#   define _FP_NANSIGN_D   0
-#   define _FP_NANSIGN_Q   0
-#   define _FP_KEEPNANFRACP   1
-#   define _FP_QNANNEGATEDP   0
-#   define _FP_CHOOSENAN(fs, wc, R, X, Y, OP)   do { if ((_FP_FRAC_HIGH_RAW_ #   #    fs(X) & _FP_QNANBIT_ #   #    fs) && !(_FP_FRAC_HIGH_RAW_ #   #    fs(Y) & _FP_QNANBIT_ #   #    fs)) { R #   #    _s = Y #   #    _s; _FP_FRAC_COPY_ #   #    wc(R, Y); } else { R #   #    _s = X #   #    _s; _FP_FRAC_COPY_ #   #    wc(R, X); } R #   #    _c = FP_CLS_NAN; } while (0x0)
-#   define _FP_TININESS_AFTER_ROUNDING   0
 #endif
 
 
@@ -17002,76 +16945,6 @@ LIB_FUNC void libc_feresetround(fenv_t* fenvp) {
 #endif
 
 
-#ifdef ARCHTILE
-#   define TILE_MATH_PRIVATE_H   (1)
-#   define _TILE_MATH_PRIVATE_H_   (1)
-#   define CPU_MATH_PRIVATE_H   (1)
-#   define libc_fesetround(rnd)   0
-#   define libc_fetestexcept(exc)   0
-#   define libc_feholdexcept_setround(env, exc)   __extension__ ({ (void)(env); 0; })
-#   define libc_feupdateenv_test(env, exc)   __extension__ ({ (void)(env); 0; })
-#   define feraiseexcept(excepts)   0
-#   define __feraiseexcept(excepts)   0
-#   define feclearexcept(exc)   0
-#   define fetestexcept(exc)   0
-LIB_FUNC int fegetenv(const UNUSED fenv_t* __e) { return 0; }
-LIB_FUNC int __fegetenv(const UNUSED fenv_t* __e) { return 0; }
-LIB_FUNC int fesetenv(const UNUSED fenv_t* __e) { return 0; }
-LIB_FUNC int __fesetenv(const UNUSED fenv_t* __e) { return 0; }
-LIB_FUNC int feupdateenv(const UNUSED fenv_t* __e) { return 0; }
-LIB_FUNC int __feupdateenv(const UNUSED fenv_t* __e) { return 0; }
-LIB_FUNC int fegetround(void) { return FE_TONEAREST; }
-LIB_FUNC int __fegetround(void) { return FE_TONEAREST; }
-LIB_FUNC int fesetround(const UNUSED int __d) { return 0; }
-LIB_FUNC int __fesetround(const UNUSED int __d) { return 0; }
-#   define _FP_W_TYPE   unsigned long
-#   define _FP_WS_TYPE   signed long
-#   define _FP_I_TYPE   long
-#   if IS_WORDSIZE_64
-#      define _FP_MUL_MEAT_S(R, X, Y)   _FP_MUL_MEAT_1_imm(_FP_WFRACBITS_S, R, X, Y)
-#      define _FP_MUL_MEAT_D(R, X, Y)   _FP_MUL_MEAT_1_wide(_FP_WFRACBITS_D, R, X, Y, umul_ppmm)
-#      define _FP_MUL_MEAT_Q(R, X, Y)   _FP_MUL_MEAT_2_wide(_FP_WFRACBITS_Q, R, X, Y, umul_ppmm)
-#      define _FP_MUL_MEAT_DW_S(R, X, Y)   _FP_MUL_MEAT_DW_1_imm(_FP_WFRACBITS_S, R, X, Y)
-#      define _FP_MUL_MEAT_DW_D(R, X, Y)   _FP_MUL_MEAT_DW_1_wide(_FP_WFRACBITS_D, R, X, Y, umul_ppmm)
-#      define _FP_MUL_MEAT_DW_Q(R, X, Y)   _FP_MUL_MEAT_DW_2_wide_3mul(_FP_WFRACBITS_Q, R, X, Y, umul_ppmm)
-#      define _FP_DIV_MEAT_S(R, X, Y)   _FP_DIV_MEAT_1_imm(S, R, X, Y, _FP_DIV_HELP_imm)
-#      define _FP_DIV_MEAT_D(R, X, Y)   _FP_DIV_MEAT_1_udiv_norm(D, R, X, Y)
-#      define _FP_DIV_MEAT_Q(R, X, Y)   _FP_DIV_MEAT_2_udiv(Q, R, X, Y)
-#      define _FP_NANFRAC_S   _FP_QNANBIT_S
-#      define _FP_NANFRAC_D   _FP_QNANBIT_D
-#      define _FP_NANFRAC_Q   _FP_QNANBIT_Q, 0
-#   else  // IS_WORDSIZE_32
-#      define _FP_MUL_MEAT_S(R, X, Y)   _FP_MUL_MEAT_1_wide(_FP_WFRACBITS_S, R, X, Y, umul_ppmm)
-#      define _FP_MUL_MEAT_D(R, X, Y)   _FP_MUL_MEAT_2_wide(_FP_WFRACBITS_D, R, X, Y, umul_ppmm)
-#      define _FP_MUL_MEAT_Q(R, X, Y)   _FP_MUL_MEAT_4_wide(_FP_WFRACBITS_Q, R, X, Y, umul_ppmm)
-#      define _FP_MUL_MEAT_DW_S(R, X, Y)   _FP_MUL_MEAT_DW_1_wide(_FP_WFRACBITS_S, R, X, Y, umul_ppmm)
-#      define _FP_MUL_MEAT_DW_D(R, X, Y)   _FP_MUL_MEAT_DW_2_wide(_FP_WFRACBITS_D, R, X, Y, umul_ppmm)
-#      define _FP_MUL_MEAT_DW_Q(R, X, Y)   _FP_MUL_MEAT_DW_4_wide(_FP_WFRACBITS_Q, R, X, Y, umul_ppmm)
-#      define _FP_DIV_MEAT_S(R, X, Y)   _FP_DIV_MEAT_1_loop(S, R, X, Y)
-#      define _FP_DIV_MEAT_D(R, X, Y)   _FP_DIV_MEAT_2_udiv(D, R, X, Y)
-#      define _FP_DIV_MEAT_Q(R, X, Y)   _FP_DIV_MEAT_4_udiv(Q, R, X, Y)
-#      define _FP_NANFRAC_S   _FP_QNANBIT_S
-#      define _FP_NANFRAC_D   _FP_QNANBIT_D, 0
-#      define _FP_NANFRAC_Q   _FP_QNANBIT_Q, 0, 0, 0
-#   endif
-#   define _FP_NANSIGN_S   1
-#   define _FP_NANSIGN_D   1
-#   define _FP_NANSIGN_Q   1
-#   define _FP_KEEPNANFRACP   1
-#   define _FP_QNANNEGATEDP   0
-#   define _FP_CHOOSENAN(fs, wc, R, X, Y, OP)   do { if ((_FP_FRAC_HIGH_RAW_##fs(X) & _FP_QNANBIT_##fs) && !(_FP_FRAC_HIGH_RAW_##fs(Y) & _FP_QNANBIT_##fs)) { R##_s = Y##_s; _FP_FRAC_COPY_##wc(R, Y); } else { R##_s = X##_s; _FP_FRAC_COPY_##wc(R, X); } R##_c = FP_CLS_NAN; } while (0x0)
-#   define _FP_TININESS_AFTER_ROUNDING   0
-#endif
-
-
-#if (defined(ARCHVAX) && IS_WORDSIZE_32)
-#   define add_ssaaaa(sh, sl, ah, al, bh, bl)   asm ("addl2 %5, %1ntadwc %3, %0;" : "=g"((USItype)(sh)), "=&g"((USItype)(sl)) : "%0"((USItype)(ah)), "g"((USItype)(bh)), "%1"((USItype)(al)), "g"((USItype) (bl)))
-#   define sub_ddmmss(sh, sl, ah, al, bh, bl)   asm ("subl2 %5, %1ntsbwc %3, %0;" : "=g"((USItype)(sh)), "=&g"((USItype)(sl)) : "0"((USItype)(ah)), "g"((USItype)(bh)), "1"((USItype)(al)), "g"((USItype)(bl)))
-#   define umul_ppmm(xh, xl, m0, m1)   do { union __union_umul_ppmm { UDItype __ll; struct { USItype __l, __h;} __i; } __xx; USItype __m0 = (m0), __m1 = (m1); asm ("emul %1, %2,$0, %0;" : "=r"(__xx.__ll) : "g"(__m0), "g"(__m1)); (xh) = __xx.__i.__h; (xl) = __xx.__i.__l; (xh) += ((((SItype) __m0 >> 31) & __m1) + (((SItype) __m1 >> 31) & __m0)); } while (0x0)
-#   define sdiv_qrnnd(q, r, n1, n0, d)   do { union __union_sdiv_qrnnd { DItype __ll; struct { SItype __l, __h;} __i; } __xx; __xx.__i.__h = n1; __xx.__i.__l = n0; asm ("ediv %3, %2, %0, %1;" : "=g"(q), "=g"(r) : "g"(__xx.__ll), "g"(d)); } while (0x0)
-#endif
-
-
 #ifdef ARCHX86
 #   define X86_64_MATH_PRIVATE_H   (1)
 #   define I386_MATH_PRIVATE_H   (1)
@@ -17492,35 +17365,6 @@ LIB_FUNC void libc_feresetround_sse(fenv_t* e) {
 #      define udiv_qrnnd(q, r, n1, n0, dv)  asm ("div{q} %4;" : "=a"((UDItype)(q)), "=d"((UDItype)(r)) : "0"((UDItype)(n0)), "1"((UDItype)(n1)), "rm"((UDItype)(dv)))
 #   endif
 #   define UMUL_TIME   40
-#   define UDIV_TIME   40
-#endif
-
-
-#if (defined(ARCHXSTORMY) && (!defined(count_leading_zeros)))
-#   define count_leading_zeros2(count, x)   do { UHItype size = W_TYPE_SIZE; for ((count) = 0; size; size -= 16) { UHItype c = __clzhi2((x) >> (size - 16)); (count) += c; if (c != 16) { break; } } } while (0x0)
-#endif
-
-
-#if (defined(ARCHXTENSA) && IS_WORDSIZE_32)
-#   define umul_ppmm(w1, w0, u, v)   do { const DWunion __w = { .ll = __builtin_umulsidi3(u, v) }; w1 = __w.s.high; w0 = __w.s.low; } while (0x0)
-#   define __umulsidi3(u, v)    __builtin_umulsidi3(u, v)
-#endif
-
-
-#if (defined(ARCHZ8000) && IS_WORDSIZE_16)
-#   define add_ssaaaa(sh, sl, ah, al, bh, bl)   asm ("add %H1, %H5ntadc %H0, %H3;" : "=r"((unsigned int)(sh)), "=&r"((unsigned int)(sl)) : "%0"((unsigned int)(ah)), "r"((unsigned int)(bh)), "%1"((unsigned int)(al)), "rQR"((unsigned int)(bl)))
-#   define sub_ddmmss(sh, sl, ah, al, bh, bl)   asm ("sub %H1, %H5ntsbc %H0, %H3;" : "=r"((unsigned int)(sh)), "=&r"((unsigned int)(sl)) : "0"((unsigned int)(ah)), "r"((unsigned int)(bh)), "1"((unsigned int)(al)), "rQR"((unsigned int)(bl)))
-#   define umul_ppmm(xh, xl, m0, m1)   do { union __union_umul_ppmm {long __ll; struct {unsigned int __h, __l;} __i; } __xx; unsigned int __m0 = (m0), __m1 = (m1); asm ("mult %S0, %H3;" : "=r"(__xx.__i.__h), "=r"(__xx.__i.__l) : "%1"(__m0), "rQR"(__m1)); (xh) = __xx.__i.__h; (xl) = __xx.__i.__l; (xh) += ((((signed int) __m0 >> 15) & __m1) + (((signed int) __m1 >> 15) & __m0)); } while (0x0)
-#endif
-
-
-#ifdef _TMS320C6X
-#   define add_ssaaaa(sh, sl, ah, al, bh, bl)   do { UDItype __ll = 0; asm ("addu .l1 %1, %2, %0;" : "=a"(__ll) : "a"(al), "a"(bl)); (sl) = (USItype)__ll; (sh) = ((USItype)(__ll >> 32)) + (ah) + (bh); } while (0x0)
-#   ifdef _TMS320C6400_PLUS
-#      define __umulsidi3(u,v) ((UDItype)(USItype)u*(USItype)v)
-#      define umul_ppmm(w1, w0, u, v)   do { UDItype __x = (UDItype) (USItype) (u) * (USItype) (v); (w1) = (USItype) (__x >> 32); (w0) = (USItype) (__x); } while (0x0)
-#   endif
-#   define UMUL_TIME   4
 #   define UDIV_TIME   40
 #endif
 
@@ -41837,12 +41681,7 @@ LIB_FUNC int umount2(const char* restrict special, const int flags) {
 #define M_ALIGN_SUB(x, align)   ((size_t)(x) & ((align) - 1))
 /** real_size is the size we actually have to allocate, allowing for overhead and alignment */
 #define REAL_SIZE(sz)   ((sz) < sizeof(struct freelist_entry) - SIZEOF_SIZE_T ? sizeof(struct freelist_entry) : ((sz) + SIZEOF_SIZE_T + M_ALIGN((sz), SIZEOF_SIZE_T)))
-#ifdef ARCHXSTORMY  // MALLOC_LIMIT
-register void* stack_pointer asm ("r15;");
-#   define MALLOC_LIMIT    stack_pointer
-#else
-#   define MALLOC_LIMIT   __builtin_frame_address(0)
-#endif  // MALLOC_LIMIT
+#define MALLOC_LIMIT   __builtin_frame_address(0)
 #ifndef MALLOC_ALIGNMENT
 /** MALLOC_ALIGNMENT is the minimum alignment for malloced chunks; It must be a power of two at least 2*(sizeof(size_t)) */
 #   define MALLOC_ALIGNMENT   (2 * SIZEOF_SIZE_T)

@@ -4,7 +4,7 @@
 /**
 @brief Standard Macros Header with AT&T-style Assembly
 @file MACROS2.h
-@version 2020.02.26
+@version 2020.03.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -4602,8 +4602,6 @@ typedef greg_t align_ptr   __jmp_buf[6];
 #   endif
 #elif defined(ARCHALPHA)
 typedef long   __jmp_buf[17];
-#elif defined(ARCHARC)
-typedef int   __jmp_buf[16];
 #elif defined(ARCHARM)
 #   ifdef __ARM_EABI__
 typedef int align256   __jmp_buf[64];
@@ -4616,8 +4614,6 @@ typedef int   __jmp_buf[22];
 typedef int   __jmp_buf[10];
 #      endif
 #   endif
-#elif defined(ARCHAVR)
-typedef int   __jmp_buf[11];
 #elif defined(ARCHBLACKFIN)
 typedef struct jmp_buf {
 	unsigned long __pregs[6];
@@ -4632,8 +4628,6 @@ typedef struct jmp_buf {
 	unsigned long __bregs[4];
 	unsigned long pc;
 } __jmp_buf[1];
-#elif defined(ARCHCRIS)
-typedef int   __jmp_buf[18];
 #elif defined(ARCHITANIUM)
 typedef long align16   __jmp_buf[70];
 #elif defined(ARCHM68K)
@@ -4684,14 +4678,6 @@ typedef struct jmp_buf {
 } __jmp_buf[1];
 #elif defined(ARCHSPARC)
 typedef greg_t   __jmp_buf[3];
-#elif defined(ARCHXTENSA)
-#   ifdef __XTENSA_WINDOWED_ABI__
-typedef int   __jmp_buf[17];
-#   elif defined(__XTENSA_CALL0_ABI__)
-typedef int __jmp_buf[6];
-#   else
-#      error   "Unsupported Xtensa ABI!"
-#   endif
 #else
 #   error   "Unsupported target platform (__jmp_buf)!"
 #endif
@@ -4913,32 +4899,6 @@ typedef union pthread_mutex {
 	long __align;
 } pthread_mutex_t;
 #   define __PTHREAD_MUTEX_HAVE_PREV   1
-#elif defined(ARCHARC)
-/** Data structure for mutex handling */
-typedef union pthread_mutex {
-	struct __pthread_mutex_s {
-		int __lock;
-		unsigned int __count;
-		_pthread_descr __owner;
-#   if IS_WORDSIZE_64
-		unsigned int __nusers;
-#   endif
-		int __kind;
-#   if IS_WORDSIZE_64
-		int __spins;
-		__pthread_list_t __list;
-#      define __PTHREAD_MUTEX_HAVE_PREV   (1)
-#   else
-		unsigned int __nusers;
-		union __union_mutex_spins {
-			int __spins;
-			__pthread_slist_t __list;
-		} mutex_spins;
-#   endif
-	} __data;
-	char __size[SIZEOF_PTHREAD_MUTEX_T];
-	long __align;
-} pthread_mutex_t;
 #elif defined(ARCHPARISC)
 /** Data structure for mutex handling */
 typedef union pthread_mutex {
@@ -5006,7 +4966,7 @@ typedef union pthread_mutex {
 	char __size[SIZEOF_PTHREAD_MUTEX_T];
 	long __align;
 } pthread_mutex_t;
-#elif (defined(ARCHM68K) || defined(ARCHMICROBLAZE) || defined(ARCHNIOS2) || defined(ARCHSUPERH))
+#elif (defined(ARCHM68K) || defined(ARCHMICROBLAZE) || defined(ARCHSUPERH))
 /** Data structure for mutex handling */
 typedef union pthread_mutex {
 	struct __pthread_mutex_s {
@@ -5115,32 +5075,6 @@ typedef union pthread_mutex {
 	char __size[SIZEOF_PTHREAD_MUTEX_T];
 	long __align;
 } pthread_mutex_t;
-#elif defined(ARCHTILE)
-/** Data structure for mutex handling */
-typedef union pthread_mutex {
-	struct __pthread_mutex_s {
-		int __lock;
-		unsigned int __count;
-		_pthread_descr __owner;
-#   if IS_WORDSIZE_64
-		unsigned int __nusers;
-#   endif
-		int __kind;
-#   if IS_WORDSIZE_64
-		int __spins;
-		__pthread_list_t __list;
-#      define __PTHREAD_MUTEX_HAVE_PREV   1
-#   else
-		unsigned int __nusers;
-		union __union_mutex_spins {
-			int __spins;
-			__pthread_slist_t __list;
-		} mutex_spins;
-#   endif
-	} __data;
-	char __size[SIZEOF_PTHREAD_MUTEX_T];
-	long __align;
-} pthread_mutex_t;
 #elif (defined(ARCHX86) && (!defined(ARCHI386)))
 /** Data structures for mutex handling */
 typedef union pthread_mutex {
@@ -5196,13 +5130,13 @@ typedef union pthread_mutex {
 #endif
 typedef pthread_mutex_t   bc_mutex_t;
 #define __DEFINED_pthread_mutexattr_t   (1)
-#if (defined(ARCHARM) || defined(ARCHPARISC) || defined(ARCHNIOS2) || defined(ARCHSUPERH))
+#if (defined(ARCHARM) || defined(ARCHPARISC) || defined(ARCHSUPERH))
 /** Mutex attribute datatype */
 typedef union pthread_mutexattr {
 	char __size[SIZEOF_PTHREAD_MUTEXATTR_T];
 	long __align;
 } pthread_mutexattr_t;
-#elif (defined(ARCHALPHA) || defined(ARCHARC) || defined(ARCHITANIUM) || defined(ARCHS390) || defined(ARCHM68K) || defined(ARCHMICROBLAZE) || defined(ARCHMIPS) || defined(ARCHPOWERPC) || defined(ARCHSPARC) || defined(ARCHTILE))
+#elif (defined(ARCHALPHA) || defined(ARCHITANIUM) || defined(ARCHS390) || defined(ARCHM68K) || defined(ARCHMICROBLAZE) || defined(ARCHMIPS) || defined(ARCHPOWERPC) || defined(ARCHSPARC))
 /** Mutex attribute datatype */
 typedef union pthread_mutexattr {
 	char __size[SIZEOF_PTHREAD_MUTEXATTR_T];
@@ -5277,28 +5211,6 @@ typedef union pthread_rwlock {
 		unsigned long __pad1, __pad2;
 		unsigned int __flags;
 	} __data;
-	char __size[SIZEOF_PTHREAD_RWLOCK_T];
-	long __align;
-} pthread_rwlock_t;
-#elif defined(ARCHARC)
-/** Data structure for read-write lock variable handling */
-typedef union pthread_rwlock {
-#   if IS_WORDSIZE_64
-	struct __pthread_rwlock_s {
-		int __lock;
-		unsigned int __nr_readers, __readers_wakeup, __writer_wakeup, __nr_readers_queued, __nr_writers_queued;
-		int __writer, __shared;
-		unsigned long __pad1, __pad2;
-		unsigned int __flags;
-	} __data;
-#   else
-	struct __pthread_rwlock_s {
-		int __lock;
-		unsigned int __nr_readers, __readers_wakeup, __writer_wakeup, __nr_readers_queued, __nr_writers_queued;
-		unsigned char __pad1, __pad2, __shared, __flags;
-		int __writer;
-	} __data;
-#   endif
 	char __size[SIZEOF_PTHREAD_RWLOCK_T];
 	long __align;
 } pthread_rwlock_t;
@@ -5383,22 +5295,6 @@ typedef union pthread_rwlock {
 	char __size[SIZEOF_PTHREAD_RWLOCK_T];
 	long __align;
 } pthread_rwlock_t;
-#elif defined(ARCHNIOS2)
-/** Data structure for read-write lock variable handling */
-typedef union pthread_rwlock {
-	struct __pthread_rwlock_s {
-		int __lock;
-		unsigned int __nr_readers, __readers_wakeup, __writer_wakeup, __nr_readers_queued, __nr_writers_queued;
-#   if IS_BIG_ENDIAN
-		unsigned char __pad1, __pad2, __shared, __flags;
-#   else
-		unsigned char __flags, __shared, __pad1, __pad2;
-#   endif
-		int __writer;
-	} __data;
-	char __size[SIZEOF_PTHREAD_RWLOCK_T];
-	long __align;
-} pthread_rwlock_t;
 #elif defined(ARCHPOWERPC)
 /** Data structure for read-write lock variable handling */
 typedef union pthread_rwlock {
@@ -5462,28 +5358,6 @@ typedef union pthread_rwlock {
 	char __size[SIZEOF_PTHREAD_RWLOCK_T];
 	long __align;
 } pthread_rwlock_t;
-#elif defined(ARCHTILE)
-/** Data structure for read-write lock variable handling */
-typedef union pthread_rwlock {
-#   if IS_WORDSIZE_64
-	struct __pthread_rwlock_s {
-		int __lock;
-		unsigned int __nr_readers, __readers_wakeup, __writer_wakeup, __nr_readers_queued, __nr_writers_queued;
-		int __writer, __shared;
-		unsigned long __pad1, __pad2;
-		unsigned int __flags;
-	} __data;
-#   else
-	struct __pthread_rwlock_s {
-		int __lock;
-		unsigned int __nr_readers, __readers_wakeup, __writer_wakeup, __nr_readers_queued, __nr_writers_queued;
-		unsigned char __flags, __shared, __pad1, __pad2;
-		int __writer;
-	} __data;
-#   endif
-	char __size[SIZEOF_PTHREAD_RWLOCK_T];
-	long __align;
-} pthread_rwlock_t;
 #elif defined(ARCHXTENSA)
 /** Data structure for read-write lock variable handling */
 typedef union pthread_rwlock {
@@ -5522,7 +5396,7 @@ typedef union pthread_cond {
 	char __size[SIZEOF_PTHREAD_COND_T];
 	long __align;
 } pthread_cond_t;
-#elif (defined(ARCHALPHA) || defined(ARCHARC) || defined(ARCHAARCH32) || defined(ARCHPARISC) || defined(ARCHM68K) || defined(ARCHMICROBLAZE) || defined(ARCHMIPS) || defined(ARCHNIOS2) || defined(ARCHPOWERPC) || defined(ARCHS390) || defined(ARCHSPARC) || defined(ARCHSUPERH) || defined(ARCHTILE))
+#elif (defined(ARCHALPHA) || defined(ARCHAARCH32) || defined(ARCHPARISC) || defined(ARCHM68K) || defined(ARCHMICROBLAZE) || defined(ARCHMIPS) || defined(ARCHPOWERPC) || defined(ARCHS390) || defined(ARCHSPARC) || defined(ARCHSUPERH))
 /** Data structure for conditional variable handling */
 typedef union pthread_cond {
 	struct __pthread_cond_s {
@@ -5559,13 +5433,13 @@ typedef union pthread_cond {
 #endif
 typedef pthread_cond_t   bc_cond_t;
 #define __DEFINED_pthread_condattr_t   (1)
-#if (defined(ARCHALPHA) || defined(ARCHARC) || defined(ARCHAARCH64) || defined(ARCHITANIUM) || defined(ARCHM68K) || defined(ARCHMICROBLAZE) || defined(ARCHMIPS) || defined(ARCHPOWERPC) || defined(ARCHS390) || defined(ARCHSPARC) || defined(ARCHTILE) || defined(ARCHX86_64))
+#if (defined(ARCHALPHA) || defined(ARCHAARCH64) || defined(ARCHITANIUM) || defined(ARCHM68K) || defined(ARCHMICROBLAZE) || defined(ARCHMIPS) || defined(ARCHPOWERPC) || defined(ARCHS390) || defined(ARCHSPARC) || defined(ARCHX86_64))
 /** POSIX condition attribute datatype */
 typedef union pthread_condattr {
 	char __size[SIZEOF_PTHREAD_CONDATTR_T];
 	int __align;
 } pthread_condattr_t;
-#elif (defined(ARCHAARCH32) || defined(ARCHPARISC) || defined(ARCHNIOS2) || defined(ARCHSUPERH) || defined(ARCHXTENSA))
+#elif (defined(ARCHAARCH32) || defined(ARCHPARISC) || defined(ARCHSUPERH) || defined(ARCHXTENSA))
 /** POSIX condition attribute datatype */
 typedef union pthread_condattr {
 	char __size[SIZEOF_PTHREAD_CONDATTR_T];
@@ -7334,102 +7208,6 @@ extern FIXED_C_TYPE FIXED_USASHL (FIXED_C_TYPE, word_type);
 #   define TO_MODE_UNSIGNED   1
 #   define TO_FIXED_SIZE   16
 #endif
-
-
-#if (IS_GNUC && defined(ARCHAVR) && (!(defined(_AVRGCC_STDFIX_H) || defined(_AVRGCC_STDFIX_H_))))  // AVR-specific code
-#define AVRGCC_STDFIX_H   (1)
-#define _AVRGCC_STDFIX_H   (1)
-#define _AVRGCC_STDFIX_H_   (1)
-
-
-#define abshr   __builtin_avr_abshr
-#define absr   __builtin_avr_absr
-#define abslr   __builtin_avr_abslr
-#define abshk   __builtin_avr_abshk
-#define absk   __builtin_avr_absk
-#if (SIZEOF_INT == 2)
-#   define abslk   __builtin_avr_abslk
-#   define absllr   __builtin_avr_absllr
-#   define absllk   __builtin_avr_absllk
-#endif
-#define roundhr   __builtin_avr_roundhr
-#define roundr   __builtin_avr_roundr
-#define roundlr   __builtin_avr_roundlr
-#define rounduhr   __builtin_avr_rounduhr
-#define roundur   __builtin_avr_roundur
-#define roundulr   __builtin_avr_roundulr
-#define roundhk   __builtin_avr_roundhk
-#define roundk   __builtin_avr_roundk
-#define rounduhk   __builtin_avr_rounduhk
-#define rounduk   __builtin_avr_rounduk
-#if (SIZEOF_INT == 2)
-#   define roundlk   __builtin_avr_roundlk
-#   define roundulk   __builtin_avr_roundulk
-#   define roundllr   __builtin_avr_roundllr
-#   define roundullr   __builtin_avr_roundullr
-#   define roundllk   __builtin_avr_roundllk
-#   define roundullk   __builtin_avr_roundullk
-#endif
-#define countlshr   __builtin_avr_countlshr
-#define countlsr   __builtin_avr_countlsr
-#define countlslr   __builtin_avr_countlslr
-#define countlsuhr   __builtin_avr_countlsuhr
-#define countlsur   __builtin_avr_countlsur
-#define countlsulr   __builtin_avr_countlsulr
-#define countlshk   __builtin_avr_countlshk
-#define countlsk   __builtin_avr_countlsk
-#define countlsuhk   __builtin_avr_countlsuhk
-#define countlsuk   __builtin_avr_countlsuk
-#if (SIZEOF_INT == 2)
-#   define countlslk   __builtin_avr_countlslk
-#   define countlsulk   __builtin_avr_countlsulk
-#   define countlsllr   __builtin_avr_countlsllr
-#   define countlsullr   __builtin_avr_countlsullr
-#   define countlsllk   __builtin_avr_countlsllk
-#   define countlsullk   __builtin_avr_countlsullk
-#endif
-#define bitshr   __builtin_avr_bitshr
-#define bitsr   __builtin_avr_bitsr
-#define bitslr   __builtin_avr_bitslr
-#define bitsuhr   __builtin_avr_bitsuhr
-#define bitsur   __builtin_avr_bitsur
-#define bitsulr   __builtin_avr_bitsulr
-#define bitshk   __builtin_avr_bitshk
-#define bitsk   __builtin_avr_bitsk
-#define bitsuhk   __builtin_avr_bitsuhk
-#define bitsuk   __builtin_avr_bitsuk
-#if (SIZEOF_INT == 2)
-#   define bitslk   __builtin_avr_bitslk
-#   define bitsulk   __builtin_avr_bitsulk
-#   define bitsllr   __builtin_avr_bitsllr
-#   define bitsullr   __builtin_avr_bitsullr
-#   define bitsllk   __builtin_avr_bitsllk
-#   define bitsullk   __builtin_avr_bitsullk
-#endif
-#define hrbits   __builtin_avr_hrbits
-#define rbits   __builtin_avr_rbits
-#define lrbits   __builtin_avr_lrbits
-#define uhrbits   __builtin_avr_uhrbits
-#define urbits   __builtin_avr_urbits
-#define ulrbits   __builtin_avr_ulrbits
-#define hkbits   __builtin_avr_hkbits
-#define kbits   __builtin_avr_kbits
-#define uhkbits   __builtin_avr_uhkbits
-#define ukbits   __builtin_avr_ukbits
-#if (SIZEOF_INT == 2)
-#   define lkbits   __builtin_avr_lkbits
-#   define ulkbits   __builtin_avr_ulkbits
-#   define llrbits   __builtin_avr_llrbits
-#   define ullrbits   __builtin_avr_ullrbits
-#   define llkbits   __builtin_avr_llkbits
-#   define ullkbits   __builtin_avr_ullkbits
-#endif
-#define absfx   __builtin_avr_absfx
-#define roundfx   __builtin_avr_roundfx
-#define countlsfx   __builtin_avr_countlsfx
-
-
-#endif  // AVRGCC_STDFIX_H
 
 
 #if (defined(FROM_MODE_NAME_S) && defined(TO_MODE_NAME_S))
@@ -10807,18 +10585,6 @@ struct sigcontext {
 #   define IA64_SC_FLAG_ONSTACK   1
 #   define IA64_SC_FLAG_IN_SYSCALL   2
 #   define IA64_SC_FLAG_FPH_VALID   4
-#elif defined(ARCHXTENSA)
-struct sigcontext {
-	unsigned long sc_pc, sc_ps, sc_lbeg, sc_lend, sc_lcount, sc_sar, sc_acclo, sc_acchi;
-	unsigned long sc_a[16];
-	void* sc_xtregs;
-};
-#   define SIGCONTEXT   unsigned long _info, ucontext_t*
-#   define SIGCONTEXT_EXTRA_ARGS   _info,
-#   define GET_PC(_ctx)   ((void*)(_ctx->uc_mcontext.sc_pc & 0x3fffffff))
-#   define GET_FRAME(_ctx)   ((void*)_ctx->uc_mcontext.sc_a[1])
-#   define GET_STACK(_ctx)   ((void*)_ctx->uc_mcontext.sc_a[1])
-#   define CALL_SIGHANDLER(handler, signo, _ctx)   (handler)((signo), SIGCONTEXT_EXTRA_ARGS(_ctx))
 #elif defined(ARCHSUPERH)
 #   define SIGCONTEXT   int _a2, int _a3, int _a4, struct sigcontext
 #   define SIGCONTEXT_EXTRA_ARGS   _a2, _a3, _a4,
@@ -11045,101 +10811,6 @@ typedef struct __gnu_unwind_state {
 
 
 #endif  // UNWIND_ARM_COMMON_H
-
-
-/* AVR ARCHITECTURE & DEVICE INFORMATION DATATYPES (<avr-arch.h>) */
-
-
-#if (defined(ARCHAVR) && SUPPORTS_STDFIX && (!defined(AVR_ARCH_H)))
-#define AVR_ARCH_H   (1)
-#define _AVR_ARCH_H   (1)
-#define _AVR_ARCH_H_   (1)
-
-
-#define AVR_MMCU_DEFAULT   "avr2"
-
-/** Indices for the avr_arch_types[] table */
-typedef enum avr_arch_id {
-	ARCH_UNKNOWN, ARCH_AVR1,
-	ARCH_AVR2, ARCH_AVR25,
-	ARCH_AVR3, ARCH_AVR31,
-	ARCH_AVR35, ARCH_AVR4,
-	ARCH_AVR5, ARCH_AVR51,
-	ARCH_AVR6, ARCH_AVRTINY,
-	ARCH_AVRXMEGA2, ARCH_AVRXMEGA4,
-	ARCH_AVRXMEGA5, ARCH_AVRXMEGA6, ARCH_AVRXMEGA7
-} avr_arch_id_t;
-
-/** Architecture-specific properties */
-typedef struct avr_arch {
-	int asm_only;
-	// Core have 'MUL*' instructions
-	int have_mul;
-	// Core have 'CALL' and 'JMP' instructions
-	int have_jmp_call;
-	// Core have 'MOVW' and 'LPM Rx,Z' instructions
-	int have_movw_lpmx;
-	// Core have 'ELPM' instructions
-	int have_elpm;
-	// Core have 'ELPM Rx,Z' instructions
-	int have_elpmx;
-	// Core have 'EICALL' and 'EIJMP' instructions
-	int have_eijmp_eicall;
-	// This is an XMEGA core
-	int xmega_p;
-	// This core has the RAMPD special function register and thus also the RAMPX, RAMPY, and RAMPZ registers
-	int have_rampd;
-	// This is a TINY core
-	int tiny_p;
-	// Default start of data section address for architecture
-	int default_data_section_start;
-	// Offset between SFR address and RAM address: SFR-address = RAM-address - sfr_offset
-	int sfr_offset;
-	// Architecture id to built-in define __AVR_ARCH__ (NULL -> no macro)
-	const char* const macro;
-	// Architecture name
-	const char* const name;
-} avr_arch_t;
-
-/** Device-specific properties */
-typedef struct avr_mcu {
-	// Device name
-	const char* const name;
-	// Index in avr_arch_types[]
-	enum avr_arch_id arch_id;
-	// Device specific feature
-	int dev_attribute;
-	// Must lie outside user's namespace; NULL == no macro
-	const char* const macro;
-	// Start of data section
-	int data_section_start;
-	// Start of text section
-	int text_section_start;
-	// Number of 64k segments in the flash
-	int n_flash;
-} avr_mcu_t;
-
-/** AVR device specific features */
-enum avr_device_specific_features {
-	AVR_ISA_NONE,
-	AVR_ISA_RMW = 1,  //!< Device has RMW instructions
-	AVR_SHORT_SP = 2,  //!< Stack Pointer has 8 bits width
-	AVR_ERRATA_SKIP = 4  //!< Device has a core erratum
-};
-
-/** Map architecture to its texinfo string */
-typedef struct avr_arch_info {
-	enum avr_arch_id arch_id;  //!< Architecture ID
-	const char* texinfo;  //!< Textinfo source to describe the archtiecture
-} avr_arch_info_t;
-
-/** Preprocessor macros to define depending on MCU type */
-static const UNUSED avr_arch_t avr_arch_types[];
-static const UNUSED avr_arch_t* avr_arch;
-static const UNUSED avr_mcu_t avr_mcu_types[];
-
-
-#endif  // AVR_ARCH_H
 
 
 /* LOW-LEVEL IO (<io.h>) */

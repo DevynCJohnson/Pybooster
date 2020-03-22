@@ -4,7 +4,7 @@
 /**
 @brief Standard Macros Header Providing Additional Simple Code
 @file MACROS.h
-@version 2020.02.26
+@version 2020.03.22
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -2593,10 +2593,6 @@ typedef __SLONGWORD_TYPE   syscall_arg_t;
 #   define __UINTPTR_TYPE__   __UWORD_TYPE
 #endif
 #define __USECONDS_T_TYPE   __U32_TYPE
-#ifdef ARCHAVR
-#   define __SMALL_BITFIELDS
-#   define _POINTER_INT   short
-#endif
 
 /** @} */  // }
 
