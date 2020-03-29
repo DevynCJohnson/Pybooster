@@ -1,6 +1,8 @@
 2020-03-29  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* flake8_optimal.py:  Simplified some code
+	* Geany:  Tweaked some of the template files used by Geany
+	* PyBooster:  Tweaked the .gitattributes and .gitignore files
 
 2020-03-22  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 

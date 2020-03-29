@@ -22,21 +22,47 @@ var/
 
 # Archive & Compression Files
 
+*.ar
+*.arj
 *.bz2
+*.cbr
+*.cbz
+*.cpio
+*.crx
 *.gz
+*.iso
+*.lrz
+*.lz
+*.lz4
+*.lzh
 *.lzma
+*.rar
 *.tar
+*.tar.7z
 *.tar.bz2
 *.tar.gz
+*.tar.lrz
+*.tar.lz
+*.tar.lz4
 *.tar.lzma
+*.tar.lzo
+*.tar.rz
 *.tar.xz
+*.tar.Z
+*.tgz
+*.txz
+*.war
 *.xz
 *.Z
 *.zip
 
 # Package Files
 
+*.apk
 *.deb
+*.eopkg
+*.ipk
+*.msi
 *.rpm
 
 # Project Configuration Files

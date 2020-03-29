@@ -19,14 +19,36 @@ mkinstalldirs linguist-generated=true linguist-vendored
 
 # Archive & Compression Files
 
+*.ar binary linguist-generated=true linguist-vendored
+*.arj binary linguist-generated=true linguist-vendored
 *.bz2 binary linguist-generated=true linguist-vendored
+*.cbr binary linguist-generated=true linguist-vendored
+*.cbz binary linguist-generated=true linguist-vendored
+*.cpio binary linguist-generated=true linguist-vendored
+*.crx binary linguist-generated=true linguist-vendored
 *.gz binary linguist-generated=true linguist-vendored
+*.iso binary linguist-generated=true linguist-vendored
+*.lrz binary linguist-generated=true linguist-vendored
+*.lz binary linguist-generated=true linguist-vendored
+*.lz4 binary linguist-generated=true linguist-vendored
+*.lzh binary linguist-generated=true linguist-vendored
 *.lzma binary linguist-generated=true linguist-vendored
+*.rar binary linguist-generated=true linguist-vendored
 *.tar binary linguist-generated=true linguist-vendored
+*.tar.7z binary linguist-generated=true linguist-vendored
 *.tar.bz2 binary linguist-generated=true linguist-vendored
 *.tar.gz binary linguist-generated=true linguist-vendored
+*.tar.lrz binary linguist-generated=true linguist-vendored
+*.tar.lz binary linguist-generated=true linguist-vendored
+*.tar.lz4 binary linguist-generated=true linguist-vendored
 *.tar.lzma binary linguist-generated=true linguist-vendored
+*.tar.lzo binary linguist-generated=true linguist-vendored
+*.tar.rz binary linguist-generated=true linguist-vendored
 *.tar.xz binary linguist-generated=true linguist-vendored
+*.tar.Z binary linguist-generated=true linguist-vendored
+*.tgz binary linguist-generated=true linguist-vendored
+*.txz binary linguist-generated=true linguist-vendored
+*.war binary linguist-generated=true linguist-vendored
 *.xz binary linguist-generated=true linguist-vendored
 *.Z binary linguist-generated=true linguist-vendored
 *.zip binary linguist-generated=true linguist-vendored
@@ -34,7 +56,11 @@ mkinstalldirs linguist-generated=true linguist-vendored
 
 # Package Files
 
+*.apk binary linguist-generated=true linguist-vendored
 *.deb binary linguist-generated=true linguist-vendored
+*.eopkg binary linguist-generated=true linguist-vendored
+*.ipk binary linguist-generated=true linguist-vendored
+*.msi binary linguist-generated=true linguist-vendored
 *.rpm binary linguist-generated=true linguist-vendored
 
 
@@ -100,6 +126,7 @@ static/* linguist-vendored
 
 *.bmp binary diff=exif linguist-vendored=false
 *.gif binary diff=exif linguist-vendored=false
+*.jpeg binary diff=exif linguist-vendored=false
 *.jpg binary diff=exif linguist-vendored=false
 *.png binary diff=exif linguist-vendored=false
 *.xcf binary diff=exif linguist-vendored

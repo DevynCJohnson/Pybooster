@@ -39,10 +39,17 @@ whitespace=blank-at-eol,space-before-tab
 algorithm=minimal
 autoRefreshIndex=true
 dirstat=changes
+guitool=meld
 renameLimit=4096
 renames=copy
 suppressBlankEmpty=true
 tool=meld
+
+[difftool]
+prompt=false
+
+[difftool "meld"]
+cmd=meld \"$LOCAL\" \"$REMOTE\" --label \"DIFF (ORIGINAL)\"
 
 [gc]
 aggressiveDepth=100
@@ -71,6 +78,11 @@ versiontag=v
 
 [gitg]
 mainline=refs/heads/master
+
+[gitweb]
+description=
+owner=
+url=
 
 [gpg]
 program=/usr/bin/gpg
@@ -103,6 +115,14 @@ renames=copy
 stat=false
 tool=meld
 verbosity=4
+
+[mergetool]
+keepBackup=false
+prompt=false
+
+[mergetool "meld"]
+cmd=meld --auto-merge \"$LOCAL\" \"$BASE\" \"$REMOTE\" --output \"$MERGED\" --label \"MERGE (REMOTE BASE)\"
+trustExitCode=false
 
 [pack]
 windowMemory=512m

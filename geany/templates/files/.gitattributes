@@ -19,14 +19,36 @@ mkinstalldirs linguist-generated=true linguist-vendored
 
 # Archive & Compression Files
 
+*.ar binary linguist-generated=true linguist-vendored
+*.arj binary linguist-generated=true linguist-vendored
 *.bz2 binary linguist-generated=true linguist-vendored
+*.cbr binary linguist-generated=true linguist-vendored
+*.cbz binary linguist-generated=true linguist-vendored
+*.cpio binary linguist-generated=true linguist-vendored
+*.crx binary linguist-generated=true linguist-vendored
 *.gz binary linguist-generated=true linguist-vendored
+*.iso binary linguist-generated=true linguist-vendored
+*.lrz binary linguist-generated=true linguist-vendored
+*.lz binary linguist-generated=true linguist-vendored
+*.lz4 binary linguist-generated=true linguist-vendored
+*.lzh binary linguist-generated=true linguist-vendored
 *.lzma binary linguist-generated=true linguist-vendored
+*.rar binary linguist-generated=true linguist-vendored
 *.tar binary linguist-generated=true linguist-vendored
+*.tar.7z binary linguist-generated=true linguist-vendored
 *.tar.bz2 binary linguist-generated=true linguist-vendored
 *.tar.gz binary linguist-generated=true linguist-vendored
+*.tar.lrz binary linguist-generated=true linguist-vendored
+*.tar.lz binary linguist-generated=true linguist-vendored
+*.tar.lz4 binary linguist-generated=true linguist-vendored
 *.tar.lzma binary linguist-generated=true linguist-vendored
+*.tar.lzo binary linguist-generated=true linguist-vendored
+*.tar.rz binary linguist-generated=true linguist-vendored
 *.tar.xz binary linguist-generated=true linguist-vendored
+*.tar.Z binary linguist-generated=true linguist-vendored
+*.tgz binary linguist-generated=true linguist-vendored
+*.txz binary linguist-generated=true linguist-vendored
+*.war binary linguist-generated=true linguist-vendored
 *.xz binary linguist-generated=true linguist-vendored
 *.Z binary linguist-generated=true linguist-vendored
 *.zip binary linguist-generated=true linguist-vendored
@@ -34,7 +56,11 @@ mkinstalldirs linguist-generated=true linguist-vendored
 
 # Package Files
 
+*.apk binary linguist-generated=true linguist-vendored
 *.deb binary linguist-generated=true linguist-vendored
+*.eopkg binary linguist-generated=true linguist-vendored
+*.ipk binary linguist-generated=true linguist-vendored
+*.msi binary linguist-generated=true linguist-vendored
 *.rpm binary linguist-generated=true linguist-vendored
 
 
@@ -98,6 +124,9 @@ static/* linguist-vendored
 
 # Image Files
 
+*.bmp binary diff=exif linguist-vendored=false
+*.gif binary diff=exif linguist-vendored=false
+*.jpeg binary diff=exif linguist-vendored=false
 *.jpg binary diff=exif linguist-vendored=false
 *.png binary diff=exif linguist-vendored=false
 *.xcf binary diff=exif linguist-vendored
@@ -108,7 +137,6 @@ static/* linguist-vendored
 
 # Programming Languages
 
-*/XKB/usx* text eol=lf linguist-documentation=false linguist-language=Text linguist-vendored=false
 *.asm text eol=lf linguist-language=Assembly linguist-vendored=false
 *.[Aa][Ss][Mm] text eol=lf linguist-language=Assembly linguist-vendored=false
 *.s text eol=lf linguist-language=Assembly linguist-vendored=false
@@ -166,6 +194,7 @@ static/* linguist-vendored
 *.icon text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 *.[Ii][Nn][Ii] text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 *.theme text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
+*.theme.in text eol=lf linguist-generated=false linguist-language=INI linguist-vendored=false
 *.[Jj][Ss][Oo][Nn] text eol=lf linguist-generated=false linguist-language=JSON linguist-vendored=false
 *.less text eol=lf linguist-language=Less linguist-vendored=false
 *.limbo text eol=lf linguist-language=Limbo linguist-vendored=false
@@ -227,6 +256,8 @@ makefile text eol=lf linguist-language=Makefile linguist-vendored=false
 *.[Ss][Vv][Gg] text eol=lf linguist-documentation=false linguist-language=SVG linguist-vendored=false
 *.tcl text eol=lf linguist-language=Tcl linguist-vendored=false
 *.tm text eol=lf linguist-language=Tcl linguist-vendored=false
+*.cursor text eol=lf linguist-generated=false linguist-language=Text linguist-vendored=false
+cursorList text eol=lf linguist-generated=false linguist-language=Text linguist-vendored=false
 *.tags text eol=lf linguist-language=Text linguist-vendored=false
 *.xkbmap text eol=lf linguist-language=Text linguist-vendored=false
 *.wasm text eol=lf linguist-language=WebAssembly linguist-vendored=false
@@ -249,17 +280,6 @@ XCompose text eol=lf linguist-documentation=false linguist-language=XCompose lin
 *.[Yy][Yy] text eol=lf linguist-language=Yacc linguist-vendored=false
 *.[Yy][Aa][Mm][Ll] text eol=lf linguist-language=YAML linguist-vendored=false
 *.[Yy][Mm][Ll] text eol=lf linguist-language=YAML linguist-vendored=false
-accessory/menu_files/* text eol=lf linguist-generated=false linguist-language=Text linguist-vendored=false
-accessory/schemas/** linguist-vendored
-accessory/schemas/DTD/*.dtd text eol=lf linguist-language=XML linguist-vendored
-accessory/schemas/RelaxNG/*.rng text eol=lf linguist-language=XML linguist-vendored
-accessory/schemas/XSD/*.xsd text eol=lf linguist-language=XML linguist-vendored
-geany/colorschemes/* text eol=lf linguist-language=INI
-geany/filedefs/filetypes.* text eol=lf linguist-language=INI
-geany/tags/*.tags text eol=lf linguist-generated=true linguist-language=Text linguist-vendored
-geany/templates/* text eol=lf linguist-generated=true linguist-language=Text linguist-vendored
-geany/templates/files/* text eol=lf linguist-generated=true linguist-language=Text linguist-vendored=false
-geany/templates/files/Windows_Batch.bat text eol=crlf linguist-generated=true linguist-language=Text linguist-vendored=false
 
 
 # Documentation
