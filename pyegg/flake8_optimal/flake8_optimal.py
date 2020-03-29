@@ -5,7 +5,7 @@
 """@brief Flake8 plugin used to scan for various inconsistencies and issues.
 
 @file flake8_optimal.py
-@version 2020.02.21
+@version 2020.03.29
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -47,13 +47,13 @@ except ImportError:
 
 
 __docformat__: str = r'restructuredtext en'
-__version__: str = r'2019.07.14'
+__version__: str = r'2020.03.29'
 
 
 # PATTERNS #
 
 
-PY_HASHPLINGS: tuple = (r'#!/usr/bin/env python4', r'#!/usr/bin/env python4.0', r'#!/usr/bin/env python3', r'#!/usr/bin/env python3.3', r'#!/usr/bin/env python3.4', r'#!/usr/bin/env python3.5', r'#!/usr/bin/env python3.6', r'#!/usr/bin/env python3.7', '#!/usr/bin/env python3.8', '#!/usr/bin/env python3.9', r'#!/usr/bin/env python2', r'#!/usr/bin/env python2.7', r'#!/usr/bin/env python')
+PY_HASHPLINGS: set = {r'#!/usr/bin/env python4', r'#!/usr/bin/env python4.0', r'#!/usr/bin/env python4.1', r'#!/usr/bin/env python4.2', r'#!/usr/bin/env python4.3', r'#!/usr/bin/env python3', r'#!/usr/bin/env python3.3', r'#!/usr/bin/env python3.4', r'#!/usr/bin/env python3.5', r'#!/usr/bin/env python3.6', r'#!/usr/bin/env python3.7', '#!/usr/bin/env python3.8', '#!/usr/bin/env python3.9', r'#!/usr/bin/env python2', r'#!/usr/bin/env python2.7', r'#!/usr/bin/env python'}
 REGEX_DCJ_VERSION = rgxcompile(r'__version__ = r\'20[0-9][0-9]\.[0-1][0-9]\.[0-3][0-9]\'')
 REGEX_INPUT_STR = rgxcompile(r'str\(input\(')
 REGEX_VALID_EMAIL = rgxcompile(r'__email__ = \'[\w\-\.]+@[\w\-]+\.[\w]+\'')
@@ -289,7 +289,7 @@ def x005(logical_line: str, noqa: bool = False) -> Generator[Tuple[int, str], No
     if noqa or any(_test in logical_line for _test in {r'gzip.open', r'bz2.open', r'lzma.open', r'tarfile.open', r'urlopen', r'Popen', r'_open'}):
         return None
     _match = REGEX_OPEN.search(logical_line)
-    if _match and r'mode=' in logical_line and any(r', mode=' + _test in logical_line for _test in {'\'r\'', '\'w\'', '\'a\'', '\'x\''}):
+    if _match and r'mode=' in logical_line and any(fr', mode={_test}' in logical_line for _test in {'\'r\'', '\'w\'', '\'a\'', '\'x\''}):
         yield _match.start(), r'X005 : `mode=` in `open()` does not specify text nor binary'
     return None
 

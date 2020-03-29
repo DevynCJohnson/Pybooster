@@ -5,7 +5,7 @@
 """@brief Setup file for Flake8-Optimal plugin.
 
 @file setup.py
-@version 2019.07.14
+@version 2020.03.29
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -32,19 +32,10 @@ along with this software.
 
 
 from os.path import dirname, join as joinpath
-from time import strftime
 
 from setuptools import setup
 
-
-def get_version() -> str:
-    """Get the version number from the script."""
-    with open(r'flake8_optimal.py', mode=r'rt', encoding=r'utf-8') as _file:
-        for _line in _file:
-            if _line.startswith(r'__version__ = '):
-                _line = _line.replace(r'__version__ = ', r'').replace('r\'', r'')
-                return _line.replace('\'', r'').strip().replace(r'.0', r'.')
-    return strftime(r'%Y.%m.%d').replace(r'.0', r'.')
+from flake8_optimal import __version__
 
 
 def read(fname: str) -> str:
@@ -55,17 +46,17 @@ def read(fname: str) -> str:
 if __name__ == '__main__':
     setup(
         name=r'flake8_optimal',
-        version=get_version(),
+        version=__version__,
         author=r'Devyn Collier Johnson',
         author_email=r'DevynCJohnson@Gmail.com',
         license=r'LGPLv3',
-        url=r'http://DCJTech.info/',
+        url=r'https://github.com/DevynCJohnson/Pybooster',
         description=r'Extension for flake8 that finds various inconsistencies and suggests optimized code',
         long_description=read(r'README.rst'),
         keywords=[r'flake8', r'optimize', r'optimal', r'inconsistencies', r'inconsistency', r'standardize'],
         platforms=r'any',
         py_modules=[r'flake8_optimal'],
-        python_requires=r'>=3.5',
+        python_requires=r'>=3.7',
         install_requires=[r'flake8'],
         tests_require=[r'flake8>=3.4'],
         zip_safe=False,

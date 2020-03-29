@@ -38,6 +38,11 @@ available in ``flake8``::
 Changes
 -------
 
+2020.03.29 - 2020-03-29
+```````````````````````
+* Changed the URL in the setup file
+* Simplified some code
+
 2020.02.21 - 2020-02-21
 ```````````````````````
 * Use `casefold` instead of `lower`
