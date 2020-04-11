@@ -1,3 +1,7 @@
+2020-04-11  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* PyBooster:  Added a Flask template to the Geany templates
+
 2020-03-29  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* flake8_optimal.py:  Simplified some code
