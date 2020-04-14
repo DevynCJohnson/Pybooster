@@ -1,0 +1,223 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
+"""@brief Generate psychedelic/deep-dream images using gaussian pyramids.
+
+@file deep_dreaming_gaussian_pyramids
+@version 2020.04.14
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@copyright LGPLv3
+
+@section USAGE
+python3 ./deep_dreaming_gaussian_pyramids ./images/Test.jpg ./new_images/
+
+@section LICENSE
+GNU Lesser General Public License v3
+Copyright (c) Devyn Collier Johnson, All rights reserved.
+
+This software is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This software is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with this software.
+"""
+
+
+from argparse import ArgumentParser
+from os import environ
+from sys import stdout
+from typing import Callable, Union
+from uuid import uuid4
+from warnings import simplefilter
+
+environ[r'KERAS_BACKEND'] = r'tensorflow'
+environ[r'TF_CPP_MIN_LOG_LEVEL'] = r'3'
+simplefilter(r'ignore')
+
+import keras.backend as Keras  # noqa: E402  # pylint: disable=C0413
+from keras.applications.vgg19 import VGG19  # noqa: E402  # pylint: disable=C0413
+from keras.applications.imagenet_utils import preprocess_input  # noqa: E402  # pylint: disable=C0413
+import numpy as xp  # noqa: E402  # pylint: disable=C0413
+from scipy.optimize import minimize  # noqa: E402  # pylint: disable=C0413
+from scipy.optimize.optimize import OptimizeResult  # noqa: E402  # pylint: disable=C0413
+from skimage import img_as_float, img_as_ubyte  # noqa: E402  # pylint: disable=C0413
+from skimage.io import imread, imsave  # noqa: E402  # pylint: disable=C0413
+from skimage.transform import pyramid_gaussian, rescale  # noqa: E402  # pylint: disable=C0413
+
+
+# SETTINGS #
+
+
+SETTINGS: dict = {
+    r'features': {
+        # r'block1_conv1': 0.001,
+        # r'block1_conv2': 0.001,
+        # r'block2_conv1': 0.001,
+        # r'block2_conv2': 0.001,
+        # r'block3_conv1': 0.001,
+        # r'block3_conv2': 0.001,
+        # r'block3_conv3': 0.001,
+        # r'block3_conv4': 0.001,
+        # r'block4_conv1': 0.005,
+        # r'block4_conv2': 0.001,
+        # r'block4_conv3': 0.001,
+        # r'block4_conv4': 0.001,
+        r'block5_conv1': 0.002,
+        r'block5_conv2': 0.001,
+        r'block5_conv3': 0.003,
+        r'block5_conv4': 0.001
+    },
+    r'downscale': 2,
+    r'initial_iter': 2,
+    r'iterations': 4,
+    r'l2_weight': 0.003,
+    r'max_layers': 4,
+    r'maxcor': 10,
+    r'maxfun': 15000,
+    r'pyramid_order': 3,  # 1
+    r'rescale_order': 5
+}
+
+
+# FUNCTIONS #
+
+
+def preprocess_image(image: xp.array) -> xp.array:
+    """Pre-process the image."""
+    return preprocess_input(xp.expand_dims(image.astype(Keras.floatx()), 0))
+
+
+def postprocess_image(image: xp.array) -> xp.array:
+    """Post-process the image."""
+    image[:, :, :, 0] += 103.939
+    image[:, :, :, 1] += 116.779
+    image[:, :, :, 2] += 123.68
+    return xp.clip(image[:, :, :, ::-1], 0, 255).astype(r'uint8')[0]
+
+
+def process_image(image: xp.array, gradient_func: Callable[[xp.array, int], xp.array], loss_func: Callable[[xp.array, int], xp.array]) -> xp.array:
+    """Process the image as a Numpy array."""
+    # Create bounds
+    bounds: xp.array = xp.ndarray(shape=(image.flatten().shape[0], 2))
+    bounds[:, 0] = -128.0
+    bounds[:, 1] = 128.0
+    # Perform optimization
+    result: OptimizeResult = minimize(
+        fun=loss_func,
+        x0=image.flatten(),
+        args=list(image.shape),
+        bounds=bounds,
+        hess=None,
+        jac=gradient_func,
+        method=r'L-BFGS-B',
+        options={
+            r'eps': 1e-08,
+            r'gtol': 1e-05,
+            r'maxfun': SETTINGS[r'maxfun'],
+            r'maxcor': SETTINGS[r'maxcor'],
+            r'maxiter': SETTINGS[r'iterations']
+        },
+        tol=None
+    )
+    return postprocess_image(result.x.reshape(image.shape))
+
+
+def create_pyramid(base_image_path: str) -> list:
+    """Create a gaussian pyramid."""
+    pyramid: list = list(pyramid_gaussian(
+        img_as_float(imread(base_image_path)),
+        downscale=SETTINGS[r'downscale'],
+        max_layer=SETTINGS[r'max_layers'],
+        multichannel=True,
+        order=SETTINGS[r'pyramid_order'],
+        sigma=2 * SETTINGS[r'downscale'] / 6.0
+    ))
+    # Convert each image to an array of unsigned bytes
+    for i, image in enumerate(pyramid):
+        pyramid[i] = img_as_ubyte(image)
+        stdout.write(f'Size of image {i + 1}: {pyramid[i].shape}\n')
+    return pyramid
+
+
+# MAIN #
+
+
+def main(base_image_path: str, output_path: str) -> int:
+    """Entry-point for deep-dreaming."""
+    loss_tensor: float = 0.0
+    # Create the needed functions & model
+    model = VGG19(include_top=False, pooling=r'avg', weights=r'imagenet')
+    for layer, weight in SETTINGS[r'features'].items():
+        loss_tensor += (-weight * Keras.sum(Keras.square(model.get_layer(layer).output)))
+    loss_tensor += SETTINGS[r'l2_weight'] * Keras.sum(Keras.square(model.layers[0].input))
+    _gradient_func = Keras.function(
+        inputs=[model.layers[0].input],
+        outputs=Keras.gradients(
+            loss=loss_tensor,
+            variables=[model.layers[0].input]
+        )
+    )
+    _loss_func = Keras.function(inputs=[model.layers[0].input], outputs=[loss_tensor])
+    # Process the image
+    processed_image: Union[xp.array, None] = None
+    pyramid: list = create_pyramid(base_image_path)
+    for i, image in enumerate(pyramid[::-1]):
+        stdout.write(f'Processing pyramid image {len(pyramid) - i}: {image.shape}\n')
+        if processed_image is None:
+            processed_image = process_image(
+                preprocess_image(image),
+                lambda x, shape: _gradient_func([x.reshape(shape)])[0].flatten().astype(xp.float64),
+                lambda x, shape: _loss_func([x.reshape(shape)])[0]
+            )
+            continue
+        rescaled_image: xp.array = rescale(
+            processed_image,
+            (
+                float(image.shape[0:2][0]) / float(processed_image.shape[0:2][0]),
+                float(image.shape[0:2][1]) / float(processed_image.shape[0:2][1])
+            ),
+            order=SETTINGS[r'rescale_order'],
+            multichannel=True,
+            anti_aliasing=True
+        )
+        processed_image = process_image(
+            preprocess_image(img_as_ubyte((1.2 * img_as_float(image) + 0.8 * rescaled_image) / 2.0)),
+            lambda x, shape: _gradient_func([x.reshape(shape)])[0].flatten().astype(xp.float64),
+            lambda x, shape: _loss_func([x.reshape(shape)])[0]
+        )
+    imsave(fr'{output_path}Deep_Dreaming_{uuid4().hex}.jpg', processed_image)
+    return 0
+
+
+if __name__ == '__main__':
+    # Process Arguments
+    PARSER = ArgumentParser(description=r'Generate psychedelic/deep-dream images using gaussian pyramids.')
+    PARSER.add_argument(
+        r'base_image_path',
+        metavar=r'base',
+        type=str,
+        help=r'Path to the image to transform.'
+    )
+    PARSER.add_argument(
+        r'output_path',
+        metavar=r'output_path',
+        type=str,
+        help=r'Directory for the created images.'
+    )
+    ARGS = PARSER.parse_args()
+    BASE_IMAGE_PATH: str = ARGS.base_image_path
+    OUTPUT_PATH: str = ARGS.output_path if ARGS.output_path.endswith(r'/') else ARGS.output_path + r'/'
+    del ARGS, PARSER
+    if not (BASE_IMAGE_PATH and OUTPUT_PATH):
+        raise SystemExit(1)
+    # Begin Deep-dreaming
+    Keras.set_learning_phase(1)
+    raise SystemExit(main(BASE_IMAGE_PATH, OUTPUT_PATH))

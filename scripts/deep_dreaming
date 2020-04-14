@@ -1,0 +1,234 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
+"""@brief Generate psychedelic/deep-dream images.
+
+@file deep_dreaming
+@version 2020.04.14
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@copyright LGPLv3
+
+@section USAGE
+python3 ./deep_dreaming ./images/Test.jpg ./new_images/
+
+@section LICENSE
+GNU Lesser General Public License v3
+Copyright (c) Devyn Collier Johnson, All rights reserved.
+
+This software is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This software is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with this software.
+"""
+
+
+from argparse import ArgumentParser
+from os import environ
+from random import choice
+from sys import stdout
+from uuid import uuid4
+from warnings import filterwarnings
+
+environ[r'KERAS_BACKEND'] = r'tensorflow'
+environ[r'TF_CPP_MIN_LOG_LEVEL'] = r'3'
+filterwarnings(r'ignore', category=DeprecationWarning)
+
+from keras import backend as Keras  # noqa: E402  # pylint: disable=C0413
+from keras import optimizers  # noqa: E402  # pylint: disable=C0413
+from keras.applications import inception_v3  # noqa: E402  # pylint: disable=C0413
+from keras.layers import Dense  # noqa: E402  # pylint: disable=C0413
+from keras.models import Model  # noqa: E402  # pylint: disable=C0413
+from keras.preprocessing.image import img_to_array, load_img, save_img  # noqa: E402  # pylint: disable=C0413
+import numpy as xp  # noqa: E402  # pylint: disable=C0413
+from scipy.ndimage import zoom  # noqa: E402  # pylint: disable=C0413
+
+
+# SETTINGS #
+
+
+SETTINGS: dict = {
+    r'features': {  # Names and values of the layers
+        r'mixed0': 0.2,
+        r'mixed1': 0.7,
+        r'mixed2': 0.5,
+        r'mixed3': 0.2,
+        r'mixed4': 3.14159,
+        r'mixed5': 1.2,
+        r'mixed6': 0.05,
+        r'mixed7': 0.734,
+        r'mixed8': 0.37,
+        r'mixed9_1': 0.236,
+        r'mixed10': 0.1,
+    },
+    r'dropout_rate': 0.5,  # Number of ascent steps per scale
+    r'iterations': 8,  # Number of ascent steps per scale
+    r'max_loss': 8.0,
+    r'num_octave': 6,  # Number of scales at which to run gradient ascent
+    r'octave_scale': 1.3,  # Size ratio between scales
+    r'octave_start': 0,  # Starting point for the octaves in the for-loop
+    r'step': 0.02  # Gradient ascent step size
+}
+
+
+# FUNCTIONS #
+
+
+def preprocess_image(image_path: str) -> xp.array:
+    """Open, resize, and format pictures into appropriate tensors."""
+    return inception_v3.preprocess_input(xp.expand_dims(img_to_array(load_img(image_path)), axis=0))
+
+
+def deprocess_image(img) -> xp.array:
+    """Convert a tensor into a valid image array."""
+    if Keras.image_data_format() == r'channels_first':
+        img = img.reshape((3, img.shape[2], img.shape[3])).transpose((1, 2, 0))
+    else:
+        img = img.reshape((img.shape[1], img.shape[2], 3))
+    img /= 2.0
+    img += 0.5
+    return xp.clip(img * 255.0, 0, 255).astype(r'uint8')
+
+
+def resize_img(img: xp.array, size: xp.array) -> xp.array:
+    """Resize the image array."""
+    img = xp.copy(img)
+    if Keras.image_data_format() == r'channels_first':
+        factors = (1, 1, float(size[0]) / img.shape[2], float(size[1]) / img.shape[3])
+    else:
+        factors = (1, float(size[0]) / img.shape[1], float(size[1]) / img.shape[2], 1)
+    return zoom(img, factors, order=1)
+
+
+def gradient_ascent(img: xp.array, fetch_loss_and_grads) -> xp.array:
+    """Calculate the gradient ascent."""
+    for i in range(SETTINGS[r'iterations']):
+        loss_value, grad_values = fetch_loss_and_grads([img])
+        if loss_value > SETTINGS[r'max_loss']:
+            break
+        img += SETTINGS[r'step'] * grad_values
+    return img
+
+
+def create_model():
+    """Create the neural-network."""
+    rand_choice: int = choice((1, 2, 3, 4))  # nosec
+    stdout.write(f'Neural Path: {rand_choice}\n')
+    if rand_choice == 1:
+        model = inception_v3.InceptionV3(include_top=False, pooling=None, weights=r'imagenet')
+    elif rand_choice == 2:
+        model = inception_v3.InceptionV3(include_top=False, pooling=r'avg', weights=r'imagenet')
+    elif rand_choice == 3:
+        model = inception_v3.InceptionV3(include_top=False, pooling=r'max', weights=r'imagenet')
+    else:
+        base_model = inception_v3.InceptionV3(include_top=False, pooling=r'avg', weights=r'imagenet')
+        for layer in base_model.layers:
+            layer.trainable = False
+        output = Dense(256, activation='tanh')(Dense(256, activation='softmax')(base_model.output))
+        output = Dense(256, activation='sigmoid')(Dense(256, activation='relu')(output))
+        model = Model(base_model.input, output)
+        model.compile(optimizer=optimizers.SGD(lr=0.01, nesterov=True), loss=r'categorical_crossentropy', metrics=[r'acc'])
+    return model
+
+
+def create_gradients(loss, model_input):
+    """Compute the gradients of the dream image."""
+    grads = Keras.gradients(loss, model_input)[0]
+    stdout.write('Computed gradients\n')
+    # Normalize gradients
+    grads /= Keras.maximum(Keras.mean(Keras.abs(grads)), Keras.epsilon())
+    stdout.write('Normalized gradients\n')
+    return grads
+
+
+def save_image(output_path: str, img: xp.array) -> None:
+    """Save the generated image."""
+    output_file: str = f'''{output_path}Deep_Dreaming_{uuid4().hex}_{SETTINGS[r'iterations']}_{SETTINGS[r'max_loss']}_{SETTINGS[r'num_octave']}_{SETTINGS[r'octave_scale']}_{SETTINGS[r'step']}.jpg'''
+    stdout.write(f'Saving image: {output_file}\n')
+    save_img(output_file, deprocess_image(img))
+
+
+# MAIN #
+
+
+def main(base_image_path: str, output_path: str) -> int:
+    """Entry-point for deep-dreaming."""
+    model = create_model()
+    stdout.write('Model loaded\n')
+    # Get the symbolic outputs of each "key" layer
+    layer_dict: dict = {layer.name: layer for layer in model.layers}
+    # Define the loss
+    loss = Keras.variable(0.0)
+    for layer_name in SETTINGS[r'features']:
+        # Add the L2 norm of the features of a layer to the loss
+        if layer_name not in layer_dict:
+            continue
+        layer_output = layer_dict[layer_name].output
+        # Avoid border artifacts by only involving non-border pixels in the loss
+        scaling = Keras.prod(Keras.cast(Keras.shape(layer_output), r'float32'))
+        if Keras.image_data_format() == r'channels_first':
+            loss = loss + SETTINGS[r'features'][layer_name] * Keras.sum(Keras.square(layer_output[:, :, 2: -2, 2: -2])) / scaling
+        else:
+            loss = loss + SETTINGS[r'features'][layer_name] * Keras.sum(Keras.square(layer_output[:, 2: -2, 2: -2, :])) / scaling
+    stdout.write('Defined "loss"\n')
+    del layer_dict
+    img: xp.array = preprocess_image(base_image_path)
+    original_img: xp.array = xp.copy(img)
+    original_shape = img.shape[2:] if Keras.image_data_format() == r'channels_first' else img.shape[1:3]
+    successive_shapes: list = [original_shape]
+    stdout.write('Pre-processed image\n')
+    # Apply the octave calculations
+    for i in range(SETTINGS[r'octave_start'], SETTINGS[r'num_octave']):
+        successive_shapes.append(tuple(int(dim / (SETTINGS[r'octave_scale'] ** i)) for dim in original_shape))
+    del original_shape
+    stdout.write('Applied octave manipulations\n')
+    successive_shapes = successive_shapes[::-1]
+    shrunk_original_img: xp.array = resize_img(img, successive_shapes[0])
+    # Setup function to retrieve the value of the loss and gradients given an input image
+    fetch_loss_and_grads = Keras.function([model.input], [loss, create_gradients(loss, model.input)])
+    stdout.write(f'Beginning gradient ascent\nSuccessive Shapes: {len(successive_shapes)}\n')
+    counter: int = 0
+    for shape in successive_shapes:
+        counter += 1
+        stdout.write(f'Gradient ascent: {counter}\n')
+        img = gradient_ascent(resize_img(img, shape), fetch_loss_and_grads)
+        resized_original_img = resize_img(original_img, shape)
+        img += resized_original_img - resize_img(shrunk_original_img, shape)  # Add the lost detail
+        shrunk_original_img = resized_original_img
+    # Save the generated image
+    save_image(output_path, img)
+    return 0
+
+
+if __name__ == '__main__':
+    # Process Arguments
+    PARSER = ArgumentParser(description=r'Generate psychedelic/deep-dream images.')
+    PARSER.add_argument(
+        r'base_image_path',
+        metavar=r'base',
+        type=str,
+        help=r'Path to the image to transform.'
+    )
+    PARSER.add_argument(
+        r'output_path',
+        metavar=r'output_path',
+        type=str,
+        help=r'Directory for the created images.'
+    )
+    ARGS = PARSER.parse_args()
+    BASE_IMAGE_PATH: str = ARGS.base_image_path
+    OUTPUT_PATH: str = ARGS.output_path if ARGS.output_path.endswith(r'/') else ARGS.output_path + r'/'
+    del ARGS, PARSER
+    if not (BASE_IMAGE_PATH and OUTPUT_PATH):
+        raise SystemExit(1)
+    # Begin Deep-dreaming
+    Keras.set_learning_phase(1)
+    raise SystemExit(main(BASE_IMAGE_PATH, OUTPUT_PATH))
