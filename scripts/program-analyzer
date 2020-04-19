@@ -5,7 +5,7 @@
 """@brief View various information about a library or executable.
 
 @file program-analyzer
-@version 2020.02.03
+@version 2020.04.19
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -978,7 +978,7 @@ strings --all</property>
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
                         <property name="label">Program-Analyzer
-Version: 2020.02.03
+Version: 2020.04.19
 Author: Devyn Collier Johnson
 &amp;lt;&lt;a href="mailto:DevynCJohnson@Gmail.com"&gt;DevynCJohnson@Gmail.com&lt;/a&gt;&amp;gt;</property>
                         <property name="use_markup">True</property>
@@ -2044,8 +2044,8 @@ def analyze_binary(cmd: str, _var: str, _flag: bool = True) -> Union[str, Tuple[
     if _var == r'NM_DEFINED':
         _nm_defined = getoutput(cmd)
         try:
-            _functions: str = getoutput(f'echo "{_nm_defined}" | grep " R " | awk \'{{ for (i = 3; i <= NF; ++i) {{ print $i; }} }}\' | grep -v -E -e "^_"')
-            _constants: str = getoutput(f'echo "{_nm_defined}" | grep " T " | awk \'{{ for (i = 3; i <= NF; ++i) {{ print $i; }} }}\' | grep -v -E -e "^_"')
+            _constants: str = getoutput(f'echo "{_nm_defined}" | grep " R " | awk \'{{ for (i = 3; i <= NF; ++i) {{ print $i; }} }}\' | grep -v -E -e "^_"')
+            _functions: str = getoutput(f'echo "{_nm_defined}" | grep " T " | awk \'{{ for (i = 3; i <= NF; ++i) {{ print $i; }} }}\' | grep -v -E -e "^_"')
             if not _constants:
                 _constants = r'No global constants found!'
         except OSError:
