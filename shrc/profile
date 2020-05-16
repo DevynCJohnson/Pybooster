@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Universal setup script for Posix-compatible shells
 #' @file profile
-#' @version 2019.08.31
+#' @version 2020.05.16
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 #'
@@ -352,6 +352,7 @@ fi
 [ -z "${KRELEASE:-}" ] && KRELEASE='unknown' && [ -n "$(command -v uname)" ] && KRELEASE="$(uname -r)" && export KRELEASE
 # Ensure that Python scripts are always compiled to bytecode
 export PYTHONOPTIMIZE=True
+export PYTHONPYCACHEPREFIX='/pycache'
 
 
 # SET $PATH #
