@@ -107,7 +107,7 @@ class CopyrightChecker():
         self.filename = filename
 
     @classmethod
-    def add_options(cls: object, parser: r'flake8.options.manager.OptionManager') -> None:
+    def add_options(cls: object, parser: object) -> None:
         """Options for the flake8 copyright-checker."""
         parser.add_option(  # noqa: T484
             r'--check-copyright',
@@ -173,7 +173,7 @@ class MagicCommentChecker():
         self.tree = tree
 
     @classmethod
-    def add_options(cls: object, parser: r'flake8.options.manager.OptionManager') -> None:
+    def add_options(cls: object, parser: object) -> None:
         """Options for the flake8 magic-comment-checker."""
         parser.add_option(  # noqa: T484
             r'--valid-encodings',
