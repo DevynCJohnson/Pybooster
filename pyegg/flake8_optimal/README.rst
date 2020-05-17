@@ -38,6 +38,10 @@ available in ``flake8``::
 Changes
 -------
 
+2020.05.17 - 2020-05-17
+
+* Fixed some bugs
+
 2020.03.29 - 2020-03-29
 ```````````````````````
 * Changed the URL in the setup file

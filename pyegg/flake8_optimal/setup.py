@@ -5,7 +5,7 @@
 """@brief Setup file for Flake8-Optimal plugin.
 
 @file setup.py
-@version 2020.03.29
+@version 2020.05.17
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 

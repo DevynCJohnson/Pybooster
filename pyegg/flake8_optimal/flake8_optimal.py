@@ -5,7 +5,7 @@
 """@brief Flake8 plugin used to scan for various inconsistencies and issues.
 
 @file flake8_optimal.py
-@version 2020.03.29
+@version 2020.05.17
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -47,7 +47,7 @@ except ImportError:
 
 
 __docformat__: str = r'restructuredtext en'
-__version__: str = r'2020.03.29'
+__version__: str = r'2020.05.17'
 
 
 # PATTERNS #
@@ -107,21 +107,20 @@ class CopyrightChecker():
         self.filename = filename
 
     @classmethod
-    def add_options(cls: object, parser: object) -> None:
+    def add_options(cls: object, parser: r'flake8.options.manager.OptionManager') -> None:
         """Options for the flake8 copyright-checker."""
         parser.add_option(  # noqa: T484
             r'--check-copyright',
             action=r'store_true',
             parse_from_config=True,
-            comma_separated_list=True,
             help=r'Checks for copyright notices in every file.'
         )
         parser.add_option(  # noqa: T484
             r'--min-file-size-copyright',
-            default=0, action=r'store',
+            default=0,
+            action=r'store',
             type=r'int',
             parse_from_config=True,
-            comma_separated_list=True,
             help=r'Minimum number of characters in a file before requiring a copyright notice.'
         )
         parser.add_option(  # noqa: T484
@@ -129,7 +128,6 @@ class CopyrightChecker():
             default=r'',
             action=r'store',
             parse_from_config=True,
-            comma_separated_list=True,
             help=r'Checks for a specific author in the copyright notice.'
         )
         parser.add_option(  # noqa: T484
@@ -137,7 +135,6 @@ class CopyrightChecker():
             default=r'Copyright\s+(\(C\)\s+|\(c\)\s+)?\d{4}\s+%(author)s',
             action=r'store',
             parse_from_config=True,
-            comma_separated_list=True,
             help=r'Changes the regular expression for the desired copyright format.'
         )
 
@@ -176,7 +173,7 @@ class MagicCommentChecker():
         self.tree = tree
 
     @classmethod
-    def add_options(cls: object, parser: object) -> None:
+    def add_options(cls: object, parser: r'flake8.options.manager.OptionManager') -> None:
         """Options for the flake8 magic-comment-checker."""
         parser.add_option(  # noqa: T484
             r'--valid-encodings',
