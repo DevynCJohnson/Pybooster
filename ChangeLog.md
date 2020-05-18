@@ -1,3 +1,191 @@
+# 2020-05-17  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **flake8_optimal:**  Fixed some bugs
+- **PyBooster:**  Added gitstats
+
+# 2020-05-16  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **profile:**  Added `PYTHONPYCACHEPREFIX`
+
+# 2020-04-19  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **program-analyzer:**  Fixed a minor bug
+
+# 2020-04-14  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **PyBooster:**  Added Python scripts for deep-learning
+- **PyBooster:**  Added two Python scripts for deep-dreaming
+
+# 2020-04-11  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **PyBooster:**  Added a Flask template to the Geany templates
+
+# 2020-03-29  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **flake8_optimal.py:**  Simplified some code
+- **Geany:**  Tweaked some of the template files used by Geany
+- **PyBooster:**  Tweaked the .gitattributes and .gitignore files
+
+# 2020-03-22  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **MACROS*.h:**  Dropped support for various processors such as Arc, Chris, NIOS, Tile, etc.
+
+# 2020-03-20  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **PyBooster:**  Added more CSS tags to Geany
+
+# 2020-03-15  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **Devhelp:**  Added additional DevHelp files
+- **install_devhelp_docs.sh:**  Made the Devhelp document installation a separate script
+- **libajax.js:**  Applied minor improvements
+- **libhtml.js:**  Added more functions
+- **libtime.js:**  Applied minor improvements
+- **libutils.js:**  Added more functions & added documentation
+- **machine_learning:**  Applied minor tweaks
+- **Opticons:**  Added an icon for ProjectM
+
+# 2020-02-26  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **canalysis:**  Removed a deprecated option from CPPCheck
+- **clint:**  Fixed some minor bugs
+- **compiling.mk:**  Added more `--param` options for GCC
+- **machine_learning:**  Minor tweak
+- **MACROS*.h:**  Fixed some minor issues
+- **OptiView:**  Applied some minor tweaks
+
+# 2020-02-22  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **datastruct.py:**  Fixed a bug
+- **machine_learning:**  Added support for JSON files
+- **snippets.conf:**  Fixed a snippet for Geany
+- **uca.xml:**  Added additional actions for audio & image manipulation
+
+# 2020-02-21  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **alphabetize_lines:**  Use `casefold` instead of `lower`
+- **cartioid:**  Applied minor tweaks & optimizations
+- **fs.py:**  Applied minor tweaks
+- **PyBooster:**  Added machine_learning
+- **PyLib:**  Use `casefold` instead of `lower` in multiple Python scripts
+
+# 2020-02-19  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **cleansystem:**  Fixed some minor bugs
+- **datastruct.py:**  Fixed a bug
+- **OptiView:**  Removed the menu shadows
+
+# 2020-02-17  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **Geany:**  Tweaked the coloring for XML syntax
+- **OptiView:**  Tweaked the menu shadows
+- **snippets.conf:**  Added more snippets
+- **uca.xml:**  Added additional actions
+
+# 2020-02-16  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **OptiView:**  Fixed various bugs
+
+# 2020-02-12  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **PyBooster:**  Added audio-hpss-spectrogram, audio-melspectrogram, audio-vocals-spectrogram, & audio-waveplot
+
+# 2020-02-09  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **OptiView:**  Fixed various bugs
+
+# 2020-02-08  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **insn_count:**  Fixed some minor bugs
+- **program-analyzer:**  Tweaked some in-code documentation, added logging, & fixed some bugs
+
+# 2020-02-07  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **Geany:**  Added `*.mjs` as a JavaScript file-extension
+- **jsanalysis:**  Added support for JSLint
+- **PyLib:**  Added some constants
+
+# 2020-02-05  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **MACROS*.h:**  Added more math functions & improved some code
+- **MACROS*.h:**  Added support for printing 128-bit integers
+- **PyBooster:**  Added popcount.c, factorial.c, & unfactorial.c
+- **snippets.conf:**  Fixed a bug
+- **xmath.py:**  Applied minor tweaks to `primes_under()`
+
+# 2020-02-03  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **color-kit:**  Tweaked the UI
+- **color.py:**  Fixed some minor formatting bugs & applied improvements
+- **MACROS*.h:**  Applied various tweaks & added more SFP code
+- **makefile:**  Added more special flags for controlling features in the standard C-library headers
+- **OptiView:**  Added more CSS code for various classes
+- **program-analyzer:**  Added string searching support
+- **PyBooster:**  Added number_properties.c
+
+# 2020-02-01  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **cleansystem:**  Fixed some minor bugs
+- **insn_count:**  Added support for 16-bit Windows & DOS executables
+- **MACROS*.h:**  Improved various datatype definitions & applied optimizations
+- **MACROS3.h:**  Optimized various functions
+- **program-analyzer:**  Added support for 16-bit Windows & DOS executables
+- **typesize.c:**  Added more datatypes
+
+# 2020-01-31  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **MACROS*.h:**  Added more vector datatypes & functions as well as applied various tweaks
+- **MACROS*.h:**  Optimized various functions
+- **test_dev.c:**  Fixed BMI2 code that was being permitted on non-BMI2 systems
+
+# 2020-01-30  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **MACROS_MATH.h:**  Optimized `ismersennenumber()`
+
+# 2020-01-29  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **profile:**  Tweaked the `PS1` variable
+- **snippets.conf:**  Fixed a bug & added snippets for HTML and JavaScript
+- **xmath.py:**  Added `bernoulli()`, `chebyshev()`, `isprime()`, & `primes_under()`
+- **xmath.py:**  Added `integral()` & `derivative()`
+- **xmath.py:**  Added `radical()`
+- **xmath.py:**  Added `von_mangoldt()`, `generate_primes()`, `gmean()`, & `hmean()`
+- **xmath.py:**  Fixed `factors()` & added `mobius()` & `prime_factors()`
+
+# 2020-01-27  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **MACROS*.h:**  Adjusted the alignment of various structures & variables
+
+# 2020-01-26  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **color-kit:**  Added support for displaying analogous colors, the opposite color, and the complementary color
+- **color.py:**  Added `analogous_1()` & `analogous_2()`
+- **compiling.mk:**  Added support for Clang versions 11 & 12
+- **extras_rc.sh:**  Added the line-number to the output of `rfind`
+
+# 2020-01-18  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **Geany:**  Added syntax coloring for Nginx configuration files
+- **Geany:**  Improved the syntax coloring for some of the supported languages
+
+# 2020-01-10  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **Geany:**  Improved the syntax coloring for some of the supported languages
+
+# 2020-01-05  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **color-kit:**  Improved the code to accept colors as arrays or just the comma-delimited numbers
+- **program-analyzer:**  Fixed the issue with saving data to a file
+
+# 2020-01-04  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **OptiView:**  Applied some fixes to the CSS code
+
+# 2020-01-02  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **PyBooster:**  Added cartioid
+- **snippets.conf:**  Fixed some bugs
+
 # 2020-01-01  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
 
 - **makefile:**  Added more optional developer dependencies
