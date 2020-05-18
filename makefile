@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax makefile; indent-mode normal; eol unix; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Main project makefile
 #' @file makefile
-#' @version 2020.04.14
+#' @version 2020.05.17
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 #' @section SYMBOLS
@@ -125,6 +125,7 @@ help :
 	printf '%s\n\t%s\n' 'Desktop Entry Maker:' 'sudo make install_desktop_entry_maker'
 	printf '%s\n\t%s\n' 'Devhelp Files:' 'sudo make install_devhelp'
 	printf '%s\n\t%s\n' 'Enhanced XCompose File:' 'make install_xcompose'
+	printf '%s\n\t%s\n' 'GitStats:' 'make install_gitstats'
 	printf '%s\n\t%s\n' 'Language Specification Files:' 'sudo make install_langspecs'
 	printf '%s\n\t%s\n' 'Linux Driver Module for Clevo Keyboard Backlights:' 'sudo make install_dkms_clevo_kbd_backlight'
 	printf '%s\n\t%s\n' 'NanoRC Files:' 'sudo make install_nanorc'
@@ -236,9 +237,9 @@ default :
 # Uninstall DKMS Driver Modules
 .PHONY : uninstall_dkms_clevo_kbd_backlight
 # Install
-.PHONY : install install_bin install_clib install_color_kit install_desktop_entry_maker install_dev install_devhelp install_geany_conf install_langspecs install_loginopticons install_mimetype_booster install_nanorc install_opticons install_optimal_cursors install_optiview install_program_analyzer install_programs install_pyeggs install_pylib install_scripts install_shrc install_themes install_uca install_xcompose install_xkb
+.PHONY : install install_bin install_clib install_color_kit install_desktop_entry_maker install_dev install_devhelp install_geany_conf install_gitstats install_langspecs install_loginopticons install_mimetype_booster install_nanorc install_opticons install_optimal_cursors install_optiview install_program_analyzer install_programs install_pyeggs install_pylib install_scripts install_shrc install_themes install_uca install_xcompose install_xkb
 # Uninstall
-.PHONY : uninstall uninstall_bin uninstall_clib uninstall_color_kit uninstall_desktop_entry_maker uninstall_dev uninstall_devhelp uninstall_langspecs uninstall_loginopticons uninstall_mimetype_booster uninstall_opticons uninstall_optimal_cursors uninstall_optiview uninstall_program_analyzer uninstall_programs uninstall_pyeggs uninstall_pylib uninstall_scripts uninstall_shrc uninstall_themes uninstall_uca uninstall_xcompose uninstall_xkb
+.PHONY : uninstall uninstall_bin uninstall_clib uninstall_color_kit uninstall_desktop_entry_maker uninstall_dev uninstall_devhelp uninstall_gitstats uninstall_langspecs uninstall_loginopticons uninstall_mimetype_booster uninstall_opticons uninstall_optimal_cursors uninstall_optiview uninstall_program_analyzer uninstall_programs uninstall_pyeggs uninstall_pylib uninstall_scripts uninstall_shrc uninstall_themes uninstall_uca uninstall_xcompose uninstall_xkb
 # Miscellaneous
 .PHONY : disable_geofiles enable_geofiles fix_nvidia fix_thunar_tap install_geofiles macify replace_repos secure uninstall_geofiles unmacify update_geofiles
 
@@ -662,6 +663,21 @@ install_geany_conf :
 	find ~/.config/geany/ -mount -type f -exec $(CHMODR) 640 '{}' +
 	# [ -d /usr/share/geany/templates/files ] && sudo rm /usr/share/geany/templates/files/*
 	# [ -d /usr/local/share/geany/templates/files ] && sudo rm /usr/local/share/geany/templates/files/*
+
+install_gitstats :
+	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing Gitstats ==='
+	if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
+	$(COPY) ./scripts/gitstats /usr/bin
+	$(CHMOD) 755 /usr/bin/gitstats
+	$(MKDIR) /usr/share/gitstats
+	$(COPY) ./accessory/gitstats/* /usr/share/gitstats
+
+uninstall_gitstats :
+	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Uninstalling Gitstats ==='
+	if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
+	$(RM) /usr/bin/gitstats
+	$(RMDIR) /usr/share/gitstats
+
 
 install_programs :
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Installing /usr/bin Programs ==='

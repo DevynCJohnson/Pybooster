@@ -1,0 +1,141 @@
+/* GitStats - default style */
+
+body {
+	background-color: #EEE;
+	color: #000;
+}
+
+dt {
+	float: left;
+	font-weight: bold;
+	margin-right: 4px;
+}
+
+dt:after {
+	content: ': ';
+}
+
+dd {
+	clear: left;
+	display: block;
+}
+
+table {
+	border-collapse: collapse;
+	border: 1px solid #000;
+	font-size: 14px;
+	margin-bottom: 4px;
+}
+
+table.noborders {
+	border: none;
+}
+
+table.noborders td {
+	border: none;
+}
+
+.vtable {
+	clear: both;
+	float: right;
+}
+
+table.tags td {
+	vertical-align: top;
+}
+
+td {
+	background-color: #FFF;
+}
+
+th {
+	background-color: #DDF;
+}
+
+th a {
+	text-decoration: none;
+}
+
+tr:hover {
+	background-color: #DDF;
+}
+
+td {
+	border: 1px solid #000;
+	padding: 1px;
+}
+
+.nav {
+	border-bottom: 1px solid #000;
+	padding: 1px;
+}
+
+.nav ul {
+	display: inline;
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+.nav li {
+	display: inline;
+}
+
+.nav li a {
+	background-color: #DDF;
+	border: 1px solid #000;
+	color: #000;
+	margin: 1px;
+	padding: 1px;
+	text-decoration: none;
+}
+
+.nav li a:hover {
+	background-color: #77F;
+	border-bottom: 1px solid #DDF;
+}
+
+img {
+	background-color: #FFF;
+	border: 1px solid #000;
+	padding: 1px;
+}
+
+th img {
+	background-color: #DDF;
+	border: 0px;
+	padding: 0px;
+}
+
+h1 a, h2 a {
+	color: #000;
+	text-decoration: none;
+}
+
+h1:hover a:after,
+h2:hover a:after {
+	color: #555;
+	content: '¶';
+}
+
+h1 {
+	font-size: 24px;
+}
+
+h2 {
+	background-color: #564;
+	border: 1px solid #000;
+	clear: both;
+	color: #FFF;
+	font-size: 18px;
+	padding-left: 1px;
+	padding-right: 1px;
+}
+
+h2 a {
+	color: #FFF;
+}
+
+.moreauthors {
+	font-size: 14px;
+}

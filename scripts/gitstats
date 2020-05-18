@@ -1,0 +1,1172 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
+"""@brief Produce statistical information about a Git repository project.
+
+@file gitstats
+@version 2020.05.17
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@copyright LGPLv3
+
+@section LICENSE
+GNU Lesser General Public License v3
+Copyright (c) Devyn Collier Johnson, All rights reserved.
+
+This software is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This software is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with this software.
+"""
+
+
+from datetime import datetime, timedelta, timezone
+from getopt import getopt
+from glob import glob
+from multiprocessing import Pool
+from os import chdir, environ, getcwd, isatty, makedirs, remove, rename
+from os.path import abspath, basename, dirname, exists, isdir, join as joinpath
+import pickle  # nosec
+from platform import system
+import re
+from shutil import copyfile
+from subprocess import PIPE, Popen  # nosec
+from sys import argv, stderr, stdout
+from threading import Thread
+from time import time
+from zlib import compress, decompress
+
+
+__all__: list = []
+
+__version__: str = r'2020.05.17'
+
+
+# ENVIRON SETUP #
+
+
+environ[r'LC_ALL'] = r'C'
+
+GNUPLOT_CMD: str = r'gnuplot'
+if r'GNUPLOT' in environ:
+    GNUPLOT_CMD = environ[r'GNUPLOT']
+
+
+# GLOBALS #
+
+
+GNUPLOT_COMMON: str = 'set terminal png transparent size 640,240\nset size 1.0,1.0\n'
+ON_LINUX: bool = bool(system() == r'Linux')
+TIMEZONE_OBJ = datetime.now(timezone.utc).tzinfo
+WEEKS: int = 32
+WEEKDAYS: tuple = (r'Mon', r'Tue', r'Wed', r'Thu', r'Fri', r'Sat', r'Sun')
+
+CONF: dict = {
+    r'authors_top': 5,
+    r'commit_begin': r'',
+    r'commit_end': r'HEAD',
+    r'keep_data': False,
+    r'linear_linestats': 1,
+    r'max_authors': 20,
+    r'max_domains': 10,
+    r'max_ext_length': 10,
+    r'processes': 8,
+    r'project_name': r'',
+    r'quiet': False,
+    r'start_date': r'',
+    r'style': r'gitstats.css'
+}
+
+
+HTML_HEADER: str = r'''<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width,initial-scale=1.0,user-scalable=no" name="viewport">
+  <meta name="language" content="en">
+  <meta content="en_US" property="og:locale">
+  <meta content="True" name="handheldfriendly">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta content="yes" name="apple-touch-fullscreen">
+  <meta name="MobileOptimized" content="width">
+  <meta name="rating" content="general">
+  <meta name="country" content="USA">
+  <meta name="color-scheme" content="normal">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="GitStats {0}">
+  <title>GitStats - {1}</title>
+  <link href="{2}" rel="stylesheet" type="text/css">
+  <script src="sortable.js" type="text/javascript"></script>
+</head>
+
+<body>
+'''
+
+
+HTML_NAV: str = r'''<div class="nav">
+  <ul>
+    <li><a href="index.html">General</a></li>
+    <li><a href="activity.html">Activity</a></li>
+    <li><a href="authors.html">Authors</a></li>
+    <li><a href="files.html">Files</a></li>
+    <li><a href="lines.html">Lines</a></li>
+    <li><a href="tags.html">Tags</a></li>
+  </ul>
+</div>
+'''
+
+
+# CLASSES #
+
+
+class GitDataCollector:  # pylint: disable=R0902
+    """Manages data collection from a Git repository."""
+
+    def __init__(self) -> None:
+        """Initialize the data collector."""
+        self.activity_by_day_of_week: dict = {}  # day -> commits
+        self.activity_by_hour_of_day: dict = {}  # hour -> commits
+        self.activity_by_hour_of_day_busiest: int = 0
+        self.activity_by_hour_of_week: dict = {}  # weekday -> hour -> commits
+        self.activity_by_hour_of_week_busiest: int = 0
+        self.activity_by_month_of_year: dict = {}  # month [1-12] -> commits
+        self.activity_by_year_week: dict = {}  # yy_wNN -> commits
+        self.activity_by_year_week_peak: int = 0
+        self.authors: dict = {}  # name -> {commits, first_commit_stamp, last_commit_stamp, last_active_day, active_days, lines_added, lines_removed}
+        self.authors_by_commits: dict = {}
+        self.cache: dict = {}
+        self._dir: str = r''
+        self.log_range_head: str = getlogrange()
+        self.projectname: str = r''
+        self.stamp_created = time()
+        self.total_authors: int = 0
+        self.total_commits: int = 0
+        self.total_files: int = 0
+        # Domains
+        self.domains: dict = {}  # domain -> commits
+        # Authors
+        self.active_days: set = set()
+        self.author_of_month: dict = {}  # month -> author -> commits
+        self.author_of_year: dict = {}  # year -> author -> commits
+        self.changes_by_date_by_author: dict = {}
+        self.commits_by_month: dict = {}  # month -> commits
+        self.commits_by_year: dict = {}  # year -> commits
+        self.first_commit_stamp: int = 0
+        self.last_active_day = None
+        self.last_commit_stamp: int = 0
+        self.lines_added_by_month: dict = {}  # month -> lines added
+        self.lines_added_by_year: dict = {}  # year -> lines added
+        self.lines_removed_by_month: dict = {}  # month -> lines removed
+        self.lines_removed_by_year: dict = {}  # year -> lines removed
+        # Lines
+        self.total_lines: int = 0
+        self.total_lines_added: int = 0
+        self.total_lines_removed: int = 0
+        # Size
+        self.total_size: int = 0
+        # Timezone
+        self.commits_by_timezone: dict = {}  # timezone -> commits
+        # Tags
+        self.tags: dict = {}
+        self.files_by_stamp: dict = {}  # stamp -> files
+        # Extensions
+        self.extensions: dict = {}  # extension -> files, lines
+        # Line statistics
+        self.changes_by_date: dict = {}  # stamp -> { files, ins, del }
+
+    def load_cache(self, cachefile: str) -> None:
+        """Load cacheable data."""
+        if not exists(cachefile):
+            return
+        if can_print():
+            stdout.write('Loading cache...\n')
+        with open(cachefile, mode=r'rb') as _file:
+            try:
+                self.cache = pickle.loads(decompress(_file.read()))  # nosec
+            except BaseException:  # pylint: disable=W0703  # Upgrade non-compressed caches
+                _file.seek(0)
+                self.cache = pickle.load(_file)  # nosec
+
+    def save_cache(self, cachefile: str) -> None:
+        """Save cacheable data."""
+        tempfile: str = fr'{cachefile}.tmp'
+        if not exists(tempfile):
+            return
+        if can_print():
+            stdout.write('Saving cache...\n')
+        with open(tempfile, mode=r'rb') as _file:
+            _file.write(compress(pickle.dumps(self.cache)))
+        try:
+            remove(cachefile)
+        except OSError:
+            pass
+        rename(tempfile, cachefile)
+
+    def collect_file_statistics(self) -> None:  # noqa: C901,R701
+        """Collect extensions and size of files."""
+        lines = getpipeoutput([fr'''git ls-tree -r -l -z {getcommitrange(r'HEAD', end_only = True)}''']).split('\000')
+        blobs_to_read: list = []
+        for line in lines:
+            if not line:
+                continue
+            parts = re.split(r'\s+', line, 4)
+            if parts[0] == r'160000' and parts[3] == r'-':
+                # Skip submodules
+                continue
+            blob_id = parts[2]
+            size = int(parts[3])
+            fullpath = parts[4]
+            self.total_size += size
+            self.total_files += 1
+            filename = fullpath.split(r'/')[-1]  # Strip directories
+            if filename.find(r'.') == -1 or filename.rfind('.') == 0:
+                ext = r''
+            else:
+                ext = filename[(filename.rfind(r'.') + 1):]
+            if len(ext) > CONF[r'max_ext_length']:
+                ext = r''
+            if ext not in self.extensions:
+                self.extensions[ext] = {r'files': 0, r'lines': 0}
+            self.extensions[ext][r'files'] += 1
+            # If cache empty, then add ext and blob id to list of new blob's; otherwise, try to read needed info from cache
+            if r'lines_in_blob' not in self.cache.keys():
+                blobs_to_read.append((ext, blob_id))
+                continue
+            if blob_id in self.cache[r'lines_in_blob'].keys():
+                self.extensions[ext][r'lines'] += self.cache[r'lines_in_blob'][blob_id]
+            else:
+                blobs_to_read.append((ext, blob_id))
+        # Get info abount line count for new blob's that was not found in cache
+        pool = Pool(processes=CONF[r'processes'])
+        ext_blob_linecount = pool.map(getnumoflinesinblob, blobs_to_read)
+        pool.terminate()
+        pool.join()
+        # Update cache and write down info about number of number of lines
+        for (ext, blob_id, linecount) in ext_blob_linecount:
+            if r'lines_in_blob' not in self.cache:
+                self.cache[r'lines_in_blob'] = {}
+            self.cache[r'lines_in_blob'][blob_id] = linecount
+            self.extensions[ext][r'lines'] += self.cache[r'lines_in_blob'][blob_id]
+
+    def collect_line_statistics(self) -> None:
+        """Collect line statistics."""
+        self.changes_by_date = {}  # stamp -> { files, ins, del }
+        extra: str = r''
+        if CONF[r'linear_linestats']:
+            extra = r'--first-parent -m'
+        lines = list(reversed(getpipeoutput([fr'git log --shortstat {extra} --pretty=format:"%at %aN" {self.log_range_head}']).split('\n')))  # Outputs: N files changed, N insertions (+), N deletions(-)
+        files: int = 0
+        inserted: int = 0
+        deleted: int = 0
+        total_lines: int = 0
+        for line in lines:
+            if not line:
+                continue
+            # <stamp> <author>
+            if re.search(r'files? changed', line) is None:
+                pos = line.find(r' ')
+                if pos != -1:
+                    try:
+                        stamp = int(line[:pos])
+                        self.changes_by_date[stamp] = {r'files': files, r'ins': inserted, r'del': deleted, r'lines': total_lines}
+                        date = datetime.fromtimestamp(stamp, tz=TIMEZONE_OBJ)
+                        yymm = date.strftime(r'%Y-%m')
+                        self.lines_added_by_month[yymm] = self.lines_added_by_month.get(yymm, 0) + inserted
+                        self.lines_removed_by_month[yymm] = self.lines_removed_by_month.get(yymm, 0) + deleted
+                        self.lines_added_by_year[date.year] = self.lines_added_by_year.get(date.year, 0) + inserted
+                        self.lines_removed_by_year[date.year] = self.lines_removed_by_year.get(date.year, 0) + deleted
+                        files, inserted, deleted = 0, 0, 0
+                    except ValueError:
+                        stderr.write(f'Warning: unexpected line "{line}"\n')
+                else:
+                    stderr.write(f'Warning: unexpected line "{line}"\n')
+            else:
+                numbers = getstatsummarycounts(line)
+                if len(numbers) == 3:
+                    (files, inserted, deleted) = map(lambda el: int(el), numbers)
+                    total_lines += inserted
+                    total_lines -= deleted
+                    self.total_lines_added += inserted
+                    self.total_lines_removed += deleted
+                else:
+                    stderr.write(f'Warning: failed to handle line "{line}"\n')
+                    (files, inserted, deleted) = (0, 0, 0)
+        self.total_lines += total_lines
+
+    def collect_per_author_statistics(self) -> None:  # pylint: disable=R0912  # noqa: C901,R701
+        """Collect per-author statistics."""
+        lines = list(reversed(getpipeoutput([f'git log --shortstat --date-order --pretty=format:"%at %aN" {self.log_range_head}']).split('\n')))
+        inserted: int = 0
+        deleted: int = 0
+        author = None
+        stamp: int = 0
+        for line in lines:
+            if not line:
+                continue
+            if re.search('files? changed', line) is None:  # <stamp> <author>
+                pos = line.find(r' ')
+                if pos != -1:
+                    try:
+                        oldstamp = stamp
+                        (stamp, author) = (int(line[:pos]), line[pos + 1:])
+                        if oldstamp > stamp:  # Clock skew, keep old timestamp to avoid having ugly graph
+                            stamp = oldstamp
+                        if author not in self.authors:
+                            self.authors[author] = {r'lines_added': 0, r'lines_removed': 0, r'commits': 0}
+                        self.authors[author][r'commits'] = self.authors[author].get(r'commits', 0) + 1
+                        self.authors[author][r'lines_added'] = self.authors[author].get(r'lines_added', 0) + inserted
+                        self.authors[author][r'lines_removed'] = self.authors[author].get(r'lines_removed', 0) + deleted
+                        if stamp not in self.changes_by_date_by_author:
+                            self.changes_by_date_by_author[stamp] = {}
+                        if author not in self.changes_by_date_by_author[stamp]:
+                            self.changes_by_date_by_author[stamp][author] = {}
+                        self.changes_by_date_by_author[stamp][author][r'lines_added'] = self.authors[author][r'lines_added']
+                        self.changes_by_date_by_author[stamp][author][r'commits'] = self.authors[author][r'commits']
+                        inserted = 0
+                        deleted = 0
+                    except ValueError:
+                        stderr.write(f'Warning: unexpected line "{line}"\n')
+                else:
+                    stderr.write(f'Warning: unexpected line "{line}"\n')
+            else:
+                numbers = getstatsummarycounts(line)
+                if len(numbers) == 3:
+                    (_files, inserted, deleted) = map(lambda el: int(el), numbers)
+                    del _files
+                else:
+                    stderr.write(f'Warning: failed to handle line "{line}"\n')
+                    inserted = 0
+                    deleted = 0
+
+    def collect_revision_data(self) -> None:  # pylint: disable=R0912,R0914,R0915  # noqa: C901,R701
+        """Collect revision data."""
+        lines: list = getpipeoutput([fr'git rev-list --pretty=format:"%at %ai %aN <%aE>" {self.log_range_head}', r'grep -v ^commit']).split('\n')  # Outputs "<stamp> <date> <time> <timezone> <author> '<' <mail> '>'"
+        for line in lines:
+            parts: list = line.split(r' ', 4)
+            try:
+                stamp = int(parts[0])
+            except ValueError:
+                stamp = 0
+            _timezone = parts[3]
+            author, mail = parts[4].split(r'<', 1)
+            author = author.rstrip()
+            mail: str = mail.rstrip(r'>')
+            domain: str = r'?'
+            if mail.find(r'@') != -1:
+                domain = mail.rsplit(r'@', 1)[1]
+            date = datetime.fromtimestamp(float(stamp), tz=TIMEZONE_OBJ)
+            # First and last commit stamp (may be in any order because of cherry-picking and patches)
+            if stamp > self.last_commit_stamp:
+                self.last_commit_stamp = stamp
+            if self.first_commit_stamp == 0 or stamp < self.first_commit_stamp:
+                self.first_commit_stamp = stamp
+            # Activity
+            # Hour
+            hour = date.hour
+            self.activity_by_hour_of_day[hour] = self.activity_by_hour_of_day.get(hour, 0) + 1
+            # Most active hour
+            if self.activity_by_hour_of_day[hour] > self.activity_by_hour_of_day_busiest:
+                self.activity_by_hour_of_day_busiest = self.activity_by_hour_of_day[hour]
+            # Day of week
+            day = date.weekday()
+            self.activity_by_day_of_week[day] = self.activity_by_day_of_week.get(day, 0) + 1
+            # Domain stats
+            if domain not in self.domains:
+                self.domains[domain] = {}
+            # Commits
+            self.domains[domain][r'commits'] = self.domains[domain].get(r'commits', 0) + 1
+            # Hour of week
+            if day not in self.activity_by_hour_of_week:
+                self.activity_by_hour_of_week[day] = {}
+            self.activity_by_hour_of_week[day][hour] = self.activity_by_hour_of_week[day].get(hour, 0) + 1
+            # Most active hour
+            if self.activity_by_hour_of_week[day][hour] > self.activity_by_hour_of_week_busiest:
+                self.activity_by_hour_of_week_busiest = self.activity_by_hour_of_week[day][hour]
+            # Month of year
+            month = date.month
+            self.activity_by_month_of_year[month] = self.activity_by_month_of_year.get(month, 0) + 1
+            # Yearly/Weekly activity
+            yyw = date.strftime(r'%Y-%W')
+            self.activity_by_year_week[yyw] = self.activity_by_year_week.get(yyw, 0) + 1
+            if self.activity_by_year_week_peak < self.activity_by_year_week[yyw]:
+                self.activity_by_year_week_peak = self.activity_by_year_week[yyw]
+            # Author stats
+            if author not in self.authors:
+                self.authors[author] = {}
+            # Commits
+            if r'last_commit_stamp' not in self.authors[author]:
+                self.authors[author][r'last_commit_stamp'] = stamp
+            elif stamp > self.authors[author]['last_commit_stamp']:
+                self.authors[author][r'last_commit_stamp'] = stamp
+            if r'first_commit_stamp' not in self.authors[author]:
+                self.authors[author][r'first_commit_stamp'] = stamp
+            elif stamp < self.authors[author][r'first_commit_stamp']:
+                self.authors[author][r'first_commit_stamp'] = stamp
+            # Author of the month/year
+            yymm = date.strftime(r'%Y-%m')
+            if yymm in self.author_of_month:
+                self.author_of_month[yymm][author] = self.author_of_month[yymm].get(author, 0) + 1
+            else:
+                self.author_of_month[yymm] = {}
+                self.author_of_month[yymm][author] = 1
+            self.commits_by_month[yymm] = self.commits_by_month.get(yymm, 0) + 1
+            if date.year in self.author_of_year:
+                self.author_of_year[date.year][author] = self.author_of_year[date.year].get(author, 0) + 1
+            else:
+                self.author_of_year[date.year] = {}
+                self.author_of_year[date.year][author] = 1
+            self.commits_by_year[date.year] = self.commits_by_year.get(date.year, 0) + 1
+            # Authors: active days
+            yymmdd = date.strftime(r'%Y-%m-%d')
+            if r'last_active_day' not in self.authors[author]:
+                self.authors[author][r'last_active_day'] = yymmdd
+                self.authors[author][r'active_days'] = {yymmdd}
+            elif yymmdd != self.authors[author][r'last_active_day']:
+                self.authors[author][r'last_active_day'] = yymmdd
+                self.authors[author][r'active_days'].add(yymmdd)
+            # Project: active days
+            if yymmdd != self.last_active_day:
+                self.last_active_day = yymmdd
+                self.active_days.add(yymmdd)
+            # Timezone
+            self.commits_by_timezone[_timezone] = self.commits_by_timezone.get(_timezone, 0) + 1
+
+    def collect_additional_revision_data(self) -> None:
+        """Collect additional revision data."""
+        revlines = getpipeoutput([fr'git rev-list --pretty=format:"%at %T" {self.log_range_head}', r'grep -v ^commit']).strip().split('\n')  # Outputs "<stamp> <files>" for each revision
+        lines = []
+        revs_to_read = []
+        time_rev_count = []
+        # Look up rev in cache and take info from cache if found; If not, append rev to list of rev to read from repo
+        for revline in revlines:
+            _time, rev = revline.split(' ')
+            # If cache empty, then add time and rev to list of new rev's; Otherwise, try to read needed info from cache
+            if r'files_in_tree' not in self.cache.keys():
+                revs_to_read.append((_time, rev))
+                continue
+            if rev in self.cache[r'files_in_tree'].keys():
+                lines.append(fr'''{int(_time)} {self.cache[r'files_in_tree'][rev]}''')
+            else:
+                revs_to_read.append((_time, rev))
+        # Read revisions from repo
+        pool = Pool(processes=CONF[r'processes'])
+        time_rev_count = pool.map(getnumoffilesfromrev, revs_to_read)
+        pool.terminate()
+        pool.join()
+        # Update cache with new revisions and append then to general list
+        for (_time, rev, count) in time_rev_count:
+            if r'files_in_tree' not in self.cache:
+                self.cache[r'files_in_tree'] = {}
+            self.cache[r'files_in_tree'][rev] = count
+            lines.append(fr'{int(_time)} {count}')
+        self.total_commits += len(lines)
+        for line in lines:
+            parts = line.split(r' ')
+            if len(parts) != 2:
+                continue
+            (stamp, files) = parts[0:2]
+            try:
+                self.files_by_stamp[int(stamp)] = int(files)
+            except ValueError:
+                stderr.write(f'Warning: failed to parse line "{line}"\n')
+
+    def collect_tags(self) -> None:
+        """Collect tag data."""
+        lines = getpipeoutput([r'git show-ref --tags']).split('\n')
+        for line in lines:
+            if not line:
+                continue
+            (commit_hash, tag) = line.split(r' ')
+            tag = tag.replace(r'refs/tags/', r'')
+            output = getpipeoutput([fr'git log "{commit_hash}" --pretty=format:"%at %aN" -n 1'])
+            if output:
+                parts = output.split(r' ')
+                stamp = 0
+                try:
+                    stamp = int(parts[0])
+                except ValueError:
+                    stamp = 0
+                self.tags[tag] = {'stamp': stamp, 'hash': commit_hash, 'date': datetime.fromtimestamp(stamp, tz=TIMEZONE_OBJ).strftime(r'%Y-%m-%d'), r'commits': 0, r'authors': {}}
+        # Collect info on tags, starting from latest
+        prev = None
+        for tag in reversed(list(map(lambda el: el[1], reversed(list(map(lambda el: (el[1][r'date'], el[0]), self.tags.items())))))):
+            cmd: str = fr'git shortlog -s "{tag}"'
+            if prev is not None:
+                cmd += fr' "^{prev}"'
+            output = getpipeoutput([cmd])
+            if not output:
+                continue
+            prev = tag
+            for line in output.split('\n'):
+                parts = re.split(r'\s+', line, 2)
+                commits = int(parts[1])
+                author = parts[2]
+                self.tags[tag][r'commits'] += commits
+                self.tags[tag][r'authors'][author] = commits
+
+    def collect(self, _dir: str) -> None:
+        """Collect repository data."""
+        self._dir = _dir
+        self.projectname = basename(abspath(_dir)) if not CONF[r'project_name'] else CONF[r'project_name']
+        self.total_authors += int(getpipeoutput([fr'git shortlog -s {self.log_range_head}', 'wc -l']))
+        # Data Collection
+        self.collect_tags()
+        self.collect_revision_data()
+        self.collect_additional_revision_data()
+        self.collect_file_statistics()
+        self.collect_line_statistics()
+        self.collect_per_author_statistics()
+
+    def refine(self) -> None:
+        """Refine the author data."""
+        if can_print():
+            stdout.write('Refining data...\n')
+        self.authors_by_commits = reversed(list(getkeyssortedbyvaluekey(self.authors, r'commits')))  # Most first
+        for i, name in enumerate(self.authors_by_commits):
+            self.authors[name][r'place_by_commits'] = i + 1
+        for name in self.authors:  # name -> {place_by_commits, commits_frac, date_first, date_last, timedelta}
+            _author = self.authors[name]
+            _author[r'commits_frac'] = (100 * float(_author[r'commits'])) / self.total_commits
+            date_first = datetime.fromtimestamp(_author[r'first_commit_stamp'], tz=TIMEZONE_OBJ)
+            date_last = datetime.fromtimestamp(_author[r'last_commit_stamp'], tz=TIMEZONE_OBJ)
+            delta = date_last - date_first
+            _author[r'date_first'] = date_first.strftime('%Y-%m-%d')
+            _author[r'date_last'] = date_last.strftime('%Y-%m-%d')
+            _author[r'timedelta'] = delta
+            if r'lines_added' not in _author:
+                _author[r'lines_added'] = 0
+            if r'lines_removed' not in _author:
+                _author[r'lines_removed'] = 0
+
+    def get_authors(self, limit: int = None) -> list:
+        """List the authors."""
+        return list(reversed(list(getkeyssortedbyvaluekey(self.authors, r'commits'))))[:limit]
+
+    def get_commit_delta_days(self) -> float:
+        """Calculate the time difference between commits."""
+        return (self.last_commit_stamp / 86400 - self.first_commit_stamp / 86400) + 1
+
+    def get_first_commit_date(self):
+        """Retrieve the date of the first commit."""
+        return datetime.fromtimestamp(self.first_commit_stamp, tz=TIMEZONE_OBJ)
+
+    def get_last_commit_date(self):
+        """Retrieve the date of the last commit."""
+        return datetime.fromtimestamp(self.last_commit_stamp, tz=TIMEZONE_OBJ)
+
+
+class HTMLReportCreator:
+    """Creates the actual report based on given data."""
+
+    def __init__(self, data: str, path: str) -> None:
+        """Initialize the report creator and create a report."""
+        if can_print():
+            stdout.write('Generating report...\n')
+        self.data: str = data
+        self.path: str = path
+        self.datetime_format: str = r'%Y-%m-%d %H:%M:%S'
+        self.authors_to_plot: list = []
+        binarypath: str = dirname(abspath(__file__))
+        self.basedirs: tuple = (binarypath, joinpath(binarypath, r'..', r'share', r'gitstats'), r'/usr/share/gitstats', r'/usr/local/share/gitstats')
+        self.copy_static_files()
+        self.create_html()
+        self.create_graphs()
+        self.process_graphs()
+
+    def print_header(self, _file, title: str = r'') -> None:
+        """Print the HTML header block."""
+        _file.write(HTML_HEADER.format(__version__, title if title else self.data.projectname, CONF[r'style']))
+
+    def copy_static_files(self) -> None:
+        """Copy static files and looks in the binary directories."""
+        for _file in {CONF[r'style'], r'sortable.js', r'arrow-up.gif', r'arrow-down.gif', r'arrow-none.gif'}:
+            for base in self.basedirs:
+                src: str = fr'{base}/{_file}'
+                if exists(src):
+                    copyfile(src, fr'{self.path}/{_file}')
+                    break
+            else:
+                stderr.write(f'Warning: "{_file}" not found, so not copied (Searched: {self.basedirs})\n')
+
+    def create_html_index(self) -> None:
+        """Create the index.html file."""
+        with open(fr'{self.path}/index.html', mode=r'w') as _file:
+            self.print_header(_file)
+            _file.write(fr'<h1>GitStats - {self.data.projectname}</h1>{HTML_NAV}<dl><dt>Project name</dt><dd>{self.data.projectname}</dd>')
+            _file.write(fr'<dt>Generated</dt><dd>{datetime.now(tz=TIMEZONE_OBJ).strftime(self.datetime_format)} (in {round(time() - self.data.stamp_created, 2)} seconds)</dd>')
+            _file.write(fr'<dt>Generator</dt><dd>GitStats (version {__version__}), {getgitversion()}, {getgnuplotversion()}</dd>')
+            _file.write(fr'<dt>Report Period</dt><dd>{self.data.get_first_commit_date().strftime(self.datetime_format)} to {self.data.get_last_commit_date().strftime(self.datetime_format)}</dd>')
+            _file.write(fr'<dt>Age</dt><dd>{round(self.data.get_commit_delta_days(), 2)} days, {len(self.data.active_days)} active days ({(100.0 * len(self.data.active_days) / self.data.get_commit_delta_days()):3.2f}%)</dd>')
+            _file.write(fr'<dt>Total Files</dt><dd>{self.data.total_files}</dd>')
+            _file.write(fr'<dt>Total Lines of Code</dt><dd>{self.data.total_lines} ({self.data.total_lines_added} added, {self.data.total_lines_removed} removed)</dd>')
+            _file.write(fr'<dt>Total Commits</dt><dd>{self.data.total_commits} (average {float(self.data.total_commits) / len(self.data.active_days):.1f} commits per active day, {float(self.data.total_commits) / self.data.get_commit_delta_days():.1f} per all days)</dd>')
+            _file.write(fr'<dt>Authors</dt><dd>{self.data.total_authors} (average {(1.0 * self.data.total_commits) / self.data.total_authors:.1f} commits per author)</dd>')
+            _file.write(r'</dl></body></html>')
+
+    def create_html_activity(self) -> None:  # pylint: disable=R0912,R0914,R0915  # noqa: C901,R701
+        """Create the activity.html file."""
+        with open(fr'{self.path}/activity.html', mode=r'w') as _file:
+            self.print_header(_file)
+            _file.write(fr'<h1>Activity</h1>{HTML_NAV}')
+            # Weekly activity
+            _file.write(html_header(2, r'Weekly activity'))
+            _file.write(fr'<p>Last {WEEKS} weeks</p>')
+            # Generate weeks to show (previous N weeks from now)
+            now = datetime.now(tz=TIMEZONE_OBJ)
+            deltaweek = timedelta(7)
+            weeks: list = []
+            stampcur = now
+            for i in range(0, WEEKS):
+                weeks.insert(0, stampcur.strftime(r'%Y-%W'))
+                stampcur -= deltaweek
+            # Top row: commits & bar
+            _file.write(r'<table class="noborders"><tr>')
+            for i in range(0, WEEKS):
+                commits = 0
+                if weeks[i] in self.data.activity_by_year_week:
+                    commits = self.data.activity_by_year_week[weeks[i]]
+                percentage = 0
+                if weeks[i] in self.data.activity_by_year_week:
+                    percentage = float(self.data.activity_by_year_week[weeks[i]]) / self.data.activity_by_year_week_peak
+                height = max(1, int(200 * percentage))
+                _file.write(fr'<td style="text-align: center; vertical-align: bottom">{commits}<div style="display: block; background-color: red; width: 20px; height: {height}px"></div></td>')
+            # Bottom row: year/week
+            _file.write(r'</tr><tr>')
+            for i in range(0, WEEKS):
+                _file.write(fr'<td>{WEEKS - i}</td>')
+            _file.write(r'</tr></table>')
+            # Hour of Day
+            _file.write(html_header(2, r'Hour of Day'))
+            hour_of_day = self.data.activity_by_hour_of_day
+            _file.write(r'<table><tr><th>Hour</th>')
+            for i in range(0, 24):
+                _file.write(fr'<th>{i}</th>')
+            _file.write('</tr>\n<tr><th>Commits</th>')
+            with open(fr'{self.path}/hour_of_day.dat', mode=r'w') as _file2:
+                for i in range(0, 24):
+                    if i in hour_of_day:
+                        _red = 127 + int((float(hour_of_day[i]) / self.data.activity_by_hour_of_day_busiest) * 128)
+                        _file.write(fr'<td style="background-color: rgb({_red}, 0, 0)">{hour_of_day[i]}</td>')
+                        _file2.write(f'{i} {hour_of_day[i]}\n')
+                    else:
+                        _file.write(r'<td>0</td>')
+                        _file2.write(f'{i} 0\n')
+            _file.write('</tr>\n<tr><th>%</th>')
+            for i in range(0, 24):
+                if i in hour_of_day:
+                    _red = 127 + int((float(hour_of_day[i]) / self.data.activity_by_hour_of_day_busiest) * 128)
+                    _file.write(fr'<td style="background-color: rgb({_red}, 0, 0)">{(100.0 * hour_of_day[i]) / self.data.total_commits:.2f}</td>')
+                else:
+                    _file.write(r'<td>0.00</td>')
+            _file.write(r'</tr></table><img alt="Hour of Day" src="hour_of_day.jpg">')
+            with open(fr'{self.path}/hour_of_day.dat', mode=r'w') as _file2:
+                for i in range(0, 24):
+                    if i in hour_of_day:
+                        _file2.write(f'{i + 1} {hour_of_day[i]}\n')
+                    else:
+                        _file2.write(f'{i + 1} 0\n')
+            # Day of Week
+            _file.write(html_header(2, r'Day of Week'))
+            day_of_week = self.data.activity_by_day_of_week
+            _file.write(r'<div class="vtable"><table><tr><th>Day</th><th>Total (%)</th></tr>')
+            with open(fr'{self.path}/day_of_week.dat', mode=r'w') as _file2:
+                for _day in range(0, 7):
+                    commits = 0
+                    if _day in day_of_week:
+                        commits = day_of_week[_day]
+                    _file2.write(f'{_day + 1} {WEEKDAYS[_day]} {commits}\n')
+                    _file.write(r'<tr>')
+                    _file.write(fr'<th>{WEEKDAYS[_day]}</th>')
+                    if _day in day_of_week:
+                        _file.write(fr'<td>{day_of_week[_day]} ({(100.0 * day_of_week[_day]) / self.data.total_commits:.2f}%)</td>')
+                    else:
+                        _file.write(r'<td>0</td>')
+                    _file.write(r'</tr>')
+                _file.write(r'</table></div><img alt="Day of Week" src="day_of_week.jpg">')
+            # Hour of Week
+            _file.write(html_header(2, r'Hour of Week') + r'<table><tr><th>Weekday</th>')
+            for hour in range(0, 24):
+                _file.write(fr'<th>{hour}</th>')
+            _file.write(r'</tr>')
+            for weekday in range(0, 7):
+                _file.write(fr'<tr><th>{WEEKDAYS[weekday]}</th>')
+                for hour in range(0, 24):
+                    try:
+                        commits = self.data.activity_by_hour_of_week[weekday][hour]
+                    except KeyError:
+                        commits = 0
+                    if commits != 0:
+                        _file.write(r'<td')
+                        _red = 127 + int((float(commits) / self.data.activity_by_hour_of_week_busiest) * 128)
+                        _file.write(fr' style="background-color: rgb({_red}, 0, 0)">{commits}</td>')
+                    else:
+                        _file.write(r'<td></td>')
+                _file.write(r'</tr>')
+            _file.write(r'</table>')
+            # Month of Year
+            _file.write(html_header(2, r'Month of Year'))
+            _file.write(r'<div class="vtable"><table><tr><th>Month</th><th>Commits (%)</th></tr>')
+            with open(fr'{self.path}/month_of_year.dat', mode=r'w') as _file2:
+                for _month in range(1, 13):
+                    commits = 0
+                    if _month in self.data.activity_by_month_of_year:
+                        commits = self.data.activity_by_month_of_year[_month]
+                    _file.write(fr'<tr><td>{_month}</td><td>{commits} ({(100.0 * commits) / self.data.total_commits:.2f} %)</td></tr>')
+                    _file2.write(f'{_month} {commits}\n')
+            _file.write(r'</table></div><img alt="Month of Year" src="month_of_year.jpg">')
+            # Commits by year/month
+            _file.write(html_header(2, r'Commits by year/month'))
+            _file.write(r'<div class="vtable"><table><tr><th>Month</th><th>Commits</th><th>Lines added</th><th>Lines removed</th></tr>')
+            for yymm in reversed(self.data.commits_by_month.keys()):
+                _file.write(fr'<tr><td>{yymm}</td><td>{self.data.commits_by_month.get(yymm, 0)}</td><td>{self.data.lines_added_by_month.get(yymm, 0)}</td><td>{self.data.lines_removed_by_month.get(yymm, 0)}</td></tr>')
+            _file.write(r'</table></div><img alt="Commits by year/month" src="commits_by_year_month.jpg">')
+            with open(fr'{self.path}/commits_by_year_month.dat', mode=r'w') as _file2:
+                for yymm in sorted(self.data.commits_by_month.keys()):
+                    _file2.write(f'{yymm} {self.data.commits_by_month[yymm]}\n')
+            # Commits by year
+            _file.write(html_header(2, r'Commits by Year'))
+            _file.write(r'<div class="vtable"><table><tr><th>Year</th><th>Commits (% of all)</th><th>Lines added</th><th>Lines removed</th></tr>')
+            for commits_year in reversed(self.data.commits_by_year.keys()):
+                _file.write(fr'<tr><td>{commits_year}</td><td>{self.data.commits_by_year.get(commits_year, 0)} ({(100.0 * self.data.commits_by_year.get(commits_year, 0)) / self.data.total_commits:.2f}%)</td><td>{self.data.lines_added_by_year.get(commits_year, 0)}</td><td>{self.data.lines_removed_by_year.get(commits_year, 0)}</td></tr>')
+            _file.write(r'</table></div><img alt="Commits by Year" src="commits_by_year.jpg">')
+            with open(fr'{self.path}/commits_by_year.dat', mode=r'w') as _file2:
+                for commits_year in sorted(self.data.commits_by_year.keys()):
+                    _file2.write(f'{commits_year} {self.data.commits_by_year[commits_year]}\n')
+            # Commits by timezone
+            _file.write(html_header(2, r'Commits by Timezone'))
+            _file.write(r'<table><tr><th>Timezone</th><th>Commits</th></tr>')
+            max_commits_on_tz = max(self.data.commits_by_timezone.values())
+            for i in sorted(self.data.commits_by_timezone.keys(), key=lambda n: int(n)):
+                commits = self.data.commits_by_timezone[i]
+                _red = 127 + int((float(commits) / max_commits_on_tz) * 128)
+                _file.write(fr'<tr><th>{i}</th><td style="background-color: rgb({_red}, 0, 0)">{commits}</td></tr>')
+            _file.write(r'</table></body></html>')
+
+    def create_html_authors(self) -> None:  # pylint: disable=R0914,R0915  # noqa: C901,R701
+        """Create the authors.html file."""
+        with open(fr'{self.path}/authors.html', mode=r'w') as _file:
+            self.print_header(_file)
+            _file.write(fr'<h1>Authors</h1>{HTML_NAV}')
+            # Authors :: List of authors
+            _file.write(html_header(2, r'List of Authors'))
+            _file.write(r'<table class="authors sortable" id="authors"><tr><th>Author</th><th>Commits (%)</th><th>+ lines</th><th>- lines</th><th>First commit</th><th>Last commit</th><th class="unsortable">Age</th><th>Active days</th><th># by commits</th></tr>')
+            for author in self.data.get_authors(CONF[r'max_authors']):
+                info = self.data.authors[author]
+                _file.write(fr'''<tr><td>{author}</td><td>{info[r'commits']} ({info[r'commits_frac']:.2f}%)</td><td>{info[r'lines_added']}</td><td>{info[r'lines_removed']}</td><td>{info[r'date_first']}</td><td>{info[r'date_last']}</td><td>{info[r'timedelta']}</td><td>{len(info[r'active_days'])}</td><td>{info[r'place_by_commits']}</td></tr>''')
+            _file.write(r'</table>')
+            allauthors = self.data.get_authors()
+            if len(allauthors) > CONF[r'max_authors']:
+                rest = allauthors[CONF[r'max_authors']:]
+                _file.write(fr'''<p class="moreauthors">These did not make it to the top: {r', '.join(rest)}</p>''')
+            _file.write(html_header(2, r'Cumulated Added Lines of Code per Author'))
+            _file.write(r'<img alt="Lines of code per Author" src="lines_of_code_by_author.jpg">')
+            if len(allauthors) > CONF[r'max_authors']:
+                _file.write(fr'''<p class="moreauthors">Only top {CONF[r'max_authors']} authors shown</p>''')
+            _file.write(html_header(2, r'Commits per Author'))
+            _file.write(r'<img alt="Commits per Author" src="commits_by_author.jpg">')
+            if len(allauthors) > CONF[r'max_authors']:
+                _file.write(fr'''<p class="moreauthors">Only top {CONF[r'max_authors']} authors shown</p>''')
+            with open(fr'{self.path}/lines_of_code_by_author.dat', mode=r'w') as _file2, open(fr'{self.path}/commits_by_author.dat', mode=r'w') as _file3:
+                lines_by_authors = {}
+                commits_by_authors = {}
+                self.authors_to_plot = self.data.get_authors(CONF[r'max_authors'])
+                for author in self.authors_to_plot:
+                    lines_by_authors[author] = 0
+                    commits_by_authors[author] = 0
+                for stamp in sorted(self.data.changes_by_date_by_author.keys()):
+                    _file2.write(fr'{stamp}')
+                    _file3.write(fr'{stamp}')
+                    for author in self.authors_to_plot:
+                        if author in self.data.changes_by_date_by_author[stamp].keys():
+                            lines_by_authors[author] = self.data.changes_by_date_by_author[stamp][author][r'lines_added']
+                            commits_by_authors[author] = self.data.changes_by_date_by_author[stamp][author][r'commits']
+                        _file2.write(fr' {lines_by_authors[author]}')
+                        _file3.write(fr' {commits_by_authors[author]}')
+                    _file2.write('\n')
+                    _file3.write('\n')
+            # Authors :: Author of Month
+            _file.write(html_header(2, r'Author of Month'))
+            _file.write(fr'''<table class="sortable" id="aom"><tr><th>Month</th><th>Author</th><th>Commits (%)</th><th class="unsortable">Next top {CONF[r'authors_top']}</th><th>Number of authors</th></tr>''')
+            for author_month in reversed(self.data.author_of_month.keys()):
+                authordict = self.data.author_of_month[author_month]
+                authors = list(reversed(list(getkeyssortedbyvalues(authordict))))
+                commits = self.data.author_of_month[author_month][authors[0]]
+                _next = r', '.join(authors[1:CONF[r'authors_top'] + 1])
+                _file.write(fr'<tr><td>{author_month}</td><td>{authors[0]}</td><td>{commits} ({(100.0 * commits) / self.data.commits_by_month[author_month]:.2f}% of {self.data.commits_by_month[author_month]})</td><td>{_next}</td><td>{len(authors)}</td></tr>')
+            _file.write(r'</table>')
+            _file.write(html_header(2, r'Author of Year'))
+            _file.write(fr'''<table class="sortable" id="aoy"><tr><th>Year</th><th>Author</th><th>Commits (%)</th><th class="unsortable">Next top {CONF[r'authors_top']}</th><th>Number of authors</th></tr>''')
+            for author_year in reversed(self.data.author_of_year.keys()):
+                authordict = self.data.author_of_year[author_year]
+                authors = list(reversed(list(getkeyssortedbyvalues(authordict))))
+                commits = self.data.author_of_year[author_year][authors[0]]
+                _next = r', '.join(authors[1:CONF[r'authors_top'] + 1])
+                _file.write(fr'<tr><td>{author_year}</td><td>{authors[0]}</td><td>{commits} ({(100.0 * commits) / self.data.commits_by_year[author_year]:.2f}% of {self.data.commits_by_year[author_year]})</td><td>{_next}</td><td>{len(authors)}</td></tr>')
+            _file.write(r'</table>')
+            # Domains
+            _file.write(html_header(2, r'Commits by Domains'))
+            domains_by_commits = list(reversed(list(getkeyssortedbyvaluekey(self.data.domains, r'commits'))))
+            _file.write(r'<div class="vtable"><table><tr><th>Domains</th><th>Total (%)</th></tr>')
+            with open(fr'{self.path}/domains.dat', mode=r'w') as _file2:
+                counter = 0
+                for domain in domains_by_commits:
+                    if counter == CONF[r'max_domains']:
+                        break
+                    commits = 0
+                    counter += 1
+                    info = self.data.domains[domain]
+                    _file2.write(f'''{domain} {counter} {info[r'commits']}\n''')
+                    _file.write(fr'''<tr><th>{domain}</th><td>{info[r'commits']} ({(100.0 * info[r'commits'] / self.data.total_commits):.2f}%)</td></tr>''')
+                _file.write(r'</table></div><img alt="Commits by Domains" src="domains.jpg">')
+            _file.write(r'</body></html>')
+
+    def create_html_files(self) -> None:
+        """Create the files.html file."""
+        with open(fr'{self.path}/files.html', mode=r'w') as _file:
+            self.print_header(_file)
+            _file.write(fr'<h1>Files</h1>{HTML_NAV}')
+            _file.write(f'<dl>\n<dt>Total files</dt><dd>{self.data.total_files}</dd><dt>Total lines</dt><dd>{self.data.total_lines}</dd>')
+            try:
+                _file.write(fr'<dt>Average file size</dt><dd>{(float(self.data.total_size) / self.data.total_files):.2f} bytes</dd>')
+            except ZeroDivisionError:
+                pass
+            _file.write('</dl>\n')
+            # Files :: File count by date
+            _file.write(html_header(2, r'File count by date'))
+            # Use set to get rid of duplicate/unnecessary entries
+            files_by_date = set()
+            for stamp in sorted(self.data.files_by_stamp.keys()):
+                files_by_date.add(fr'''{datetime.fromtimestamp(stamp, tz=TIMEZONE_OBJ).strftime(r'%Y-%m-%d')} {self.data.files_by_stamp[stamp]}''')
+            with open(fr'{self.path}/files_by_date.dat', mode=r'w') as _file2:
+                for line in sorted(files_by_date):
+                    _file2.write(f'{line}\n')
+            _file.write(r'<img alt="Files by Date" src="files_by_date.jpg">')
+            # Files :: Extensions
+            _file.write(html_header(2, r'Extensions'))
+            _file.write(r'<table class="sortable" id="ext"><tr><th>Extension</th><th>Files (%)</th><th>Lines (%)</th><th>Lines/file</th></tr>')
+            for ext in sorted(self.data.extensions.keys()):
+                files = self.data.extensions[ext][r'files']
+                lines = self.data.extensions[ext][r'lines']
+                try:
+                    loc_percentage = (100.0 * lines) / self.data.total_lines
+                except ZeroDivisionError:
+                    loc_percentage = 0
+                _file.write(fr'<tr><td>{ext}</td><td>{files} ({(100.0 * files) / self.data.total_files:.2f}%)</td><td>{lines} ({loc_percentage:.2f}%)</td><td>{round(lines / files, 2)}</td></tr>')
+            _file.write(r'</table></body></html>')
+
+    def create_html_lines(self) -> None:
+        """Create the lines.html file."""
+        with open(fr'{self.path}/lines.html', mode=r'w') as _file:
+            self.print_header(_file)
+            _file.write(f'<h1>Lines</h1>{HTML_NAV}<dl>\n<dt>Total lines</dt><dd>{self.data.total_lines}</dd></dl>\n' + html_header(2, r'Lines of Code') + r'<img alt="Lines of Code" src="lines_of_code.jpg">')
+            with open(fr'{self.path}/lines_of_code.dat', mode=r'w') as _file2:
+                for stamp in sorted(self.data.changes_by_date.keys()):
+                    _file2.write(f'''{stamp} {self.data.changes_by_date[stamp][r'lines']}\n''')
+            _file.write(r'</body></html>')
+
+    def create_html_tags(self) -> None:
+        """Create the tags.html file."""
+        with open(fr'{self.path}/tags.html', mode=r'w') as _file:
+            self.print_header(_file)
+            _file.write(fr'<h1>Tags</h1>{HTML_NAV}<dl><dt>Total tags</dt><dd>{len(self.data.tags)}</dd>')
+            if self.data.tags:
+                _file.write(fr'<dt>Average commits per tag</dt><dd>{(1.0 * self.data.total_commits / len(self.data.tags)):.2f}</dd>')
+            _file.write(r'</dl><table class="tags"><tr><th>Name</th><th>Date</th><th>Commits</th><th>Authors</th></tr>')
+            # Sort the tags by date desc
+            tags_sorted_by_date_desc = map(lambda el: el[1], reversed(list(map(lambda el: (el[1][r'date'], el[0]), self.data.tags.items()))))
+            for tag in tags_sorted_by_date_desc:
+                authorinfo = []
+                self.data.authors_by_commits = dict(getkeyssortedbyvalues(self.data.tags[tag]['authors']))
+                for i in reversed(self.data.authors_by_commits):
+                    authorinfo.append(fr'''{i} ({self.data.tags[tag][r'authors'][i]})''')
+                _file.write(fr'''<tr><td>{tag}</td><td>{self.data.tags[tag][r'date']}</td><td>{self.data.tags[tag][r'commits']}</td><td>{r', '.join(authorinfo)}</td></tr>''')
+            _file.write(r'</table></body></html>')
+
+    def create_html(self) -> None:
+        """Create the HTML files."""
+        thread_index = Thread(target=self.create_html_index)
+        thread_index.start()
+        thread_activity = Thread(target=self.create_html_activity)
+        thread_activity.start()
+        thread_authors = Thread(target=self.create_html_authors)
+        thread_authors.start()
+        thread_files = Thread(target=self.create_html_files)
+        thread_files.start()
+        thread_lines = Thread(target=self.create_html_lines)
+        thread_lines.start()
+        thread_tags = Thread(target=self.create_html_tags)
+        thread_tags.start()
+        thread_index.join()
+        thread_activity.join()
+        thread_authors.join()
+        thread_files.join()
+        thread_lines.join()
+        thread_tags.join()
+
+    def create_graphs(self) -> None:
+        """Generate the graphs."""
+        if can_print():
+            stdout.write('Generating graphs...\n')
+        # Hour of day
+        with open(fr'{self.path}/hour_of_day.plot', mode=r'w') as _file:
+            _file.write(f'''{GNUPLOT_COMMON}\nset terminal png transparent size 1000,400\nset output 'hour_of_day.jpg'\nunset key\nset xrange [0.5:24.5]\nset yrange [0:]\nset xtics 4\nset grid y\nset ylabel "Commits"\nplot 'hour_of_day.dat' using 1:2:(0.5) w boxes fs solid''')
+        # Day of week
+        with open(fr'{self.path}/day_of_week.plot', mode=r'w') as _file:
+            _file.write(f'''{GNUPLOT_COMMON}\nset terminal png transparent size 1000,400\nset output 'day_of_week.jpg'\nunset key\nset xrange [0.5:7.5]\nset yrange [0:]\nset xtics 1\nset grid y\nset ylabel "Commits"\nplot 'day_of_week.dat' using 1:3:(0.5):xtic(2) w boxes fs solid''')
+        # Domains
+        with open(fr'{self.path}/domains.plot', mode=r'w') as _file:
+            _file.write(f'''{GNUPLOT_COMMON}\nset output 'domains.jpg'\nunset key\nunset xtics\nset yrange [0:]\nset grid y\nset ylabel "Commits"\nplot 'domains.dat' using 2:3:(0.5) with boxes fs solid, '' using 2:3:1 with labels rotate by 45 offset 0,1''')
+        # Month of Year
+        with open(fr'{self.path}/month_of_year.plot', mode=r'w') as _file:
+            _file.write(f'''{GNUPLOT_COMMON}\nset terminal png transparent size 1000,400\nset output 'month_of_year.jpg'\nunset key\nset xrange [0.5:12.5]\nset yrange [0:]\nset xtics 1\nset grid y\nset ylabel "Commits"\nplot 'month_of_year.dat' using 1:2:(0.5) w boxes fs solid''')
+        # Commits by year month
+        with open(fr'{self.path}/commits_by_year_month.plot', mode=r'w') as _file:
+            _file.write(f'''{GNUPLOT_COMMON}\nset terminal png transparent size 1000,400\nset output 'commits_by_year_month.jpg'\nunset key\nset yrange [0:]\nset xdata time\nset timefmt "%Y-%m"\nset format x "%Y-%m"\nset xtics rotate\nset bmargin 5\nset grid y\nset ylabel "Commits"\nplot 'commits_by_year_month.dat' using 1:2:(0.5) w boxes fs solid''')
+        # Commits by year
+        with open(fr'{self.path}/commits_by_year.plot', mode=r'w') as _file:
+            _file.write(f'''{GNUPLOT_COMMON}\nset terminal png transparent size 1000,400\nset output 'commits_by_year.jpg'\nunset key\nset yrange [0:]\nset xtics 1 rotate\nset grid y\nset ylabel "Commits"\nset yrange [0:]\nplot 'commits_by_year.dat' using 1:2:(0.5) w boxes fs solid''')
+        # Files by date
+        with open(fr'{self.path}/files_by_date.plot', mode=r'w') as _file:
+            _file.write(f'''{GNUPLOT_COMMON}\nset terminal png transparent size 1000,400\nset output 'files_by_date.jpg'\nunset key\nset yrange [0:]\nset xdata time\nset timefmt "%Y-%m-%d"\nset format x "%Y-%m-%d"\nset grid y\nset ylabel "Files"\nset xtics rotate\nset ytics autofreq\nset bmargin 4\nplot 'files_by_date.dat' using 1:2 w steps''')
+        # Lines of Code
+        with open(fr'{self.path}/lines_of_code.plot', mode=r'w') as _file:
+            _file.write(f'''{GNUPLOT_COMMON}\nset terminal png transparent size 1000,400\nset output 'lines_of_code.jpg'\nunset key\nset yrange [0:]\nset xdata time\nset timefmt "%s"\nset format x "%Y-%m-%d"\nset grid y\nset ylabel "Lines"\nset xtics rotate\nset bmargin 4\nplot 'lines_of_code.dat' using 1:2 w lines''')
+        # Lines of Code Added per author
+        with open(fr'{self.path}/lines_of_code_by_author.plot', mode=r'w') as _file:
+            _file.write(f'''{GNUPLOT_COMMON}\nset terminal png transparent size 1000,800\nset output 'lines_of_code_by_author.jpg'\nset key left top\nset yrange [0:]\nset xdata time\nset timefmt "%s"\nset format x "%Y-%m-%d"\nset grid y\nset ylabel "Lines"\nset xtics rotate\nset bmargin 4\nplot''')
+            i = 1
+            plots = []
+            for _author in self.authors_to_plot:
+                i += 1
+                author = _author.replace(r'"', '\\"').replace(r'`', r'')
+                plots.append(f'''\'lines_of_code_by_author.dat\' using 1:{i} title "{author}" w lines''')
+            _file.write(r', '.join(plots))
+            _file.write('\n')
+        # Commits per author
+        with open(fr'{self.path}/commits_by_author.plot', mode=r'w') as _file:
+            _file.write(f'''{GNUPLOT_COMMON}\nset terminal png transparent size 1000,800\nset output 'commits_by_author.jpg'\nset key left top\nset yrange [0:]\nset xdata time\nset timefmt "%s"\nset format x "%Y-%m-%d"\nset grid y\nset ylabel "Commits"\nset xtics rotate\nset bmargin 4\nplot''')
+            i = 1
+            plots = []
+            for _author in self.authors_to_plot:
+                i += 1
+                author = _author.replace(r'"', '\\"').replace(r'`', r'')
+                plots.append(f'''\'commits_by_author.dat\' using 1:{i} title "{author}" w lines''')
+            _file.write(r', '.join(plots))
+            _file.write('\n')
+
+    def process_graphs(self) -> None:
+        """Process the data files."""
+        chdir(self.path)
+        for _file in glob(fr'{self.path}/*.plot'):
+            out = getpipeoutput([fr'{GNUPLOT_CMD} "{_file}"'])
+            if out:
+                stdout.write(f'{out}\n')
+
+
+# GNUPLOT FUNCTIONS #
+
+
+def getgnuplotversion() -> float:
+    """Retrieve the GnuPlot version."""
+    return getpipeoutput([fr'{GNUPLOT_CMD} --version']).split('\n')[0]
+
+
+# GIT FUNCTIONS #
+
+
+def getgitversion():
+    """Retrieve the Git version."""
+    return getpipeoutput([r'git --version']).split('\n')[0]
+
+
+def getnumoffilesfromrev(time_rev: tuple) -> tuple:
+    """Get number of files changed in commit."""
+    return (int(time_rev[0]), time_rev[1], int(getpipeoutput([fr'git ls-tree -r --name-only "{time_rev[1]}"', r'wc -l']).split('\n')[0]))
+
+
+def getnumoflinesinblob(ext_blob: tuple) -> tuple:
+    """Get number of lines in blob."""
+    ext, blob_id = ext_blob
+    return (ext, blob_id, int(getpipeoutput([fr'git cat-file blob {blob_id}', r'wc -l']).split()[0]))
+
+
+def getcommitrange(defaultrange: str = r'HEAD', end_only: bool = True) -> str:
+    """Retrieve the range of the commits."""
+    if CONF[r'commit_end']:
+        if end_only or not CONF[r'commit_begin']:
+            return CONF[r'commit_end']
+        return fr'''{CONF[r'commit_begin']}..{CONF[r'commit_end']}'''
+    return defaultrange
+
+
+def getlogrange(defaultrange: str = r'HEAD', end_only: bool = True) -> str:
+    """Retrieve the range of the logs."""
+    commit_range = getcommitrange(defaultrange, end_only)
+    if CONF[r'start_date']:
+        return fr'''--since="{CONF[r'start_date']}" "{commit_range}"'''
+    return commit_range
+
+
+def get_tags() -> str:
+    """Retrieve the repository tags."""
+    return getpipeoutput([r'git show-ref --tags', r'cut -d/ -f3']).split('\n')
+
+
+# FUNCTIONS #
+
+
+def can_print() -> bool:
+    """Test if text can be printed to the console."""
+    if ON_LINUX and not CONF[r'quiet'] and isatty(1):
+        return True
+    return False
+
+
+def cleanup(outpath: str) -> None:
+    """Delete unneeded files."""
+    for _file in glob(fr'{outpath}/*.dat'):
+        remove(_file)
+    for _file in glob(fr'{outpath}/*.plot'):
+        remove(_file)
+
+
+def getpipeoutput(cmds: list) -> str:
+    """Retrieve the output of the given shell commands."""
+    if can_print():
+        stdout.write(f'''>> {r' | '.join(cmds)}\n''')
+        stdout.flush()
+    _process = Popen(cmds[0], stdout=PIPE, shell=True)  # nosec
+    processes: list = [_process]
+    for _cmd in cmds[1:]:
+        _process = Popen(_cmd, stdin=_process.stdout, stdout=PIPE, shell=True)  # nosec
+        processes.append(_process)
+    output = _process.communicate()[0].decode(r'utf-8')
+    for _process in processes:
+        _process.wait()
+    return output.rstrip('\n')
+
+
+def getkeyssortedbyvalues(dict_obj: dict) -> list:
+    """Sort dict keys by value."""
+    return map(lambda el: el[1], sorted(map(lambda el: (el[1], el[0]), dict_obj.items())))
+
+
+def getkeyssortedbyvaluekey(dict_obj: dict, key: str) -> list:
+    """Sort the values of a dict for only the specified key."""
+    return map(lambda el: el[1], sorted(map(lambda el: (dict_obj[el][key], el), dict_obj.keys())))
+
+
+def getstatsummarycounts(line: int) -> list:
+    """Calculate the summary."""
+    numbers = re.findall(r'\d+', line)
+    if len(numbers) == 1:  # Neither insertions nor deletions
+        numbers.append(0)
+        numbers.append(0)
+    elif len(numbers) == 2 and line.find(r'(+)') != -1:
+        numbers.append(0)  # Only insertions were printed on line
+    elif len(numbers) == 2 and line.find(r'(-)') != -1:
+        numbers.insert(1, 0)  # Only deletions were printed on line
+    return numbers
+
+
+def get_tag_date(tag: str) -> str:
+    """Retrieve the date that a tag was created."""
+    return rev2date(fr'tags/{tag}')
+
+
+def html_header(level: int, text: str) -> str:
+    """Create an HTML header."""
+    name: str = text.casefold().replace(r' ', r'_')
+    return f'\n<h{level} id="{name}"><a href="#{name}">{text}</a></h{level}>\n\n'
+
+
+def rev2date(rev: str) -> str:
+    """Get the date of a particular revision."""
+    return datetime.fromtimestamp(int(getpipeoutput([fr'git log --pretty=format:%at "{rev}" -n 1'])), tz=TIMEZONE_OBJ).strftime(r'%Y-%m-%d')
+
+
+def usage() -> None:
+    """Display the command usage info."""
+    stdout.write(f"""
+Usage: gitstats [options] <gitpath..> <outputpath>
+
+Options:
+-c key=value     Override configuration value
+
+Default config values:
+{CONF}
+""")
+
+
+# MAIN #
+
+
+def main(args_orig: list) -> None:  # pylint: disable=R0912,R0915  # noqa: C901,R701
+    """Entry point."""
+    # PARSE ARGUMENTS #
+    optlist, args = getopt(args_orig, r'c:hkq', [r'help', r'keep', r'output=', r'quiet', r'repo='])
+    outputpath: str = r''
+    gitpath: str = r''
+    for option, optval in optlist:
+        if option == r'-c':
+            key, value = optval.split(r'=', 1)
+            if key not in CONF:
+                raise KeyError(fr'No such key "{key}" in config')
+            CONF[key] = int(value) if isinstance(CONF[key], int) else value
+        elif option in {r'-h', r'--help'}:
+            usage()
+            raise SystemExit(0)
+        elif option in {r'-k', r'--keep'}:
+            CONF[r'keep_data'] = True
+        elif option in {r'-q', r'--quiet'}:
+            CONF[r'quiet'] = True
+        elif option == r'--output':
+            outputpath = optval
+        elif option == r'--repo':
+            gitpath = optval
+    if not (outputpath and gitpath) and len(args) < 2:
+        usage()
+        raise SystemExit(0)
+    # SETUP #
+    try:
+        makedirs(outputpath)
+    except OSError:
+        pass
+    if not isdir(outputpath):
+        stderr.write('FATAL: Output path is not a directory or does not exist!\n')
+        raise SystemExit(1)
+    if not getgnuplotversion():
+        stderr.write('FATAL: gnuplot not found!\n')
+        raise SystemExit(1)
+    if can_print():
+        stdout.write(f'Output path: {outputpath}\n')
+    # Data Collection
+    if can_print():
+        stdout.write(f'Git path: {gitpath}\n')
+    prevdir: str = getcwd()
+    chdir(gitpath)
+    if can_print():
+        stdout.write('Collecting data...\n')
+    data = GitDataCollector()
+    data.collect(gitpath)
+    chdir(prevdir)
+    data.refine()
+    HTMLReportCreator(data, outputpath)
+    if not CONF[r'keep_data']:
+        cleanup(outputpath)
+    if can_print():
+        stdout.write('You may now run:    sensible-browser "' + joinpath(outputpath, r'index.html').replace('\'', '\'\\\'\'') + '"\n')
+    raise SystemExit(0)
+
+
+if __name__ == '__main__':
+    main(argv[1:])
