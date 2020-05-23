@@ -3,12 +3,23 @@
 [keywords=HTML]
 
 [lexer_properties]
+asp.default.language=1
+fold.compact=0
 fold.cpp.comment.explicit=1
 fold.cpp.comment.multiline=1
 fold.cpp.explicit.anywhere=1
 fold.cpp.explicit.end=// }
 fold.cpp.explicit.start=// (FB){
+fold.html.preprocessor=1
+fold.html=1
+fold.hypertext.comment=1
+fold.hypertext.heredoc=1
+html.tags.case.sensitive=1
+lexer.html.django=1
+lexer.html.mako=1
+lexer.xml.allow.scripts=1
 phpscript.mode=1
+xml.auto.close.tags=1
 
 [settings]
 extension=php
