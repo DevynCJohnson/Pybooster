@@ -1,12 +1,13 @@
 #!/usr/bin/env php
 <?php
+
 // -*- coding: utf-8-unix; Mode: PHP; indent-tabs-mode: t; php-basic-offset: 4; tab-width: 4 -*-
 // vim: set fileencoding=utf-8 filetype=php fileformat=unix tabstop=4 :
 // kate: encoding utf-8; bom off; syntax php; indent-mode phpstyle; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
 /**
 @brief PHP library containing string-related functions
 @file strlib.php
-@version 2019.01.25
+@version 2020.05.23
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -34,9 +35,11 @@ along with this software.
 @param[string] $string The string in which to count vowels
 @return integer The number of vowels in the given string
 */
-function countVowels($string) {
-	preg_match_all('/[aeiou]/i', $string, $matches);
-	return count($matches[0]);
+function countVowels($string)
+{
+    $matches = 0;
+    preg_match_all('/[aeiou]/i', $string, $matches);
+    return count($matches[0]);
 }
 
 
@@ -45,8 +48,9 @@ function countVowels($string) {
 @param[string] $string The string in which to decapitalize
 @return string The decapitalized string
 */
-function decapitalize($string) {
-	return lcfirst($string);
+function decapitalize($string)
+{
+    return lcfirst($string);
 }
 
 
@@ -56,8 +60,9 @@ function decapitalize($string) {
 @param[string] $substr The sought-after substring
 @return boolean
 */
-function endsWith($mainstr, $substr) {
-	return strrpos($mainstr, $substr) === (strlen($mainstr) - strlen($substr));
+function endsWith($mainstr, $substr)
+{
+    return strrpos($mainstr, $substr) === (strlen($mainstr) - strlen($substr));
 }
 
 
@@ -68,8 +73,9 @@ function endsWith($mainstr, $substr) {
 @param[string] $end The ending substring to find
 @return string
 */
-function firstStringBetween($mainstr, $start, $end) {
-	return trim(strstr(strstr($mainstr, $start), $end, true), $start . $end);
+function firstStringBetween($mainstr, $start, $end)
+{
+    return trim(strstr(strstr($mainstr, $start), $end, true), $start . $end);
 }
 
 
@@ -79,8 +85,9 @@ function firstStringBetween($mainstr, $start, $end) {
 @param[string] $str2 The second string to test
 @return string
 */
-function isAnagram($str1, $str2) {
-	return count_chars($str1, 1) === count_chars($str2, 1);
+function isAnagram($str1, $str2)
+{
+    return count_chars($str1, 1) === count_chars($str2, 1);
 }
 
 
@@ -90,8 +97,9 @@ function isAnagram($str1, $str2) {
 @param[string] $substr The sought-after substring
 @return boolean
 */
-function isContains($str, $substr) {
-	return strpos($str, $substr);
+function isContains($str, $substr)
+{
+    return strpos($str, $substr);
 }
 
 
@@ -100,8 +108,9 @@ function isContains($str, $substr) {
 @param[string] $str The string in which to test
 @return boolean
 */
-function isLowerCase($str) {
-	return $str === strtolower($str);
+function isLowerCase($str)
+{
+    return $str === strtolower($str);
 }
 
 
@@ -110,8 +119,9 @@ function isLowerCase($str) {
 @param[string] $str The string in which to test
 @return boolean
 */
-function isUpperCase($str) {
-	return $str === strtoupper($str);
+function isUpperCase($str)
+{
+    return $str === strtoupper($str);
 }
 
 
@@ -120,8 +130,9 @@ function isUpperCase($str) {
 @param[string] $str The string in which to test
 @return boolean
 */
-function palindrome($str) {
-	return $str === strrev($str);
+function palindrome($str)
+{
+    return $str === strrev($str);
 }
 
 
@@ -131,8 +142,9 @@ function palindrome($str) {
 @param[string] $substr The substring to find
 @return boolean
 */
-function startsWith($str, $substr) {
-	return 0 === strpos($str, $substr);
+function startsWith($str, $substr)
+{
+    return 0 === strpos($str, $substr);
 }
 
 

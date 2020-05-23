@@ -1,12 +1,13 @@
 #!/usr/bin/env php
 <?php
+
 // -*- coding: utf-8-unix; Mode: PHP; indent-tabs-mode: t; php-basic-offset: 4; tab-width: 4 -*-
 // vim: set fileencoding=utf-8 filetype=php fileformat=unix tabstop=4 :
 // kate: encoding utf-8; bom off; syntax php; indent-mode phpstyle; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
 /**
 @brief PHP library containing math functions
 @file mathlib.php
-@version 2019.01.24
+@version 2020.05.23
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -34,8 +35,9 @@ along with this software.
 @param[array] $items An array of numbers
 @return float The average of the given array
 */
-function average(...$items) {
-	return count($items) === 0 ? 0 : array_sum($items) / count($items);
+function average(...$items)
+{
+    return count($items) === 0 ? 0 : array_sum($items) / count($items);
 }
 
 
@@ -46,8 +48,9 @@ function average(...$items) {
 @param[number] $end The ending boundary
 @return float
 */
-function clamp($num, $start, $end) {
-	return max(min($num, max($start, $end)), min($start, $end));
+function clamp($num, $start, $end)
+{
+    return max(min($num, max($start, $end)), min($start, $end));
 }
 
 
@@ -56,13 +59,14 @@ function clamp($num, $start, $end) {
 @param[integer] $num The initial integer
 @return integer
 */
-function factorial($num) {
-	if ($num <= 1) { return 1; }
-	$ans = $num;
-	for ($i = $num; $i != 1; $i--) {
-		$ans *= ($i - 1);
-	}
-	return $ans;
+function factorial($num)
+{
+    if ($num <= 1) { return 1; }
+    $ans = $num;
+    for ($i = $num; $i != 1; $i--) {
+        $ans *= ($i - 1);
+    }
+    return $ans;
 }
 
 
@@ -71,12 +75,13 @@ function factorial($num) {
 @param[integer] $num The `num`th Fibonacci number to obtain
 @return integer
 */
-function fibonacci($num) {
-	$seq = [0, 1];
-	for ($i = 2; $i < $num; $i++) {
-		$seq[$i] = $seq[$i-1] + $seq[$i-2];
-	}
-	return $seq;
+function fibonacci($num)
+{
+    $seq = [0, 1];
+    for ($i = 2; $i < $num; $i++) {
+        $seq[$i] = $seq[$i - 1] + $seq[$i - 2];
+    }
+    return $seq;
 }
 
 
@@ -85,10 +90,11 @@ function fibonacci($num) {
 @param[integer] $numbers The set of numbers to process
 @return integer
 */
-function gcd(...$numbers) {
-	if (count($numbers) > 2) { return array_reduce($numbers, 'gcd'); }
-	$ans = $numbers[0] % $numbers[1];
-	return $ans === 0 ? abs($numbers[1]) : gcd($numbers[1], $ans);
+function gcd(...$numbers)
+{
+    if (count($numbers) > 2) { return array_reduce($numbers, 'gcd'); }
+    $ans = $numbers[0] % $numbers[1];
+    return $ans === 0 ? abs($numbers[1]) : gcd($numbers[1], $ans);
 }
 
 
@@ -97,12 +103,13 @@ function gcd(...$numbers) {
 @param[integer] $num The integer to test
 @return boolean
 */
-function isPrime($num) {
-	$boundary = floor(sqrt($num));
-	for ($i = 2; $i <= $boundary; $i++) {
-		if ($num % $i === 0) { return false; }
-	}
-	return $num >= 2;
+function isPrime($num)
+{
+    $boundary = floor(sqrt($num));
+    for ($i = 2; $i <= $boundary; $i++) {
+        if ($num % $i === 0) { return false; }
+    }
+    return $num >= 2;
 }
 
 
@@ -111,12 +118,13 @@ function isPrime($num) {
 @param[integer] $numbers The set of numbers to process
 @return integer
 */
-function lcm(...$numbers) {
-	$ans = $numbers[0];
-	for ($i = 1; $i < count($numbers); $i++) {
-		$ans = ((($numbers[$i] * $ans)) / (gcd($numbers[$i], $ans)));
-	}
-	return $ans;
+function lcm(...$numbers)
+{
+    $ans = $numbers[0];
+    for ($i = 1; $i < count($numbers); $i++) {
+        $ans = ((($numbers[$i] * $ans)) / (gcd($numbers[$i], $ans)));
+    }
+    return $ans;
 }
 
 
@@ -125,11 +133,12 @@ function lcm(...$numbers) {
 @param[integer] $numbers The set of numbers to process
 @return integer
 */
-function median($numbers) {
-	sort($numbers);
-	$totalNumbers = count($numbers);
-	$mid = floor($totalNumbers / 2);
-	return ($totalNumbers % 2) === 0 ? ($numbers[$mid - 1] + $numbers[$mid]) / 2 : $numbers[$mid];
+function median($numbers)
+{
+    sort($numbers);
+    $totalNumbers = count($numbers);
+    $mid = floor($totalNumbers / 2);
+    return ($totalNumbers % 2) === 0 ? ($numbers[$mid - 1] + $numbers[$mid]) / 2 : $numbers[$mid];
 }
 
 
