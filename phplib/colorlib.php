@@ -45,7 +45,7 @@ function hex2rgb($color)
         return $default;
     } elseif ($clrlen === 6) {
         $hex = array($color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5]);
-    } elseif ($clrlen === 3) {
+    } else {
         $hex = array($color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2]);
     }
     $rgb = array_map('hexdec', $hex);
@@ -68,12 +68,11 @@ function hex2rgba($color)
         return $default;
     } elseif ($clrlen === 6) {
         $hex = array($color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5]);
-    } elseif ($clrlen === 3) {
+    } else {
         $hex = array($color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2]);
     }
     $rgb = array_map('hexdec', $hex);
-    if (abs($opacity) > 1) { $opacity = 1.0; }
-    return 'rgba(' . implode(',', $rgb) . ',' . $opacity . '';
+    return 'rgba(' . implode(',', $rgb) . ',1.0';
 }
 
 
