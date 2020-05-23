@@ -3,6 +3,7 @@
 	* Coding_Standards.md:  Tweaked the PHP rules
 	* Geany:  Added more PHP snippets
 	* Geany:  Tweaked Geany's other PHP files
+	* phpanalysis:  Added more syntax checkers
 	* PHPLib:  Standardized the code
 	* profile:  Added composer to the PATH
 
