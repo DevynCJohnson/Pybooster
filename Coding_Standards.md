@@ -591,14 +591,15 @@ Markdown
 PHP
 ---
 
-- Use one tab per indentation level
+- Use four spaces per indentation level
 - Use one statement per line, unless the statements are very closely related
 - Functions/Methods must not span multiple PHP files
 - For PHP code, only use ```<?php ?>``` tags never ```<?= ?>``` nor ```<? ?>```
 - Only use Perl/Shell style comments (i.e. `#`) for hashplings
 - The booleans `true` and `false` are always in all lowercase letters
+- Use `!=`, not `<>`
 - Use `elseif`, not `else if`
-- Use `const`, not `define()`
+- Use `const` and not `define()` for compile-time constants
 - Naming Conventions
     - **Classes:** PascalCase
     - **Constants:** ALLCAPS
@@ -608,7 +609,7 @@ PHP
 - Follow the rules listed in the [PEAR2 Coding Standards](http://pear.php.net/manual/en/pear2cs.rules.php) (except for rules that conflict with this document)
 - Follow the "accepted" rules listed in the below listed in the [PHP Standards Recommendations](https://www.php-fig.org/psr/) (except for rules that conflict with this document)
     - [PSR-1](https://www.php-fig.org/psr/psr-1/)
-    - [PSR-2](https://www.php-fig.org/psr/psr-2/)
+    - [PSR-12](https://www.php-fig.org/psr/psr-12/)
 
 Python
 ------
