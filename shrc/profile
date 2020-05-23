@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Universal setup script for Posix-compatible shells
 #' @file profile
-#' @version 2020.05.16
+#' @version 2020.05.23
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 #'
@@ -375,6 +375,7 @@ notinpath() { (echo ":${PATH}:" | grep -F -q -v "$1" && return 0) || return 1; }
 [ -d /opt/bin ] && notinpath ':/opt/bin' && PATH="${PATH}:/opt/bin"
 [ -d /snap/bin ] && notinpath ':/snap/bin' && PATH="${PATH}:/snap/bin"
 [ -d "${HOME}/bin" ] && notinpath "${HOME}/bin" && notinpath ':\~/bin' && PATH="${HOME}/bin:${PATH}"
+[ -d "${HOME}/.composer/vendor/bin" ] && notinpath "${HOME}/.composer/vendor/bin" && notinpath ':\~/.composer/vendor/bin' && PATH="${HOME}/.composer/vendor/bin:${PATH}"
 [ -d "${HOME}/.cargo/bin" ] && notinpath "${HOME}/.cargo/bin" && notinpath ':\~/.cargo/bin' && PATH="${HOME}/.cargo/bin:${PATH}"
 [ -d "${HOME}/.local/bin" ] && notinpath "${HOME}/.local/bin" && notinpath ':\~/.local/bin' && PATH="${HOME}/.local/bin:${PATH}"
 [ -d /wine/bin ] && notinpath ':/wine/bin' && PATH="${PATH}:/wine/bin"

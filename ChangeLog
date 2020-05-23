@@ -4,6 +4,7 @@
 	* Geany:  Added more PHP snippets
 	* Geany:  Tweaked Geany's other PHP files
 	* PHPLib:  Standardized the code
+	* profile:  Added composer to the PATH
 
 2020-05-17  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
