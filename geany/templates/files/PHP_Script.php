@@ -29,8 +29,9 @@ along with this software.
 */
 
 
-function main() {
-	return 0;
+function main()
+{
+    return 0;
 }
 
 

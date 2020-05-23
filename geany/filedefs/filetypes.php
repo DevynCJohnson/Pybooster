@@ -32,7 +32,7 @@ context_action_cmd=
 xml_indent_tags=true
 
 [indentation]
-type=1
+type=0
 width=4
 
 [build-menu]
