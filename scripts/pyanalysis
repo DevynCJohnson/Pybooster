@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Wrapper for scanning a Python script with flake8, pycodestyle (pep8), pyflakes, pylint, doctest, and more
 #' @file pyanalysis
-#' @version 2019.12.26
+#' @version 2020.05.24
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -24,15 +24,21 @@ fi
 # GLOBALS #
 
 
+export MYPYPATH='./'
 export NO_AT_BRIDGE=1
 export PYTHONCOERCECLOCALE=0
 export PYTHONIOENCODING='UTF-8'
 export PYTHONUTF8=1
 export RADONFILESENCODING='UTF-8'
-
 export RADON_MAX_CC=10
-EXTRA_FLAKE8_FLAGS=''
 
+if [ -x "${PYTHONPATH:-}" ]; then
+    export PYTHONPATH='./'
+else
+    export PYTHONPATH="${PYTHONPATH}:./"
+fi
+
+EXTRA_FLAKE8_FLAGS=''
 IGNORE_DIRECTORIES='.bzr,.cache,.cvs,.eggs,.git,.hg,.svk,.svn,.tox,__init__,__init__.py,__pycache__,build,CVS,dist,*.egg-info'
 IGNORE_VAR_NAMES='i,j,k,v,ex,key,Run,val,_'
 TODO_COMMENTS='DEBUG,DEPRECATED,DISABLED,FINISH,FIX,FIXME,REPAIR,TESTING,TODEBUG,TODO,TOMV,TORM,XXX'
@@ -197,7 +203,7 @@ fi
 flake8_func() {
     if [ "$FLAKE8_EXISTS" -eq 1 ]; then
         printf '======  *FLAKE8*  ======\n'
-        flake8 --jobs='auto' --max-complexity=${RADON_MAX_CC} ${EXTRA_FLAKE8_FLAGS} --exclude="${IGNORE_DIRECTORIES}" --ignore='E501,T001' --benchmark --doctests --show-source --statistics --exit-zero "${1}" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
+        flake8 --jobs='auto' --max-complexity=${RADON_MAX_CC} ${EXTRA_FLAKE8_FLAGS} --exclude="${IGNORE_DIRECTORIES}" --ignore='E501,T001,T499' --benchmark --doctests --show-source --statistics --exit-zero "${1}" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); if (NF > 0) { print; } }'
     fi
 }
 
@@ -327,7 +333,8 @@ pydoctest_func() {
 radon_func() {
     if [ "$RADON_EXISTS" -eq 1 ]; then
         printf '======  *RADON REPORT*  ======\n'
-        radon cc "${1}" --max F --min A -nc --order=SCORE --show-complexity --total-average
+        sed_cmd_str=':\1:0 \2'
+        radon cc "${1}" --max F --min A -nc --order=SCORE --show-complexity --total-average | sed -E "s|^${1}$||; s|^    [A-F]+ ([0-9]+):0 (.+)$|${1}${sed_cmd_str}|;"
         radon mi "${1}" --max C --min A --multi --show
         radon raw "${1}" --summary
         radon hal "${1}"
