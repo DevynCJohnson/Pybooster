@@ -4,15 +4,27 @@
 # kate: encoding utf-8; bom off; syntax makefile; indent-mode normal; eol unix; indent-width 4; tab-width 4; remove-trailing-space on;
 
 
-obj-m := ./src/clevo_kbd_backlight.o
+.POSIX :
+.ONESHELL :
+override SHELL::=/bin/bash
+.SHELLFLAGS::=-c
 
-PWD := $(shell pwd)
-KDIR := /lib/modules/$(shell uname -r)/build
-VERSION := 2019.03.29
+
+obj-m:=./src/clevo_kbd_backlight.o
+
+PWD:=$(shell pwd)
+KDIR:=/lib/modules/$(shell uname -r)/build
+VERSION:=2020.05.25
+
+
+.PHONY: all clean install dkmsadd dkmsremove build build_install build_install_load uninstall load unload
 
 
 all:
 	@make -C $(KDIR) M=$(PWD) modules
+
+default:
+	@all
 
 clean:
 	@make -C $(KDIR) M=$(PWD) clean
@@ -36,9 +48,6 @@ build_install: build
 
 build_install_load: build_install
 	@modprobe clevo_kbd_backlight || true
-
-install:
-	@dkms install -m clevo_kbd_backlight -v $(VERSION)
 
 uninstall:
 	@modprobe -r clevo_kbd_backlight || true
