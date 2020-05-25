@@ -1,6 +1,7 @@
 2020-05-25  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* clevo_kbd_backlight:  Added new color features & optimized the code
+	* DevHelp:  Added a DevHelp file for PHP
 	* Geany:  Tweaked filetype_extensions.conf
 
 2020-05-24  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>

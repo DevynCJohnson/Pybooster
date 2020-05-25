@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Install additional DevHelp manuals
 #' @file install_devhelp_docs.sh
-#' @version 2020.03.15
+#' @version 2020.05.25
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -87,6 +87,8 @@ install_devhelp_docs() {
     { [ -d /usr/share/doc/mesa-common-dev/ ] && [ ! -d /usr/share/devhelp/books/mesa-common-dev ] && ln -f -s /usr/share/doc/mesa-common-dev /usr/share/devhelp/books/mesa-common-dev && cp -f --preserve=mode "${DEVHELPDIR}/mesa-common-dev.devhelp2" /usr/share/devhelp/books/mesa-common-dev/; } &
     # Numpy
     { [ -d /usr/share/doc/python-numpy-doc/html/ ] && [ ! -d /usr/share/devhelp/books/numpy ] && ln -f -s /usr/share/doc/python-numpy-doc/html/ /usr/share/devhelp/books/numpy && cp -f --preserve=mode "${DEVHELPDIR}/numpy.devhelp2" /usr/share/devhelp/books/numpy/; } &
+    # PHP
+    { [ -d /usr/share/doc/php/ ] && [ ! -d /usr/share/devhelp/books/php ] && ln -f -s /usr/share/doc/php/ /usr/share/devhelp/books/php && cp -f --preserve=mode "${DEVHELPDIR}/php.devhelp2" /usr/share/devhelp/books/php/; } &
     # SQLAlchemy
     { [ ! -d /usr/share/devhelp/books/sqlalchemy ] && [ -d /usr/share/doc/python-sqlalchemy-doc/html ] && ln -f -s /usr/share/doc/python-sqlalchemy-doc/html /usr/share/devhelp/books/sqlalchemy && cp -f --preserve=mode "${DEVHELPDIR}/sqlalchemy.devhelp2" /usr/share/devhelp/books/sqlalchemy/; } &
     # Werkzeug

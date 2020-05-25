@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://www.devhelp.net/book" author="" base="/usr/share/devhelp/books/php/" language="PHP" link="index.html" name="PHP" title="PHP Documentation" version="2">
+  <chapters>
+    <sub name="Index" link="index.html" />
+    <sub name="Resource Types" link="resource.html" />
+    <sub name="Functions" link="language.functions.html" />
+    <sub name="Function Reference" link="funcref.html" />
+    <sub name="Language Reference" link="langref.html" />
+    <sub name="Datatypes" link="language.types.html" />
+    <sub name="Keywords" link="reserved.keywords.html" />
+    <sub name="Predefined Classes" link="reserved.classes.html" />
+    <sub name="Predefined Constants" link="reserved.constants.html" />
+    <sub name="Predefined Exceptions" link="reserved.exceptions.html" />
+    <sub name="Predefined Variables" link="reserved.variables.html" />
+    <sub name="Other Reserved Keywords" link="reserved.other-reserved-words.html" />
+    <sub name="PHP.INI Core Directives" link="ini.core.html" />
+    <sub name="PHP.INI Directives" link="ini.list.html" />
+    <sub name="PHP.INI Sections" link="ini.sections.html" />
+  </chapters>
+</book>
