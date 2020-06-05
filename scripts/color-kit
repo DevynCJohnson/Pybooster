@@ -5,7 +5,7 @@
 """@brief Convert between color-spaces.
 
 @file color-kit
-@version 2020.02.03
+@version 2020.06.05
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -32,6 +32,7 @@ along with this software.
 
 
 from signal import SIGINT, SIG_DFL, signal
+from sys import argv
 from typing import Union
 
 try:  # Regular Expression module
@@ -157,7 +158,7 @@ Author: Devyn Collier Johnson
                 <property name="can_focus">False</property>
                 <property name="margin_left">8</property>
                 <property name="margin_right">16</property>
-                <property name="label" translatable="yes">Version: 2020.02.03
+                <property name="label" translatable="yes">Version: 2020.06.05
 Created by Devyn Collier Johnson
 &amp;lt;&lt;a href="mailto:DevynCJohnson@Gmail.com"&gt;DevynCJohnson@Gmail.com&lt;/a&gt;&amp;gt;</property>
                 <property name="use_markup">True</property>
@@ -831,10 +832,10 @@ def rgba_array(_rgba: object) -> list:
 # CLASSES #
 
 
-class ColorProcessing:
+class ColorProcessing:  # pylint: disable=R0902
     """Class used to manage widgets and track colors."""
 
-    def __init__(self) -> None:
+    def __init__(self, args_orig: list) -> None:
         """Initialize the color processing object."""
         # Build GUI
         user_interface: Gtk.Builder = Gtk.Builder()
@@ -867,14 +868,14 @@ class ColorProcessing:
             r'Opposite_Color': Gdk.RGBA(0.0, 0.0, 0.0, 1.0)
         }
         # Create the Cairo Objects
-        self.buffer_complementary: cairo.ImageSurface = cairo.ImageSurface(cairo.Format.RGB24, 500, 50)
-        self.surface_complementary_context: cairo.Context = cairo.Context(self.buffer_complementary)
-        self.buffer_opposite: cairo.ImageSurface = cairo.ImageSurface(cairo.Format.RGB24, 500, 50)
-        self.surface_opposite_context: cairo.Context = cairo.Context(self.buffer_opposite)
-        self.buffer_analogous1: cairo.ImageSurface = cairo.ImageSurface(cairo.Format.RGB24, 500, 50)
-        self.surface_analogous1_context: cairo.Context = cairo.Context(self.buffer_analogous1)
-        self.buffer_analogous2: cairo.ImageSurface = cairo.ImageSurface(cairo.Format.RGB24, 500, 50)
-        self.surface_analogous2_context: cairo.Context = cairo.Context(self.buffer_analogous2)
+        self.buffer_complementary: cairo.ImageSurface = cairo.ImageSurface(cairo.Format.RGB24, 500, 50)  # pylint: disable=E1101
+        self.surface_complementary_context: cairo.Context = cairo.Context(self.buffer_complementary)  # pylint: disable=E1101
+        self.buffer_opposite: cairo.ImageSurface = cairo.ImageSurface(cairo.Format.RGB24, 500, 50)  # pylint: disable=E1101
+        self.surface_opposite_context: cairo.Context = cairo.Context(self.buffer_opposite)  # pylint: disable=E1101
+        self.buffer_analogous1: cairo.ImageSurface = cairo.ImageSurface(cairo.Format.RGB24, 500, 50)  # pylint: disable=E1101
+        self.surface_analogous1_context: cairo.Context = cairo.Context(self.buffer_analogous1)  # pylint: disable=E1101
+        self.buffer_analogous2: cairo.ImageSurface = cairo.ImageSurface(cairo.Format.RGB24, 500, 50)  # pylint: disable=E1101
+        self.surface_analogous2_context: cairo.Context = cairo.Context(self.buffer_analogous2)  # pylint: disable=E1101
         # Match signal to function (handler)
         user_interface.connect_signals({
             r'_winexit': Gtk.main_quit,
@@ -891,7 +892,31 @@ class ColorProcessing:
             r'render_opposite_color': self.render_opposite_color,
             r'toggle_editor': self.toggle_editor
         })
+        # Check for arguments
+        if args_orig:
+            if args_orig[0].startswith(r'#'):
+                _color: str = args_orig[0][1:].strip()
+                if len(_color) == 3:
+                    _color = fr'{_color[0]}{_color[0]}{_color[1]}{_color[1]}{_color[2]}{_color[2]}'
+                _red: float = float(int(_color[0:2], 16)) / 255.0
+                _green: float = float(int(_color[2:4], 16)) / 255.0
+                _blue: float = float(int(_color[4:6], 16)) / 255.0
+                self.color_chooser.set_rgba(Gdk.RGBA(_red, _green, _blue, 1.0))
+                self.color_storage[r'Active_Color'] = self.color_chooser.get_rgba()
+            if args_orig[0].casefold().startswith((r'rgb', r'rgba')):
+                _color = args_orig[0].casefold().replace(r' ', r'').replace(r'rgba(', r'').replace(r'rgb(', r'').replace(r')', r'').strip()
+                _colors: list = _color.split(r',')
+                if r'.' in _color:
+                    self.color_chooser.set_rgba(Gdk.RGBA(float(_colors[0]), float(_colors[1]), float(_colors[2]), float(_colors[3]) if len(_colors) == 4 else 1.0))
+                    self.color_storage[r'Active_Color'] = self.color_chooser.get_rgba()
+                else:
+                    _red = float(_colors[0]) / 255.0
+                    _green = float(_colors[1]) / 255.0
+                    _blue = float(_colors[2]) / 255.0
+                    self.color_chooser.set_rgba(Gdk.RGBA(_red, _green, _blue, float(_colors[3]) / 255.0 if len(_colors) == 4 else 1.0))
+                    self.color_storage[r'Active_Color'] = self.color_chooser.get_rgba()
         # Set Initial Values
+        self.conv_color(self.color_chooser)
         self.calc_related_colors()
         # Show Window
         Gtk.main()
@@ -937,7 +962,7 @@ class ColorProcessing:
         self.render_complementary_color(self.complementary_color, self.surface_complementary_context)
         self.render_opposite_color(self.opposite_color, self.surface_opposite_context)
 
-    def render_analogous_1_color(self, drawing_area: Union[Gtk.DrawingArea, None] = None, ctx: Union[cairo.Context, None] = None) -> None:
+    def render_analogous_1_color(self, drawing_area: Union[Gtk.DrawingArea, None] = None, ctx: Union[cairo.Context, None] = None) -> None:  # pylint: disable=E1101
         """Calculate and render the first analogous color."""
         if drawing_area is None:
             drawing_area = self.analogous_1_color
@@ -955,7 +980,7 @@ class ColorProcessing:
         self.buffer_analogous1.flush()
         drawing_area.queue_draw()
 
-    def render_analogous_2_color(self, drawing_area: Union[Gtk.DrawingArea, None] = None, ctx: Union[cairo.Context, None] = None) -> None:
+    def render_analogous_2_color(self, drawing_area: Union[Gtk.DrawingArea, None] = None, ctx: Union[cairo.Context, None] = None) -> None:  # pylint: disable=E1101
         """Calculate and render the first analogous color."""
         if drawing_area is None:
             drawing_area = self.analogous_2_color
@@ -973,7 +998,7 @@ class ColorProcessing:
         self.buffer_analogous2.flush()
         drawing_area.queue_draw()
 
-    def render_complementary_color(self, drawing_area: Union[Gtk.DrawingArea, None] = None, ctx: Union[cairo.Context, None] = None) -> None:
+    def render_complementary_color(self, drawing_area: Union[Gtk.DrawingArea, None] = None, ctx: Union[cairo.Context, None] = None) -> None:  # pylint: disable=E1101
         """Calculate and render the complementary color."""
         if drawing_area is None:
             drawing_area = self.complementary_color
@@ -991,7 +1016,7 @@ class ColorProcessing:
         self.buffer_complementary.flush()
         drawing_area.queue_draw()
 
-    def render_opposite_color(self, drawing_area: Union[Gtk.DrawingArea, None] = None, ctx: Union[cairo.Context, None] = None) -> None:
+    def render_opposite_color(self, drawing_area: Union[Gtk.DrawingArea, None] = None, ctx: Union[cairo.Context, None] = None) -> None:  # pylint: disable=E1101
         """Calculate and render the opposite color."""
         if drawing_area is None:
             drawing_area = self.opposite_color
@@ -1124,6 +1149,6 @@ class ColorProcessing:
 
 
 if __name__ == '__main__':
-    MAIN_WINDOW = ColorProcessing()
+    MAIN_WINDOW = ColorProcessing(argv[1:])
     del MAIN_WINDOW
     raise SystemExit(0)

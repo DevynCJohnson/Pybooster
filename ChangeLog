@@ -2,11 +2,12 @@
 
 	* cleansystem:  Added `.php_history` to the list of files to remove
 	* cleansystem:  Added `~/.mysql/workbench/log/` to the list of directories to remove
+	* color-kit:  Added support for specifying a color as a command argument
 	* Geany:  Tweaked some of the Geany files
 	* gitattributes:  Tweaked some of the GitAttributes
 	* GitStats:  Add more multi-threading & fixed some minor bugs
-	* phpanalysis:  Improved the code
 	* makefile:  Fixed some bugs
+	* phpanalysis:  Improved the code
 
 2020-05-25  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
