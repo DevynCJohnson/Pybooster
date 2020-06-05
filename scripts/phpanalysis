@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Wrapper for scanning PHP files with various syntax checkers
 #' @file phpanalysis
-#' @version 2020.05.23
+#' @version 2020.05.29
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -77,6 +77,24 @@ fi
 PHPSTAN_EXISTS=0
 if [ -n "$(command -v phpstan)" ]; then
     PHPSTAN_EXISTS=1
+    # Find the PHPStan configuration file
+    if [ -r ./.phpstan.neon ]; then
+        phpstan_file=./.phpstan.neon
+    elif [ -r ../.phpstan.neon ]; then
+        phpstan_file=../.phpstan.neon
+    elif [ -r ../../.phpstan.neon ]; then
+        phpstan_file=../../.phpstan.neon
+    elif [ -r ../../../.phpstan.neon ]; then
+        phpstan_file=../../../.phpstan.neon
+    elif [ -r ../../../../.phpstan.neon ]; then
+        phpstan_file=../../../../.phpstan.neon
+    else
+        phpstan_file=''
+    fi
+    EXTRA_PHPSTAN_FLAGS=''
+    if [ -n "${phpstan_file:-}" ]; then
+        EXTRA_PHPSTAN_FLAGS="--configuration=${phpstan_file}"
+    fi
 else
     printf 'phpstan: command not found!\n' >&2
 fi
@@ -123,7 +141,7 @@ fi
 php_sc_func() {
     if [ "$PHP_EXISTS" -eq 1 ]; then
         printf '======  *PHP-SC*  ======\n'
-        php --syntax-check "${1}" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/\t/, ":1: "); gsub(/^No syntax errors detected in .+$/, ""); if (NF > 0) { print; } }'
+        php --syntax-check "${1}" 2>&1 | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/\t/, ":1: "); gsub(/^No syntax errors detected in .+$/, ""); if (NF > 0) { print; } }' | sed -E 's|^PHP Parse error:  (.+) in (.+) on line ([0-9]+)$|\2:\3: \1|;'
     fi
 }
 
@@ -132,7 +150,7 @@ php_sc_func() {
 phan_func() {
     if [ "$PHAN_EXISTS" -eq 1 ]; then
         printf '======  *PHAN*  ======\n'
-        phan --analyze-twice --dead-code-detection --parent-constructor-required --processes=8 --redundant-condition-detection --strict-method-checking --strict-object-checking --strict-param-checking --strict-property-checking --strict-return-checking --unused-variable-detection "${1}" 2>&1 | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/\t/, ":1: "); gsub(/^░.+$/, ""); gsub(/^Analyzing files.+$/, ""); gsub(/^Analyzing functions.+$/, ""); gsub(/^Parsing files.+$/, ""); gsub(/^Checking for dead code.+$/, ""); gsub(/^\[debug\].+$/, ""); if (NF > 0) { print; } }' | sed -E 's|^(.+)php:([0-9]+) Phan(.+)$|\1php:\2: Phan\3|;'
+        phan --analyze-twice --dead-code-detection --parent-constructor-required --redundant-condition-detection --signature-compatibility --strict-method-checking --strict-object-checking --strict-param-checking --strict-property-checking --strict-return-checking --unused-variable-detection "${1}" 2>&1 | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/\t/, ":1: "); gsub(/^░.+$/, ""); gsub(/^Analyzing files.+$/, ""); gsub(/^Analyzing functions.+$/, ""); gsub(/^Parsing files.+$/, ""); gsub(/^Checking for dead code.+$/, ""); gsub(/^\[debug\].+$/, ""); if (NF > 0) { print; } }' | sed -E 's|^(.+)php:([0-9]+) Phan(.+)$|\1php:\2: Phan\3|; s|.+php:[0-9]+: PhanUndeclaredClassMethod Call to method [A-Za-z0-9_]+ from undeclared class.+$||;s|.+php:[0-9]+: PhanUndeclaredClassProperty Reference to instance property [A-Za-z0-9_]+ from undeclared class.+$||;s|.+php:[0-9]+: PhanUnreferencedPublicMethod Possibly zero references to public method .+$||;'
     fi
 }
 
@@ -141,7 +159,7 @@ phan_func() {
 phpcs_func() {
     if [ "$PHPCS_EXISTS" -eq 1 ]; then
         printf '======  *PHPCS*  ======\n'
-        phpcs -d memory_limit=128M -s --report-width=512 --severity=1 --standard=PEAR,PSR1,PSR12,Zend --exclude=Generic.Commenting.DocComment,Generic.Files.LineLength,Generic.Functions.OpeningFunctionBraceBsdAllman,Generic.WhiteSpace.DisallowTabIndent,PEAR.Commenting.FileComment,PEAR.Commenting.FunctionComment,PEAR.ControlStructures.ControlSignature,PEAR.Functions.FunctionDeclaration,PEAR.WhiteSpace.ScopeClosingBrace,Squiz.Commenting.DocCommentAlignment,Squiz.ControlStructures.ControlSignature,Squiz.Functions.GlobalFunction,Squiz.Functions.MultiLineFunctionDeclaration,Squiz.WhiteSpace.ScopeClosingBrace,Zend.Files.ClosingTag,Zend.NamingConventions.ValidVariableName --tab-width=4 "${1}" | awk_cmd '{ OFS=""; gsub(/^FILE: .+$/, ""); gsub(/^FOUND .+$/, ""); gsub(/^[\-]+$/, ""); gsub(/^0$/, ""); if (NF > 0) { print; } }' | tr '|' ':' | tr '\t' ' ' | sed -E -e 's|  | |g; s|  | |g; s| : |:|g; s|^ ([0-9]+):(.+)|'"${1}"':\1:1:\2|'
+        phpcs -d memory_limit=256M -s --report-width=512 --severity=1 --standard=PEAR,PSR1,PSR12,Zend --exclude=Generic.Commenting.DocComment,Generic.Files.LineLength,Generic.Functions.OpeningFunctionBraceBsdAllman,Generic.WhiteSpace.DisallowTabIndent,PEAR.Commenting.FileComment,PEAR.Commenting.FunctionComment,PEAR.ControlStructures.ControlSignature,PEAR.Functions.FunctionDeclaration,PEAR.WhiteSpace.ScopeClosingBrace,Squiz.Commenting.DocCommentAlignment,Squiz.ControlStructures.ControlSignature,Squiz.Functions.GlobalFunction,Squiz.Functions.MultiLineFunctionDeclaration,Squiz.WhiteSpace.ScopeClosingBrace,Zend.Files.ClosingTag,Zend.NamingConventions.ValidVariableName --tab-width=4 "${1}" 2>&1 | awk_cmd '{ OFS=""; gsub(/^FILE: .+$/, ""); gsub(/^FOUND .+$/, ""); gsub(/^[\-]+$/, ""); gsub(/^0$/, ""); if (NF > 0) { print; } }' | tr '|' ':' | tr '\t' ' ' | sed -E -e 's|  | |g; s|  | |g; s| : |:|g; s|^ ([0-9]+):(.+)|'"${1}"':\1:1:\2|; s|^.+PEAR\.NamingConventions\.ValidFunctionName\.PrivateNoUnderscore.*$||;'
     fi
 }
 
@@ -150,7 +168,7 @@ phpcs_func() {
 phpmd_func() {
     if [ "$PHPMD_EXISTS" -eq 1 ]; then
         printf '======  *PHPMD*  ======\n'
-        phpmd "${1}" text cleancode,codesize,controversial,design,naming,unusedcode | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/\t/, ":1: "); if (NF > 0) { print; } }'
+        phpmd --minimumpriority 5 "${1}" text cleancode,codesize,design,unusedcode 2>&1 | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/\t/, ":1: "); if (NF > 0) { print; } }'
     fi
 }
 
@@ -159,7 +177,7 @@ phpmd_func() {
 phpstan_func() {
     if [ "$PHPSTAN_EXISTS" -eq 1 ]; then
         printf '======  *PHP-STAN*  ======\n'
-        phpstan analyse "${1}" 2>&1 | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/\t/, ":1: "); gsub(/^.+░░░░░░░░░░░░░░░░░░░░░░░░░░░.+$/, ""); gsub(/^.+▓.+$/, ""); if (NF > 0) { print; } }'
+        phpstan analyse "${EXTRA_PHPSTAN_FLAGS}" --no-progress "${1}" 2>&1 | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/\t/, ":1: "); gsub(/^.+░░░░░░░░░░░░░░░░░░░░░░░░░░░.+$/, ""); gsub(/^.+▓.+$/, ""); if (NF > 0) { print; } }'
     fi
 }
 
@@ -168,7 +186,7 @@ phpstan_func() {
 phpcpd_func() {
     if [ "$PHPCPD_EXISTS" -eq 1 ]; then
         printf '======  *PHPCPD*  ======\n'
-        phpcpd --fuzzy "${1}" | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/\t/, ":1: "); gsub(/^phpcpd .+$/, ""); if (NF > 0) { print; } }'
+        phpcpd --fuzzy "${1}" 2>&1 | awk_cmd '{ OFS=""; gsub(/^0$/, ""); gsub(/\t/, ":1: "); gsub(/^phpcpd .+$/, ""); if (NF > 0) { print; } }' | sed -E 's|^  \- (.+)$|\1|; s|^    (.+)$|\1|; s|^(.+)php:([0-9]+)\-(.+)$|\1php:\2: - \3|;'
     fi
 }
 
