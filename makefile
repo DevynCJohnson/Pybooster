@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax makefile; indent-mode normal; eol unix; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Main project makefile
 #' @file makefile
-#' @version 2020.05.17
+#' @version 2020.05.28
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 #' @section SYMBOLS
@@ -669,6 +669,7 @@ install_gitstats :
 	if [ "$(UID)" != '0' ]; then printf '\x1b[1;31mERROR\x1b[0m: Root privileges are required!\n\n' >&2; exit 1; fi
 	$(COPY) ./scripts/gitstats /usr/bin
 	$(CHMOD) 755 /usr/bin/gitstats
+	([ -d /usr/share/gitstats/ ] && $(RMDIR) /usr/share/gitstats/) || true
 	$(MKDIR) /usr/share/gitstats
 	$(COPY) ./accessory/gitstats/* /usr/share/gitstats
 	$(CHMOD) +r /usr/share/gitstats/*.gif

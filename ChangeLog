@@ -4,6 +4,7 @@
 	* cleansystem:  Added `~/.mysql/workbench/log/` to the list of directories to remove
 	* Geany:  Tweaked some of the Geany files
 	* phpanalysis:  Improved the code
+	* makefile:  Fixed some bugs
 
 2020-05-25  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
