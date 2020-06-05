@@ -3,6 +3,7 @@
 	* cleansystem:  Added `.php_history` to the list of files to remove
 	* cleansystem:  Added `~/.mysql/workbench/log/` to the list of directories to remove
 	* Geany:  Tweaked some of the Geany files
+	* phpanalysis:  Improved the code
 
 2020-05-25  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
