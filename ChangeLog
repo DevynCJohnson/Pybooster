@@ -3,6 +3,7 @@
 	* cleansystem:  Added `.php_history` to the list of files to remove
 	* cleansystem:  Added `~/.mysql/workbench/log/` to the list of directories to remove
 	* color-kit:  Added support for specifying a color as a command argument
+	* color-kit:  Added names to some of the GTK widgets
 	* Geany:  Tweaked some of the Geany files
 	* gitattributes:  Tweaked some of the GitAttributes
 	* GitStats:  Add more multi-threading & fixed some minor bugs
