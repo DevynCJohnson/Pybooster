@@ -4,6 +4,7 @@
 	* cleansystem:  Added `~/.mysql/workbench/log/` to the list of directories to remove
 	* Geany:  Tweaked some of the Geany files
 	* gitattributes:  Tweaked some of the GitAttributes
+	* GitStats:  Add more multi-threading & fixed some minor bugs
 	* phpanalysis:  Improved the code
 	* makefile:  Fixed some bugs
 
