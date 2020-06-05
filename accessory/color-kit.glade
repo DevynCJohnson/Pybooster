@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1
+<!-- Generated with glade 3.22.2 
 
 Copyright (C) LGPLv3
 
@@ -41,7 +41,7 @@ Author: Devyn Collier Johnson
     <property name="has_resize_grip">True</property>
     <property name="show_menubar">False</property>
     <signal name="destroy" handler="_winexit" swapped="no"/>
-    <child>
+    <child type="titlebar">
       <placeholder/>
     </child>
     <child>
@@ -52,6 +52,7 @@ Author: Devyn Collier Johnson
         <property name="orientation">vertical</property>
         <child>
           <object class="GtkColorChooserWidget" id="cc">
+            <property name="name">ColorChooser</property>
             <property name="height_request">630</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -167,6 +168,7 @@ Created by Devyn Collier Johnson
         </child>
         <child>
           <object class="GtkGrid" id="grid_related_colors">
+            <property name="name">RelatedColors</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
@@ -429,6 +431,7 @@ Created by Devyn Collier Johnson
         </child>
         <child>
           <object class="GtkGrid" id="convgrid">
+            <property name="name">Conversions</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="margin_left">16</property>
