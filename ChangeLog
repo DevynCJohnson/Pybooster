@@ -1,3 +1,7 @@
+2020-06-05  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* cleansystem:  Added `.php_history` to the list of files to remove
+
 2020-05-25  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* clevo_kbd_backlight:  Added new color features & optimized the code
