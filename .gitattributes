@@ -259,7 +259,7 @@ makefile text eol=lf linguist-language=Makefile linguist-vendored=false
 *.tm text eol=lf linguist-language=Tcl linguist-vendored=false
 *.cursor text eol=lf linguist-generated=false linguist-language=Text linguist-vendored=false
 cursorList text eol=lf linguist-generated=false linguist-language=Text linguist-vendored=false
-*.tags text eol=lf linguist-language=Text linguist-vendored=false
+*.tags text eol=lf linguist-language=Text linguist-vendored
 *.xkbmap text eol=lf linguist-language=Text linguist-vendored=false
 *.wasm text eol=lf linguist-language=WebAssembly linguist-vendored=false
 *.wast text eol=lf linguist-language=WebAssembly linguist-vendored=false
@@ -287,11 +287,21 @@ accessory/schemas/DTD/*.dtd text eol=lf linguist-language=XML linguist-vendored
 accessory/schemas/RelaxNG/*.rng text eol=lf linguist-language=XML linguist-vendored
 accessory/schemas/XSD/*.xsd text eol=lf linguist-language=XML linguist-vendored
 geany/colorschemes/* text eol=lf linguist-language=INI
-geany/filedefs/filetypes.* text eol=lf linguist-language=INI
+geany/filedefs/filetypes.* text eol=lf linguist-detectable=false linguist-language=INI
+geany/filedefs/* text eol=lf linguist-detectable=false linguist-language=INI
 geany/tags/*.tags text eol=lf linguist-generated=true linguist-language=Text linguist-vendored
 geany/templates/* text eol=lf linguist-generated=true linguist-language=Text linguist-vendored
 geany/templates/files/* text eol=lf linguist-generated=true linguist-language=Text linguist-vendored=false
 geany/templates/files/Windows_Batch.bat text eol=crlf linguist-generated=true linguist-language=Text linguist-vendored=false
+
+
+# Checksums
+
+*.b2b512 linguist-detectable=false linguist-vendored
+*.rmd160 linguist-detectable=false linguist-vendored
+*.sha1 linguist-detectable=false linguist-vendored
+*.sha512 linguist-detectable=false linguist-vendored
+*.whirlpool linguist-detectable=false linguist-vendored
 
 
 # Documentation

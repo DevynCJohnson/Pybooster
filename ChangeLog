@@ -3,6 +3,7 @@
 	* cleansystem:  Added `.php_history` to the list of files to remove
 	* cleansystem:  Added `~/.mysql/workbench/log/` to the list of directories to remove
 	* Geany:  Tweaked some of the Geany files
+	* gitattributes:  Tweaked some of the GitAttributes
 	* phpanalysis:  Improved the code
 	* makefile:  Fixed some bugs
 
