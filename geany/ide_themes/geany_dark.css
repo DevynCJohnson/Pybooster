@@ -49,11 +49,11 @@ spinbutton>entry>image,entry>image.left{margin-left:0px;min-height:0px;min-width
 
 /* Tabs */
 
-notebook>header>tabs>tab{background-image:linear-gradient(#434343 0%, #1F1F1F 25%, #101010 50%, #161616 75%, #434343 100%);border-color:#CCC;border-radius:8px;border-style:solid;border-width:1px;margin:2px;padding:4px;text-shadow:0px 1px #CCC}
-notebook>header>tabs>tab:focus,notebook>header>tabs>tab:hover{background-image:linear-gradient(#C89696, #FAF0F0);border-color:#FFF;border-radius:0px;box-shadow:0px 4px 4px 0px #CCC;color:#000;padding:4px;text-shadow:0px 1px #777}
-notebook>header>tabs>tab:active{border-width:1px;color:#FFF;margin:2px;padding:4px}
+notebook>header>tabs>tab{background-image:linear-gradient(#434343 0%, #1F1F1F 25%, #101010 50%, #161616 75%, #434343 100%);border-color:#CCC;border-radius:8px;border-style:solid;border-width:1px;margin:2px;padding:2px 4px 2px 4px;text-shadow:0px 1px #CCC}
+notebook>header>tabs>tab:focus,notebook>header>tabs>tab:hover{background-image:linear-gradient(#C89696, #FAF0F0);border-color:#FFF;border-radius:0px;box-shadow:0px 4px 4px 0px #CCC;color:#000;padding:2px 4px 2px 4px;text-shadow:0px 1px #777}
+notebook>header>tabs>tab:active{border-width:1px;color:#FFF;margin:2px;padding:2px 4px 2px 4px}
 notebook>header>tabs>tab:active:focus,notebook>header>tabs>tab:active:hover,notebook>header>tabs>tab:checked:focus,notebook>header>tabs>tab:checked:hover{color:#FFF;text-shadow:0px 1px #777}
-notebook>header>tabs>tab:checked{background-image:linear-gradient(#944 0%, #2F2F2F 25%, #111 50%, #161616 75%, #944 100%);border-radius:16px;border-width:1px;margin:2px;padding:4px}
+notebook>header>tabs>tab:checked{background-image:linear-gradient(#944 0%, #2F2F2F 25%, #111 50%, #161616 75%, #944 100%);border-radius:16px;border-width:1px;margin:2px;padding:2px 4px 2px 4px}
 notebook>header>tabs{background-image:linear-gradient(#484A56 0%, #3A3E4C 37%, #3A3E4C 43%, #414555 74%, #24262E 100%);border-color:#CCC;border-radius:0px;border-style:solid;border-width:1px}
 tabs>tab{min-height:16px}
 
