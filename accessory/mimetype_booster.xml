@@ -151,7 +151,7 @@
   </mime-type>
   <mime-type type="application/gzip">
     <comment>Gzip Archive</comment>
-    <generic-icon name="package-x-generic"/>
+    <generic-icon name="application-x-gzip"/>
     <magic priority="50">
       <match offset="0" type="string" value="\x1f\x8b"/>
     </magic>
@@ -850,7 +850,7 @@
   </mime-type>
   <mime-type type="application/vnd.coffeescript">
     <comment>CoffeeScript Document</comment>
-    <icon name="application-x-javascript"/>
+    <icon name="application-x-coffeescript"/>
     <glob pattern="*.coffee" weight="95"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
@@ -3579,6 +3579,10 @@
       <match offset="0" type="little32" value="0xe011cfd0"/>
     </magic>
   </mime-type>
+  <mime-type type="application/x-opera-download">
+    <comment xml:lang="en">Opera Download</comment>
+    <glob pattern="*.opdownload"/>
+  </mime-type>
   <mime-type type="application/x-pagemaker">
     <comment>Adobe PageMaker</comment>
     <sub-class-of type="application/x-ole-storage"/>
@@ -3680,6 +3684,7 @@
     <glob pattern="*.php8"/>
     <glob pattern="*.php9"/>
     <glob pattern="*.phps"/>
+    <glob pattern="*.phtml"/>
     <magic priority="80">
       <match offset="0:64" type="string" value="&lt;?php"/>
     </magic>
@@ -4446,6 +4451,7 @@
     <acronym>YAML</acronym>
     <expanded-acronym>YAML Ain&#x27;t Markup Language</expanded-acronym>
     <icon name="text-yaml"/>
+    <glob pattern="*.neon" weight="40"/>
     <glob pattern="*.yaml"/>
     <glob pattern="*.yml"/>
     <magic>
@@ -4475,6 +4481,10 @@
       <match offset="20" type="little32" value="0xfdc4a7dc"/>
     </magic>
     <glob pattern="*.zoo"/>
+  </mime-type>
+  <mime-type type="application/x-zoom">
+    <comment>Zoom Recording File</comment>
+    <glob pattern="*.zoom"/>
   </mime-type>
   <mime-type type="application/x-zstd-compressed-tar">
     <comment>Tar Archive (Zstandard-Compressed)</comment>
@@ -6929,6 +6939,7 @@
       <match offset="0" type="string" value="[keywords]"/>
       <match offset="0" type="string" value="[styling="/>
     </magic>
+    <glob pattern="*.cnf" weight="90"/>
     <glob pattern="*.conf" weight="90"/>
     <glob pattern="*.ini" weight="90"/>
     <sub-class-of type="text/plain"/>
