@@ -6,7 +6,7 @@
 
 @file markup.py
 @package pybooster.markup
-@version 2020.02.21
+@version 2020.07.04
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -850,7 +850,7 @@ def unescape(_str: str) -> str:  # noqa: R701
         referstr = origrefer.lstrip(r'&').rstrip(r';')
         ltrlch = r''
         if referstr[0] == r'#' or referstr[0] in r'Xx':  # Decimal & Hexadecimal character reference
-            num = int(referstr.replace(r'#', r'')[1:], 16) if r'x' in referstr.lower() else int(referstr[1:])
+            num = int(referstr.replace(r'#', r'')[1:], 16) if r'x' in referstr.casefold() else int(referstr[1:])
             if num in INVALID_CHARREFS:
                 ltrlch = INVALID_CHARREFS[num]
             elif 0xD800 <= num <= 0xDFFF or num > 0x10FFFF:

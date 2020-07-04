@@ -5,7 +5,7 @@
 """@brief Prettify XML documents (including HTML, MathML, SVG, etc.).
 
 @file prettifyxml
-@version 2019.07.14
+@version 2020.07.04
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -82,7 +82,7 @@ if __name__ == '__main__':  # noqa: C901
     del PARSER
     # PROCESS FLAGS #
     if ARGS.indent != r'  ':
-        ARGS.indent = ARGS.indent.lower()
+        ARGS.indent = ARGS.indent.casefold()
         if ARGS.indent in {r'sp', r'space'}:
             ARGS.indent = r' '
         elif ARGS.indent in {'\t', r't', r'tab'}:
@@ -90,7 +90,7 @@ if __name__ == '__main__':  # noqa: C901
         else:
             ARGS.indent = r'  '
     if ARGS.newline != '\n':
-        ARGS.newline = ARGS.newline.lower()
+        ARGS.newline = ARGS.newline.casefold()
         if ARGS.newline in {r'n', r'linux'}:
             ARGS.newline = '\n'
         elif ARGS.newline in {r'\n\r', r'nr', r'dos'}:

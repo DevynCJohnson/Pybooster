@@ -1083,7 +1083,7 @@ Utility</property>
           <object class="GtkLabel" id="label_about">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label">Version: 2019.10.27
+            <property name="label">Version: 2020.07.04
 Author: Devyn Collier Johnson
 &amp;lt;&lt;a href="mailto:DevynCJohnson@Gmail.com"&gt;DevynCJohnson@Gmail.com&lt;/a&gt;&amp;gt;</property>
             <property name="use_markup">True</property>

@@ -5,7 +5,7 @@
 """@brief Checks for invalid Python directive comments.
 
 @file py_directive_checker
-@version 2019.12.28
+@version 2020.07.04
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -74,7 +74,7 @@ def getfile_list(_filename: str) -> list:
 if __name__ == '__main__':  # noqa: C901
     # GET SRC #
     if len(argv) == 2:
-        if argv[1].lower() in {r'help', r'--help', r'-h'}:
+        if argv[1].casefold() in {r'help', r'--help', r'-h'}:
             stdout.write('Specify the pathname of a Python script to scan for invalid directive comments.\n')
             raise SystemExit(0)
         try:  # File path as argument
