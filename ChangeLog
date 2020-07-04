@@ -1,5 +1,6 @@
 2020-07-04  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* Geany:  Tweaked many of the Geany files
 	* Python Scripts:  Changed many instances of `.lower()` with `.casefold()`
 
 2020-06-05  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>

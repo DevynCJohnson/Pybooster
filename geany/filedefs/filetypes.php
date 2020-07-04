@@ -15,8 +15,8 @@ fold.html=1
 fold.hypertext.comment=1
 fold.hypertext.heredoc=1
 html.tags.case.sensitive=1
-lexer.html.django=1
-lexer.html.mako=1
+lexer.html.django=0
+lexer.html.mako=0
 lexer.xml.allow.scripts=1
 phpscript.mode=1
 xml.auto.close.tags=1
@@ -31,6 +31,8 @@ comment_use_indent=true
 context_action_cmd=
 tag_parser=HTML
 xml_indent_tags=true
+whitespace_chars=\s\t!\"#%&'()*+,-./:;<=>?@[\\]^`{|}~
+wordchars=_$abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
 
 [indentation]
 type=0

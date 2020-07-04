@@ -61,6 +61,9 @@ margin_folding=0x000;0x8ED;
 margin_line_number=0x000;0xEEF;false;false
 margin_linenumber=0x000;0xEEF;false;false
 
+# Width of the folding margin on the right of the line numbers
+folding_margin_width=24
+
 # Background color of the current line, only the second and third argument is interpreted
 # Use the third argument to enable or disable the highlighting of the current line (has to be true/false)
 current_line=0x000;0xFFDDFD;true;false
