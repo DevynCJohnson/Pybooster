@@ -5,6 +5,7 @@
 	* mimetype_booster.xml:  Added additional mimetypes
 	* Opticons:  Added a mimetype icon for CoffeeScript
 	* Python Scripts:  Changed many instances of `.lower()` with `.casefold()`
+	* uca.xml:  Applied some minor fixes
 
 2020-06-05  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 

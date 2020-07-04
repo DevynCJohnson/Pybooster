@@ -94,7 +94,7 @@
     <unique-id>7300000000000003-1</unique-id>
     <command>[ -x "$(command -v pngshrink)" ] &amp;&amp; [ -x "$(command -v pngcrush)" ] &amp;&amp; pngshrink %F</command>
     <description>Reduce the size of PNG files</description>
-    <patterns>*.png</patterns>
+    <patterns>*.png;*.PNG</patterns>
     <image-files/>
   </action>
   <action>
@@ -199,7 +199,7 @@
     <unique-id>7300000000000012-1</unique-id>
     <command>[ -x "$(command -v jpegoptim)" ] &amp;&amp; jpegoptim --preserve --preserve-perms --quiet --strip-all --strip-com --strip-exif %F</command>
     <description>Reduce the size of JPEG files</description>
-    <patterns>*.jpg;*.jpeg</patterns>
+    <patterns>*.jpg;*.jpeg;*.JPG;*.JPEG</patterns>
     <image-files/>
   </action>
   <action>
@@ -208,7 +208,7 @@
     <unique-id>7300000000000013-1</unique-id>
     <command>[ -x "$(command -v ps2pdf)" ] &amp;&amp; ps2pdf %F &amp;&amp; mv -f %F.pdf %F</command>
     <description>Convert PostScript to PDF</description>
-    <patterns>*.pdf;*.ps</patterns>
+    <patterns>*.pdf;*.ps;*.PDF;*.PS</patterns>
     <other-files/>
   </action>
   <action>
@@ -244,7 +244,7 @@
     <unique-id>7300000000000017-1</unique-id>
     <command>[ -x "$(command -v convert)" ] &amp;&amp; convert %f "$(basename %f .png).jpg"</command>
     <description>Convert PNG to JPG</description>
-    <patterns>*.png</patterns>
+    <patterns>*.png;*.PNG</patterns>
     <image-files/>
   </action>
   <action>
