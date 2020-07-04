@@ -1,3 +1,14 @@
+# 2020-07-04  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **fs.py:**  Fixed some minor bugs
+- **Geany:**  Tweaked many of the Geany files
+- **hosts:**  Removed more hostnames
+- **mimetype_booster.xml:**  Added additional mimetypes
+- **Opticons:**  Added a mimetype icon for CoffeeScript
+- **PyBooster:**  Added a Python script for Google-Translate
+- **Python Scripts:**  Changed many instances of `.lower()` with `.casefold()`
+- **uca.xml:**  Applied some minor fixes
+
 # 2020-06-05  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
 
 - **cleansystem:**  Added `.php_history` to the list of files to remove
