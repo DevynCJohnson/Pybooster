@@ -6,7 +6,7 @@
 
 @file fs.py
 @package pybooster.fs
-@version 2020.02.21
+@version 2020.07.04
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -457,7 +457,7 @@ def getdata(_filename: str, _encoding: str = r'utf-8') -> str:
         _out: str = r''
         if _filename:  # Input file specified
             ensurefileexists(_filename)
-            with codec_opener(_filename, mode=r'r', encoding=_encoding, buffering=1) as _file:
+            with open codec_opener(_filename, mode=r'r', encoding=_encoding) as _file:
                 return r''.join(_file.readlines())
         else:  # Piping used
             return r''.join(stdin.readlines())
@@ -481,7 +481,7 @@ def writedata(_filename: str, _write: str, _encoding: str = r'utf-8') -> None:
         if isfile(_filename) and not fileaccess(_filename, W_OK) and not isdir(_filename):
             stderr.write(r'Permission Error: Unable to write to "' + _filename + '"!\n')
             raise SystemExit(1)
-        with codec_opener(_filename, mode=r'w', encoding=_encoding, buffering=1) as _file:
+        with codec_opener(_filename, mode=r'w', encoding=_encoding) as _file:
             _file.write(_write)
     else:
         stdout.write(_write)
