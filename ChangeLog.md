@@ -26,7 +26,6 @@
 - **clevo_kbd_backlight:**  Added new color features & optimized the code
 - **DevHelp:**  Added a DevHelp file for PHP
 - **Geany:**  Tweaked filetype_extensions.conf
-- **Geany:**  Updated the Linux kernel tags file
 
 # 2020-05-24  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
 
