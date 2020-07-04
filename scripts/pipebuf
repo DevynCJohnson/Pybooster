@@ -5,7 +5,7 @@
 """@brief Accept data from a pipe, hold it in a buffer until the data stream ends (plus 0.25 seconds), and then send it to stdout.
 
 @file pipebuf
-@version 2019.07.14
+@version 2020.07.04
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -40,7 +40,7 @@ if __name__ == '__main__':
         DATABUF: str = stdin.read()
         sleep(0.25)
         stdout.write(DATABUF)
-        if len(argv) == 3 and argv[1].lower() in {r'-f', r'--file'}:  # Pipe + Tee
+        if len(argv) == 3 and argv[1].casefold() in {r'-f', r'--file'}:  # Pipe + Tee
             ensurefileexists(argv[2])
             writebin2file(argv[2], DATABUF)
     except SystemExit:

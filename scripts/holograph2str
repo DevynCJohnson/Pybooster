@@ -5,7 +5,7 @@
 """@brief Convert the holograph characters in the string to their normalized form.
 
 @file holograph2str
-@version 2019.07.14
+@version 2020.07.04
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -41,7 +41,7 @@ if __name__ == '__main__':
     if len(argv) == 1:  # Pipe
         DATA = stdin.read()
         stdout.write(holograph2str(DATA))
-    elif argv[1].lower() in {r'help', r'--help', r'-h', r'--usage', r'?'}:  # Help
+    elif argv[1].casefold() in {r'help', r'--help', r'-h', r'--usage', r'?'}:  # Help
         stdout.write('Usage 1: command | holograph2str\nUsage 2: holograph2str "string"\nConvert the holograph characters in the string to their normalized form\n')
     elif argv[1]:  # String as argument
         stdout.write(holograph2str(argv[1]) + '\n')

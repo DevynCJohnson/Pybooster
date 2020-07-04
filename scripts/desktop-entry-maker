@@ -5,7 +5,7 @@
 """@brief Create Desktop Entry Files.
 
 @file desktop-entry-maker
-@version 2019.12.26
+@version 2020.07.04
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -1135,7 +1135,7 @@ Utility</property>
           <object class="GtkLabel" id="label_about">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label">Version: 2019.10.27
+            <property name="label">Version: 2020.07.04
 Author: Devyn Collier Johnson
 &amp;lt;&lt;a href="mailto:DevynCJohnson@Gmail.com"&gt;DevynCJohnson@Gmail.com&lt;/a&gt;&amp;gt;</property>
             <property name="use_markup">True</property>
@@ -1594,7 +1594,7 @@ class MainWin():
         # Select Location
         _filewin = FileChooserWin()
         _path: str = str(_filewin.ezfilech(_select_file=True, _select_dir=False, _multiple=False, _savefile=True, _return_uri=False, _return_dtype=r'str'))
-        if _path.lower() in {r'', r'cancel', r'none'}:
+        if _path.casefold() in {r'', r'cancel', r'none'}:
             return
         _path = _path if _path.endswith(r'.desktop') else fr'{_path}.desktop'
         # Write Data
