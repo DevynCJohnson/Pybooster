@@ -1,0 +1,86 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8; Mode: Python; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=python syntax=python.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax python; indent-mode python; eol unix; replace-tabs off; indent-width 4; tab-width 4; remove-trailing-space on;
+"""@brief Translate a string via Google Translate.
+
+@file google_translate
+@version 2020.07.04
+@author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+@copyright LGPLv3
+
+@section DESCRIPTION
+This script can be integrated into Geany to translate selected text.
+Configure Geany: Edit→Format→Send Selection to→Set Custom Commands
+
+@section LICENSE
+GNU Lesser General Public License v3
+Copyright (c) Devyn Collier Johnson, All rights reserved.
+
+This software is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This software is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with this software.
+"""
+
+
+from sys import argv, stderr, stdin, stdout
+
+try:  # Regular Expression module
+    from regex import compile as rgxcompile
+except ImportError:
+    from re import compile as rgxcompile
+
+from googletrans import Translator
+
+
+__all__: list = []
+
+
+if __name__ == '__main__':  # noqa: C901
+    HELP: str = 'Usage\n\tgoogle_translate ru "string"\n\tcommand | google_translate ru\n'
+    TRANSLATOR: object = Translator(service_urls=[r'translate.google.com'])
+    try:
+        # Parse Arguments
+        if len(argv) == 2:  # Pipe
+            PIPED_DATA: str = stdin.read()
+            # Multiple lines
+            if '\n' in PIPED_DATA and ' => ' in PIPED_DATA:
+                TXTBUF: str = r''
+                REGEX_TRANS = rgxcompile(r'''(\s*)'([A-Za-z0-9_\?]+)'(\s*)=>(\s*)['"]([^']+)['"][,]?''')
+                for line in PIPED_DATA.split('\n'):
+                    _match = REGEX_TRANS.search(line)
+                    if not _match:
+                        TXTBUF += line + '\n'
+                    else:
+                        TXTBUF += _match.group(1) + '\'' + _match.group(2) + '\'' + _match.group(3) + r'=>' + _match.group(4) + '\'' + TRANSLATOR.translate(_match.group(5), dest=argv[1]).text + '\',\n'
+                stdout.write(TXTBUF.rstrip())
+                raise SystemExit()
+            # Single string
+            stdout.write(TRANSLATOR.translate(PIPED_DATA, dest=argv[1]).text)
+            raise SystemExit()
+        if len(argv) == 2 and argv[1].casefold() in {r'help', r'--help', r'-h', r'--usage', r'?'}:
+            stdout.write(HELP)
+            raise SystemExit()
+        if len(argv) != 3:
+            stderr.write('Missing needed parameters!\n')
+            raise SystemExit(1)
+        if not argv[2]:
+            stderr.write('No input provided!\n')
+            raise SystemExit(1)
+        # Translate
+        stdout.write(TRANSLATOR.translate(argv[2], dest=argv[1]).text)
+    except SystemExit:
+        raise SystemExit()
+    except BaseException as _err:
+        stderr.write(str(_err) + '\n')
+        raise SystemExit(1)
+    raise SystemExit()

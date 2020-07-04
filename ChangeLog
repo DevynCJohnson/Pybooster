@@ -5,6 +5,7 @@
 	* hosts:  Removed more hostnames
 	* mimetype_booster.xml:  Added additional mimetypes
 	* Opticons:  Added a mimetype icon for CoffeeScript
+	* PyBooster:  Added a Python script for Google-Translate
 	* Python Scripts:  Changed many instances of `.lower()` with `.casefold()`
 	* uca.xml:  Applied some minor fixes
 
