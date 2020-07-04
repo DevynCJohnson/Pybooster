@@ -2,6 +2,7 @@
 
 	* fs.py:  Fixed some minor bugs
 	* Geany:  Tweaked many of the Geany files
+	* hosts:  Removed more hostnames
 	* mimetype_booster.xml:  Added additional mimetypes
 	* Opticons:  Added a mimetype icon for CoffeeScript
 	* Python Scripts:  Changed many instances of `.lower()` with `.casefold()`
