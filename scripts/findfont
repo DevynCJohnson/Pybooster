@@ -1,0 +1,57 @@
+#!/bin/sh
+# -*- coding: utf-8-unix; Mode: Shell; indent-tabs-mode: nil; tab-width: 4 -*-
+# vim: set fileencoding=utf-8 filetype=shell syn=sh.doxygen fileformat=unix tabstop=4 expandtab :
+# kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
+#' @brief Find the pathname of the font-file for the specified font and display the font or pathname
+#' @file findfont
+#' @version 2020.07.10
+#' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
+#' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
+
+
+# GET DATA #
+
+
+VIEW_FONT=0
+
+
+if [ -n "${1:-}" ] && [ "${1:-}" = '-h' ] || [ "${1:-}" = '--help' ]; then
+    printf 'Specify a font-name to view the path. Use the `-p` flag to view the font.\n'
+    exit 0
+fi
+
+if [ -n "${1:-}" ] && [ "${1:-}" = '-p' ]; then
+    VIEW_FONT=1
+fi
+if [ -n "${2:-}" ] && [ "${2:-}" = '-p' ]; then
+    VIEW_FONT=1
+fi
+
+
+if [ -n "${1:-}" ] && [ "${1:-}" != '-p' ]; then  # Parameter
+    incoming_data="$1"
+elif [ -n "${2:-}" ] && [ "${2:-}" != '-p' ]; then  # Parameter
+    incoming_data="$2"
+else  # Pipe
+    read -r incoming_data
+    if [ -z "${incoming_data:-}" ]; then
+        printf 'ERROR: There is no incoming data!\n' >&2
+        exit 1
+    fi
+fi
+
+
+# FIND & DISPLAY FONT #
+
+
+font_name="$(fc-match "${incoming_data}" | cut -d ':' -f 1)"
+font_path="$(fc-list | grep -F "${font_name}" | cut -d ':' -f 1)"
+
+
+if [ $VIEW_FONT = 1 ] && [ -x "$(command -v gnome-font-viewer)" ]; then
+    gnome-font-viewer "${font_path}"
+elif [ $VIEW_FONT = 1 ] && [ -x "$(command -v font-manager)" ]; then
+    font-manager "${font_path}"
+else
+    printf "${font_path}\n"
+fi
