@@ -12,6 +12,7 @@
 # GET DATA #
 
 
+IS_PIPED=0
 VIEW_FONT=0
 
 
@@ -38,6 +39,7 @@ else  # Pipe
         printf 'ERROR: There is no incoming data!\n' >&2
         exit 1
     fi
+    IS_PIPED=1
 fi
 
 
@@ -54,4 +56,8 @@ elif [ $VIEW_FONT = 1 ] && [ -x "$(command -v font-manager)" ]; then
     font-manager "${font_path}"
 else
     printf "${font_path}\n"
+fi
+
+if [ $IS_PIPED = 1 ]; then
+    printf "${incoming_data}"
 fi
