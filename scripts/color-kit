@@ -5,7 +5,7 @@
 """@brief Convert between color-spaces.
 
 @file color-kit
-@version 2020.06.05
+@version 2020.07.10
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -32,7 +32,7 @@ along with this software.
 
 
 from signal import SIGINT, SIG_DFL, signal
-from sys import argv
+from sys import argv, stdin, stdout
 from typing import Union
 
 try:  # Regular Expression module
@@ -159,7 +159,7 @@ Author: Devyn Collier Johnson
                 <property name="can_focus">False</property>
                 <property name="margin_left">8</property>
                 <property name="margin_right">16</property>
-                <property name="label" translatable="yes">Version: 2020.06.05
+                <property name="label" translatable="yes">Version: 2020.07.10
 Created by Devyn Collier Johnson
 &amp;lt;&lt;a href="mailto:DevynCJohnson@Gmail.com"&gt;DevynCJohnson@Gmail.com&lt;/a&gt;&amp;gt;</property>
                 <property name="use_markup">True</property>
@@ -881,7 +881,7 @@ class ColorProcessing:  # pylint: disable=R0902
         self.surface_analogous2_context: cairo.Context = cairo.Context(self.buffer_analogous2)  # pylint: disable=E1101
         # Match signal to function (handler)
         user_interface.connect_signals({
-            r'_winexit': Gtk.main_quit,
+            r'_winexit': self.exit_program,
             r'conv_cmyk': self.conv_cmyk,
             r'conv_color': self.conv_color,
             r'conv_hsi': self.conv_hsi,
@@ -897,6 +897,9 @@ class ColorProcessing:  # pylint: disable=R0902
         })
         # Check for arguments
         if args_orig:
+            args_orig[0] = args_orig[0].casefold().strip()
+            if not args_orig[0].startswith((r'#', r'rgb', r'rgba')):
+                args_orig[0] = r'#' + args_orig[0]
             if args_orig[0].startswith(r'#'):
                 _color: str = args_orig[0][1:].strip()
                 if len(_color) == 3:
@@ -906,8 +909,8 @@ class ColorProcessing:  # pylint: disable=R0902
                 _blue: float = float(int(_color[4:6], 16)) / 255.0
                 self.color_chooser.set_rgba(Gdk.RGBA(_red, _green, _blue, 1.0))
                 self.color_storage[r'Active_Color'] = self.color_chooser.get_rgba()
-            if args_orig[0].casefold().startswith((r'rgb', r'rgba')):
-                _color = args_orig[0].casefold().replace(r' ', r'').replace(r'rgba(', r'').replace(r'rgb(', r'').replace(r')', r'').strip()
+            if args_orig[0].startswith((r'rgb', r'rgba')):
+                _color = args_orig[0].replace(r' ', r'').replace(r'rgba(', r'').replace(r'rgb(', r'').replace(r')', r'').strip()
                 _colors: list = _color.split(r',')
                 if r'.' in _color:
                     self.color_chooser.set_rgba(Gdk.RGBA(float(_colors[0]), float(_colors[1]), float(_colors[2]), float(_colors[3]) if len(_colors) == 4 else 1.0))
@@ -1147,11 +1150,22 @@ class ColorProcessing:  # pylint: disable=R0902
         # Display
         self.fillentry(_cmyk, _hsi, _hsv, _rgb, (_y, _i, _q))
 
+    def exit_program(self, _widget: Gtk.Entry) -> None:
+        """Return the color value and exit."""
+        if argv and len(argv) >= 2 and (r'-p' in argv[1:] or r'--read-pipe' in argv[1:]):
+            self.color_storage[r'Active_Color'] = self.color_chooser.get_rgba()
+            stdout.write(rgb2html(self.color_storage[r'Active_Color'].red, self.color_storage[r'Active_Color'].green, self.color_storage[r'Active_Color'].blue, True, True))
+        Gtk.main_quit()
+
 
 # MAIN #
 
 
 if __name__ == '__main__':
-    MAIN_WINDOW = ColorProcessing(argv[1:])
+    if argv and len(argv) >= 2 and (r'-p' in argv[1:] or r'--read-pipe' in argv[1:]):
+        DATA = stdin.read()
+        MAIN_WINDOW = ColorProcessing([DATA.strip()])
+    else:
+        MAIN_WINDOW = ColorProcessing(argv[1:])
     del MAIN_WINDOW
     raise SystemExit(0)
