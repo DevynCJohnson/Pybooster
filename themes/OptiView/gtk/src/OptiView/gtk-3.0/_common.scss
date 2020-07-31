@@ -17,7 +17,6 @@ $asset_suffix: if($variant == "dark", "-dark", "");
   -GtkIMHtml-hyperlink-color: $link_color;
   -GtkIMHtmlr-hyperlink-color: $link_color;
   -GtkMenuBar-window-dragging: false;
-  -GtkScale-slider-width: $slider_min_length;
   -GtkScale-trough-side-details: 1;
   -GtkScrollbar-activate-slider: 1;
   -GtkScrollbar-has-backward-stepper: 1;
