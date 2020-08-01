@@ -6,7 +6,7 @@
 
 @file fs.py
 @package pybooster.fs
-@version 2020.07.04
+@version 2020.08.01
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -457,7 +457,7 @@ def getdata(_filename: str, _encoding: str = r'utf-8') -> str:
         _out: str = r''
         if _filename:  # Input file specified
             ensurefileexists(_filename)
-            with open codec_opener(_filename, mode=r'r', encoding=_encoding) as _file:
+            with codec_opener(_filename, mode=r'r', encoding=_encoding) as _file:
                 return r''.join(_file.readlines())
         else:  # Piping used
             return r''.join(stdin.readlines())

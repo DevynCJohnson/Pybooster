@@ -1,3 +1,7 @@
+2020-08-31  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* fs.py:  Fixed a minor bug
+
 2020-07-30  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* OptiView:  Removed the deprecated `-GtkScale-slider-width` property
