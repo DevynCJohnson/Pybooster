@@ -869,11 +869,6 @@ def kilometer2meter(_length: Union[float, int], _round: int = 3) -> float:
     return round(_length * 1000.0, _round)
 
 
-def kilometer2mile(_length: Union[float, int], _round: int = 3) -> float:
-    """Kilometers -> Miles."""
-    return round(_length * 0.621371, _round)
-
-
 def kilometer2microinch(_length: Union[float, int], _round: int = 3) -> float:
     """Kilometers -> Microinches."""
     return round(_length * 39370000000.0, _round)
@@ -955,11 +950,6 @@ def lightyear2kilometer(_length: Union[float, int], _round: int = 3) -> float:
 def lightyear2meter(_length: Union[float, int], _round: int = 3) -> float:
     """Lightyears -> Meters."""
     return round(_length * 9460737937559129.6121097445600756859, _round)
-
-
-def lightyear2mile(_length: Union[float, int], _round: int = 3) -> float:
-    """Lightyears -> Miles."""
-    return round(_length * 5878600000000, _round)
 
 
 def lightyear2microinch(_length: Union[float, int], _round: int = 3) -> float:
@@ -1045,11 +1035,6 @@ def meter2lightyear(_length: Union[float, int], _round: int = 3) -> float:
     return round(_length * 0.00000000000000010570008, _round)
 
 
-def meter2mile(_length: Union[float, int], _round: int = 3) -> float:
-    """Meters -> Miles."""
-    return round(_length * 0.000621371, _round)
-
-
 def meter2microinch(_length: Union[float, int], _round: int = 3) -> float:
     """Meters -> Microinches."""
     return round(_length * 39370000.0, _round)
@@ -1131,11 +1116,6 @@ def microinch2kilometer(_length: Union[float, int], _round: int = 3) -> float:
 def microinch2lightyear(_length: Union[float, int], _round: int = 3) -> float:
     """Microinches -> Lightyears."""
     return round(_length * 0.0000000000000000000000026848, _round)
-
-
-def microinch2mile(_length: Union[float, int], _round: int = 3) -> float:
-    """Microinches -> Miles."""
-    return round(_length * 0.000000000015783, _round)
 
 
 def microinch2meter(_length: Union[float, int], _round: int = 3) -> float:
@@ -1578,7 +1558,7 @@ def uknauticalmile2millimeter(_length: Union[float, int], _round: int = 3) -> fl
     return round(_length * 1853190.26704471748114378903, _round)
 
 
-def uknauticalmile2parsecs(_length: Union[float, int], _round: int = 3) -> float:
+def uknauticalmile2parsec(_length: Union[float, int], _round: int = 3) -> float:
     """UK Nautical Miles -> Parsecs."""
     return round(_length * 0.000000000000060058, _round)
 
@@ -1661,7 +1641,7 @@ def usnauticalmile2millimeter(_length: Union[float, int], _round: int = 3) -> fl
     return round(_length * 1851989.03622490554855915253, _round)
 
 
-def usnauticalmile2parsecs(_length: Union[float, int], _round: int = 3) -> float:
+def usnauticalmile2parsec(_length: Union[float, int], _round: int = 3) -> float:
     """US Nautical Miles -> Parsecs."""
     return round(_length * 0.000000000000060019, _round)
 
