@@ -1,5 +1,8 @@
 2020-08-31  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* convlength.py:  Added more functions
+	* convspeed.py:  Renamed functions
+	* convvolume.py:  Renamed functions
 	* fs.py:  Fixed a minor bug
 
 2020-07-30  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>

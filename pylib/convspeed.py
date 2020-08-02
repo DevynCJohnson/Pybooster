@@ -6,7 +6,7 @@
 
 @file convspeed.py
 @package pybooster.convspeed
-@version 2019.07.14
+@version 2020.08.01
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -33,14 +33,24 @@ from typing import Union
 
 
 __all__: list = [
+    # KILOMETERS PER HOUR #
+    r'kilometersperhour2milesperhour',
     # MILES PER HOUR #
-    r'mph2kph'
+    r'milesperhour2kilometersperhour'
 ]
+
+
+# KILOMETERS PER HOUR #
+
+
+def kilometersperhour2milesperhour(_speed: Union[float, int], _round: int = 3) -> float:
+    """Kilometers per Hour -> Miles per Hour."""
+    return round(_speed * 0.62137, _round)
 
 
 # MILES PER HOUR #
 
 
-def mph2kph(_speed: Union[float, int], _round: int = 3) -> float:
+def milesperhour2kilometersperhour(_speed: Union[float, int], _round: int = 3) -> float:
     """Miles per Hour -> Kilometers per Hour."""
     return round(_speed * 1.6093, _round)
