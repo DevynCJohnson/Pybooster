@@ -101,6 +101,23 @@ __all__: list = [
     r'foot2uknauticalmile',
     r'foot2usnauticalmile',
     r'foot2yard',
+    # FURLONGS #
+    r'furlong2centimeter',
+    r'furlong2chain',
+    r'furlong2decimeter',
+    r'furlong2foot',
+    r'furlong2inch',
+    r'furlong2kilometer',
+    r'furlong2lightyear',
+    r'furlong2meter',
+    r'furlong2microinch',
+    r'furlong2micron',
+    r'furlong2mile',
+    r'furlong2millimeter',
+    r'furlong2parsec',
+    r'furlong2uknauticalmile',
+    r'furlong2usnauticalmile',
+    r'furlong2yard',
     # INCHES #
     r'inch2centimeter',
     r'inch2chain',
@@ -127,15 +144,33 @@ __all__: list = [
     r'kilometer2inch',
     r'kilometer2lightyear',
     r'kilometer2meter',
-    r'kilometer2mile',
     r'kilometer2microinch',
     r'kilometer2micron',
+    r'kilometer2mile',
     r'kilometer2mile',
     r'kilometer2millimeter',
     r'kilometer2parsec',
     r'kilometer2uknauticalmile',
     r'kilometer2usnauticalmile',
     r'kilometer2yard',
+    # LIGHTYEARS #
+    r'lightyear2centimeter',
+    r'lightyear2chain',
+    r'lightyear2decimeter',
+    r'lightyear2foot',
+    r'lightyear2furlong',
+    r'lightyear2inch',
+    r'lightyear2kilometer',
+    r'lightyear2meter',
+    r'lightyear2microinch',
+    r'lightyear2micron',
+    r'lightyear2mile',
+    r'lightyear2mile',
+    r'lightyear2millimeter',
+    r'lightyear2parsec',
+    r'lightyear2uknauticalmile',
+    r'lightyear2usnauticalmile',
+    r'lightyear2yard',
     # METERS #
     r'meter2centimeter',
     r'meter2chain',
@@ -154,23 +189,23 @@ __all__: list = [
     r'meter2uknauticalmile',
     r'meter2usnauticalmile',
     r'meter2yard',
-    # MILES #
-    r'mile2centimeter',
-    r'mile2chain',
-    r'mile2decimeter',
-    r'mile2foot',
-    r'mile2furlong',
-    r'mile2inch',
-    r'mile2kilometer',
-    r'mile2lightyear',
-    r'mile2meter',
-    r'mile2microinch',
-    r'mile2micron',
-    r'mile2millimeter',
-    r'mile2parsec',
-    r'mile2uknauticalmile',
-    r'mile2usnauticalmile',
-    r'mile2yard',
+    # MICROINCHES #
+    r'microinch2centimeter',
+    r'microinch2chain',
+    r'microinch2decimeter',
+    r'microinch2foot',
+    r'microinch2furlong',
+    r'microinch2inch',
+    r'microinch2kilometer',
+    r'microinch2lightyear',
+    r'microinch2meter',
+    r'microinch2micron',
+    r'microinch2mile',
+    r'microinch2millimeter',
+    r'microinch2parsec',
+    r'microinch2uknauticalmile',
+    r'microinch2usnauticalmile',
+    r'microinch2yard',
     # MICRONS #
     r'micron2centimeter',
     r'micron2chain',
@@ -188,6 +223,91 @@ __all__: list = [
     r'micron2uknauticalmile',
     r'micron2usnauticalmile',
     r'micron2yard',
+    # MILES #
+    r'mile2centimeter',
+    r'mile2chain',
+    r'mile2decimeter',
+    r'mile2foot',
+    r'mile2furlong',
+    r'mile2inch',
+    r'mile2kilometer',
+    r'mile2lightyear',
+    r'mile2meter',
+    r'mile2microinch',
+    r'mile2micron',
+    r'mile2millimeter',
+    r'mile2parsec',
+    r'mile2uknauticalmile',
+    r'mile2usnauticalmile',
+    r'mile2yard',
+    # MILLIMETERS #
+    r'millimeter2centimeter',
+    r'millimeter2chain',
+    r'millimeter2decimeter',
+    r'millimeter2foot',
+    r'millimeter2furlong',
+    r'millimeter2inch',
+    r'millimeter2kilometer',
+    r'millimeter2lightyear',
+    r'millimeter2meter',
+    r'millimeter2microinch',
+    r'millimeter2micron',
+    r'millimeter2mile',
+    r'millimeter2parsec',
+    r'millimeter2uknauticalmile',
+    r'millimeter2usnauticalmile',
+    r'millimeter2yard',
+    # PARSECS #
+    r'parsec2centimeter',
+    r'parsec2chain',
+    r'parsec2decimeter',
+    r'parsec2foot',
+    r'parsec2furlong',
+    r'parsec2inch',
+    r'parsec2kilometer',
+    r'parsec2lightyear',
+    r'parsec2meter',
+    r'parsec2microinch',
+    r'parsec2micron',
+    r'parsec2mile',
+    r'parsec2millimeter',
+    r'parsec2uknauticalmile',
+    r'parsec2usnauticalmile',
+    r'parsec2yard',
+    # UK NAUTICAL MILES #
+    r'uknauticalmile2centimeter',
+    r'uknauticalmile2chain',
+    r'uknauticalmile2decimeter',
+    r'uknauticalmile2foot',
+    r'uknauticalmile2furlong',
+    r'uknauticalmile2inch',
+    r'uknauticalmile2kilometer',
+    r'uknauticalmile2lightyear',
+    r'uknauticalmile2meter',
+    r'uknauticalmile2microinch',
+    r'uknauticalmile2micron',
+    r'uknauticalmile2mile',
+    r'uknauticalmile2millimeter',
+    r'uknauticalmile2parsec',
+    r'uknauticalmile2usnauticalmile',
+    r'uknauticalmile2yard',
+    # US NAUTICAL MILES #
+    r'usnauticalmile2centimeter',
+    r'usnauticalmile2chain',
+    r'usnauticalmile2decimeter',
+    r'usnauticalmile2foot',
+    r'usnauticalmile2furlong',
+    r'usnauticalmile2inch',
+    r'usnauticalmile2kilometer',
+    r'usnauticalmile2lightyear',
+    r'usnauticalmile2meter',
+    r'usnauticalmile2microinch',
+    r'usnauticalmile2micron',
+    r'usnauticalmile2mile',
+    r'usnauticalmile2millimeter',
+    r'usnauticalmile2parsec',
+    r'usnauticalmile2uknauticalmile',
+    r'usnauticalmile2yard',
     # YARDS #
     r'yard2centimeter',
     r'yard2chain',
@@ -510,11 +630,6 @@ def foot2micron(_length: Union[float, int], _round: int = 3) -> float:
     return round(_length * 304803.70641306998293099244, _round)
 
 
-def foot2micron(_length: Union[float, int], _round: int = 3) -> float:
-    """Feet -> Microns."""
-    return round(_length * 304803.70641306998293099244, _round)
-
-
 def foot2mile(_length: Union[float, int], _round: int = 3) -> float:
     """Feet -> Miles."""
     return round(_length * 0.00018939, _round)
@@ -543,6 +658,89 @@ def foot2usnauticalmile(_length: Union[float, int], _round: int = 3) -> float:
 def foot2yard(_length: Union[float, int], _round: int = 3) -> float:
     """Feet -> Yards."""
     return round(_length * 0.333333333333333, _round)
+
+
+# FURLONGS #
+
+
+def furlong2centimeter(_length: Union[float, int], _round: int = 3) -> float:
+    """Furlongs -> Centimeters."""
+    return round(_length * 20116.67672500502916918125, _round)
+
+
+def furlong2chain(_length: Union[float, int], _round: int = 3) -> float:
+    """Furlongs -> Chains."""
+    return round(_length * 10.0, _round)
+
+
+def furlong2decimeter(_length: Union[float, int], _round: int = 3) -> float:
+    """Furlongs -> Decimeters."""
+    return round(_length * 2011.66767250050291691813, _round)
+
+
+def furlong2foot(_length: Union[float, int], _round: int = 3) -> float:
+    """Furlongs -> Feet."""
+    return round(_length * 660.00, _round)
+
+
+def furlong2inch(_length: Union[float, int], _round: int = 3) -> float:
+    """Furlongs -> Inches."""
+    return round(_length * 7920.0, _round)
+
+
+def furlong2kilometer(_length: Union[float, int], _round: int = 3) -> float:
+    """Furlongs -> Kilometers."""
+    return round(_length * 0.20116676725005029169, _round)
+
+
+def furlong2lightyear(_length: Union[float, int], _round: int = 3) -> float:
+    """Furlongs -> Lightyears."""
+    return round(_length * 0.000000000000021264, _round)
+
+
+def furlong2meter(_length: Union[float, int], _round: int = 3) -> float:
+    """Furlongs -> Meters."""
+    return round(_length * 201.16676725005029169181, _round)
+
+
+def furlong2microinch(_length: Union[float, int], _round: int = 3) -> float:
+    """Furlongs -> Microinches."""
+    return round(_length * 7920000000, _round)
+
+
+def furlong2micron(_length: Union[float, int], _round: int = 3) -> float:
+    """Furlongs -> Microns."""
+    return round(_length * 201166767.25005029169181251257, _round)
+
+
+def furlong2mile(_length: Union[float, int], _round: int = 3) -> float:
+    """Furlongs -> Miles."""
+    return round(_length * 0.12500, _round)
+
+
+def furlong2millimeter(_length: Union[float, int], _round: int = 3) -> float:
+    """Furlongs -> Millimeters."""
+    return round(_length * 201166.76725005029169181251, _round)
+
+
+def furlong2parsec(_length: Union[float, int], _round: int = 3) -> float:
+    """Furlongs -> Parsecs."""
+    return round(_length * 0.0000000000000065194, _round)
+
+
+def furlong2uknauticalmile(_length: Union[float, int], _round: int = 3) -> float:
+    """Furlongs -> UK Nautical Miles."""
+    return round(_length * 0.10855, _round)
+
+
+def furlong2usnauticalmile(_length: Union[float, int], _round: int = 3) -> float:
+    """Furlongs -> US Nautical Miles."""
+    return round(_length * 0.10862, _round)
+
+
+def furlong2yard(_length: Union[float, int], _round: int = 3) -> float:
+    """Furlongs -> Yards."""
+    return round(_length * 220.00, _round)
 
 
 # INCHES #
@@ -716,6 +914,94 @@ def kilometer2yard(_length: Union[float, int], _round: int = 3) -> float:
     return round(_length * 1093.6, _round)
 
 
+# LIGHTYEARS #
+
+
+def lightyear2centimeter(_length: Union[float, int], _round: int = 3) -> float:
+    """Lightyears -> Centimeters."""
+    return round(_length * 946073793755912961.21097445600756859035, _round)
+
+
+def lightyear2chain(_length: Union[float, int], _round: int = 3) -> float:
+    """Lightyears -> Chains."""
+    return round(_length * 470290000000000, _round)
+
+
+def lightyear2decimeter(_length: Union[float, int], _round: int = 3) -> float:
+    """Lightyears -> Decimeters."""
+    return round(_length * 94607379375591296.12109744560075685904, _round)
+
+
+def lightyear2foot(_length: Union[float, int], _round: int = 3) -> float:
+    """Lightyears -> Feet."""
+    return round(_length * 31039000000000000, _round)
+
+
+def lightyear2furlong(_length: Union[float, int], _round: int = 3) -> float:
+    """Lightyears -> Furlongs."""
+    return round(_length * 47029000000000, _round)
+
+
+def lightyear2inch(_length: Union[float, int], _round: int = 3) -> float:
+    """Lightyears -> Inches."""
+    return round(_length * 372470000000000000, _round)
+
+
+def lightyear2kilometer(_length: Union[float, int], _round: int = 3) -> float:
+    """Lightyears -> Kilometers."""
+    return round(_length * 9460737937559.12961210974456007569, _round)
+
+
+def lightyear2meter(_length: Union[float, int], _round: int = 3) -> float:
+    """Lightyears -> Meters."""
+    return round(_length * 9460737937559129.6121097445600756859, _round)
+
+
+def lightyear2mile(_length: Union[float, int], _round: int = 3) -> float:
+    """Lightyears -> Miles."""
+    return round(_length * 5878600000000, _round)
+
+
+def lightyear2microinch(_length: Union[float, int], _round: int = 3) -> float:
+    """Lightyears -> Microinches."""
+    return round(_length * 372470000000000000000000.0, _round)
+
+
+def lightyear2micron(_length: Union[float, int], _round: int = 3) -> float:
+    """Lightyears -> Microns."""
+    return round(_length * 9460737937559129612109.74456007568590350047, _round)
+
+
+def lightyear2mile(_length: Union[float, int], _round: int = 3) -> float:
+    """Lightyears -> Miles."""
+    return round(_length * 5878600000000.0, _round)
+
+
+def lightyear2millimeter(_length: Union[float, int], _round: int = 3) -> float:
+    """Lightyears -> Millimeters."""
+    return round(_length * 9460737937559129612.1097445600756859035, _round)
+
+
+def lightyear2parsec(_length: Union[float, int], _round: int = 3) -> float:
+    """Lightyears -> Parsecs."""
+    return round(_length * 0.30660, _round)
+
+
+def lightyear2uknauticalmile(_length: Union[float, int], _round: int = 3) -> float:
+    """Lightyears -> UK Nautical Mile."""
+    return round(_length * 5105100000000, _round)
+
+
+def lightyear2usnauticalmile(_length: Union[float, int], _round: int = 3) -> float:
+    """Lightyears -> US Nautical Mile."""
+    return round(_length * 5108400000000, _round)
+
+
+def lightyear2yard(_length: Union[float, int], _round: int = 3) -> float:
+    """Lightyears -> Yards."""
+    return round(_length * 10346000000000000, _round)
+
+
 # METERS #
 
 
@@ -804,87 +1090,92 @@ def meter2yard(_length: Union[float, int], _round: int = 3) -> float:
     return round(_length * 1.0936, _round)
 
 
-# MILES #
+# MICROINCHES #
 
 
-def mile2centimeter(_length: Union[float, int], _round: int = 3) -> float:
-    """Miles -> Centimeters."""
-    return round(_length * 160934.70878864444694787325, _round)
+def microinch2centimeter(_length: Union[float, int], _round: int = 3) -> float:
+    """Microinches -> Centimeters."""
+    return round(_length * 0.00000254000508001016, _round)
 
 
-def mile2chain(_length: Union[float, int], _round: int = 3) -> float:
-    """Miles -> Chains."""
-    return round(_length * 80.0, _round)
+def microinch2chain(_length: Union[float, int], _round: int = 3) -> float:
+    """Microinches -> Chains."""
+    return round(_length * 0.0000000012626, _round)
 
 
-def mile2decimeter(_length: Union[float, int], _round: int = 3) -> float:
-    """Miles -> Decimeters."""
-    return round(_length * 16093.47087886444469478732, _round)
+def microinch2decimeter(_length: Union[float, int], _round: int = 3) -> float:
+    """Microinches -> Decimeters."""
+    return round(_length * 0.000000254000508001016, _round)
 
 
-def mile2foot(_length: Union[float, int], _round: int = 3) -> float:
-    """Miles -> Feet."""
-    return round(_length * 5280.0, _round)
+def microinch2foot(_length: Union[float, int], _round: int = 3) -> float:
+    """Microinches -> Feet."""
+    return round(_length * 0.000000083333, _round)
 
 
-def mile2furlong(_length: Union[float, int], _round: int = 3) -> float:
-    """Miles -> Furlongs."""
-    return round(_length * 8.0, _round)
+def microinch2furlong(_length: Union[float, int], _round: int = 3) -> float:
+    """Microinches -> Furlongs."""
+    return round(_length * 0.00000000012626, _round)
 
 
-def mile2inch(_length: Union[float, int], _round: int = 3) -> float:
-    """Miles -> Inches."""
-    return round(_length * 63360.0, _round)
+def microinch2inch(_length: Union[float, int], _round: int = 3) -> float:
+    """Microinches -> Inches."""
+    return round(_length * 0.0000010000, _round)
 
 
-def mile2kilometer(_length: Union[float, int], _round: int = 3) -> float:
-    """Miles -> Kilometers."""
-    return round(_length * 1.60934708788644446948, _round)
+def microinch2kilometer(_length: Union[float, int], _round: int = 3) -> float:
+    """Microinches -> Kilometers."""
+    return round(_length * 0.0000000000254000508001016, _round)
 
 
-def mile2lightyear(_length: Union[float, int], _round: int = 3) -> float:
-    """Miles -> Lightyears."""
-    return round(_length * 0.00000000000017011, _round)
+def microinch2lightyear(_length: Union[float, int], _round: int = 3) -> float:
+    """Microinches -> Lightyears."""
+    return round(_length * 0.0000000000000000000000026848, _round)
 
 
-def mile2meter(_length: Union[float, int], _round: int = 3) -> float:
-    """Miles -> Meters."""
-    return round(_length * 1609.34708788644446947873, _round)
+def microinch2mile(_length: Union[float, int], _round: int = 3) -> float:
+    """Microinches -> Miles."""
+    return round(_length * 0.000000000015783, _round)
 
 
-def mile2microinch(_length: Union[float, int], _round: int = 3) -> float:
-    """Miles -> Microinches."""
-    return round(_length * 63360000000.0, _round)
+def microinch2meter(_length: Union[float, int], _round: int = 3) -> float:
+    """Microinches -> Meters."""
+    return round(_length * 0.0000000254000508001016, _round)
 
 
-def mile2micron(_length: Union[float, int], _round: int = 3) -> float:
-    """Miles -> Microns."""
-    return round(_length * 1609347087.88644446947873247823, _round)
+def microinch2micron(_length: Union[float, int], _round: int = 3) -> float:
+    """Microinches -> Microns."""
+    return round(_length * 0.0254000508001016002, _round)
 
 
-def mile2millimeter(_length: Union[float, int], _round: int = 3) -> float:
-    """Miles -> Millimeters."""
-    return round(_length * 1609347.08788644446947873247823, _round)
+def microinch2mile(_length: Union[float, int], _round: int = 3) -> float:
+    """Microinches -> Miles."""
+    return round(_length * 0.000000000015783, _round)
 
 
-def mile2parsec(_length: Union[float, int], _round: int = 3) -> float:
-    """Miles -> Parsecs."""
-    return round(_length * 0.000000000000052155, _round)
+def microinch2millimeter(_length: Union[float, int], _round: int = 3) -> float:
+    """Microinches -> Millimeters."""
+    return round(_length * 0.0000254000508001016, _round)
 
 
-def mile2uknauticalmile(_length: Union[float, int], _round: int = 3) -> float:
-    """Miles -> UK Nautical Miles."""
-    return round(_length * 0.86842, _round)
+def microinch2parsec(_length: Union[float, int], _round: int = 3) -> float:
+    """Microinches -> Parsecs."""
+    return round(_length * 0.00000000000000000000000082316, _round)
 
 
-def mile2usnauticalmile(_length: Union[float, int], _round: int = 3) -> float:
-    """Miles -> US Nautical Miles."""
-    return round(_length * 0.86898, _round)
+def microinch2uknauticalmile(_length: Union[float, int], _round: int = 3) -> float:
+    """Microinches -> UK Nautical Mile."""
+    return round(_length * 0.000000000013706, _round)
 
 
-def mile2yard(_length: Union[float, int], _round: int = 3) -> float:
-    """Miles -> Yards."""
-    return round(_length * 1760.0, _round)
+def microinch2usnauticalmile(_length: Union[float, int], _round: int = 3) -> float:
+    """Microinches -> US Nautical Mile."""
+    return round(_length * 0.000000000013715, _round)
+
+
+def microinch2yard(_length: Union[float, int], _round: int = 3) -> float:
+    """Microinches -> Yards."""
+    return round(_length * 0.000000027778, _round)
 
 
 # MICRONS #
@@ -968,6 +1259,421 @@ def micron2usnauticalmile(_length: Union[float, int], _round: int = 3) -> float:
 def micron2yard(_length: Union[float, int], _round: int = 3) -> float:
     """Microns -> Yards."""
     return round(_length * 0.00049374, _round)
+
+
+# MILES #
+
+
+def mile2centimeter(_length: Union[float, int], _round: int = 3) -> float:
+    """Miles -> Centimeters."""
+    return round(_length * 160934.70878864444694787325, _round)
+
+
+def mile2chain(_length: Union[float, int], _round: int = 3) -> float:
+    """Miles -> Chains."""
+    return round(_length * 80.0, _round)
+
+
+def mile2decimeter(_length: Union[float, int], _round: int = 3) -> float:
+    """Miles -> Decimeters."""
+    return round(_length * 16093.47087886444469478732, _round)
+
+
+def mile2foot(_length: Union[float, int], _round: int = 3) -> float:
+    """Miles -> Feet."""
+    return round(_length * 5280.0, _round)
+
+
+def mile2furlong(_length: Union[float, int], _round: int = 3) -> float:
+    """Miles -> Furlongs."""
+    return round(_length * 8.0, _round)
+
+
+def mile2inch(_length: Union[float, int], _round: int = 3) -> float:
+    """Miles -> Inches."""
+    return round(_length * 63360.0, _round)
+
+
+def mile2kilometer(_length: Union[float, int], _round: int = 3) -> float:
+    """Miles -> Kilometers."""
+    return round(_length * 1.60934708788644446948, _round)
+
+
+def mile2lightyear(_length: Union[float, int], _round: int = 3) -> float:
+    """Miles -> Lightyears."""
+    return round(_length * 0.00000000000017011, _round)
+
+
+def mile2meter(_length: Union[float, int], _round: int = 3) -> float:
+    """Miles -> Meters."""
+    return round(_length * 1609.34708788644446947873, _round)
+
+
+def mile2microinch(_length: Union[float, int], _round: int = 3) -> float:
+    """Miles -> Microinches."""
+    return round(_length * 63360000000.0, _round)
+
+
+def mile2micron(_length: Union[float, int], _round: int = 3) -> float:
+    """Miles -> Microns."""
+    return round(_length * 1609347087.88644446947873247823, _round)
+
+
+def mile2millimeter(_length: Union[float, int], _round: int = 3) -> float:
+    """Miles -> Millimeters."""
+    return round(_length * 1609347.08788644446947873247823, _round)
+
+
+def mile2parsec(_length: Union[float, int], _round: int = 3) -> float:
+    """Miles -> Parsecs."""
+    return round(_length * 0.000000000000052155, _round)
+
+
+def mile2uknauticalmile(_length: Union[float, int], _round: int = 3) -> float:
+    """Miles -> UK Nautical Miles."""
+    return round(_length * 0.86842, _round)
+
+
+def mile2usnauticalmile(_length: Union[float, int], _round: int = 3) -> float:
+    """Miles -> US Nautical Miles."""
+    return round(_length * 0.86898, _round)
+
+
+def mile2yard(_length: Union[float, int], _round: int = 3) -> float:
+    """Miles -> Yards."""
+    return round(_length * 1760.0, _round)
+
+
+# MILLIMETERS #
+
+
+def millimeter2centimeter(_length: Union[float, int], _round: int = 3) -> float:
+    """Millimeters -> Centimeters."""
+    return round(_length * 0.1, _round)
+
+
+def millimeter2chain(_length: Union[float, int], _round: int = 3) -> float:
+    """Millimeters -> Chains."""
+    return round(_length * 0.000049710, _round)
+
+
+def millimeter2decimeter(_length: Union[float, int], _round: int = 3) -> float:
+    """Millimeters -> Decimeters."""
+    return round(_length * 0.01, _round)
+
+
+def millimeter2foot(_length: Union[float, int], _round: int = 3) -> float:
+    """Millimeters -> Feet."""
+    return round(_length * 0.0032808, _round)
+
+
+def millimeter2furlong(_length: Union[float, int], _round: int = 3) -> float:
+    """Millimeters -> Furlongs."""
+    return round(_length * 0.0000049710, _round)
+
+
+def millimeter2inch(_length: Union[float, int], _round: int = 3) -> float:
+    """Millimeters -> Inches."""
+    return round(_length * 0.039370, _round)
+
+
+def millimeter2kilometer(_length: Union[float, int], _round: int = 3) -> float:
+    """Millimeters -> Kilometers."""
+    return round(_length * 0.000001, _round)
+
+
+def millimeter2lightyear(_length: Union[float, int], _round: int = 3) -> float:
+    """Millimeters -> Lightyears."""
+    return round(_length * 0.00000000000000000010570, _round)
+
+
+def millimeter2meter(_length: Union[float, int], _round: int = 3) -> float:
+    """Millimeters -> Meters."""
+    return round(_length * 0.001, _round)
+
+
+def millimeter2microinch(_length: Union[float, int], _round: int = 3) -> float:
+    """Millimeters -> Microinches."""
+    return round(_length * 39370.0, _round)
+
+
+def millimeter2micron(_length: Union[float, int], _round: int = 3) -> float:
+    """Millimeters -> Microns."""
+    return round(_length * 1000.0, _round)
+
+
+def millimeter2mile(_length: Union[float, int], _round: int = 3) -> float:
+    """Millimeters -> Miles."""
+    return round(_length * 0.00000062137, _round)
+
+
+def millimeter2parsec(_length: Union[float, int], _round: int = 3) -> float:
+    """Millimeters -> Parsecs."""
+    return round(_length * 0.000000000000000000032408, _round)
+
+
+def millimeter2uknauticalmile(_length: Union[float, int], _round: int = 3) -> float:
+    """Millimeters -> UK Nautical Miles."""
+    return round(_length * 0.00000053961, _round)
+
+
+def millimeter2usnauticalmile(_length: Union[float, int], _round: int = 3) -> float:
+    """Millimeters -> US Nautical Miles."""
+    return round(_length * 0.00000053996, _round)
+
+
+def millimeter2yard(_length: Union[float, int], _round: int = 3) -> float:
+    """Millimeters -> Yards."""
+    return round(_length * 0.0010936, _round)
+
+
+# PARSECS #
+
+
+def parsec2centimeter(_length: Union[float, int], _round: int = 3) -> float:
+    """Parsecs -> Centimeters."""
+    return round(_length * 3085657862256233028.88175759071834115033, _round)
+
+
+def parsec2chain(_length: Union[float, int], _round: int = 3) -> float:
+    """Parsecs -> Chains."""
+    return round(_length * 1533900000000000, _round)
+
+
+def parsec2decimeter(_length: Union[float, int], _round: int = 3) -> float:
+    """Parsecs -> Decimeters."""
+    return round(_length * 308565786225623302.88817575907183411503, _round)
+
+
+def parsec2foot(_length: Union[float, int], _round: int = 3) -> float:
+    """Parsecs -> Feet."""
+    return round(_length * 101240000000000000.0, _round)
+
+
+def parsec2furlong(_length: Union[float, int], _round: int = 3) -> float:
+    """Parsecs -> Furlongs."""
+    return round(_length * 153390000000000.0, _round)
+
+
+def parsec2inch(_length: Union[float, int], _round: int = 3) -> float:
+    """Parsecs -> Inches."""
+    return round(_length * 1214800000000000000.0, _round)
+
+
+def parsec2kilometer(_length: Union[float, int], _round: int = 3) -> float:
+    """Parsecs -> Kilometers."""
+    return round(_length * 30856578622562.33028881757590718341150333251, _round)
+
+
+def parsec2lightyear(_length: Union[float, int], _round: int = 3) -> float:
+    """Parsecs -> Lightyears."""
+    return round(_length * 3.2616, _round)
+
+
+def parsec2meter(_length: Union[float, int], _round: int = 3) -> float:
+    """Parsecs -> Meters."""
+    return round(_length * 30856578622562330.28881757590718341150333251, _round)
+
+
+def parsec2microinch(_length: Union[float, int], _round: int = 3) -> float:
+    """Parsecs -> Microinches."""
+    return round(_length * 1214800000000000000000000.0, _round)
+
+
+def parsec2micron(_length: Union[float, int], _round: int = 3) -> float:
+    """Parsecs -> Microns."""
+    return round(_length * 30856578622562330288817.57590718341150333251, _round)
+
+
+def parsec2mile(_length: Union[float, int], _round: int = 3) -> float:
+    """Parsecs -> Miles."""
+    return round(_length * 19174000000000.0, _round)
+
+
+def parsec2millimeter(_length: Union[float, int], _round: int = 3) -> float:
+    """Parsecs -> Millimeters."""
+    return round(_length * 30856578622562330288.81757590718341150333251, _round)
+
+
+def parsec2uknauticalmile(_length: Union[float, int], _round: int = 3) -> float:
+    """Parsecs -> UK Nautical Miles."""
+    return round(_length * 16651000000000.0, _round)
+
+
+def parsec2usnauticalmile(_length: Union[float, int], _round: int = 3) -> float:
+    """Parsecs -> US Nautical Miles."""
+    return round(_length * 16661000000000, _round)
+
+
+def parsec2yard(_length: Union[float, int], _round: int = 3) -> float:
+    """Parsecs -> Yards."""
+    return round(_length * 33745000000000000.0, _round)
+
+
+# UK NAUTICAL MILES #
+
+
+def uknauticalmile2centimeter(_length: Union[float, int], _round: int = 3) -> float:
+    """UK Nautical Miles -> Centimeters."""
+    return round(_length * 185319.0267044717481143789, _round)
+
+
+def uknauticalmile2chain(_length: Union[float, int], _round: int = 3) -> float:
+    """UK Nautical Miles -> Chains."""
+    return round(_length * 92.121, _round)
+
+
+def uknauticalmile2decimeter(_length: Union[float, int], _round: int = 3) -> float:
+    """UK Nautical Miles -> Decimeters."""
+    return round(_length * 18531.90267044717481143789, _round)
+
+
+def uknauticalmile2foot(_length: Union[float, int], _round: int = 3) -> float:
+    """UK Nautical Miles -> Feet."""
+    return round(_length * 6080.0, _round)
+
+
+def uknauticalmile2furlong(_length: Union[float, int], _round: int = 3) -> float:
+    """UK Nautical Miles -> Furlongs."""
+    return round(_length * 9.2121, _round)
+
+
+def uknauticalmile2inch(_length: Union[float, int], _round: int = 3) -> float:
+    """UK Nautical Miles -> Inches."""
+    return round(_length * 72960.0, _round)
+
+
+def uknauticalmile2kilometer(_length: Union[float, int], _round: int = 3) -> float:
+    """UK Nautical Miles -> Kilometers."""
+    return round(_length * 1.85319026704471748114, _round)
+
+
+def uknauticalmile2lightyear(_length: Union[float, int], _round: int = 3) -> float:
+    """UK Nautical Miles -> Lightyears."""
+    return round(_length * 0.00000000000019588, _round)
+
+
+def uknauticalmile2meter(_length: Union[float, int], _round: int = 3) -> float:
+    """UK Nautical Miles -> Meters."""
+    return round(_length * 1853.19026704471748114379, _round)
+
+
+def uknauticalmile2microinch(_length: Union[float, int], _round: int = 3) -> float:
+    """UK Nautical Miles -> Microinches."""
+    return round(_length * 72960000000.0, _round)
+
+
+def uknauticalmile2micron(_length: Union[float, int], _round: int = 3) -> float:
+    """UK Nautical Miles -> Microns."""
+    return round(_length * 1853190267.04471748114378903282, _round)
+
+
+def uknauticalmile2mile(_length: Union[float, int], _round: int = 3) -> float:
+    """UK Nautical Miles -> Miles."""
+    return round(_length * 1.1515, _round)
+
+
+def uknauticalmile2millimeter(_length: Union[float, int], _round: int = 3) -> float:
+    """UK Nautical Miles -> Millimeters."""
+    return round(_length * 1853190.26704471748114378903, _round)
+
+
+def uknauticalmile2parsecs(_length: Union[float, int], _round: int = 3) -> float:
+    """UK Nautical Miles -> Parsecs."""
+    return round(_length * 0.000000000000060058, _round)
+
+
+def uknauticalmile2usnauticalmile(_length: Union[float, int], _round: int = 3) -> float:
+    """UK Nautical Miles -> US Nautical Miles."""
+    return round(_length * 1.0006, _round)
+
+
+def uknauticalmile2yard(_length: Union[float, int], _round: int = 3) -> float:
+    """UK Nautical Miles -> Yards."""
+    return round(_length * 2026.7, _round)
+
+
+# US NAUTICAL MILES #
+
+
+def usnauticalmile2centimeter(_length: Union[float, int], _round: int = 3) -> float:
+    """US Nautical Miles -> Centimeters."""
+    return round(_length * 185198.90362249055485591525, _round)
+
+
+def usnauticalmile2chain(_length: Union[float, int], _round: int = 3) -> float:
+    """US Nautical Miles -> Chains."""
+    return round(_length * 92.062, _round)
+
+
+def usnauticalmile2decimeter(_length: Union[float, int], _round: int = 3) -> float:
+    """US Nautical Miles -> Decimeters."""
+    return round(_length * 18519.89036224905548559153, _round)
+
+
+def usnauticalmile2foot(_length: Union[float, int], _round: int = 3) -> float:
+    """US Nautical Miles -> Feet."""
+    return round(_length * 6076.1, _round)
+
+
+def usnauticalmile2furlong(_length: Union[float, int], _round: int = 3) -> float:
+    """US Nautical Miles -> Furlongs."""
+    return round(_length * 9.2062, _round)
+
+
+def usnauticalmile2inch(_length: Union[float, int], _round: int = 3) -> float:
+    """US Nautical Miles -> Inches."""
+    return round(_length * 72913.0, _round)
+
+
+def usnauticalmile2kilometer(_length: Union[float, int], _round: int = 3) -> float:
+    """US Nautical Miles -> Kilometers."""
+    return round(_length * 1.85198903622490554856, _round)
+
+
+def usnauticalmile2lightyear(_length: Union[float, int], _round: int = 3) -> float:
+    """US Nautical Miles -> Lightyears."""
+    return round(_length * 0.00000000000019576, _round)
+
+
+def usnauticalmile2meter(_length: Union[float, int], _round: int = 3) -> float:
+    """US Nautical Miles -> Meters."""
+    return round(_length * 1851.98903622490554855915, _round)
+
+
+def usnauticalmile2microinch(_length: Union[float, int], _round: int = 3) -> float:
+    """US Nautical Miles -> Microinches."""
+    return round(_length * 72913000000.0, _round)
+
+
+def usnauticalmile2micron(_length: Union[float, int], _round: int = 3) -> float:
+    """US Nautical Miles -> Microns."""
+    return round(_length * 1851989036.22490554855915252982, _round)
+
+
+def usnauticalmile2mile(_length: Union[float, int], _round: int = 3) -> float:
+    """US Nautical Miles -> Miles."""
+    return round(_length * 1.1508, _round)
+
+
+def usnauticalmile2millimeter(_length: Union[float, int], _round: int = 3) -> float:
+    """US Nautical Miles -> Millimeters."""
+    return round(_length * 1851989.03622490554855915253, _round)
+
+
+def usnauticalmile2parsecs(_length: Union[float, int], _round: int = 3) -> float:
+    """US Nautical Miles -> Parsecs."""
+    return round(_length * 0.000000000000060019, _round)
+
+
+def usnauticalmile2uknauticalmile(_length: Union[float, int], _round: int = 3) -> float:
+    """US Nautical Miles -> UK Nautical Miles."""
+    return round(_length * 0.99936, _round)
+
+
+def usnauticalmile2yard(_length: Union[float, int], _round: int = 3) -> float:
+    """US Nautical Miles -> Yards."""
+    return round(_length * 2025.4, _round)
 
 
 # YARDS #
