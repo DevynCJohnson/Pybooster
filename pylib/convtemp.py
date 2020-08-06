@@ -6,7 +6,7 @@
 
 @file convtemp.py
 @package pybooster.convtemp
-@version 2019.07.14
+@version 2020.08.06
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -74,24 +74,24 @@ __all__: list = [
 
 
 def celsius2delisle(_temp: Union[float, int], _round: int = 3) -> float:
-    """Celsius  - > Delisle."""
+    """Celsius -> Delisle."""
     _temp = 100 - float(_temp)
     return round(_temp * 1.5, _round)
 
 
 def celsius2fahrenheit(_temp: Union[float, int], _round: int = 3) -> float:
-    """Celsius  - > Fahrenheit."""
+    """Celsius -> Fahrenheit."""
     _temp = float(_temp) * 1.8
     return round(_temp + 32.0, _round)
 
 
 def celsius2kelvin(_temp: Union[float, int], _round: int = 3) -> float:
-    """Celsius  - > Kelvin."""
+    """Celsius -> Kelvin."""
     return round(_temp + 273.15, _round)
 
 
 def celsius2rankine(_temp: Union[float, int], _round: int = 3) -> float:
-    """Celsius  - > Rankine."""
+    """Celsius -> Rankine."""
     _temp = float(_temp) + 273.15
     return round(_temp * 1.8, _round)
 
@@ -100,24 +100,24 @@ def celsius2rankine(_temp: Union[float, int], _round: int = 3) -> float:
 
 
 def centigrade2delisle(_temp: Union[float, int], _round: int = 3) -> float:
-    """Centigrade  - > Delisle."""
+    """Centigrade -> Delisle."""
     _temp = 100 - float(_temp)
     return round(_temp * 1.5, _round)
 
 
 def centigrade2fahrenheit(_temp: Union[float, int], _round: int = 3) -> float:
-    """Centigrade  - > Fahrenheit."""
+    """Centigrade -> Fahrenheit."""
     _temp = float(_temp) * 1.8
     return round(_temp + 32.0, _round)
 
 
 def centigrade2kelvin(_temp: Union[float, int], _round: int = 3) -> float:
-    """Centigrade  - > Kelvin."""
+    """Centigrade -> Kelvin."""
     return round(_temp + 273.15, _round)
 
 
 def centigrade2rankine(_temp: Union[float, int], _round: int = 3) -> float:
-    """Centigrade  - > Rankine."""
+    """Centigrade -> Rankine."""
     _temp = float(_temp) + 273.15
     return round(_temp * 1.8, _round)
 
@@ -126,31 +126,31 @@ def centigrade2rankine(_temp: Union[float, int], _round: int = 3) -> float:
 
 
 def delisle2celsius(_temp: Union[float, int], _round: int = 3) -> float:
-    """Delisle  - > Celsius."""
+    """Delisle -> Celsius."""
     _temp = float(_temp) * 0.666666667
     return round(100.0 - _temp, _round)
 
 
 def delisle2centigrade(_temp: Union[float, int], _round: int = 3) -> float:
-    """Delisle  - > Centigrade."""
+    """Delisle -> Centigrade."""
     _temp = float(_temp) * 0.666666667
     return round(100.0 - _temp, _round)
 
 
 def delisle2fahrenheit(_temp: Union[float, int], _round: int = 3) -> float:
-    """Delisle  - > Fahrenheit."""
+    """Delisle -> Fahrenheit."""
     _temp = float(_temp) * 1.2
     return round(212.0 - _temp, _round)
 
 
 def delisle2kelvin(_temp: Union[float, int], _round: int = 3) -> float:
-    """Delisle  - > Kelvin."""
+    """Delisle -> Kelvin."""
     _temp = float(_temp) * 0.666666667
     return round(373.15 - _temp, _round)
 
 
 def delisle2rankine(_temp: Union[float, int], _round: int = 3) -> float:
-    """Delisle  - > Rankine."""
+    """Delisle -> Rankine."""
     _temp = float(_temp) * 1.2
     return round(671.67 - _temp, _round)
 
@@ -159,31 +159,31 @@ def delisle2rankine(_temp: Union[float, int], _round: int = 3) -> float:
 
 
 def fahrenheit2celsius(_temp: Union[float, int], _round: int = 3) -> float:
-    """Fahrenheit  - > Celsius."""
+    """Fahrenheit -> Celsius."""
     _temp = float(_temp) - 32.0
     return round(_temp * 0.555555556, _round)
 
 
 def fahrenheit2centigrade(_temp: Union[float, int], _round: int = 3) -> float:
-    """Fahrenheit  - > Centigrade."""
+    """Fahrenheit -> Centigrade."""
     _temp = float(_temp) - 32.0
     return round(_temp * 0.555555556, _round)
 
 
 def fahrenheit2delisle(_temp: Union[float, int], _round: int = 3) -> float:
-    """Fahrenheit  - > Delisle."""
+    """Fahrenheit -> Delisle."""
     _temp = 212 - float(_temp)
     return round(_temp * 0.833333333, _round)
 
 
 def fahrenheit2kelvin(_temp: Union[float, int], _round: int = 3) -> float:
-    """Fahrenheit  - > Kelvin."""
+    """Fahrenheit -> Kelvin."""
     _temp = float(_temp) + 459.67
     return round(_temp * 0.555555556, _round)
 
 
 def fahrenheit2rankine(_temp: Union[float, int], _round: int = 3) -> float:
-    """Fahrenheit  - > Rankine."""
+    """Fahrenheit -> Rankine."""
     _temp = float(_temp) + 459.67
     return round(_temp, _round)
 
@@ -192,31 +192,31 @@ def fahrenheit2rankine(_temp: Union[float, int], _round: int = 3) -> float:
 
 
 def kelvin2celsius(_temp: Union[float, int], _round: int = 3) -> float:
-    """Kelvin  - > Celsius."""
+    """Kelvin -> Celsius."""
     _temp = float(_temp) - 273.15
     return round(_temp, _round)
 
 
 def kelvin2centigrade(_temp: Union[float, int], _round: int = 3) -> float:
-    """Kelvin  - > Centigrade."""
+    """Kelvin -> Centigrade."""
     _temp = float(_temp) - 273.15
     return round(_temp, _round)
 
 
 def kelvin2delisle(_temp: Union[float, int], _round: int = 3) -> float:
-    """Kelvin  - > Delisle."""
+    """Kelvin -> Delisle."""
     _temp = 373.15 - float(_temp)
     return round(_temp * 1.5, _round)
 
 
 def kelvin2fahrenheit(_temp: Union[float, int], _round: int = 3) -> float:
-    """Kelvin  - > Fahrenheit."""
+    """Kelvin -> Fahrenheit."""
     _temp = float(_temp) * 1.8
     return round(_temp - 459.67, _round)
 
 
 def kelvin2rankine(_temp: Union[float, int], _round: int = 3) -> float:
-    """Kelvin  - > Rankine."""
+    """Kelvin -> Rankine."""
     _temp = float(_temp) * 1.8
     return round(_temp, _round)
 
@@ -225,28 +225,28 @@ def kelvin2rankine(_temp: Union[float, int], _round: int = 3) -> float:
 
 
 def rankine2celsius(_temp: Union[float, int], _round: int = 3) -> float:
-    """Rankine  - > Celsius."""
+    """Rankine -> Celsius."""
     _temp = float(_temp) - 491.67
     return round(_temp * 0.555555556, _round)
 
 
 def rankine2centigrade(_temp: Union[float, int], _round: int = 3) -> float:
-    """Rankine  - > Centigrade."""
+    """Rankine -> Centigrade."""
     _temp = float(_temp) - 491.67
     return round(_temp * 0.555555556, _round)
 
 
 def rankine2delisle(_temp: Union[float, int], _round: int = 3) -> float:
-    """Rankine  - > Delisle."""
+    """Rankine -> Delisle."""
     _temp = 671.67 - float(_temp)
     return round(_temp * 0.833333333, _round)
 
 
 def rankine2fahrenheit(_temp: Union[float, int], _round: int = 3) -> float:
-    """Rankine  - > Fahrenheit."""
+    """Rankine -> Fahrenheit."""
     return round(float(_temp) - 459.67, _round)
 
 
 def rankine2kelvin(_temp: Union[float, int], _round: int = 3) -> float:
-    """Rankine  - > Kelvin."""
+    """Rankine -> Kelvin."""
     return round(float(_temp) * 0.555555556, _round)

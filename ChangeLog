@@ -2,6 +2,7 @@
 
 	* convarea.py:  Added more functions
 	* convmass.py:  Added more functions
+	* convtemp.py:  Fixed the documentation
 
 2020-08-01  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
