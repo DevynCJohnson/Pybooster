@@ -61,12 +61,15 @@ __all__: list = [
     r'kelvin2delisle',
     r'kelvin2fahrenheit',
     r'kelvin2rankine',
+    # NEWTON #
     # RANKINE #
     r'rankine2celsius',
     r'rankine2centigrade',
     r'rankine2delisle',
     r'rankine2fahrenheit',
     r'rankine2kelvin'
+    # RÉAUMUR #
+    # RØMER #
 ]
 
 
