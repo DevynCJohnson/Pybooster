@@ -2,7 +2,7 @@
 
 - **convvolume.py:**  Added functions for more units of volume
 - **libchar.py:**  Added Morse Code & added more homoglyphs
-- **PyBooster:**  Changed the word homoglyph to homoglyphs
+- **PyBooster:**  Changed the word homoglyph to homoglyph
 
 # 2020-08-07  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
 
@@ -869,7 +869,7 @@
 - **extras_rc.sh:**  Fixed some bugs & added more code
 - **Geany:**  Minor tweaks
 - **insn_count:**  Optimized some code
-- **libchar.py:**  Added `NORMALIZE_HOLOGRAPHS` & added more homoglyphs
+- **libchar.py:**  Added `NORMALIZE_HOMOGLYPHS` & added more homoglyphs
 - **mimetype_booster.xml:**  Added many mimetypes
 - **mkchangelogmd.sh:**  Made ChangeLog headers primary headers in the Markdown code
 - **multimedia_rc.sh:**  Added `fixsvg()`

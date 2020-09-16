@@ -2,7 +2,7 @@
 
 	* convvolume.py:  Added functions for more units of volume
 	* libchar.py:  Added Morse Code & added more homoglyphs
-	* PyBooster:  Changed the word homoglyph to homoglyphs
+	* PyBooster:  Changed the word homoglyph to homoglyph
 
 2020-08-07  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
