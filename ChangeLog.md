@@ -1,3 +1,35 @@
+# 2020-09-16  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **convvolume.py:**  Added functions for more units of volume
+- **libchar.py:**  Added Morse Code & added more homoglyphs
+- **PyBooster:**  Changed the word homoglyph to homoglyphs
+
+# 2020-08-07  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **convvolume.py:**  Added more functions
+
+# 2020-08-06  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **convarea.py:**  Added more functions
+- **convmass.py:**  Added more functions
+- **convtemp.py:**  Fixed the documentation
+
+# 2020-08-01  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **convlength.py:**  Added more functions
+- **convspeed.py:**  Renamed functions
+- **convvolume.py:**  Renamed functions
+- **fs.py:**  Fixed a minor bug
+
+# 2020-07-30  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **OptiView:**  Removed the deprecated `-GtkScale-slider-width` property
+
+# 2020-07-10  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
+
+- **color-kit:**  Added support for piped-data & applied minor improvements
+- **PyBooster:**  Added findfont
+
 # 2020-07-04  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
 
 - **fs.py:**  Fixed some minor bugs
@@ -737,7 +769,7 @@
 - **color-kit:**  Various fixes & improvements
 - **color.py:**  Applied fixes & optimizations
 - **extras_rc.sh:**  Optimized some code
-- **libchar.py:**  Added more holographs
+- **libchar.py:**  Added more homoglyphs
 - **mimetype_booster.xml:**  Added more mimetypes
 - **Opticons:**  Added an icon for MenuLibre and added more mimetype icons
 - **pkg_rc.sh:**  Added more functions for Debian-based systems
@@ -745,7 +777,7 @@
 - **PyBooster:**  Added `Desktop-Entry-Maker` & associated files
 - **PyBooster:**  Added a Linux driver module for the Clevo keyboard backlight
 - **PyBooster:**  Miscellaneous fixes & tweaks
-- **strtools.py:**  Added more holographs
+- **strtools.py:**  Added more homoglyphs
 
 # 2019-03-23  Devyn Collier Johnson  <[DevynCJohnson@Gmail.com](mailto:DevynCJohnson@Gmail.com)>
 
@@ -837,7 +869,7 @@
 - **extras_rc.sh:**  Fixed some bugs & added more code
 - **Geany:**  Minor tweaks
 - **insn_count:**  Optimized some code
-- **libchar.py:**  Added `NORMALIZE_HOLOGRAPHS` & added more holographs
+- **libchar.py:**  Added `NORMALIZE_HOLOGRAPHS` & added more homoglyphs
 - **mimetype_booster.xml:**  Added many mimetypes
 - **mkchangelogmd.sh:**  Made ChangeLog headers primary headers in the Markdown code
 - **multimedia_rc.sh:**  Added `fixsvg()`
@@ -846,8 +878,8 @@
 - **phpanalysis:**  Fixed some bugs
 - **profile:**  Fixed some bugs & added more code
 - **PyBooster:**  Added `./phplib/` with PHP libraries
-- **PyBooster:**  Added ampupcpu, holograph2str, & str2holograph
-- **strtools.py:**  Added `holograph2str()` & `str2holograph()`
+- **PyBooster:**  Added ampupcpu, homoglyph2str, & str2homoglyph
+- **strtools.py:**  Added `homoglyph2str()` & `str2homoglyph()`
 - **timeit:**  Improved code
 - **XCompose:**  Added additional character combinations
 

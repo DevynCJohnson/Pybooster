@@ -131,7 +131,8 @@ __all__: list = [
     r'UP',
     r'WARNING',
     # CODEPOINTS & CHARACTER REFERENCES #
-    r'HOLOGRAPHS',
+    r'HOMOGLYPHS',
+    r'NORMALIZE_HOMOGLYPHS',
     r'INVALID_CHARREFS',
     r'INVALID_CODEPOINTS',
     r'CODEPOINT2NAME',
@@ -902,7 +903,7 @@ WARNING: str = r'⚠'
 # CODEPOINTS & CHARACTER REFERENCES #
 
 
-HOLOGRAPHS: dict = {
+HOMOGLYPHS: dict = {
     r' ': (r' ', r'　             '),
     r'!': (r'！', r'ᆝǃⵑ︕﹗'),
     r'"': (r'＂', r'̎៉'),
@@ -1024,7 +1025,7 @@ HOLOGRAPHS: dict = {
 }
 
 
-NORMALIZE_HOLOGRAPHS: dict = {
+NORMALIZE_HOMOGLYPHS: dict = {
     '\'': '\'',
     '\\': '\\',
     r' ': r' ',

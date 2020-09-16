@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax makefile; indent-mode normal; eol unix; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Makefile containing phony targets that perform project-level tasks
 #' @file project.mk
-#' @version 2019.11.09
+#' @version 2020.09.16
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -148,7 +148,7 @@ changelogmd : ./tools/mkchangelogmd.sh
 	$(RM) ./ChangeLog.md
 	./tools/mkchangelogmd.sh
 
-gnuchangelog : ./git/
+gnuchangelog : ./.git/
 	@printf '\x1b[1;4;33m%s\x1b[0m\n\n' '=== Creating GNU ChangeLog from Git ==='
 	git log --pretty --numstat --summary | git2cl > GNU-ChangeLog
 

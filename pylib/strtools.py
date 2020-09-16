@@ -6,7 +6,7 @@
 
 @file strtools.py
 @package pybooster.strtools
-@version 2020.02.21
+@version 2020.09.16
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -59,8 +59,8 @@ from pybooster.boolean import ishex
 from pybooster.libchar import (
     BRAILLE,
     GREEK_ALL,
-    HOLOGRAPHS,
-    NORMALIZE_HOLOGRAPHS,
+    HOMOGLYPHS,
+    NORMALIZE_HOMOGLYPHS,
     LOWER_LIMIT_ASCII_CTRL,
     LOWER_LIMIT_ASCII_EXT,
     LOWER_LIMIT_ASCII_PRNT,
@@ -108,8 +108,8 @@ __all__: list = [
     r'ordinal2num',
     r'explode',
     r'implode',
-    r'holograph2str',
-    r'str2holograph',
+    r'homoglyph2str',
+    r'str2homoglyph',
     r'replace_odd_chars',
     r'stripunicode',
     r'rmcurlycommas',
@@ -431,31 +431,31 @@ def implode(_str: str) -> str:
     return resub('(.?) (.?)', r'\1\2', _str).replace(r'  ', r' ').strip()
 
 
-def holograph2str(_str: str) -> str:
-    """Convert the holograph characters in the string to their normalized form.
+def homoglyph2str(_str: str) -> str:
+    """Convert the homoglyph characters in the string to their normalized form.
 
-    >>> holograph2str('Τһіѕ іѕ а ｔеѕｔ․')
+    >>> homoglyph2str('Τһіѕ іѕ а ｔеѕｔ․')
     'This is a test.'
     """
     _output: str = r''
     for _char in _str:
         try:
-            _output += NORMALIZE_HOLOGRAPHS[_char]
+            _output += NORMALIZE_HOMOGLYPHS[_char]
         except KeyError:
             _output += _char
     return _output
 
 
-def str2holograph(_str: str) -> str:
-    """Convert the characters in the string to their holograph equivalents.
+def str2homoglyph(_str: str) -> str:
+    """Convert the characters in the string to their homoglyph equivalents.
 
-    >>> str2holograph('This is a test.')
+    >>> str2homoglyph('This is a test.')
     'Τһіѕ іѕ а ｔеѕｔ․'
     """
     _output: str = r''
     for _char in _str:
         try:
-            _output += HOLOGRAPHS[_char][0]
+            _output += HOMOGLYPHS[_char][0]
         except KeyError:
             _output += _char
     return _output
