@@ -1,3 +1,7 @@
+2020-10-03  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* xmath.py:  Added many functions
+
 2020-09-16  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* convvolume.py:  Added functions for more units of volume

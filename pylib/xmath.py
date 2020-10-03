@@ -6,7 +6,7 @@
 
 @file xmath.py
 @package pybooster.xmath
-@version 2020.02.05
+@version 2020.10.03
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -34,7 +34,7 @@ along with this software.
 
 from functools import reduce
 from fractions import Fraction
-from math import acos, asin, atan, cos, erf, log, sin, sqrt, tan
+from math import acos, asin, atan, cos, erf, factorial, floor, log, sin, sqrt, tan
 from operator import mul
 from random import choice
 from typing import Generator, Iterable, Tuple, Union
@@ -44,6 +44,8 @@ __all__: list = [
     # CONSTANTS #
     r'LARGE_NUMBERS',
     r'SMALL_NUMBERS',
+    r'DELIAN_CONSTANT',
+    r'HYPERBOLIC_TANGENT_OF_1',
     # PI CONSTANTS #
     r'PI2',
     r'HALFPI',
@@ -112,14 +114,28 @@ __all__: list = [
     # NUMBER THEORY #
     r'bernoulli',
     r'chebyshev',
+    r'doublefactorial',
     r'factors',
+    r'fibonacci',
+    r'hexagonal',
+    r'heptagonal',
+    r'ishexagonal',
+    r'ispoweroftwo',
     r'isprime',
+    r'issquare',
+    r'istriangular',
     r'primes_under',
     r'generate_primes',
-    r'prime_factors',
+    r'mersenne',
     r'mobius',
+    r'pentatope',
     r'phi',
+    r'prime_factors',
+    r'pronic',
     r'radical',
+    r'superfactorial',
+    r'tetrahedral',
+    r'triangular',
     r'von_mangoldt',
     # STATISTICS #
     r'avgoffset',
@@ -194,6 +210,10 @@ SMALL_NUMBERS: tuple = (
     (r'nonillionth', 0.00000000000000000000000000000100),
     (r'googolminex', r'1 / (10 ** 10 ** 100)'),
 )
+
+
+DELIAN_CONSTANT: float = 1.25992104989487316476
+HYPERBOLIC_TANGENT_OF_1: float = 0.76159415595576488812
 
 
 # PI CONSTANTS #
@@ -672,6 +692,27 @@ def chebyshev(_num: int) -> int:
     return _result
 
 
+def doublefactorial(_num: int) -> int:
+    """Calculate the double factorial for the given number.
+
+    >>> doublefactorial(1)
+    1
+    >>> doublefactorial(2)
+    2
+    >>> doublefactorial(3)
+    3
+    >>> doublefactorial(4)
+    8
+    >>> doublefactorial(5)
+    15
+    >>> doublefactorial(9)
+    945
+    >>> doublefactorial(13)
+    135135
+    """
+    return reduce(mul, range(_num, 0, -2))
+
+
 def factors(_num: int) -> set:
     """Factorize the given number.
 
@@ -695,6 +736,112 @@ def factors(_num: int) -> set:
     {1, 2, 98, 196, 4, 7, 14, 49, 28}
     """
     return {x for tup in ([i, _num // i] for i in range(1, int(_num ** 0.5) + 1) if _num % i == 0) for x in tup}
+
+
+def fibonacci(_num: int) -> int:
+    """Caluclate the Fibonacci number.
+
+    >>> fibonacci(0)
+    0
+    >>> fibonacci(1)
+    1
+    >>> fibonacci(2)
+    1
+    >>> fibonacci(3)
+    2
+    >>> fibonacci(4)
+    3
+    >>> fibonacci(5)
+    5
+    >>> fibonacci(6)
+    8
+    >>> fibonacci(7)
+    13
+    >>> fibonacci(8)
+    21
+    >>> fibonacci(9)
+    34
+    >>> fibonacci(10)
+    55
+    >>> fibonacci(11)
+    89
+    """
+    _golden_ratio: float = 2.0 * cos(3.14159265358979323846 / 5.0)
+    return int(((_golden_ratio ** _num) - ((1.0 - _golden_ratio) ** _num)) / sqrt(5.0))
+
+
+def hexagonal(_num: int) -> int:
+    """Calculate the Nth hexagonal number.
+
+    >>> hexagonal(1)
+    1
+    >>> hexagonal(2)
+    6
+    >>> hexagonal(10)
+    190
+    """
+    _num2: int = _num + _num
+    return int((_num2 * (_num2 - 1)) / 2)
+
+
+def heptagonal(_num: int) -> int:
+    """Calculate the Nth heptagonal number.
+
+    >>> heptagonal(1)
+    1
+    >>> heptagonal(2)
+    7
+    >>> heptagonal(10)
+    235
+    """
+    return int((((_num * _num) * 5) - (3 * _num)) / 2)
+
+
+def isheptagonal(_num: int) -> bool:
+    """Test if the given number is heptagonal.
+
+    >>> isheptagonal(2)
+    False
+    >>> isheptagonal(7)
+    True
+    >>> isheptagonal(149)
+    False
+    >>> isheptagonal(1404)
+    True
+    """
+    _test_num: float = ((sqrt((40 * _num + 9)) + 3.0) * 0.1)
+    return _test_num == floor(_test_num)
+
+
+def ishexagonal(_num: int) -> bool:
+    """Test if the given number is hexagonal.
+
+    >>> ishexagonal(2)
+    False
+    >>> ishexagonal(28)
+    True
+    >>> ishexagonal(29)
+    False
+    >>> ishexagonal(703)
+    True
+    """
+    _test_num: float = ((sqrt((8 * _num + 1)) + 1.0) * 0.25)
+    return _test_num == floor(_test_num)
+
+
+def ispoweroftwo(_num: int) -> bool:
+    """Test if the given number is a power-of-two.
+
+    >>> ispoweroftwo(2)
+    True
+    >>> ispoweroftwo(3)
+    False
+    >>> ispoweroftwo(4)
+    True
+    >>> ispoweroftwo(28)
+    False
+    """
+    return bool(_num != 0 and not _num & (_num - 1))
 
 
 def isprime(_num: int) -> bool:
@@ -723,6 +870,37 @@ def isprime(_num: int) -> bool:
         if _num % _num2 == 0 and _num != _num2:
             return False
     return True
+
+
+def issquare(_num: int) -> bool:
+    """Test if the given number is square.
+
+    >>> issquare(3)
+    False
+    >>> issquare(4)
+    True
+    >>> issquare(6)
+    False
+    >>> issquare(16)
+    True
+    """
+    _test_num: float = floor(sqrt(_num) + 0.4)
+    return (_test_num * _test_num) == _num
+
+
+def istriangular(_num: int) -> bool:
+    """Test if the given number is triangular.
+
+    >>> istriangular(2)
+    False
+    >>> istriangular(21)
+    True
+    >>> istriangular(24)
+    False
+    >>> istriangular(231)
+    True
+    """
+    return issquare((8 * _num + 1))
 
 
 def primes_under(_num: int) -> set:
@@ -769,6 +947,71 @@ def generate_primes() -> Generator:
         _prime += 2
 
 
+def mersenne(_num: int) -> int:
+    """Calculate the Nth mersenne number.
+
+    >>> mersenne(1)
+    1
+    >>> mersenne(2)
+    3
+    >>> mersenne(10)
+    1023
+    """
+    return int((1 << _num) - 1)
+
+
+def mobius(_num: int) -> int:
+    """Möbius function from number theory and combinatorics.
+
+    >>> mobius(1)
+    1
+    >>> mobius(2)
+    -1
+    >>> mobius(12)
+    0
+    >>> mobius(15)
+    1
+    >>> mobius(16)
+    0
+    >>> mobius(17)
+    -1
+    >>> mobius(29)
+    -1
+    >>> mobius(30)
+    -1
+    """
+    _factors: tuple = prime_factors(_num)
+    if any(divisor for divisor in _factors if _num % (divisor * divisor) == 0):
+        return 0
+    return -1 if len(_factors) % 2 else 1
+
+
+def pentatope(_num: int) -> int:
+    """Calculate the Nth pentatope number.
+
+    >>> pentatope(1)
+    1
+    >>> pentatope(2)
+    5
+    >>> pentatope(10)
+    715
+    """
+    return int((_num * (_num + 1) * (_num + 2) * (_num + 3)) / 24)
+
+
+def phi(_num: float) -> float:
+    """Euler's Totient Function counts the positive integers up to a given integer `_num` that are relatively prime to `_num`.
+
+    >>> phi(128)
+    1.0
+    >>> phi(64)
+    1.0
+    >>> phi(phi(128))
+    0.8413447460685429
+    """
+    return (1.0 + erf(_num / 1.4142135623730950488016887242096980785696718753769480732)) * 0.5
+
+
 def prime_factors(_num: int) -> tuple:
     """Find prime factors.
 
@@ -802,43 +1045,17 @@ def prime_factors(_num: int) -> tuple:
     return (_num,)
 
 
-def mobius(_num: int) -> int:
-    """Möbius function from number theory and combinatorics.
+def pronic(_num: int) -> int:
+    """Calculate the Nth pronic number.
 
-    >>> mobius(1)
-    1
-    >>> mobius(2)
-    -1
-    >>> mobius(12)
-    0
-    >>> mobius(15)
-    1
-    >>> mobius(16)
-    0
-    >>> mobius(17)
-    -1
-    >>> mobius(29)
-    -1
-    >>> mobius(30)
-    -1
+    >>> pronic(1)
+    2
+    >>> pronic(2)
+    6
+    >>> pronic(10)
+    110
     """
-    _factors: tuple = prime_factors(_num)
-    if any(divisor for divisor in _factors if _num % (divisor * divisor) == 0):
-        return 0
-    return -1 if len(_factors) % 2 else 1
-
-
-def phi(_num: float) -> float:
-    """Euler's Totient Function counts the positive integers up to a given integer `_num` that are relatively prime to `_num`.
-
-    >>> phi(128)
-    1.0
-    >>> phi(64)
-    1.0
-    >>> phi(phi(128))
-    0.8413447460685429
-    """
-    return (1.0 + erf(_num / 1.4142135623730950488016887242096980785696718753769480732)) * 0.5
+    return (_num * _num) + _num
 
 
 def radical(_num: int) -> int:
@@ -871,6 +1088,51 @@ def radical(_num: int) -> int:
     for _factor in set(prime_factors(_num)):
         _result *= _factor
     return _result
+
+
+def superfactorial(_num: int) -> int:
+    """Calculate the superfactorial for the given number.
+
+    >>> superfactorial(1)
+    1
+    >>> superfactorial(2)
+    2
+    >>> superfactorial(3)
+    12
+    >>> superfactorial(4)
+    288
+    >>> superfactorial(5)
+    34560
+    >>> superfactorial(7)
+    125411328000
+    """
+    return reduce(lambda _fact, _int: factorial(_int) * _fact, range(1, _num + 1, 1))
+
+
+def tetrahedral(_num: int) -> int:
+    """Calculate the Nth tetrahedral number.
+
+    >>> tetrahedral(1)
+    1
+    >>> tetrahedral(2)
+    4
+    >>> tetrahedral(10)
+    220
+    """
+    return int((_num * (_num + 1) * (_num + 2)) / 6)
+
+
+def triangular(_num: int) -> int:
+    """Calculate the Nth triangular number.
+
+    >>> triangular(1)
+    1
+    >>> triangular(2)
+    3
+    >>> triangular(10)
+    55
+    """
+    return int(((_num * (_num + 1)) / 2))
 
 
 def von_mangoldt(_num: int) -> float:
