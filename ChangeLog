@@ -1,5 +1,6 @@
 2020-10-03  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
+	* science_data.py:  Added the function `iselement()`
 	* xmath.py:  Added many functions
 
 2020-09-16  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>

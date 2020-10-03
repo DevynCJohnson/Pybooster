@@ -6,7 +6,7 @@
 
 @file science_data.py
 @package pybooster.science_data
-@version 2019.07.14
+@version 2020.10.03
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -33,6 +33,7 @@ along with this software.
 
 
 __all__: list = [
+    # CONSTANTS #
     r'ATOM_MOLAR_MASS',
     r'MOLECULE_MOLAR_MASS',
     r'SMILES',
@@ -140,7 +141,9 @@ __all__: list = [
     r'ELECTRON_VOLT_INVERSE_METER_RELATIONSHIP',
     r'ELECTRON_VOLT_JOULE_RELATIONSHIP',
     r'ELECTRON_VOLT_KELVIN_RELATIONSHIP',
-    r'ELECTRON_VOLT_KILOGRAM_RELATIONSHIP'
+    r'ELECTRON_VOLT_KILOGRAM_RELATIONSHIP',
+    # FUNCTIONS #
+    r'iselement'
 ]
 
 
@@ -398,3 +401,11 @@ ELECTRON_VOLT_INVERSE_METER_RELATIONSHIP: str = r'806554.429 m^-1'
 ELECTRON_VOLT_JOULE_RELATIONSHIP: str = r'1.602176565e-19 J'
 ELECTRON_VOLT_KELVIN_RELATIONSHIP: str = r'11604.519 K'
 ELECTRON_VOLT_KILOGRAM_RELATIONSHIP: str = r'1.782661845e-36 kg'
+
+
+# FUNCTIONS #
+
+
+def iselement(_name: str) -> bool:
+    """Test if the name is a chemical element."""
+    return _name.casefold() in ATOM_MOLAR_MASS
