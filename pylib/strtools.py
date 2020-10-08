@@ -6,7 +6,7 @@
 
 @file strtools.py
 @package pybooster.strtools
-@version 2020.09.16
+@version 2020.10.08
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -122,6 +122,7 @@ __all__: list = [
     r'splitsentences',
     r'sqlstr',
     r'presentlist',
+    r'str2bool',
     # BOOLEAN TESTS #
     r'isascii',
     r'isctrlascii',
@@ -635,6 +636,25 @@ def presentlist(_list: list) -> str:
     '1, 2, 3'
     """
     return str(_list).replace('\'', r'').replace(r'[', r'').replace(r']', r'')
+
+
+def str2bool(_bool: Union[bool, str]) -> bool:
+    """Convert a string to a boolean
+    >>> str2bool('False')
+    False
+    >>> str2bool('True')
+    True
+    >>> str2bool('On')
+    True
+    >>> str2bool('Off')
+    False
+    """
+    if isinstance(_bool, bool):
+        return _bool
+    _bool = _bool.casefold().strip()
+    if _bool in {r'1', r'ok', r'okay', r'on', r'sure', r'true', r'yeah', r'yes'}:
+        return True
+    return False
 
 
 # BOOLEAN TESTS #

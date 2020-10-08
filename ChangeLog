@@ -1,6 +1,7 @@
 2020-10-08  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* libchar.py:  Added more homoglyphs
+	* strtools.py:  Added `str2bool()`
 
 2020-10-03  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
