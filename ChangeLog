@@ -1,3 +1,7 @@
+2020-10-08  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* libchar.py:  Added more homoglyphs
+
 2020-10-03  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* science_data.py:  Added the function `iselement()`

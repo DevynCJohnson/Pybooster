@@ -6,7 +6,7 @@
 
 @file libchar.py
 @package pybooster.libchar
-@version 2020.09.16
+@version 2020.10.08
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -1354,7 +1354,11 @@ NORMALIZE_HOMOGLYPHS: dict = {
     r' ': r' ',
     r' ': r' ',
     r' ': r' ',
+    r'‘': '\'',
+    r'’': '\'',
     r'‚': r',',
+    r'“': r'"',
+    r'”': r'"',
     r'․': r'.',
     r' ': r' ',
     r'‵': r'`',
