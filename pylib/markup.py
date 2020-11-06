@@ -6,7 +6,7 @@
 
 @file markup.py
 @package pybooster.markup
-@version 2020.07.04
+@version 2020.11.06
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -36,24 +36,25 @@ along with this software.
 
 
 from io import StringIO
+from os import environ
 from sys import stderr
 from typing import List, Optional, Union
 import xml.etree.ElementTree as ET  # nosec
 
-from pybooster.libchar import ALPHASET, INVALID_CHARREFS, INVALID_CODEPOINTS, HTML5
 from pybooster.libregex import CHARREF, LEADING_TRAILING_WHITESPACE, LEADING_WHITESPACE, TRAILING_WHITESPACE, WHITESPACE
-from pybooster.strtools import rmspecialwhitespace
+from pybooster.strtools import rmspecialwhitespace, unescape
 
 try:  # Regular Expression module
     from regex import compile as rgxcompile, DOTALL, IGNORECASE, match as rgxmatch, sub as resub, VERBOSE
 except ImportError:
     from re import compile as rgxcompile, DOTALL, IGNORECASE, match as rgxmatch, sub as resub, VERBOSE
 
-try:  # XML module
-    from defusedxml import defuse_stdlib
-    defuse_stdlib()
-except ImportError:
-    pass
+if r'DISABLE_DEFUSEDXML' not in environ:
+    try:  # XML module
+        from defusedxml import defuse_stdlib
+        defuse_stdlib()
+    except ImportError:
+        pass
 
 
 __all__: list = [
@@ -123,7 +124,6 @@ __all__: list = [
     r'escape',
     r'escape_ambiguous_ampersand',
     r'escape_attr_value',
-    r'unescape',
     r'htmlunescape',
     r'int2refnum',
     # SVG FUNCTIONS #
@@ -579,6 +579,11 @@ MIMETYPE_CORRECTIONS: tuple = (
 )
 
 
+_ALPHASET: set = {
+    r'a', r'b', r'c', r'd', r'e', r'f', r'g', r'h', r'i', r'j', r'k', r'l', r'm', r'n', r'o', r'p', r'q', r'r', r's', r't', r'u', r'v', r'w', r'x', r'y', r'z', r'=', r'/', r'A', r'B', r'C', r'D', r'E', r'F', r'G', r'H', r'I', r'J', r'K', r'L', r'M', r'N', r'O', r'P', r'Q', r'R', r'S', r'T', r'U', r'V', r'W', r'X', r'Y', r'Z'
+}
+
+
 # ASSERTION FUNCTIONS #
 
 
@@ -824,53 +829,6 @@ def escape_attr_value(val: str, double_quote: bool = False) -> tuple:
     if not val or any((c.isspace() for c in val)):
         return (val, DOUBLE_QUOTE)
     return (val, NO_QUOTES)
-
-
-def unescape(_str: str) -> str:  # noqa: R701
-    r"""Replace character references (e.g. &gt;, &#62;, &x3e;) with the literal characters.
-
-    >>> unescape(r'&#x22;')
-    '"'
-    >>> unescape(r'&x22;')
-    '"'
-    >>> unescape(r'&#34;')
-    '"'
-    >>> unescape(r'&quot;')
-    '"'
-    >>> unescape(r'&Utilde;')
-    '\u0168'
-    >>> unescape(r'String with &#34;special&#34; characters')
-    'String with "special" characters'
-    """
-    if r'&' not in _str:
-        return _str
-    match = CHARREF.search(_str)
-    while match:
-        origrefer = r'&' + match.group(1)
-        referstr = origrefer.lstrip(r'&').rstrip(r';')
-        ltrlch = r''
-        if referstr[0] == r'#' or referstr[0] in r'Xx':  # Decimal & Hexadecimal character reference
-            num = int(referstr.replace(r'#', r'')[1:], 16) if r'x' in referstr.casefold() else int(referstr[1:])
-            if num in INVALID_CHARREFS:
-                ltrlch = INVALID_CHARREFS[num]
-            elif 0xD800 <= num <= 0xDFFF or num > 0x10FFFF:
-                ltrlch = '\uFFFD'
-            elif num in INVALID_CODEPOINTS:
-                ltrlch = r''
-            else:
-                ltrlch = chr(num)
-        elif referstr + r';' in HTML5:  # Named character reference
-            ltrlch = HTML5[referstr + r';']
-            _str = _str.replace(origrefer, ltrlch)
-            match = CHARREF.search(_str)
-            continue
-        else:  # Unknown character reference
-            ltrlch = r''
-        _str = _str.replace(origrefer, ltrlch)
-        if len(_str) < 4:
-            return _str
-        match = CHARREF.search(_str)
-    return _str
 
 
 def htmlunescape(_str: str) -> str:
@@ -1283,7 +1241,7 @@ class ParserBase:  # pylint: disable=R0902
                 if not _match:  # Incomplete
                     return -1
                 j = _match.end()
-            elif char in ALPHASET:
+            elif char in _ALPHASET:
                 name, j = self._scan_name(j, i)
                 del name
             elif char in self._decl_otherchars:
@@ -1821,7 +1779,7 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
                 return i + 1
             elif _next == r'':  # End of input
                 return -1
-            elif _next in ALPHASET:  # End of input in or before attribute value or the '/' from a '/>' ending
+            elif _next in _ALPHASET:  # End of input in or before attribute value or the '/' from a '/>' ending
                 return -1
             elif j > i:
                 return j
