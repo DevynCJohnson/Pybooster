@@ -256,5 +256,23 @@
     <patterns>*</patterns>
     <audio-files/>
   </action>
+  <action>
+    <icon>media-audio</icon>
+    <name>Generate Melspectrogram</name>
+    <unique-id>7300000000000019-1</unique-id>
+    <command>[ -x "$(command -v audio-melspectrogram)" ] &amp;&amp; audio-melspectrogram -o ./ %f &amp;&amp; notify-send --icon=media-audio 'Audio Processing' 'Finished generating melspectrogram from audio'</command>
+    <description>Generate melspectrograms from audio files</description>
+    <patterns>*</patterns>
+    <audio-files/>
+  </action>
+  <action>
+    <icon>media-audio</icon>
+    <name>Generate Audio Wave Image</name>
+    <unique-id>7300000000000020-1</unique-id>
+    <command>[ -x "$(command -v audio-waveplot)" ] &amp;&amp; audio-waveplot -o ./ %f &amp;&amp; notify-send --icon=media-audio 'Audio Processing' 'Finished generating audio wave graphs from audio'</command>
+    <description>Generate audio wave graphs from audio files</description>
+    <patterns>*</patterns>
+    <audio-files/>
+  </action>
 
 </actions>
