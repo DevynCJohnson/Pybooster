@@ -5,7 +5,7 @@
 """@brief Produce statistical information about a Git repository project.
 
 @file gitstats
-@version 2020.06.05
+@version 2020.11.06
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -48,7 +48,7 @@ from zlib import compress, decompress
 
 __all__: list = []
 
-__version__: str = r'2020.06.05'
+__version__: str = r'2020.11.06'
 
 
 # ENVIRON SETUP #
@@ -1204,14 +1204,17 @@ def parse_arguments(args_orig: list) -> None:  # noqa: C901,R701
     """Parse the arguments."""
     optlist, args = getopt(args_orig, r'c:hkqv', [r'help', r'keep', r'output=', r'quiet', r'repo=', r'version'])
     for option, optval in optlist:
+        if option in {r'-h', r'--help'}:
+            usage()
+            raise SystemExit(0)
+        if option in {r'-v', r'--version'}:
+            stdout.write(f'{__version__}\n')
+            raise SystemExit(0)
         if option == r'-c':
             key, value = optval.split(r'=', 1)
             if key not in CONF:
                 raise KeyError(fr'No such key "{key}" in config')
             CONF[key] = int(value) if isinstance(CONF[key], int) else value
-        elif option in {r'-h', r'--help'}:
-            usage()
-            raise SystemExit(0)
         elif option in {r'-k', r'--keep'}:
             CONF[r'keep_data'] = True
         elif option in {r'-q', r'--quiet'}:
@@ -1220,9 +1223,6 @@ def parse_arguments(args_orig: list) -> None:  # noqa: C901,R701
             CONF[r'outputpath'] = optval
         elif option == r'--repo':
             CONF[r'gitpath'] = optval
-        elif option in {r'-v', r'--version'}:
-            stdout.write(f'{__version__}\n')
-            raise SystemExit(0)
     if not (CONF[r'outputpath'] and CONF[r'gitpath']) and len(args) < 2:
         usage()
         raise SystemExit(0)
