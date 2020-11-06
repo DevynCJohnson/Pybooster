@@ -6,7 +6,7 @@
 
 @file strtools.py
 @package pybooster.strtools
-@version 2020.10.08
+@version 2020.11.06
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -55,11 +55,13 @@ along with this software.
 from ast import literal_eval
 from typing import List, Union
 
-from pybooster.boolean import ishex
 from pybooster.libchar import (
     BRAILLE,
     GREEK_ALL,
     HOMOGLYPHS,
+    HTML5,
+    INVALID_CHARREFS,
+    INVALID_CODEPOINTS,
     NORMALIZE_HOMOGLYPHS,
     LOWER_LIMIT_ASCII_CTRL,
     LOWER_LIMIT_ASCII_EXT,
@@ -76,7 +78,7 @@ from pybooster.libchar import (
     UPPER_LIMIT_UNICODE,
     UPPER_LIMIT_UTF8
 )
-from pybooster.libregex import CHAR_REF, ENTITY_REF, HEXESCCSS, HEXESCPERL, HEXESCRUBY, HEXESCTAG, HEXESCURI
+from pybooster.libregex import CHAR_REF, CHARREF, ENTITY_REF, HEXESCCSS, HEXESCPERL, HEXESCRUBY, HEXESCTAG, HEXESCURI
 
 try:  # Regular Expression module
     from regex import compile as rgxcompile, split as rgxsplit, sub as resub
@@ -143,6 +145,7 @@ __all__: list = [
     r'shrink_esc_utf32to16',
     r'noescutf8hex',
     r'noescape',
+    r'unescape',
     r'expandhexescape',
     r'char2noeschex',
     r'str2noeschex',
@@ -334,7 +337,7 @@ def snakecase2pascalcase(string: str) -> str:
     _string: str = split_string[0].capitalize() + r''.join([_str.capitalize() for _str in split_string[1:]])
     if r' ' in _string:
         split_string = _string.split(r' ')
-        return split_string[0] + r' ' + r' '.join([_str[0].upper() + _str[1:] for _str in split_string[1:]])
+        return fr'{split_string[0]} ' + r' '.join([_str[0].upper() + _str[1:] for _str in split_string[1:]])
     return split_string[0].capitalize() + r''.join([_str.capitalize() for _str in split_string[1:]])
 
 
@@ -638,7 +641,7 @@ def presentlist(_list: list) -> str:
     return str(_list).replace('\'', r'').replace(r'[', r'').replace(r']', r'')
 
 
-def str2bool(_bool: Union[bool, str]) -> bool:
+def str2bool(_bool: Union[bool, str], as_str: bool = False) -> Union[bool, str]:
     """Convert a string to a boolean
     >>> str2bool('False')
     False
@@ -648,13 +651,19 @@ def str2bool(_bool: Union[bool, str]) -> bool:
     True
     >>> str2bool('Off')
     False
+    >>> str2bool('Off', True)
+    'no'
+    >>> str2bool('Yeah', True)
+    'yes'
     """
-    if isinstance(_bool, bool):
-        return _bool
+    if not isinstance(_bool, str):
+        if _bool:
+            return r'yes' if as_str else True
+        return r'no' if as_str else False
     _bool = _bool.casefold().strip()
     if _bool in {r'1', r'ok', r'okay', r'on', r'sure', r'true', r'yeah', r'yes'}:
-        return True
-    return False
+        return r'yes' if as_str else True
+    return r'no' if as_str else False
 
 
 # BOOLEAN TESTS #
@@ -844,36 +853,41 @@ def isunicode(_str: Union[bytes, str]) -> bool:  # noqa: C901,R701
     >>> isunicode('𮯠')
     True
     >>> isunicode(r'\U10fffe')
-    False
+    True
+    >>> isunicode(r'\U0001D11E')
+    True
     >>> isunicode('\\U10ffff')
-    False
+    True
     >>> isunicode('\\U110000')
     False
+    >>> isunicode(b'\xe2\x80\xbb')
+    True
     """
-    if not isinstance(_str, (str, bytes)):
+    if not isinstance(_str, (bytes, str)):
         raise Exception(r'An invalid datatype was passed to isunicode()!')
-    elif isinstance(_str, bytes):
+    if isinstance(_str, bytes):
         try:
             _str.decode(r'utf8', r'strict')
         except SyntaxError:
             return False
         return True
-    elif len(_str) == 10 and r'\U' in _str:
-        return int(_str.replace(r'\U', r''), 16) <= UPPER_LIMIT_UNICODE
-    elif len(_str) == 6 and r'\u' in _str:
-        return int(_str.replace(r'\u', r''), 16) <= UPPER_LIMIT_UNICODE
-    elif _str.count(r'\x') == 1 and (len(_str) % 4) == 0:
-        return int(_str.replace(r'\x', r'0x'), 16) <= UPPER_LIMIT_UNICODE
-    elif _str.count(r'\x') >= 2 and (len(_str) % 4) == 0:
+    _string_length = len(_str)
+    if _string_length == 1:
         try:
-            _tmp_char: list = _str.split(r'\x')[1:]
-            literal_eval(f'b\'\\x{_tmp_char[0]}\\x{_tmp_char[1]}\\x{_tmp_char[2]}\'.decode(\'utf8\', \'strict\')')
+            _str.encode(r'utf8').decode(r'utf8', r'strict')
         except SyntaxError:
             return False
         return True
-    elif len(_str) == 1:
+    if _str.count('\\') == 1:
+        if _string_length <= 10 and r'\U' in _str:
+            return int(_str.replace(r'\U', r''), 16) <= UPPER_LIMIT_UNICODE
+        if _string_length % 4 == 0 or (_string_length <= 6 and r'\u' in _str):
+            return int(_str.replace(r'\x', r'').replace(r'\u', r''), 16) <= UPPER_LIMIT_UNICODE
+        return False
+    if _str.count(r'\x') >= 2 and (_string_length % 4) == 0:
         try:
-            _str.encode(r'utf-16', r'strict')
+            _tmp_char: list = _str.split(r'\x')[1:]
+            literal_eval(f'b\'\\x{_tmp_char[0]}\\x{_tmp_char[1]}\\x{_tmp_char[2]}\'.decode(\'utf8\', \'strict\')')
         except SyntaxError:
             return False
         return True
@@ -1138,6 +1152,53 @@ def noescape(_hex: str) -> str:
     raise Exception(r'Invalid input passed to noescape()!')
 
 
+def unescape(_str: str) -> str:  # noqa: R701
+    r"""Replace character references (e.g. &gt;, &#62;, &x3e;) with the literal characters.
+
+    >>> unescape(r'&#x22;')
+    '"'
+    >>> unescape(r'&x22;')
+    '"'
+    >>> unescape(r'&#34;')
+    '"'
+    >>> unescape(r'&quot;')
+    '"'
+    >>> unescape(r'&Utilde;')
+    '\u0168'
+    >>> unescape(r'String with &#34;special&#34; characters')
+    'String with "special" characters'
+    """
+    if r'&' not in _str:
+        return _str
+    match = CHARREF.search(_str)
+    while match:
+        origrefer = r'&' + match.group(1)
+        referstr = origrefer.lstrip(r'&').rstrip(r';')
+        ltrlch = r''
+        if referstr[0] == r'#' or referstr[0] in r'Xx':  # Decimal & Hexadecimal character reference
+            num = int(referstr.replace(r'#', r'')[1:], 16) if r'x' in referstr.casefold() else int(referstr[1:])
+            if num in INVALID_CHARREFS:
+                ltrlch = INVALID_CHARREFS[num]
+            elif 0xD800 <= num <= 0xDFFF or num > 0x10FFFF:
+                ltrlch = '\uFFFD'
+            elif num in INVALID_CODEPOINTS:
+                ltrlch = r''
+            else:
+                ltrlch = chr(num)
+        elif referstr + r';' in HTML5:  # Named character reference
+            ltrlch = HTML5[referstr + r';']
+            _str = _str.replace(origrefer, ltrlch)
+            match = CHARREF.search(_str)
+            continue
+        else:  # Unknown character reference
+            ltrlch = r''
+        _str = _str.replace(origrefer, ltrlch)
+        if len(_str) < 4:
+            return _str
+        match = CHARREF.search(_str)
+    return _str
+
+
 def expandhexescape(_hex: str) -> str:
     r"""Convert a 16-bit hex escape to a 32-bit hex escape `\\uhhhh => \\Uhhhhhhhh`.
 
@@ -1395,7 +1456,7 @@ def num2char(_str: str) -> str:  # noqa: C901,R701
             _tmp = _pattern.sub(r'¶ж¶\1¶ж¶\2', _char)
             _null, _char, _append = rgxsplit(r'¶ж¶', _tmp)
             del _null
-            if ishex(_char):
+            if hex(int(_char, 16)):
                 _out.append(chr(int(_char, 16)) + _append)
                 continue
             _out.append(_char + _append)

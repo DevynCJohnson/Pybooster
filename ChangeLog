@@ -7,6 +7,7 @@
 	* pygraphimports3:  Improved the generated charts & fixed some bugs
 	* pygraphprofile:  Improved the generated charts
 	* science_data.py:  Added more molecular SMILES data
+	* strtools.py:  Applied minor improvements and fixes
 	* uca.xml:  Added more Thunar UCA actions for audio files
 	* xmath.py:  Applied minor improvements and fixes
 
