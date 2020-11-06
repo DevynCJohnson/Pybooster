@@ -6,7 +6,7 @@
 
 @file science_data.py
 @package pybooster.science_data
-@version 2020.10.03
+@version 2020.11.06
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -281,18 +281,43 @@ MOLECULE_MOLAR_MASS: dict = {  # NOTE: All molar masses are in grams per mole
 
 
 SMILES: dict = {
+    r'ammonia': r'N',
+    r'ammonium_cation': r'[NH4+]',
+    r'benzene': r'c1ccccc1',
+    r'carbon_dioxide': r'O=C=O',
+    r'cyclohexane': r'C1CCCCC1',
     r'cysteine': r'C(C(C(=O)O)N)S',
+    r'd_alanine': r'N[C@H](C)C(=O)O',
+    r'deuterium_oxide': r'[2H]O[2H]',
     r'dinitrogen': r'N#N',
+    r'e_difluoroethene': r'F/C=C/F',
+    r'ethane': r'CC',
+    r'flavopereirin': r'CCc(c1)ccc2[n+]1ccc3c2[nH]c4c3cccc4CCc1c[n+]2ccc3c4ccccc4[nH]c3c2cc1',
+    r'formaldehyde': r'C=O',
+    r'hydrochloric_acid': r'Cl',
+    r'hydrogen cyanide': r'C#N',
+    r'hydrogen_sulfide': r'S',
+    r'hydronium_cation': r'[OH3+]',
+    r'hydronium_ion': r'[OH3+]',
+    r'hydroxyl_anion ': r'[OH-]',
+    r'iron_(ii)_cation ': r'[Fe+2]',
+    r'l_alanine': r'N[C@@H](C)C(=O)O',
     r'melatonin': r'CC(=O)NCCC1=CNc2c1cc(OC)cc2',
     r'meth': r'N(C(Cc1ccccc1)C)C',
     r'methionine': r'CSCCC(C(=O)O)N',
     r'methyl_isocyanate': r'CN=C=O',
     r'nicotine': r'CN1CCC[C@H]1c2cccnc2',
+    r'oenanthotoxin': r'CCC[C@@H](O)CC\C=C\C=C\C#CC#C\C=C\COCCC[C@@H](O)CC/C=C/C=C/C#CC#C/C=C/CO',
+    r'phosphine': r'P',
+    r'proton': r'[H+]',
+    r'pyrethrin_ii': r'CC1=C(C(=O)C[C@@H]1OC(=O)[C@@H]2[C@H](C2(C)C)/C=C(\C)/C(=O)OC)C/C=C\C=C',
     r'selenocysteine': r'O=C(O)[C@@H](N)C[SeH]',
     r'serotonin': r'c1cc2c(cc1O)c(c[nH]2)CCN',
+    r'thiamine': r'OCCc1c(C)[n+](cs1)Cc2cnc(C)nc2N',
     r'tryptophan': r'c1ccc2c(c1)c(c[nH]2)C[C@@H](C(=O)O)N',
     r'vanillin': r'O=Cc1ccc(O)c(OC)c1',
-    r'water': r'O'
+    r'water': r'O',
+    r'z_difluoroethene': r'F/C=C\F'
 }
 
 

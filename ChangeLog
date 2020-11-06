@@ -1,6 +1,7 @@
 2020-11-06  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* mime.types:  Removed a duplicate mimetype
+	* science_data.py:  Added more molecular SMILES data
 	* uca.xml:  Added more Thunar UCA actions for audio files
 
 2020-10-08  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
