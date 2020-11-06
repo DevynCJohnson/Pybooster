@@ -59,6 +59,7 @@ wait
 
 if [ -x "$(command -v minifyxml)" ]; then
     { [ -f "${HOME}/Diagrams/${3}_Dependencies.svg" ] && minifyxml --svg --inplace --remove-all-metadata "${HOME}/Diagrams/${3}_Dependencies.svg"; } &
+    { [ -f "${HOME}/Diagrams/${3}_Dependencies_Concentrate.svg" ] && minifyxml --svg --inplace --remove-all-metadata "${HOME}/Diagrams/${3}_Dependencies_Concentrate.svg"; } &
     { [ -f "${HOME}/Diagrams/${3}_Dependencies_Undirected.svg" ] && minifyxml --svg --inplace --remove-all-metadata "${HOME}/Diagrams/${3}_Dependencies_Undirected.svg"; } &
     wait
 fi
