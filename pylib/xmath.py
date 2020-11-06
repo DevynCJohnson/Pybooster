@@ -6,7 +6,7 @@
 
 @file xmath.py
 @package pybooster.xmath
-@version 2020.10.03
+@version 2020.11.06
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -45,6 +45,7 @@ __all__: list = [
     r'LARGE_NUMBERS',
     r'SMALL_NUMBERS',
     r'DELIAN_CONSTANT',
+    r'GOLDEN_RATIO',
     r'HYPERBOLIC_TANGENT_OF_1',
     # PI CONSTANTS #
     r'PI2',
@@ -213,6 +214,7 @@ SMALL_NUMBERS: tuple = (
 
 
 DELIAN_CONSTANT: float = 1.25992104989487316476
+GOLDEN_RATIO: float = 1.6180339887498948482
 HYPERBOLIC_TANGENT_OF_1: float = 0.76159415595576488812
 
 
@@ -739,7 +741,7 @@ def factors(_num: int) -> set:
 
 
 def fibonacci(_num: int) -> int:
-    """Caluclate the Fibonacci number.
+    """Calculate the Fibonacci number.
 
     >>> fibonacci(0)
     0
@@ -766,8 +768,7 @@ def fibonacci(_num: int) -> int:
     >>> fibonacci(11)
     89
     """
-    _golden_ratio: float = 2.0 * cos(3.14159265358979323846 / 5.0)
-    return int(((_golden_ratio ** _num) - ((1.0 - _golden_ratio) ** _num)) / sqrt(5.0))
+    return int(((GOLDEN_RATIO ** _num) - ((1.0 - GOLDEN_RATIO) ** _num)) / sqrt(5.0))
 
 
 def hexagonal(_num: int) -> int:
@@ -809,7 +810,7 @@ def isheptagonal(_num: int) -> bool:
     >>> isheptagonal(1404)
     True
     """
-    _test_num: float = ((sqrt((40 * _num + 9)) + 3.0) * 0.1)
+    _test_num: float = (sqrt((40 * _num + 9)) + 3.0) * 0.1
     return _test_num == floor(_test_num)
 
 
