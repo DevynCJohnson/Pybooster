@@ -4,7 +4,7 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Graph the classes of a Python3 project
 #' @file pygraphclasses3
-#' @version 2019.07.29
+#' @version 2020.11.06
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -16,7 +16,7 @@ elif [ ! -x "$(command -v dot)" ]; then
     printf 'dot: command not found!\n' >&2
     exit 1
 elif [ "${1:-}" = '--help' ] || [ "${1:-}" = '-h' ]; then
-    printf 'pygraphclasses3 DIRECTORY PROJECT_NAME\n'
+    printf 'pygraphclasses3 DIRECTORY PROJECT_NAME [PY_FILES_ONLY]\n'
     exit 0
 fi
 
@@ -34,23 +34,23 @@ save_path="${PWD}"
 
 cd "${1}" || exit 1
 
-pyreverse3 --all-ancestors --all-associated ./* --ignore='.bzr,.cvs,.git,.hg,.svk,.svn,bin,build,debugging,doc,log,logging,logs,temp,test,testing,tmp' -p "${2}"
+if [ -n "${3:-}" ]; then
+    pyreverse3 --all-ancestors --all-associated --ignore='.bzr,.cvs,.git,.hg,.svk,.svn,bin,build,debugging,doc,log,logging,logs,temp,test,testing,tmp,tox.ini,.gitattributes,.gitignore,.pylintrc' --project="${2}" ./*.py
+else
+    pyreverse3 --all-ancestors --all-associated --ignore='.bzr,.cvs,.git,.hg,.svk,.svn,bin,build,debugging,doc,log,logging,logs,temp,test,testing,tmp,tox.ini,.gitattributes,.gitignore,.pylintrc' --project="${2}" ./*
+fi
 
 [ -f "./classes_${2}.dot" ] && mv "./classes_${2}.dot" "${HOME}/Diagrams/${2}_Classes.dot"
 [ -f "./packages_${2}.dot" ] && mv "./packages_${2}.dot" "${HOME}/Diagrams/${2}_Packages.dot"
 
-if [ -f "${HOME}/Diagrams/${2}_Classes.dot" ]; then
-    dot -q -Gnewrank=true -Gsplines=ortho -Tsvg -x -o "${HOME}/Diagrams/${2}_Classes.svg" "${HOME}/Diagrams/${2}_Classes.dot" &
-fi
-if [ -f "${HOME}/Diagrams/${2}_Packages.dot" ]; then
-    dot -q -Gnewrank=true -Gsplines=ortho -Tsvg -x -o "${HOME}/Diagrams/${2}_Packages.svg" "${HOME}/Diagrams/${2}_Packages.dot" &
-fi
+{ [ -f "${HOME}/Diagrams/${2}_Classes.dot" ] && dot -q -Gnewrank=true -Gsplines=ortho -Tsvg -x -o "${HOME}/Diagrams/${2}_Classes.svg" "${HOME}/Diagrams/${2}_Classes.dot"; } &
+{ [ -f "${HOME}/Diagrams/${2}_Packages.dot" ] && dot -q -Gnewrank=true -Gsplines=ortho -Tsvg -x -o "${HOME}/Diagrams/${2}_Packages.svg" "${HOME}/Diagrams/${2}_Packages.dot"; } &
 
 wait
 
 if [ -x "$(command -v minifyxml)" ]; then
-    [ -f "${HOME}/Diagrams/${2}_Classes.svg" ] && minifyxml --svg --inplace --remove-all-metadata "${HOME}/Diagrams/${2}_Classes.svg" &
-    [ -f "${HOME}/Diagrams/${2}_Packages.svg" ] && minifyxml --svg --inplace --remove-all-metadata "${HOME}/Diagrams/${2}_Packages.svg" &
+    { [ -f "${HOME}/Diagrams/${2}_Classes.svg" ] && minifyxml --svg --inplace --remove-all-metadata "${HOME}/Diagrams/${2}_Classes.svg"; }&
+    { [ -f "${HOME}/Diagrams/${2}_Packages.svg" ] && minifyxml --svg --inplace --remove-all-metadata "${HOME}/Diagrams/${2}_Packages.svg"; } &
     wait
 fi
 

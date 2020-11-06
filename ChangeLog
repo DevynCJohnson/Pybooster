@@ -3,6 +3,7 @@
 	* gitstats:  Applied minor tweaks
 	* markup.py:  Simplified some of the code
 	* mime.types:  Removed a duplicate mimetype
+	* pygraphclasses3:  Improved the generated charts & fixed some bugs
 	* pygraphimports3:  Improved the generated charts & fixed some bugs
 	* pygraphprofile:  Improved the generated charts
 	* science_data.py:  Added more molecular SMILES data
