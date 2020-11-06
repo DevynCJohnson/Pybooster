@@ -1,9 +1,10 @@
 2020-11-06  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* gitstats:  Applied minor tweaks
-	* pygraphprofile:  Improved the generated charts
 	* markup.py:  Simplified some of the code
 	* mime.types:  Removed a duplicate mimetype
+	* pygraphimports3:  Improved the generated charts & fixed some bugs
+	* pygraphprofile:  Improved the generated charts
 	* science_data.py:  Added more molecular SMILES data
 	* uca.xml:  Added more Thunar UCA actions for audio files
 	* xmath.py:  Applied minor improvements and fixes

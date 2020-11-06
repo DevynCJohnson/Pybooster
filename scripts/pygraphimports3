@@ -4,13 +4,16 @@
 # kate: encoding utf-8; bom off; syntax shell; indent-mode normal; eol unix; replace-tabs on; indent-width 4; tab-width 4; remove-trailing-space on;
 #' @brief Graph the imports of a Python3 project
 #' @file pygraphimports3
-#' @version 2019.07.29
+#' @version 2020.11.06
 #' @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 #' @copyright Public Domain (CC0) - https://creativecommons.org/publicdomain/zero/1.0/
 
 
 if [ ! -x "$(command -v python3)" ]; then
     printf 'python3: command not found!\n' >&2
+    exit 1
+elif [ ! -x "$(command -v dot)" ]; then
+    printf 'dot: command not found!\n' >&2
     exit 1
 elif [ "${1:-}" = '--help' ] || [ "${1:-}" = '-h' ]; then
     printf 'pygraphimports3 DIRECTORY MAIN_FILE PROJECT_NAME\npygraphimports3 ./project ./project/main.py My_Project\n'
@@ -41,23 +44,22 @@ save_path="${PWD}"
 
 cd "${1}" || exit 1
 
-python3 -m modulegraph2 --format dot -x _abcoll -x _bootlocale -x _collections -x _ctypes -x _dummy_thread -x _functools -x _hashlib -x _io -x _ssl -x _subprocess -x _thread -x _warnings -x _weakref -x _weakrefset -x abc -x arrow -x asn1crypto -x babel -x bable -x backports -x base64 -x binascii -x blinker -x boto3 -x botocore -x bson -x calendar -x click -x codecs -x CoffeeScript -x collections -x configparser -x copy_ref -x cPickle -x cpuinfo -x Crypto -x cryptography -x cssmin -x cStringIO -x ctypes -x cupy -x datetime -x decimal -x django -x django_mpm -x doctest -x dummy_threading -x email -x enum -x errno -x fasteners -x flask -x flask_babel -x flask_login -x flask_mail -x flask_restplus -x flask_sqlalchemy -x flask_wtf -x fractions -x functools -x genericpath -x getopt -x gettext -x glob -x hashlib -x heapq -x hmac -x httplib -x importlib -x inspect -x io -x itsdangerous -x jinja2 -x json -x jsonpickle -x linecache -x locale -x logging -x M2Crypto -x MarkupSafe -x markupsafe -x math -x mimetools -x mimetypes -x multiprocessing -x netaddr -x numbers -x numpy -x nvd3 -x optparse -x ordereddict -x org -x os -x passlib -x pdb -x pbr -x pdfkit -x pickle -x pkgutil -x platform -x posixpath -x pprint -x psutil -x psycopg2 -x pymongo -x pyOpenSSL -x PyQt4 -x PyQt5 -x pytz -x quopri -x random -x re -x redis -x regex -x repr -x requests -x s3transfer -x sets -x setuptools -x signal -x signals -x six -x slimit -x smtplib -x socket -x sqlalchemy -x SQLAlchemy -x SQLAlchemy-Utils -x sqlalchemy_utils -x sqlalchemy_utils.functions.orm -x sre_compile -x sre_parse -x ssl -x string -x StringIO -x subprocess -x sys -x tempfile -x textwrap -x threading -x time -x traceback -x types -x typing -x unittest -x urllib -x UserDict -x uu -x uuid -x uWSGI -x warnings -x weakref -x werkzeug -x wtforms -x WTForms -x xml -x zipimport --path "${1}" --output "${HOME}/Diagrams/${3}_Dependencies.dot" "${2}"
+python3 -m modulegraph2 --format dot -x _abcoll -x _bootlocale -x _collections -x _ctypes -x _dummy_thread -x _functools -x _hashlib -x _io -x _ssl -x _subprocess -x _thread -x _warnings -x _weakref -x _weakrefset -x abc -x argparse -x arrow -x asn1crypto -x ast -x babel -x bable -x backports -x base64 -x binascii -x blinker -x boto3 -x botocore -x bson -x calendar -x click -x cmath -x codecs -x CoffeeScript -x collections -x configparser -x copy_ref -x cPickle -x cpuinfo -x Crypto -x cryptography -x cssmin -x cStringIO -x csv -x ctypes -x cupy -x datetime -x Decimal -x decimal -x defusedxml -x django -x django_mpm -x doctest -x dummy_threading -x email -x enum -x errno -x fasteners -x flask -x flask_babel -x flask_login -x flask_mail -x flask_restplus -x flask_sqlalchemy -x flask_wtf -x fractions -x functools -x genericpath -x getopt -x gettext -x gi -x gi.repository -x gi.repository.Gst -x glob -x GPIO -x hashlib -x heapq -x hmac -x http -x httplib -x importlib -x inspect -x io -x ipaddress -x itsdangerous -x jinja2 -x json -x jsonpickle -x linecache -x locale -x logging -x M2Crypto -x MarkupSafe -x markupsafe -x math -x memory_profiler -x mimetools -x mimetypes -x multiprocessing -x netaddr -x numbers -x numpy -x nvd3 -x optparse -x ordereddict -x org -x os -x parse_launch -x passlib -x pathlib -x pdb -x pbr -x pdfkit -x pickle -x pkgutil -x platform -x pocketsphinx -x posixpath -x pprint -x profile -x psutil -x psycopg2 -x pyalsaaudio -x pyaml -x pydoc -x pymongo -x pympler -x pyOpenSSL -x PyQt4 -x PyQt5 -x pytz -x quopri -x random -x re -x redis -x regex -x repr -x requests -x RPi -x s3transfer -x Serial -x serial -x sets -x setuptools -x shutil -x signal -x signals -x six -x slimit -x SMBus -x smbus -x smtplib -x socket -x sphinxbase -x sqlalchemy -x SQLAlchemy -x SQLAlchemy-Utils -x sqlalchemy_utils -x sqlalchemy_utils.functions.orm -x sqlite3 -x sre_compile -x sre_parse -x ssl -x State -x string -x StringIO -x struct -x subprocess -x sys -x tempfile -x textwrap -x threading -x time -x tkinter -x traceback -x types -x typing -x unittest -x urllib -x UserDict -x uu -x uuid -x uWSGI -x warnings -x weakref -x werkzeug -x wtforms -x WTForms -x xml -x xml.etree -x xml.etree.ElementTree -x yaml -x zipfile -x zipimport --path "${1}" --output "${HOME}/Diagrams/${3}_Dependencies.dot" "${2}"
 
 [ ! -f "${HOME}/Diagrams/${3}_Dependencies.dot" ] && exit 1
 
 
 sed -i "s|MissingModule|ExcludedModule|g; s|${HOME}/||g" "${HOME}/Diagrams/${3}_Dependencies.dot"
+
 dot -q -Gnewrank=true -Gnodesep=1.5 -Granksep=2 -Tsvg -x -o "${HOME}/Diagrams/${3}_Dependencies.svg" "${HOME}/Diagrams/${3}_Dependencies.dot" &
-sfdp -q -Gnewrank=true -Gnodesep=1 -Goverlap=scale -Granksep=2 -Gsplines=ortho -Tsvg -x -o "${HOME}/Diagrams/${3}_Dependencies_Undirected.svg" "${HOME}/Diagrams/${3}_Dependencies.dot" &
-sleep 180
-remaining_jobs="$(jobs -p)"
-for jobid in ${remaining_jobs}; do
-    kill -15 "$jobid"
-done
+sfdp -q -Gnewrank=true -Gnodesep=1.5 -Goverlap=scale -Granksep=2 -Gsplines=ortho -Tsvg -x -o "${HOME}/Diagrams/${3}_Dependencies_Undirected.svg" "${HOME}/Diagrams/${3}_Dependencies.dot" &
+dot -q -Gconcentrate=true -Gnewrank=true -Gnodesep=2 -Granksep=2 -Tsvg -x -o "${HOME}/Diagrams/${3}_Dependencies_Concentrate.svg" "${HOME}/Diagrams/${3}_Dependencies.dot" &
+
 wait
+
 if [ -x "$(command -v minifyxml)" ]; then
-    [ -f "${HOME}/Diagrams/${3}_Dependencies.svg" ] && minifyxml --svg --inplace --remove-all-metadata "${HOME}/Diagrams/${3}_Dependencies.svg" &
-    [ -f "${HOME}/Diagrams/${3}_Dependencies_Undirected.svg" ] && minifyxml --svg --inplace --remove-all-metadata "${HOME}/Diagrams/${3}_Dependencies_Undirected.svg" &
+    { [ -f "${HOME}/Diagrams/${3}_Dependencies.svg" ] && minifyxml --svg --inplace --remove-all-metadata "${HOME}/Diagrams/${3}_Dependencies.svg"; } &
+    { [ -f "${HOME}/Diagrams/${3}_Dependencies_Undirected.svg" ] && minifyxml --svg --inplace --remove-all-metadata "${HOME}/Diagrams/${3}_Dependencies_Undirected.svg"; } &
     wait
 fi
 
