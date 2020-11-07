@@ -78,7 +78,7 @@ from pybooster.libchar import (
     UPPER_LIMIT_UNICODE,
     UPPER_LIMIT_UTF8
 )
-from pybooster.libregex import CHAR_REF, CHARREF, ENTITY_REF, HEXESCCSS, HEXESCPERL, HEXESCRUBY, HEXESCTAG, HEXESCURI
+from pybooster.libregex import CHARACTER_ENTITY, HEXESCCSS, HEXESCPERL, HEXESCRUBY, HEXESCTAG, HEXESCURI
 
 try:  # Regular Expression module
     from regex import compile as rgxcompile, split as rgxsplit, sub as resub
@@ -602,17 +602,17 @@ def sqlstr(_obj: str, _strength: int = 0) -> str:
     """Format a string to protect against SQL-Injection Attacks.
 
     _strength indicates what characters should be removed or escaped
-    0 = (Default) Remove curly quotes, commas, and brackets; escape quotes, slashes, and dashes
+    0 = (Default) Remove curly quotes, backticks, curly commas, and brackets; escape quotes, slashes, semicolons, and dashes
     1 = Same as 0, but removes characters instead of escaping
-    2 = Same as 1, but remove additional characters such as .?!#;&%^:
+    2 = Same as 1, but remove additional characters such as .?!%^:
     3 = Only keep ASCII letters and space
 
     >>> sqlstr('This is a lengthy & thorough test: ¶ 2 + 2 = 4 ¶ {r"key": "value", r"test": "^ -- (`)"} ¶ ')
-    'This is a lengthy & thorough test: ¶ 2 + 2 = 4 ¶ r&quot;key&quot;: &quot;value&quot;, r&quot;test&quot;: &quot;^ - (&#96;)&quot; ¶ '
+    'This is a lengthy & thorough test: ¶ 2 + 2 = 4 ¶ r&quot;key&quot;: &quot;value&quot;, r&quot;test&quot;: &quot;^ - ()&quot; ¶ '
     >>> sqlstr('This is a lengthy & thorough test: ¶ 2 + 2 = 4 ¶ {r"key": "value", r"test": "^ -- (`)"} ¶ ', 1)
     'This is a lengthy & thorough test: ¶ 2 + 2 = 4 ¶ rkey: value, rtest: ^  () ¶ '
     >>> sqlstr('This is a lengthy & thorough test: ¶ 2 + 2 = 4 ¶ {r"key": "value", r"test": "^ -- (`)"} ¶ ', _strength=2)
-    'This is a lengthy  thorough test ¶ 2 + 2 = 4 ¶ rkey value, rtest   () ¶ '
+    'This is a lengthy & thorough test ¶ 2 + 2 = 4 ¶ rkey value, rtest   () ¶ '
     >>> sqlstr('This is a lengthy & thorough test: ¶ 2 + 2 = 4 ¶ {r"key": "value", r"test": "^ -- (`)"} ¶ ', 3)
     'This is a lengthy  thorough test        rkey value rtest     '
     """
@@ -623,10 +623,10 @@ def sqlstr(_obj: str, _strength: int = 0) -> str:
     _obj = _obj.replace(r'{', r'').replace(r'}', r'').replace('\\', r'')
     _obj = rmcurlyquotes(rmcurlycommas(_obj))  # Curly Quotes and Commas
     if not _strength:  # _strength == 0
-        return _obj.replace(r'"', r'&quot;').replace('\'', r'&#39;').replace(r'`', r'&#96;').replace(r'--', r'-')
-    _obj = _obj.replace(r'"', r'').replace('\'', r'').replace(r'`', r'').replace(r'-', r'')  # _strength >= 1
+        return _obj.replace(r';', r'&#59;').replace(r'"', r'&quot;').replace('\'', r'&#39;').replace('\\', r'&#92;').replace(r'`', r'').replace(r'--', r'-')
+    _obj = _obj.replace(r';', r'').replace(r'"', r'').replace('\'', r'').replace('\\', r'').replace(r'`', r'').replace(r'-', r'')  # _strength >= 1
     if _strength >= 2:
-        return _obj.replace(r'%', r'').replace(r'^', r'').replace(r':', r'').replace(r'#', r'').replace(r';', r'').replace(r'&', r'').replace(r'.', r'').replace(r'?', r'').replace(r'!', r'')
+        return _obj.replace(r'%', r'').replace(r'^', r'').replace(r':', r'').replace(r'.', r'').replace(r'?', r'').replace(r'!', r'')
     return _obj
 
 
@@ -980,10 +980,24 @@ def testref(_data: str) -> bool:
     True
     >>> testref('&amp;')
     True
+    >>> testref('&Dagger;')
+    True
+    >>> testref('This is a test&#46;')
+    True
+    >>> testref('&bull;This is a test.')
+    True
     >>> testref('This is a test.')
     False
+    >>> testref('This is a test (&#).')
+    False
+    >>> testref('This is a test (&#;).')
+    False
+    >>> testref('This is a test (&#_;).')
+    False
     """
-    return CHAR_REF.search(_data) is not None or ENTITY_REF.search(_data) is not None
+    if r'&' not in _data or r';' not in _data:
+        return False
+    return CHARACTER_ENTITY.search(_data) is not None
 
 
 def is_palindrome(_str: str) -> bool:
@@ -1163,16 +1177,20 @@ def unescape(_str: str) -> str:  # noqa: R701
     '"'
     >>> unescape(r'&quot;')
     '"'
+    >>> unescape(r'&excl;')
+    '!'
+    >>> unescape(r'&dollar;')
+    '$'
     >>> unescape(r'&Utilde;')
     '\u0168'
     >>> unescape(r'String with &#34;special&#34; characters')
     'String with "special" characters'
     """
-    if r'&' not in _str:
+    if not testref(_str):
         return _str
-    match = CHARREF.search(_str)
+    match = CHARACTER_ENTITY.search(_str)
     while match:
-        origrefer = r'&' + match.group(1)
+        origrefer = fr'&{match.group(1)};'
         referstr = origrefer.lstrip(r'&').rstrip(r';')
         ltrlch = r''
         if referstr[0] == r'#' or referstr[0] in r'Xx':  # Decimal & Hexadecimal character reference
@@ -1185,17 +1203,17 @@ def unescape(_str: str) -> str:  # noqa: R701
                 ltrlch = r''
             else:
                 ltrlch = chr(num)
-        elif referstr + r';' in HTML5:  # Named character reference
-            ltrlch = HTML5[referstr + r';']
+        elif fr'{referstr}' in HTML5:  # Named character reference
+            ltrlch = HTML5[fr'{referstr}']
             _str = _str.replace(origrefer, ltrlch)
-            match = CHARREF.search(_str)
+            match = CHARACTER_ENTITY.search(_str)
             continue
         else:  # Unknown character reference
             ltrlch = r''
         _str = _str.replace(origrefer, ltrlch)
         if len(_str) < 4:
             return _str
-        match = CHARREF.search(_str)
+        match = CHARACTER_ENTITY.search(_str)
     return _str
 
 

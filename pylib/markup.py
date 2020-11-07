@@ -41,7 +41,7 @@ from sys import stderr
 from typing import List, Optional, Union
 import xml.etree.ElementTree as ET  # nosec
 
-from pybooster.libregex import CHARREF, LEADING_TRAILING_WHITESPACE, LEADING_WHITESPACE, TRAILING_WHITESPACE, WHITESPACE
+from pybooster.libregex import CHARACTER_ENTITY, LEADING_TRAILING_WHITESPACE, LEADING_WHITESPACE, TRAILING_WHITESPACE, WHITESPACE
 from pybooster.strtools import rmspecialwhitespace, unescape
 
 try:  # Regular Expression module
@@ -1610,7 +1610,7 @@ class HTMLParser(ParserBase):  # pylint: disable=R0904
                         self.handle_data(rawdata[i:k])
                 i = self.updatepos(i, k)
             elif startswith(r'&#', i):
-                _match = CHARREF.match(rawdata, i)
+                _match = CHARACTER_ENTITY.match(rawdata, i)
                 if _match:
                     name = _match.group()[2:-1]
                     self.handle_charref(name)

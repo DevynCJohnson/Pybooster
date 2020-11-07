@@ -6,7 +6,7 @@
 
 @file libregex.py
 @package pybooster.libregex
-@version 2019.12.23
+@version 2020.11.06
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -361,7 +361,7 @@ __all__: list = [
     r'EMOJI_MODIFIER_FITZPATRICK',
     r'INTERLINEAR_ANNOTATIONS',
     # XML SOURCE CODE PATTERNS #
-    r'CHARREF',
+    r'CHARACTER_ENTITY',
     r'INCOMPLETE_REF',
     r'ENTITY_REF',
     r'CHAR_REF',
@@ -710,7 +710,7 @@ BIDI_CONTROL_CHARACTERS = rgxcompile(r'([\u061C\u200E\u200F\u202A-\u202E\u2066-\
 # XML SOURCE CODE PATTERNS #
 
 
-CHARREF = rgxcompile(r'&(#[0-9]+;|#[xX]+[0-9A-Fa-f]+;|[A-Za-z0-9]+;)')
+CHARACTER_ENTITY = rgxcompile(r'&(#[0-9]+|#[xX][0-9A-Fa-f]+|[A-Za-z0-9]+);')
 INCOMPLETE_REF = rgxcompile('&[#]?[0-9A-Za-z]+')
 ENTITY_REF = rgxcompile('&([0-9A-Za-z]+);')
 CHAR_REF = rgxcompile('&#(?:[0-9]+|[Xx][0-9A-Fa-f]+);')
