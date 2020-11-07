@@ -78,7 +78,7 @@ from pybooster.libchar import (
     UPPER_LIMIT_UNICODE,
     UPPER_LIMIT_UTF8
 )
-from pybooster.libregex import CHARACTER_ENTITY, HEXESCCSS, HEXESCPERL, HEXESCRUBY, HEXESCTAG, HEXESCURI
+from pybooster.libregex import CHARACTER_ENTITY, HEXESCCSS, HEXESCPERL, HEXESCRUBY, HEXESCTAG, HEXESCURI, PUNCTUATION
 
 try:  # Regular Expression module
     from regex import compile as rgxcompile, split as rgxsplit, sub as resub
@@ -522,7 +522,7 @@ def rmcurlycommas(_str: str) -> str:
     >>> rmcurlycommas('This is، a test.')
     'This is a test.'
     """
-    return _str.replace('\u060C', r'').replace('\u0326', r'').replace('\u1802', r'').replace('\u3001', r'').replace('\uFE10', r'').replace('\uFE11', r'').replace('\u200D\u0313', r'').replace('\u200D\u1363', r'').replace('\u200D\uA6F5', r'')
+    return _str.replace('\u060C', r'').replace('\u0326', r'').replace('\u1802', r'').replace('\u3001', r'').replace('\uFE10', r'').replace('\uFE11', r'').replace('\u200D\u0313', r'').replace('\u0313', r'').replace('\u200D\u1363', r'').replace('\u1363', r'').replace('\u200D\uA6F5', r'').replace('\uA6F5', r'')
 
 
 def replacecurlycommas(_str: str) -> str:
@@ -580,7 +580,7 @@ def rmpunct(_str: str) -> str:
     >>> rmpunct('‽word¿ text.')
     'word text'
     """
-    return _str.replace(r';', r'').replace(r',', r'').replace(r'.', r'').replace(r'¿', r'').replace(r'¡', r'').replace(r'‽', r'').replace(r'⸮', r'').replace(r'?', r'').replace(r'!', r'').replace(r'…', r'')
+    return PUNCTUATION.sub(r'', _str)
 
 
 def splitsentences(_str_of_sentences: str) -> list:
@@ -589,7 +589,7 @@ def splitsentences(_str_of_sentences: str) -> list:
     >>> splitsentences('This is a test. This should be a separate item in the list. Did it work?')
     ['This is a test', 'This should be a separate item in the list', 'Did it work']
     """
-    _array = rgxsplit(r'[\.\?﹖？!﹗！;…¿¡‽⸮⁇⁈⁉‼]+', _str_of_sentences)
+    _array = PUNCTUATION.split(_str_of_sentences)
     inputarray: list = []
     for i in _array:
         i = i.strip()
