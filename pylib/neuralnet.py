@@ -101,12 +101,13 @@ class NeuroCode:  # pylint: disable=C0200,R0902
 
         @param[in] data A list of lists of the input data
         @param[in] layers Specify the number of hidden layers in the network and the size of each layer. For example, `layers = [3, 4]` makes two hidden layers, the first with 3 nodes and the second with 4 nodes. By default, one hidden layer is used with a size proportionate to the size of the input array
-        @param[in] error_thresh Error threshold goal (float less than 1.0)
+        @param[in] iterations Number of times to run the training
         @param[in] rate Learning rate (float less than 1.0)
         """
         # Setup input data
         input_size: int = len(data[0][0])
         output_size: int = len(data[0][1])
+        # Settings
         self.hidden_layers = [max(3, int(floor(input_size / 2)))] if not layers else layers
         self.sizes: List[Any] = list(flatten([input_size, self.hidden_layers, output_size]))
         self.iterations: int = iterations
@@ -114,6 +115,7 @@ class NeuroCode:  # pylint: disable=C0200,R0902
         self.io_rules: list = data
         self.io_rules_len: int = len(data)
         self.outputlayer: int = len(self.sizes) - 1
+        self.error_threshold: float = 0.0001
         neural_rand = Random()
         # Training State
         self.deltas: List[Any] = [[]] * (self.outputlayer + 1)
@@ -142,7 +144,7 @@ class NeuroCode:  # pylint: disable=C0200,R0902
         used_iterations: int = 0
         for i in range(self.iterations):
             used_iterations = i
-            if error <= 0.0001:  # Error Threshold
+            if error <= self.error_threshold:  # Error Threshold
                 break
             _sum = 0.0
             for d in self.io_rules:
@@ -245,12 +247,12 @@ class NeuroCode:  # pylint: disable=C0200,R0902
             fn += '    o = [\n' if _layer < self.outputlayer else '    return [\n'
             size = self.sizes[_layer]
             for n in range(size):
-                term = str(-self.biases[_layer][n])
+                term: str = fr'{-self.biases[_layer][n]}'
                 length = len(self.weights[_layer][n])
                 for k in range(length):
                     w = self.weights[_layer][n][k]
-                    term += (r'-' if w > 0 else r'+') + str(abs(w)) + r'*i[' + str(k) + r']'
-                fn += r'        1 / (1 + math.exp(' + term + r'))' + (',\n' if n != size - 1 else '\n')
+                    term += (r'-' if w > 0 else r'+') + fr'{abs(w)} * i[{k}]'
+                fn += fr'        1 / (1 + math.exp({term}))' + (',\n' if n != size - 1 else '\n')
             fn += '    ]\n'
             if _layer != self.outputlayer:
                 fn += '    i = o\n'
@@ -264,12 +266,12 @@ class NeuroCode:  # pylint: disable=C0200,R0902
             fn += '    o = new double[]{\n' if _layer < self.outputlayer else '    return new double[]{\n'
             size = self.sizes[_layer]
             for n in range(size):
-                term = str(-self.biases[_layer][n])
+                term: str = fr'{-self.biases[_layer][n]}'
                 length = len(self.weights[_layer][n])
                 for k in range(length):
                     w = self.weights[_layer][n][k]
-                    term += (r'-' if w > 0 else r'+') + str(abs(w)) + r'*i[' + str(k) + r']'
-                fn += r'        1 / (1 + Math.exp(' + term + r'))' + (',\n' if n != size - 1 else '\n')
+                    term += (r'-' if w > 0 else r'+') + fr'{abs(w)} * i[{k}]'
+                fn += fr'        1 / (1 + Math.exp({term}))' + (',\n' if n != size - 1 else '\n')
             fn += '    };\n'
             if _layer != self.outputlayer:
                 fn += '    i = o;\n'
@@ -281,26 +283,25 @@ class NeuroCode:  # pylint: disable=C0200,R0902
         terms: Dict[str, str] = {}
         lterms: List[str] = []
         for k in range(self.sizes[0]):
-            lterms.append(r'o0_' + str(k))
-            terms[lterms[-1]] = r'i[' + str(k) + r']'
+            lterms.append(fr'o0_{k}')
+            terms[lterms[-1]] = fr'i[{k}]'
         oterms: dict = {}
         for _layer in range(1, self.outputlayer + 1):
             for n in range(self.sizes[_layer]):
-                term = str(-self.biases[_layer][n])
+                term: str = fr'{-self.biases[_layer][n]}'
                 for k in range(len(self.weights[_layer][n])):
                     w = self.weights[_layer][n][k]
-                    term += (r'-' if w > 0 else r'+') + str(abs(w)) + r'*o' + str(_layer - 1) + r'_' + str(k)
-                del w
-                v = r'(1.0 / (1.0 + exp(' + term + r')))'
+                    term += (r'-' if w > 0 else r'+') + fr'{abs(w)} * o{_layer - 1}_{k}'
+                v = fr'(1.0 / (1.0 + exp({term})))'
                 for _str in lterms:
                     v = v.replace(_str, terms[_str])
-                lterms.append(r'o' + str(_layer) + r'_' + str(n))
+                lterms.append(fr'o{_layer}_{n}')
                 terms[lterms[-1]] = v
                 if _layer == self.outputlayer:
-                    oterms[r'o' + str(_layer) + r'_' + str(n)] = r'o[' + str(n) + r']'
+                    oterms[fr'o{_layer}_{n}'] = fr'o[{n}]'
         del k, lterms
         fn: str = fr'void {fnname}(double* i, double* o){{\n'
         for _str, v in oterms.items():
-            fn += r'    ' + v + r' = ' + terms[_str] + ';\n'
+            fn += f'    {v} = {terms[_str]};\n'
         fn += '}\n'
         return _indent(fn, indent)
