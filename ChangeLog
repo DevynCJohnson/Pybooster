@@ -4,6 +4,7 @@
 	* program-analyzer:  Added support for AVR
 	* replaceoddchars:  Optimized the code
 	* strtools.py:  Optimized the code
+	* thumbnail-cleaner:  Clean thumbnails found in `XDG_CACHE_HOME`
 	* timeutil.py:  Added functions for testing if the day is a holiday
 
 2020-11-06  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
