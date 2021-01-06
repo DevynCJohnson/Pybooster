@@ -6,7 +6,7 @@
 
 @file geo.py
 @package pybooster.geo
-@version 2019.07.14
+@version 2020.11.28
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -45,7 +45,8 @@ __all__: list = [
     r'getlongitude',
     r'gettimezone',
     r'getzipcode',
-    r'getzipcode_int'
+    r'getzipcode_int',
+    r'dms2dd'
 ]
 
 
@@ -83,7 +84,8 @@ def zip2states(_zipcode: int) -> set:
 
 def getgeodata() -> dict:
     """Retrieve the system's current geographical location based on the ISP."""
-    return loads(urlopen(r'http://ip-api.com/json').read().decode(r'utf-8'))  # nosec
+    with urlopen(r'http://ip-api.com/json') as conn:  # nosec
+        return loads(conn.read().decode(r'utf-8'))
 
 
 def getcity(_loc: dict) -> str:
@@ -148,3 +150,21 @@ def getzipcode_int(_loc: dict) -> int:
     Prerequisite: Data from getgeodata()
     """
     return int(_loc[r'zip'])
+
+
+def dms2dd(_degrees: int, _minutes: int, _seconds: float) -> float:
+    """Convert DMS coordinates (degrees, minutes, and seconds) to DD coordinates (decimal degrees).
+
+    >>> dms2dd(78, 55, 44.29458)
+    78.92897071666667
+    """
+    return _degrees + _minutes / 60.0 + _seconds / 3600.0
+
+
+def dd2dms(deg: float) -> list:
+    """Convert DD coordinates (decimal degrees) to DMS coordinates (degrees, minutes, and seconds)."""
+    _degrees: int = int(deg)
+    mindegrees: float = abs(deg - _degrees) * 60
+    _minutes: int = int(mindegrees)
+    _seconds: float = (mindegrees - _minutes) * 60
+    return [_degrees, _minutes, _seconds]
