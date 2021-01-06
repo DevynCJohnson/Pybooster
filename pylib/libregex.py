@@ -6,7 +6,7 @@
 
 @file libregex.py
 @package pybooster.libregex
-@version 2020.11.06
+@version 2020.11.23
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
