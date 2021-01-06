@@ -6,7 +6,7 @@
 
 @file strtools.py
 @package pybooster.strtools
-@version 2020.11.06
+@version 2021.01.06
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -71,7 +71,6 @@ from pybooster.libchar import (
     PLAIN_TEXT,
     TRANS_BUBBLE2TEST,
     TRANS_TEXT2BUBBLE,
-    FULLWIDTH2REGULAR,
     UPPER_LIMIT_ASCII_CTRL,
     UPPER_LIMIT_ASCII_EXT,
     UPPER_LIMIT_ASCII_PRNT,
@@ -88,12 +87,6 @@ except ImportError:
 
 __all__: list = [
     # CASE STRING MANIPULATIONS #
-    r'cap',
-    r'formal',
-    r'lowercase',
-    r'sentence',
-    r'togglecase',
-    r'uppercase',
     r'camelcase2pascalcase',
     r'camelcase2snakecase',
     r'pascalcase2camelcase',
@@ -112,7 +105,6 @@ __all__: list = [
     r'implode',
     r'homoglyph2str',
     r'str2homoglyph',
-    r'replace_odd_chars',
     r'stripunicode',
     r'rmcurlycommas',
     r'replacecurlycommas',
@@ -189,60 +181,6 @@ __all__: list = [
 
 
 # CASE STRING MANIPULATIONS #
-
-
-def cap(_str: str) -> str:
-    """Capitalize the beginning of each word.
-
-    >>> cap('this is a test.')
-    'This Is A Test.'
-    """
-    return _str.title()
-
-
-def formal(_str: str) -> str:
-    """Change the capitalization to the format used in titles.
-
-    >>> formal('this is a test.')
-    'This Is A Test.'
-    """
-    return _str.title()
-
-
-def lowercase(_str: str) -> str:
-    """Turn a string in lowercase.
-
-    >>> lowercase('THIS IS A TEST.')
-    'this is a test.'
-    """
-    return _str.casefold()
-
-
-def sentence(_str: str) -> str:
-    """Capitalization the beginning of each sentence.
-
-    >>> sentence('this IS A TEST.')
-    'This is a test.'
-    """
-    return _str.capitalize()
-
-
-def togglecase(_str: str) -> str:
-    """Convert uppercase to lowercase and vice versa.
-
-    >>> togglecase('this IS A TEST.')
-    'THIS is a test.'
-    """
-    return _str.swapcase()
-
-
-def uppercase(_str: str) -> str:
-    """Turn a string in all caps.
-
-    >>> uppercase('this is a test.')
-    'THIS IS A TEST.'
-    """
-    return _str.upper()
 
 
 def camelcase2pascalcase(string: str) -> str:
@@ -465,42 +403,6 @@ def str2homoglyph(_str: str) -> str:
     return _output
 
 
-def replace_odd_chars(_data: str) -> str:
-    r"""Replace odd characters with plain characters (e.g. replace non-breaking space with ASCII space).
-
-    >>> replace_odd_chars('This\u200Cis a\u180Etest\u16EB')
-    'This is a test.'
-    """
-    # Commas
-    _data = _data.replace('\u060C', r',').replace('\u1802', r',').replace('\u3001', r',').replace('\uFE10', r',').replace('\uFE11', r',').replace('\u200D\u0313', r',').replace('\u200D\u1363', r',').replace('\u200D\uA6F5', r',')
-    # Single-Quotes
-    _data = _data.replace('\u2018', '\u0027').replace('\u2019', '\u0027').replace('\u2032', '\u0027').replace('\u2035', '\u0027')
-    # Double-Quotes
-    _data = _data.replace('\u201C', r'"').replace('\u201D', r'"').replace('\u201E', r'"').replace('\u201F', r'"').replace('\u2033', r'"').replace('\u2034', r'"').replace('\u2036', r'"').replace('\u2037', r'"').replace('\u2057', r'"')
-    # Newlines
-    _data = _data.replace('\u0085', '\n')
-    # Spaces
-    _data = _data.replace('\u0082', r' ').replace('\u0083', r' ').replace('\u00A0', r' ').replace('\u2000', r' ').replace('\u2001', r' ').replace('\u2002', r' ').replace('\u2003', r' ').replace('\u2004', r' ').replace('\u2005', r' ').replace('\u2006', r' ').replace('\u2007', r' ').replace('\u2008', r' ').replace('\u2009', r' ').replace('\u200A', r' ').replace('\u200B', r' ').replace('\u200C', r' ').replace('\u202F', r' ').replace('\u205F', r' ').replace('\u3000', r' ').replace('\uFEFF', r' ')
-    # Dashes, Hyphens, & Tildes
-    _data = _data.replace('\u00AD', r'-').replace('\u1680', r'-').replace('\u2010', r'-').replace('\u2011', r'-').replace('\u2012', r'-').replace('\u2013', r'-').replace('\u2014', r'-').replace('\u2015', r'-').replace('\u203E', r'-').replace('\u2053', r'~')
-    # Slashes
-    _data = _data.replace('\u2044', r'/').replace('\u20E5', '\u005C').replace('\u2215', r'/').replace('\u2216', '\u005C').replace('\u244A', '\u005C\u005C').replace('\u29F5', '\u005C').replace('\u29F6', r'/').replace('\u29F7', '\u005C').replace('\u29F8', r'/').replace('\u29F9', '\u005C')
-    # Colons & Semicolons
-    _data = _data.replace('\u16EC', r':').replace('\u205A', r':').replace('\u2982', r':').replace('\uFE13', r':').replace('\uFE14', r';').replace('\u204F', r';').replace('\u236E', r';')
-    # Percent-signs
-    _data = _data.replace('\uFE6A', r'%').replace('\u066A', r'%').replace('\u2052', r'%').replace('\uFE6A', r'%').replace('\uFF05', r'%').replace('\U00016B3B', r'%')
-    # Parenthesis & Brackets
-    _data = _data.replace('\u2045', '\u005B').replace('\u2046', '\u005D')
-    # Periods, Exclamation-Points, & Question-Marks
-    _data = _data.replace('\u16EB', r'.').replace('\uFE15', r'!').replace('\uFE16', r'?').replace('\u203C', r'!!').replace('\u203D', r'!?').replace('\u2047', r'??').replace('\u2048', r'?!').replace('\u2049', r'!?')
-    # Unicode Format Control Characters
-    _data = _data.replace('\u180B', r' ').replace('\u180C', r' ').replace('\u180D', r' ').replace('\u180E', r' ')
-    # Full-Width Characters
-    _data = _data.translate(FULLWIDTH2REGULAR)
-    # Other Characters
-    return _data.replace('\u204E', r'*').replace('\u2042', r'***').replace('\u204E', r'*').replace('\u2051', r'**')
-
-
 def stripunicode(_str: str) -> str:
     """Replace unicode characters with a question-mark (?).
 
@@ -620,11 +522,11 @@ def sqlstr(_obj: str, _strength: int = 0) -> str:
         return r''
     if _strength >= 3:  # Only keep ASCII letters and space
         return r''.join([i for i in _obj if i.isalpha() or i == r' '])
-    _obj = _obj.replace(r'{', r'').replace(r'}', r'').replace('\\', r'')
+    _obj = _obj.replace(r'{', r'').replace(r'}', r'').replace('\\', r'').replace(r'`', r'')
     _obj = rmcurlyquotes(rmcurlycommas(_obj))  # Curly Quotes and Commas
     if not _strength:  # _strength == 0
-        return _obj.replace(r';', r'&#59;').replace(r'"', r'&quot;').replace('\'', r'&#39;').replace('\\', r'&#92;').replace(r'`', r'').replace(r'--', r'-')
-    _obj = _obj.replace(r';', r'').replace(r'"', r'').replace('\'', r'').replace('\\', r'').replace(r'`', r'').replace(r'-', r'')  # _strength >= 1
+        return _obj.replace(r';', r'&#59;').replace(r'"', r'&quot;').replace('\'', r'&#39;').replace('\\', r'&#92;').replace(r'--', r'-')
+    _obj = _obj.replace(r';', r'').replace(r'"', r'').replace('\'', r'').replace(r'-', r'')  # _strength >= 1
     if _strength >= 2:
         return _obj.replace(r'%', r'').replace(r'^', r'').replace(r':', r'').replace(r'.', r'').replace(r'?', r'').replace(r'!', r'')
     return _obj
@@ -660,8 +562,7 @@ def str2bool(_bool: Union[bool, str], as_str: bool = False) -> Union[bool, str]:
         if _bool:
             return r'yes' if as_str else True
         return r'no' if as_str else False
-    _bool = _bool.casefold().strip()
-    if _bool in {r'1', r'ok', r'okay', r'on', r'sure', r'true', r'yeah', r'yes'}:
+    if _bool.casefold().strip() in {r'1', r'ok', r'okay', r'on', r'sure', r'true', r'yeah', r'yes'}:
         return r'yes' if as_str else True
     return r'no' if as_str else False
 
@@ -1618,7 +1519,7 @@ def char2num(_char: str, _upcase: bool = False) -> str:
         _tmp = hex(ord(i)).replace(r'0x', r'')
         if len(_tmp) > 8:
             raise ValueError(r'Invalid data passed to char2num()!')
-        elif len(_tmp) > 4:
+        if len(_tmp) > 4:
             while len(_tmp) != 8:
                 _tmp = r'0' + _tmp
             _out += r'\U' + _tmp.upper() if _upcase else r'\U' + _tmp
@@ -1671,7 +1572,7 @@ def hex2unicodehex(_hex: Union[int, str]) -> str:
         elif r'\0' in _hex or r'&#x' in _hex:
             _hex = _hex.replace(r'\0', r'').replace(r'&#x', r'').replace(r';', r'')
         return fr'U+{_hex.upper()}'
-    elif isinstance(_hex, int):
+    if isinstance(_hex, int):
         return r'U+' + str(hex(_hex).replace(r'0x', r'').upper())
     raise TypeError(r'Invalid datatype passed to hex2unicodehex()!')
 
@@ -1700,7 +1601,7 @@ def hex2cssnot(_hex: Union[int, str]) -> str:
         elif r'U+' in _hex or r'&#x' in _hex:
             _hex = _hex.replace(r'U+', r'').replace(r'&#x', r'').replace(r';', r'')
         return fr'\0{_hex.upper()}'
-    elif isinstance(_hex, int):
+    if isinstance(_hex, int):
         _hex_str: str = hex(_hex).replace(r'0x', r'').upper()
         return fr'\0{_hex_str}'
     raise TypeError(r'Invalid datatype passed to hex2cssnot()!')

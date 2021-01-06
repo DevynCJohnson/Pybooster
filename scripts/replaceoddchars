@@ -5,7 +5,7 @@
 """@brief Replace odd characters with normal characters in stream (e.g. curly-commas to regular).
 
 @file replaceoddchars
-@version 2020.07.04
+@version 2021.01.06
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -34,7 +34,39 @@ along with this software.
 
 from sys import argv, stdin, stdout
 
-from pybooster.strtools import replace_odd_chars
+
+def replace_odd_chars(_data: str) -> str:
+    r"""Replace odd characters with plain characters (e.g. replace non-breaking space with ASCII space).
+
+    >>> replace_odd_chars('This\u200Cis a\u180Etest\u16EB')
+    'This is a test.'
+    """
+    # Commas
+    _data = _data.replace('\u060C', r',').replace('\u1802', r',').replace('\u3001', r',').replace('\uFE10', r',').replace('\uFE11', r',').replace('\u200D\u0313', r',').replace('\u200D\u1363', r',').replace('\u200D\uA6F5', r',')
+    # Single-Quotes
+    _data = _data.replace('\u2018', '\u0027').replace('\u2019', '\u0027').replace('\u2032', '\u0027').replace('\u2035', '\u0027')
+    # Double-Quotes
+    _data = _data.replace('\u201C', r'"').replace('\u201D', r'"').replace('\u201E', r'"').replace('\u201F', r'"').replace('\u2033', r'"').replace('\u2034', r'"').replace('\u2036', r'"').replace('\u2037', r'"').replace('\u2057', r'"')
+    # Newlines
+    _data = _data.replace('\u0085', '\n')
+    # Spaces
+    _data = _data.replace('\u0082', r' ').replace('\u0083', r' ').replace('\u00A0', r' ').replace('\u2000', r' ').replace('\u2001', r' ').replace('\u2002', r' ').replace('\u2003', r' ').replace('\u2004', r' ').replace('\u2005', r' ').replace('\u2006', r' ').replace('\u2007', r' ').replace('\u2008', r' ').replace('\u2009', r' ').replace('\u200A', r' ').replace('\u200B', r' ').replace('\u200C', r' ').replace('\u202F', r' ').replace('\u205F', r' ').replace('\u3000', r' ').replace('\uFEFF', r' ')
+    # Dashes, Hyphens, & Tildes
+    _data = _data.replace('\u00AD', r'-').replace('\u1680', r'-').replace('\u2010', r'-').replace('\u2011', r'-').replace('\u2012', r'-').replace('\u2013', r'-').replace('\u2014', r'-').replace('\u2015', r'-').replace('\u203E', r'-').replace('\u2053', r'~')
+    # Slashes
+    _data = _data.replace('\u2044', r'/').replace('\u20E5', '\u005C').replace('\u2215', r'/').replace('\u2216', '\u005C').replace('\u244A', '\u005C\u005C').replace('\u29F5', '\u005C').replace('\u29F6', r'/').replace('\u29F7', '\u005C').replace('\u29F8', r'/').replace('\u29F9', '\u005C')
+    # Colons & Semicolons
+    _data = _data.replace('\u16EC', r':').replace('\u205A', r':').replace('\u2982', r':').replace('\uFE13', r':').replace('\uFE14', r';').replace('\u204F', r';').replace('\u236E', r';')
+    # Percent-signs
+    _data = _data.replace('\uFE6A', r'%').replace('\u066A', r'%').replace('\u2052', r'%').replace('\uFE6A', r'%').replace('\uFF05', r'%').replace('\U00016B3B', r'%')
+    # Parenthesis & Brackets
+    _data = _data.replace('\u2045', '\u005B').replace('\u2046', '\u005D')
+    # Periods, Exclamation-Points, & Question-Marks
+    _data = _data.replace('\u16EB', r'.').replace('\uFE15', r'!').replace('\uFE16', r'?').replace('\u203C', r'!!').replace('\u203D', r'!?').replace('\u2047', r'??').replace('\u2048', r'?!').replace('\u2049', r'!?')
+    # Unicode Format Control Characters
+    _data = _data.replace('\u180B', r' ').replace('\u180C', r' ').replace('\u180D', r' ').replace('\u180E', r' ')
+    # Other Characters
+    return _data.replace('\u204E', r'*').replace('\u2042', r'***').replace('\u204E', r'*').replace('\u2051', r'**')
 
 
 if __name__ == '__main__':
