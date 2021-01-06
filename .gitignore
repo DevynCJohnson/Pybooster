@@ -119,6 +119,7 @@ ID
 
 *.[Cc][Aa][Cc][Hh][Ee]
 *.[Tt][Mm][Pp]
+*.sqlitedb-journal
 *.todo.txt
 *~
 .*.swp
@@ -151,6 +152,7 @@ yarn.[Ll][Oo][Cc][Kk]
 *.i686
 *.out
 *.x86_64
+*.ihex
 
 # Cuda
 
