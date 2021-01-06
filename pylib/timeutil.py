@@ -6,7 +6,7 @@
 
 @file timeutil.py
 @package pybooster.timeutil
-@version 2020.02.21
+@version 2020.11.20
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -48,6 +48,10 @@ __all__: list = [
     r'istodayfriday',
     r'istodaysaturday',
     r'isyear',
+    r'is_christmas',
+    r'is_halloween',
+    r'is_new_years_day',
+    r'is_new_years_eve',
     # FUNCTIONS #
     r'currentseason',
     r'weekday',
@@ -121,6 +125,30 @@ def isyear(_year: Union[int, str]) -> bool:
     return pytime.strftime(r'%Y') == _year
 
 
+def is_christmas(_unix_time: Union[int, str] = 0) -> bool:
+    """Test if today is Christmas."""
+    _today = datetime.utcfromtimestamp(_unix_time) if _unix_time else datetime.today()
+    return _today.month == 12 and _today.day == 25
+
+
+def is_halloween(_unix_time: Union[int, str] = 0) -> bool:
+    """Test if today is Halloween."""
+    _today = datetime.utcfromtimestamp(_unix_time) if _unix_time else datetime.today()
+    return _today.month == 10 and _today.day == 31
+
+
+def is_new_years_day(_unix_time: Union[int, str] = 0) -> bool:
+    """Test if today is New Year's Day."""
+    _today = datetime.utcfromtimestamp(_unix_time) if _unix_time else datetime.today()
+    return _today.month == 1 and _today.day == 1
+
+
+def is_new_years_eve(_unix_time: Union[int, str] = 0) -> bool:
+    """Test if today is New Year's Eve."""
+    _today = datetime.utcfromtimestamp(_unix_time) if _unix_time else datetime.today()
+    return _today.month == 12 and _today.day == 31
+
+
 # FUNCTIONS #
 
 
@@ -135,8 +163,7 @@ def currentseason(_hemisphere: str = 'n') -> str:
         season = r'fall'
     else:  # Winter
         season = r'winter'
-    _hemisphere = _hemisphere.casefold()
-    if _hemisphere != 'n':
+    if _hemisphere.casefold() != 'n':
         if season == r'spring':
             return r'fall'
         if season == r'fall':
@@ -148,9 +175,9 @@ def currentseason(_hemisphere: str = 'n') -> str:
     return season
 
 
-def weekday() -> str:
+def weekday(_unix_time: Union[int, str] = 0) -> str:
     """Return the name of the weekday."""
-    return pytime.strftime(r'%A')
+    return pytime.strftime(r'%A') if not _unix_time else datetime.utcfromtimestamp(_unix_time).strftime(r'%A')
 
 
 def month() -> str:
@@ -163,9 +190,9 @@ def year() -> str:
     return pytime.strftime(r'%Y')
 
 
-def date() -> str:
+def date(_unix_time: Union[int, str] = 0) -> str:
     """Return the date."""
-    return pytime.strftime(r'%x')
+    return pytime.strftime(r'%x') if not _unix_time else datetime.utcfromtimestamp(_unix_time).strftime(r'%x')
 
 
 def clock() -> str:
@@ -183,9 +210,9 @@ def dateandtime() -> str:
     return pytime.strftime(r'%x %X')
 
 
-def day() -> str:
+def day(_unix_time: Union[int, str] = 0) -> str:
     """Return the day."""
-    return pytime.strftime(r'%d')
+    return pytime.strftime(r'%d') if not _unix_time else datetime.utcfromtimestamp(_unix_time).strftime(r'%d')
 
 
 def hour() -> str:

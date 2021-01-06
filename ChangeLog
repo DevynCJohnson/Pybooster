@@ -2,6 +2,7 @@
 
 	* libchar.py:  Added more homoglyphs
 	* program-analyzer:  Added support for AVR
+	* timeutil.py:  Added functions for testing if the day is a holiday
 
 2020-11-06  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
