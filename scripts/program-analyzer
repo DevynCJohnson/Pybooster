@@ -5,7 +5,7 @@
 """@brief View various information about a library or executable.
 
 @file program-analyzer
-@version 2020.04.19
+@version 2020.12.20
 @author Devyn Collier Johnson <DevynCJohnson@Gmail.com>
 @copyright LGPLv3
 
@@ -978,7 +978,7 @@ strings --all</property>
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
                         <property name="label">Program-Analyzer
-Version: 2020.04.19
+Version: 2020.12.20
 Author: Devyn Collier Johnson
 &amp;lt;&lt;a href="mailto:DevynCJohnson@Gmail.com"&gt;DevynCJohnson@Gmail.com&lt;/a&gt;&amp;gt;</property>
                         <property name="use_markup">True</property>
@@ -1473,6 +1473,7 @@ class DataTable:  # pylint: disable=R0903
     is_insn_count_available: bool = is_program_aval(r'insn_count')
     is_linux_alpha_available: bool = is_program_aval(r'alpha-linux-gnu-objdump')
     is_linux_arm_available: bool = is_program_aval(r'arm-linux-gnueabi-objdump')
+    is_linux_avr_available: bool = is_program_aval(r'avr-objdump')
     is_linux_hppa64_available: bool = is_program_aval(r'hppa64-linux-gnu-objdump')
     is_linux_hppa_available: bool = is_program_aval(r'hppa-linux-gnu-objdump')
     is_linux_powerpc32_available: bool = is_program_aval(r'powerpc-linux-gnu-objdump')
@@ -1795,7 +1796,9 @@ class MainWindow:  # pylint: disable=R0902
         _charset = MIME_ENCODING.file(_file)
         _magic = NONE_MAGIC.file(_file).casefold()
         # Is 32 or 64 bits?
-        if any(_pattern in _magic for _pattern in {r'32-bit', r'80386', r'i686', r'pe32 ', r'x86-32'}):
+        if any(_pattern in _magic for _pattern in {r'8-bit', r'atmel avr'}):
+            _bits = r'8'
+        elif any(_pattern in _magic for _pattern in {r'32-bit', r'80386', r'i686', r'pe32 ', r'x86-32'}):
             _bits = r'32'
         elif any(_pattern in _magic for _pattern in {r'64-bit', r'pe32+', r'x86-64'}):
             _bits = r'64'
@@ -2094,6 +2097,8 @@ def set_architecture_type(file_magic: str, _bits: str) -> Union[str, Tuple[int, 
         return STATUS_UNSUPPORTED_FILETYPE
     if r'arm' in file_magic and _bits == r'32':
         return r'arm' if DataTable.is_linux_arm_available else STATUS_UNSUPPORTED_FILETYPE
+    if r'atmel avr' in file_magic and _bits == r'8':
+        return r'avr' if DataTable.is_linux_avr_available else STATUS_UNSUPPORTED_FILETYPE
     if r'alpha' in file_magic:
         return r'alpha' if DataTable.is_linux_alpha_available else STATUS_UNSUPPORTED_FILETYPE
     if r'pa-risc' in file_magic and _bits == r'32':
@@ -2135,6 +2140,15 @@ def setup_tools(_bits: str, _charset: str, _magic: str) -> Tuple[int, str]:  # n
         DataTable.readelf_cmd = fr'{_prefix}-linux-gnueabi-readelf'
         DataTable.size_cmd = fr'{_prefix}-linux-gnueabi-size'
         DataTable.strings_cmd = fr'{_prefix}-linux-gnueabi-strings'
+        debug_msg(f'Prefix: {_prefix}\nDisassembler: {DataTable.disassemble_cmd}')
+        return (37, r'')
+    if _prefix == r'avr':
+        DataTable.nm_cmd = fr'{_prefix}-nm'
+        DataTable.disassemble_cmd = fr'{_prefix}-objdump --disassembler-options={DataTable.disassemble_type}'
+        DataTable.objdump_cmd = fr'{_prefix}-objdump --disassembler-options={DataTable.disassemble_type}'
+        DataTable.readelf_cmd = fr'{_prefix}-readelf'
+        DataTable.size_cmd = fr'{_prefix}-size'
+        DataTable.strings_cmd = fr'{_prefix}-strings'
         debug_msg(f'Prefix: {_prefix}\nDisassembler: {DataTable.disassemble_cmd}')
         return (37, r'')
     if r'pe32' in _magic or r'windows' in _magic or r'application/x-dosexec' in _magic:
