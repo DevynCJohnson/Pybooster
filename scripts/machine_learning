@@ -44,7 +44,7 @@ from pprint import PrettyPrinter
 from sys import stderr, stdout
 from time import sleep
 from typing import Callable, Generator
-import warnings
+from warnings import filterwarnings
 
 from pybooster.datastruct import opencsvfile, openjsonfile
 from pybooster.fs import doesfileexist
@@ -160,7 +160,7 @@ class LearningSession:  # pylint: disable=R0902
 
     def __init__(self, training_data: list = [], target_data: list = [], test_data: list = [], answer_data: list = [], prediction_data: list = [], fast_mode: bool = False) -> None:  # pylint: disable=W0102
         """Initialize the learning session."""
-        warnings.filterwarnings(r'ignore')
+        filterwarnings(r'ignore')
         self.fast_mode: bool = fast_mode
         self.model = None
         self.best_results: list = []
@@ -293,7 +293,7 @@ class LearningSession:  # pylint: disable=R0902
                     continue
             return
         except BaseException as _err:
-            stderr.write(str(_err) + '\n')
+            stderr.write(f'{_err}\n')
             return
         finally:
             self.model_queue.close()
@@ -1081,7 +1081,7 @@ def training(training_file: str, test_file: str, pickled_model: str = r'', read_
         raw_data = opencsvfile(training_file)
         training_data = [list(map(float, x[:-1])) for x in raw_data]
         target_data = [float(x[-1]) for x in raw_data]
-    if not read_digits:
+    if not read_digits and not read_json:
         raw_test_data = opencsvfile(test_file)
         test_data = [list(map(float, x[:-1])) for x in raw_test_data]
         answer_data = [float(x[-1]) for x in raw_test_data]

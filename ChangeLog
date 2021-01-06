@@ -1,6 +1,7 @@
 2021-01-06  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* libchar.py:  Added more homoglyphs
+	* machine_learning:  Applied some code tweaks
 	* neuralnet.py:  Applied some code tweaks
 	* program-analyzer:  Added support for AVR
 	* replaceoddchars:  Optimized the code
