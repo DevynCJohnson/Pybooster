@@ -1,3 +1,39 @@
+2021-01-06  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* geo.py:  Added more functions & applied some improvements
+	* libchar.py:  Added more homoglyphs
+	* machine_learning:  Applied some code tweaks
+	* neuralnet.py:  Applied some code tweaks
+	* program-analyzer:  Added support for AVR
+	* replaceoddchars:  Optimized the code
+	* strtools.py:  Optimized the code
+	* thumbnail-cleaner:  Clean thumbnails found in `XDG_CACHE_HOME`
+	* timeutil.py:  Added functions for testing if the day is a holiday
+	* uca.xml:  Added more Thunar UCA actions for resizing image files
+
+2020-11-06  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* gitstats:  Applied minor tweaks
+	* markup.py:  Simplified some of the code
+	* mime.types:  Removed a duplicate mimetype
+	* pygraphclasses3:  Improved the generated charts & fixed some bugs
+	* pygraphimports3:  Improved the generated charts & fixed some bugs
+	* pygraphprofile:  Improved the generated charts
+	* science_data.py:  Added more molecular SMILES data
+	* strtools.py:  Applied minor improvements and fixes
+	* uca.xml:  Added more Thunar UCA actions for audio files
+	* xmath.py:  Applied minor improvements and fixes
+
+2020-10-08  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* libchar.py:  Added more homoglyphs
+	* strtools.py:  Added `str2bool()`
+
+2020-10-03  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
+
+	* science_data.py:  Added the function `iselement()`
+	* xmath.py:  Added many functions
+
 2020-09-16  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
 	* convvolume.py:  Added functions for more units of volume
