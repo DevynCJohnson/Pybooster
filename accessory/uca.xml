@@ -213,10 +213,28 @@
   </action>
   <action>
     <icon>jpeg</icon>
+    <name>Resize Image to 256px</name>
+    <unique-id>7300000000000014-2</unique-id>
+    <command>[ -x "$(command -v convert)" ] &amp;&amp; convert %f -resize 256 %f</command>
+    <description>Proportionally change the dimensions of image files to 256px wide</description>
+    <patterns>*</patterns>
+    <image-files/>
+  </action>
+  <action>
+    <icon>jpeg</icon>
     <name>Resize Image to 512px</name>
     <unique-id>7300000000000014-1</unique-id>
     <command>[ -x "$(command -v convert)" ] &amp;&amp; convert %f -resize 512 %f</command>
     <description>Proportionally change the dimensions of image files to 512px wide</description>
+    <patterns>*</patterns>
+    <image-files/>
+  </action>
+  <action>
+    <icon>jpeg</icon>
+    <name>Resize Image to 1024px</name>
+    <unique-id>7300000000000015-2</unique-id>
+    <command>[ -x "$(command -v convert)" ] &amp;&amp; convert %f -resize 1024 %f</command>
+    <description>Proportionally change the dimensions of image files to 1024px wide</description>
     <patterns>*</patterns>
     <image-files/>
   </action>

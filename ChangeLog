@@ -6,6 +6,7 @@
 	* strtools.py:  Optimized the code
 	* thumbnail-cleaner:  Clean thumbnails found in `XDG_CACHE_HOME`
 	* timeutil.py:  Added functions for testing if the day is a holiday
+	* uca.xml:  Added more Thunar UCA actions for resizing image files
 
 2020-11-06  Devyn Collier Johnson  <DevynCJohnson@Gmail.com>
 
